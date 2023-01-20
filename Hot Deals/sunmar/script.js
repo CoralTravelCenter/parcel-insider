@@ -19,11 +19,11 @@ const coralTabs = {
 const sunmarTabs = {
 	first: "Турция",
     first2: "Таиланд",
-	second: "Египет",
-	third: "ОАЭ",
-	fourth: "Индия",
-	fifth: "Мальдивы",
-    five: "Россия",
+	second: "Индия",
+	third: "Египет",
+	fourth: "ОАЭ",
+	fifth: "Россия",
+    five: "Мальдивы",
 	moreBtn: {
 		text: "",
 		exist: true,
