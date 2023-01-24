@@ -1,50 +1,26 @@
-// BuyOnline -- pop-in -- v3
-if ( window.innerWidth < 733 ){
-    $(document).on('click', 'span.dm-ins-document_recognition__img', function(){
-        var $this = $(this);
-        var isActive = $this.hasClass('active');
-        if( !isActive ){
-            $(this).addClass('active');
-        }
-    });
-    $(document).on('click', '.dm-ins-document_recognition__close', function(){
-        var $this = $(this);
-        var $par = $this.closest('.dm-ins-document_recognition');
-        var $body = $par.find('.dm-ins-document_recognition__img.active');
-        $body.removeClass('active');
-    });
-
-    $(document).on('click', '#buy-online .popin-container .body > .contenu .pack .seven-steps h4', function(){
-        var $this = $(this);
-        var $body = $this.next();
-        $this.toggleClass('active');
-        $body.slideToggle();
-    });
-}
-
 // popup message
-var wasShown = sessionStorage.dmDocumentRecognition;
+// var wasShown = sessionStorage.dmDocumentRecognition;
+var wasShown = localStorage.dmDocumentRecognition && (localStorage.dmDocumentRecognition === moment().format('YYYY-MM-DD'));
+
 var locationPathname = location.pathname;
 
-if ( wasShown != '1' && (locationPathname == '/' || locationPathname == '/coral.html' )){
+if ( !wasShown && (locationPathname == '/' || locationPathname == '/sunmar.html' )){
 
     var popupMessageHTML = `<div class="dm-ins-document_recognition-popup__wrap">
     <div class="dm-ins-document_recognition-popup">
-    <div class="dm-ins-document_recognition-popup__close"></div>
+    <div class="dm-ins-document_recognition-popup__close" data-action="dismiss"></div>
     <div class="dm-ins-document_recognition-popup__inner">
-        <div class="dm-ins-document_recognition-popup__img-wrap"><img src="https://cdn.coral.ru/content/insider/russia/document_recognition/popup-icon.gif" alt=""></div>
+        <div class="dm-ins-document_recognition-popup__img-wrap"><img src="https://cdn.sunmar.ru/content/insider/russia/document_recognition/popup-icon.gif" alt=""></div>
         <div class="dm-ins-document_recognition-popup__desc">
         <div class="dm-ins-document_recognition-popup__title">Бронировать тур онлайн на сайте стало&nbsp;еще&nbsp;проще&nbsp;и быстрее!</div>
         <div class="dm-ins-document_recognition-popup__text">
-            <p>Вам больше не&nbsp;нужно заполнять данные паспорта самостоятельно. Просто&nbsp;загрузите фото или скан документа,&nbsp;и&nbsp;система автоматически заполнит&nbsp;все&nbsp;поля&nbsp;за&nbsp;вас.</p>
-            <p>Нет паспорта под рукой или он&nbsp;на&nbsp;оформлении?<br>Не&nbsp;проблема&nbsp;— теперь у&nbsp;вас есть возможность внести данные позже, а&nbsp;мы пришлем напоминание вам на&nbsp;почту за&nbsp;8&nbsp;дней до&nbsp;начала путешествия.</p>
+            <p>Теперь вы можете загрузить фото или скан паспорта, и система автоматически заполнит все поля за вас. Если не хотите загружать фото сейчас, то вы можете самостоятельно внести данные позже.</p>
+            <p><button style="display: inline-flex; justify-content:center; align-items:center; font-weight:bold; line-height: 1; height: 2.6em; padding: 0 1.5em; border: 0; outline: none; border-radius: 100px; color: white; background: linear-gradient(225deg, #E7317D 0%, #D8242A 100%); cursor:pointer;" data-action="dismiss">Все понятно!</button></p>
         </div>
         </div>
     </div>
     </div>
     </div>`;
-
-    $('body').append( popupMessageHTML );
 
     var objs = {
         '.dm-ins-document_recognition-popup': 'bounceInUp d1 s3',
@@ -169,28 +145,37 @@ if ( wasShown != '1' && (locationPathname == '/' || locationPathname == '/coral.
         });
 
     };
-    window.s3Animator = new Animator();
-    window.s3Animator.once = true;
+
+    setTimeout(function () {
+        $('body').append( popupMessageHTML );
+        window.s3Animator = new Animator();
+        window.s3Animator.once = true;
+    }, 60000);
 
 
     function FaddClass(elem, clas){
         $(elem).addClass(clas);
     }
     var ii = false;
-    ii = setTimeout(function(){
-        FaddClass('.dm-ins-document_recognition-popup__wrap', 's3-animator-bounceHide s3-animator s3-animator-d1');
-    }, 12000);
+    // ii = setTimeout(function(){
+    //     FaddClass('.dm-ins-document_recognition-popup__wrap', 's3-animator-bounceHide s3-animator s3-animator-d1');
+    // }, 12000);
 
-    $(document).on('click', '.dm-ins-document_recognition-popup__close', function(){
+    // $(document).on('click', '.dm-ins-document_recognition-popup__close', function(){
+    //     FaddClass('.dm-ins-document_recognition-popup__wrap', 's3-animator-bounceHide s3-animator s3-animator-d1');
+    // });
+    $(document).on('click', '.dm-ins-document_recognition-popup [data-action=dismiss]', function(){
         FaddClass('.dm-ins-document_recognition-popup__wrap', 's3-animator-bounceHide s3-animator s3-animator-d1');
     });
-    sessionStorage.dmDocumentRecognition = '1';
+
+    // sessionStorage.dmDocumentRecognition = '1';
+    localStorage.dmDocumentRecognition = moment().format('YYYY-MM-DD');
 
 }
 
 // dym
 var wasShown2 = sessionStorage.dmDocumentRecognition2;
-if ( wasShown2 != '1' && (locationPathname == '/package/reservation/add-passenger/' || locationPathname == '/coral.html' ) ) {
+if ( wasShown2 != '1' && (locationPathname == '/package/reservation/add-passenger/' || locationPathname == '/sunmar.html' ) ) {
 
     $('body').addClass('add-passenger-page')
 
@@ -201,6 +186,7 @@ if ( wasShown2 != '1' && (locationPathname == '/package/reservation/add-passenge
     var $elem2 = $('.saveTouristDataWrapper').eq(0);
     $elem2.wrap( "<span class='dm-ins-dym__elem-wrap'></span>" )
     var $par2 = $('.dm-ins-dym__elem-wrap');
+
     var ii = false;
     var ii2 = false;
 
@@ -232,13 +218,10 @@ if ( wasShown2 != '1' && (locationPathname == '/package/reservation/add-passenge
                 .addClass('dm-ins-dym__elem')
                 .append(dymHTML1)
                 .addClass('dm-ins-dym__active')
-
-
-
             $('html, body').stop().animate( {
-                'scrollTop': $par.offset().top - 100
-            }, 900, 'swing', function () {
-            } );
+                  'scrollTop': $par.offset().top - 100
+              }, 900, 'swing', function () {
+              } );
 
             ii2 = setTimeout(function(){
                 $par.find('.dm-ins-dym__popup-wrap--1').animate({'opacity':0,}, 1000, function () {
@@ -253,10 +236,10 @@ if ( wasShown2 != '1' && (locationPathname == '/package/reservation/add-passenge
                             .append(dymHTML2)
                             .addClass('dm-ins-dym__active');
 
-                        $('html, body').stop().animate( {
-                            'scrollTop': $par2.offset().top - 100
-                        }, 900, 'swing', function () {
-                        } );
+                            $('html, body').stop().animate( {
+                              'scrollTop': $par2.offset().top - 100
+                          }, 900, 'swing', function () {
+                          } );
                     }
                     /**/
                 });
@@ -266,7 +249,7 @@ if ( wasShown2 != '1' && (locationPathname == '/package/reservation/add-passenge
     }
 
     function dymClear(){
-        $par.find('.dm-ins-dym__popup-wrap--1').remove();
+      $par.find('.dm-ins-dym__popup-wrap--1').remove();
         $par.removeClass('dm-ins-dym__elem');
         $par.removeClass('dm-ins-dym__active');
         $par2.find('.dm-ins-dym__popup-wrap--2').remove();
