@@ -1,0 +1,73 @@
+.abs100x100() {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.proportional(@width2height-ratio) {
+	position: relative;
+	&:before {
+		content: '';
+		display: block;
+		padding-top: (1/@width2height-ratio) * 100%;
+	}
+	& > * {
+		.abs100x100;
+	}
+}
+
+[data-module="hotelgallery"] {
+	.hotelgallery-wrap.exclusive {
+		.badge-cyberweekend-discount {
+			transform: translate(-5%, 100%);
+		}
+	}
+
+	.hotelgallery-wrap {
+		.badge-cyberweekend-discount {
+			.proportional(168/57);
+			position: absolute;
+			left: 0;
+			top: 2em;
+			transform: translate(-5%, 0);
+			width: 13em;
+			max-width: 168px;
+			background: url("https://image.useinsider.com/coraltravel/defaultImageLibrary/cyberweekend-discount-badge-1674828019.png") center no-repeat;
+			background-size: contain;
+		}
+
+		.badge-cyberweekend-discount--isrecommended {
+			top: 5.5em;
+		}
+	}
+}
+
+[data-package-layer][data-hotelid] {
+	> .image.exclusive {
+		.badge-cyberweekend-discount {
+			top: 52px;
+		}
+	}
+	> .image {
+		.badge-cyberweekend-discount {
+			.proportional(168/57);
+			position: absolute;
+			left: 11px;
+			top: 24px;
+			transform: translate(-6%, 0);
+			width: 40%;
+			max-width: 168px;
+			background: url("https://image.useinsider.com/coraltravel/defaultImageLibrary/cyberweekend-discount-badge-1674828019.png") center no-repeat;
+			background-size: contain;
+			@media screen and (max-width: 1006px) {
+				left: 3px;
+				width: 10em;
+			}
+		}
+		.badge-cyberweekend-discount--isrecommended {
+			top: 52px;
+		}
+	}
+}
