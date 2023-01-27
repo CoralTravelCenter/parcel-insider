@@ -1,0 +1,54 @@
+.abs100x100() {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.transit(@what: all, @duration: 0.5s) {
+	-webkit-transition+: @what @duration;
+	-moz-transition+: @what @duration;
+	-ms-transition+: @what @duration;
+	-o-transition+: @what @duration;
+	transition+: @what @duration;
+}
+
+.cyberweekend-a {
+	.abs100x100;
+	display: block;
+}
+
+@mobile-breakpoint: 536px;
+
+#banner-base {
+	.video-box {
+		pointer-events: none;
+		.abs100x100;
+		.hidden-on-mobile {
+			@media screen and (max-width: @mobile-breakpoint) {
+				display: none !important;
+			}
+		}
+
+		.hidden-on-desktop {
+			@media screen and (min-width: (@mobile-breakpoint + 1)) {
+				display: none !important;
+			}
+		}
+		.vimeo-wrap {
+			.abs100x100;
+			opacity: 0;
+			.transit(opacity, 1s);
+			&.playback {
+				opacity: 1;
+			}
+			iframe {
+				.abs100x100;
+			}
+		}
+		video {
+			object-fit: cover;
+		}
+	}
+}

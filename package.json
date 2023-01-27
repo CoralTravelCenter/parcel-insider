@@ -5,7 +5,8 @@
     "scripts": {
         "build-friendly-404-v3-coral": "parcel build --no-source-maps --dist-dir friendly-404-v3/coral/dist friendly-404-v3/coral/src/index.js",
         "build-friendly-404-v3-sunmar": "parcel build --no-source-maps --dist-dir friendly-404-v3/sunmar/dist friendly-404-v3/sunmar/src/index.js",
-        "build-elite-service-tooltip-coral": "parcel build --no-source-maps --dist-dir elite-service-tooltip/coral/dist elite-service-tooltip/coral/src/index.js"
+        "build-elite-service-tooltip-coral": "parcel build --no-source-maps --dist-dir elite-service-tooltip/coral/dist elite-service-tooltip/coral/src/index.js",
+        "build-cyberweekend-video-banner-coral": "parcel build --no-source-maps --dist-dir cyberweekend-video-banner/coral/dist cyberweekend-video-banner/coral/src/index.js"
     },
     "author": "",
     "license": "ISC",
