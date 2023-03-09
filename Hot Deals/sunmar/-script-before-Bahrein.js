@@ -1,37 +1,35 @@
 const currentPageCity = document.querySelector(".geolocation-current").dataset.itemname;
 
 const coralTabs = {
-	first: "Турция",
+	first: "Египет",
     first2: "Таиланд",
-	second: "Бахрейн",
-	third: "Египет",
-	fourth: "ОАЭ",
+	second: "ОАЭ",
+	third: "Индия",
+	fourth: "Мальдивы",
 	fifth: "Россия",
-    five: "Мальдивы",
-    srilanka: "Шри-Ланка",
+    five: "Турция",
 	moreBtn: {
 		text: "",
 		exist: true,
 	},
 	tabsCount: 7,
-	// hideTab: "Бахрейн",
+	hideTab: "Бахрейн",
 };
 
 const sunmarTabs = {
 	first: "Турция",
     first2: "Таиланд",
-	second: "Бахрейн",
+	second: "Индия",
 	third: "Египет",
 	fourth: "ОАЭ",
 	fifth: "Россия",
     five: "Мальдивы",
-    srilanka: "Шри-Ланка",
 	moreBtn: {
 		text: "",
 		exist: true,
 	},
 	tabsCount: 7,
-	// hideTab: "Бахрейн",
+	hideTab: "Бахрейн",
 };
 
 if (currentPageCity !== "Москва" && currentPageCity !== "Санкт-Петербург") {
@@ -480,7 +478,7 @@ const changeTabsOrder = (dropdownCountries, tabs, tabsList, tabsContainer, dropd
 
 			/* СТРАНЫ КОТОРЫЕ НУЖНЫ ВО ВКЛАДКАХ */
 
-			if (dataName === coralTabs.first || dataName === coralTabs.second || dataName === coralTabs.third || dataName === coralTabs.fourth || dataName === coralTabs.fifth || dataName === coralTabs.five || dataName === coralTabs.first2 || dataName === coralTabs.srilanka) {
+			if (dataName === coralTabs.first || dataName === coralTabs.second || dataName === coralTabs.third || dataName === coralTabs.fourth || dataName === coralTabs.fifth || dataName === coralTabs.five || dataName === coralTabs.first2) {
 				tabsList.insertAdjacentHTML("beforeend", countryTab);
 			} else {
 				continue;
@@ -492,12 +490,59 @@ const changeTabsOrder = (dropdownCountries, tabs, tabsList, tabsContainer, dropd
 
 
 	if (window.innerWidth > 1006) {
+		/* ПОРЯДОК ВЫВОДА СТРАН НА ВКЛАДКАХ CORAL (Только десктоп) */
+		if (location.origin === "https://www.coral.ru") {
+			if (dropDownButton || dropdownTab) {
+				dropDownButton.firstElementChild.textContent = coralTabs.moreBtn.text;
+			}
+
+			for (let i = 0; i < tabs.length; i++) {
+				if (tabs[i].firstElementChild.textContent === coralTabs.first) {
+					firstTab = tabs[i];
+				}
+				if (tabs[i].firstElementChild.textContent === coralTabs.second) {
+					secondTab = tabs[i];
+				}
+				if (tabs[i].firstElementChild.textContent === coralTabs.third) {
+					thirdTab = tabs[i];
+				}
+				if (tabs[i].firstElementChild.textContent === coralTabs.fourth) {
+					fourthTab = tabs[i];
+				}
+				if (coralTabs.fifth) {
+					if (tabs[i].firstElementChild.textContent === coralTabs.fifth) {
+						fifthTab = tabs[i];
+					}
+				}
+				if (tabs[i].classList.contains("dropdown")) {
+					moreTab = tabs[i];
+				}
+
+				tabs[i].remove();
+			}
+			firstTab !== undefined ? tabsList.insertAdjacentElement("beforeend", firstTab) : false;
+			secondTab !== undefined ? tabsList.insertAdjacentElement("beforeend", secondTab) : false;
+			thirdTab !== undefined ? tabsList.insertAdjacentElement("beforeend", thirdTab) : false;
+			fourthTab !== undefined ? tabsList.insertAdjacentElement("beforeend", fourthTab) : false;
+			fifthTab !== undefined ? tabsList.insertAdjacentElement("beforeend", fifthTab) : false;
+			tabsList.insertAdjacentElement("beforeend", moreTab);
+
+			tabs = tabsContainer.querySelectorAll(".nav-item");
+
+			if (window.innerWidth > 1006) {
+				// КОЛИЧЕСТВО ВКЛАДОК ПРИ КОТОРОМ УДАЛЯЕТСЯ ИЗ РАЗМЕТКИ ПОДМЕНЮ СО СТРАНАМИ И КНОПКА "ЕЩЕ" SUNMAR
+				if (!coralTabs.moreBtn.exist) {
+					dropdownTab.remove();
+					dropdownMenu.remove();
+				}
+			}
+		}
 		/* ПОРЯДОК ВЫВОДА СТРАН НА ВКЛАДКАХ SUNMAR (Только десктоп) */
 		if (location.origin === "https://www.sunmar.ru") {
 			if (dropDownButton || dropdownTab) {
 				dropDownButton.firstElementChild.textContent = sunmarTabs.moreBtn.text;
 			}
-			let firstTab, firstTab2, secondTab, thirdTab, fourthTab, fifthTab, fiveTab, moreTab, srilankaTab;
+			let firstTab, firstTab2, secondTab, thirdTab, fourthTab, fifthTab, fiveTab, moreTab;
 
 			for (let i = 0; i < tabs.length; i++) {
 
@@ -513,9 +558,6 @@ const changeTabsOrder = (dropdownCountries, tabs, tabsList, tabsContainer, dropd
 				if (tabs[i].firstElementChild.textContent === sunmarTabs.fourth) {
 					fourthTab = tabs[i];
 				}
-                if (tabs[i].firstElementChild.textContent === sunmarTabs.srilanka) {
-                    srilankaTab = tabs[i];
-                }
 				if (tabs[i].firstElementChild.textContent === sunmarTabs.fifth) {
 					fifthTab = tabs[i];
 				}
@@ -537,8 +579,7 @@ const changeTabsOrder = (dropdownCountries, tabs, tabsList, tabsContainer, dropd
 			secondTab !== undefined ? tabsList.insertAdjacentElement("beforeend", secondTab) : false;
 			thirdTab !== undefined ? tabsList.insertAdjacentElement("beforeend", thirdTab) : false;
 			fourthTab !== undefined ? tabsList.insertAdjacentElement("beforeend", fourthTab) : false;
-            srilankaTab !== undefined ? tabsList.insertAdjacentElement("beforeend", srilankaTab) : false;
-            fifthTab !== undefined ? tabsList.insertAdjacentElement("beforeend", fifthTab) : false;
+			fifthTab !== undefined ? tabsList.insertAdjacentElement("beforeend", fifthTab) : false;
             fiveTab !== undefined ? tabsList.insertAdjacentElement("beforeend", fiveTab) : false;
 			tabsList.insertAdjacentElement("beforeend", moreTab);
 
