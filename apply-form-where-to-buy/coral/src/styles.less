@@ -1,0 +1,93 @@
+@mobile-breakpoint: 768px;
+
+.bbox() {
+	&, & * {
+		box-sizing: border-box;
+	}
+}
+.abs100x100() {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.interactive() {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	&:active {
+		-webkit-transform: translateY(2px);
+		-moz-transform: translateY(2px);
+		-ms-transform: translateY(2px);
+		-o-transform: translateY(2px);
+		transform: translateY(2px);
+	}
+}
+
+.flex-center() {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.jsless-popin(@shutter-background: rgba(0,0,0,0.8), @container-background: #fff) {
+	.bbox;
+	display: none !important;
+	position: fixed;
+	z-index: 10000;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	&:target {
+		display: flex !important;
+	}
+	& > a {
+		position: absolute;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background: @shutter-background;
+		cursor: default;
+	}
+	.popin-container {
+		margin: auto;
+		background: @container-background;
+		box-shadow: 0 2px 32px fadeout(@shutter-background, 38%);
+	}
+}
+
+
+#app-form {
+	.jsless-popin();
+	.popin-container {
+		position: relative;
+		height: 90vh;
+		padding: 1em 1.5em 1em;
+		border-radius: 1em;
+		width: 90vw;
+		max-width: 450px;
+		overflow: hidden;
+		@media screen and (max-width: @mobile-breakpoint) {
+			height: 80vh;
+		}
+		iframe {
+			.abs100x100;
+		}
+		.dismiss {
+			.interactive;
+			position: absolute;
+			top: 0;
+			right: 0;
+			.flex-center;
+			color: inherit;
+			font-size: 2em;
+			line-height: 1;
+			width: 1.5em;
+			height: 1.5em;
+		}
+	}
+}
