@@ -1,3 +1,5 @@
+// noinspection JSAnnotator
+
 import popin_markup from 'bundle-text:./app-form-markup.html';
 import css from 'bundle-text:./styles.less';
 
