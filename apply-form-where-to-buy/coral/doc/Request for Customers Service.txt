@@ -1,0 +1,21 @@
+Post 
+http://apishar.coral.school:7001/CoralCustomersInfo/Api/SaveInfoForOffice
+
+{
+	"AgencyLocalName": "Наименование агентства",
+	"AgencyEmail": "email1@email.ru; email2@email.ru",
+	"AgencyPhone": "номера телефонов агентства, тип перечисления не важен",
+	"AgencyAddress": "адрес",
+	"AgencyEEId": 12354,
+	"FullName": "Name User",
+	"CityDeparture": "Город отправления",
+	"Country": "Страна тура",
+	"HotelName": "Имя отеля",
+	"DesiredDepartureDate": "2023-03-30",
+	"NumberOfNights": 5,
+	"CountPeoples": 2,
+	"Comment": "Комментарий, ограничение в 4к символов",
+	"IsConsent": true,
+	"Email": "vladislav.kardailskiy@club.coral.ru",
+	"Phone": "79640401181"
+}

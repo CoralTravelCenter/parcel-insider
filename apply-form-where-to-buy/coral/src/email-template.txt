@@ -1,0 +1,8 @@
+ФИО: {{ fio }}
+Номер телефона: {{ phone }}
+Город вылета: {{ depart_from }}
+Страна: {{ destination_country }}
+Название отеля: {{ hotel }}
+Желаемая дата вылета: {{ tour_date }}
+Количество ночей: {{ tour_nights }}
+PAX: {{ pax }}

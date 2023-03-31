@@ -1,0 +1,61 @@
+<div id="app-form">
+    <a href="#_"></a>
+    <div class="popin-container">
+        <form autocomplete="off" novalidate>
+            <div class="form-field required">
+                <div class="label">ФИО</div>
+                <input name="fio" type="text"/>
+            </div>
+            <div class="form-field required">
+                <div class="label">E-mail</div>
+                <input name="email" type="email"/>
+            </div>
+            <div class="form-field required">
+                <div class="label">Номер телефона</div>
+                <input name="phone" type="tel"/>
+            </div>
+            <div class="form-field">
+                <div class="label">Город вылета</div>
+                <input name="depart_from" type="text"/>
+            </div>
+            <div class="form-field">
+                <div class="label">Страна</div>
+                <input name="destination_country" type="text"/>
+            </div>
+            <div class="form-field">
+                <div class="label">Название отеля</div>
+                <input name="hotel" type="text"/>
+            </div>
+            <div class="form-field">
+                <div class="label">Желаемая дата вылета</div>
+                <input name="tour_date" type="text"/>
+            </div>
+            <div class="form-field">
+                <div class="label">Количество ночей</div>
+                <input name="tour_nights" type="text"/>
+            </div>
+            <div class="form-field">
+                <div class="label">Количество взрослых и детей</div>
+                <input name="pax" type="text"/>
+            </div>
+            <div class="form-field">
+                <div class="label">Комментарий</div>
+                <textarea name="comments"></textarea>
+            </div>
+            <div class="form-field required">
+                <div class="labeled-checkbox">
+                    <input type="checkbox" name="agreed" id="_agreed">
+                    <label for="_agreed">
+                        Нажимая на кнопку, я подтверждаю свое согласие на обработку моих персональных данных
+                        в соответствии с ФЗ «О персональных данных» от 27.07.2006г. № 152-ФЗ, с Политикой обработки
+                        персональных данных ознакомлен и согласен.
+                    </label>
+                </div>
+            </div>
+            <div class="form-field">
+                <button type="submit">Отправить</button>
+            </div>
+        </form>
+        <a href="#_" class="dismiss">&times;</a>
+    </div>
+</div>
