@@ -34,7 +34,6 @@ import css from 'bundle-text:./styles.less';
     }
     var $card_body = $(await cardBody());
     var s = document.createElement('script');
-    // s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js';
     s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/4.0.9/min/jquery.inputmask.bundle.min.js';
     $('head').append(s);
 
@@ -53,6 +52,7 @@ import css from 'bundle-text:./styles.less';
         var agency_data = _.find(agencies, { Id: Number(a_id) });
         console.log(agency_data);
         $form.prop('agency-data', agency_data);
+        $form.show().removeClass('blocked').siblings('.thanks').hide();
     });
 
     $('head').append(`<style>${ css }</style>`);
@@ -60,6 +60,21 @@ import css from 'bundle-text:./styles.less';
     var $form = $popin.find('form');
     $form.find('[name=depart_from]').val($('input.packageSearch__departureInput').val());
     $form.find('[name=destination_country]').val($('input.packageSearch__destinationInput').val());
+    var $consent_a = $form.find('.labeled-checkbox a');
+    $.get('https://apishar.coral.school/consents/api/documentlist/coral.ru').done(function (response) {
+        var docs_list = Array.isArray(response) ? response : JSON.parse(response);
+        var active_doc_description = _.find(docs_list, { "is_active": true, "project_id": 13, "docId": 42, });
+        if (active_doc_description) {
+            $consent_a.attr('href', 'javascript:;');
+            $consent_a.on('click', function () {
+                var doc_window = open('about:blank');
+                doc_window.document.title = active_doc_description.document_type_additionalname;
+                $.get(`https://apishar.coral.school/consents/api/documentid/${ active_doc_description.docId }`).done(function (doc) {
+                    doc_window.document.body.innerHTML = doc;
+                });
+            });
+        }
+    });
     $form.on('submit', function (e) {
         e.preventDefault();
         // validate...
@@ -86,7 +101,7 @@ import css from 'bundle-text:./styles.less';
             }
         });
         if (ok2send) {
-            alert('valid');
+            $form.addClass('blocked');
             var adata = $form.prop('agency-data');
             var tour_date = $form.find('[name=tour_date]').inputmask('unmaskedvalue');
             if (tour_date) {
@@ -95,14 +110,13 @@ import css from 'bundle-text:./styles.less';
             var req_data = {
                 "AgencyLocalName":      adata.Lname2,
                 "AgencyEmail":          adata.Email1,
-                "AgencyPhone":          Object.values((({Phone1,Phone2,Phone3}) => ({Phone1,Phone2,Phone3}))(adata)).join(','),
+                "AgencyPhone":          Object.values((({Phone1,Phone2,Phone3}) => ({Phone1,Phone2,Phone3}))(adata)).filter(p=>!!p).join(','),
                 "AgencyAddress":        adata.Address,
                 "AgencyEEId":           adata.Id,
                 "FullName":             $form.find('[name=fio]').val(),
                 "CityDeparture":        $form.find('[name=depart_from]').val(),
                 "Country":              $form.find('[name=destination_country]').val(),
                 "HotelName":            $form.find('[name=hotel]').val(),
-                "DesiredDepartureDate": tour_date,
                 "NumberOfNights":       $form.find('[name=tour_nights]').val(),
                 "CountPeoples":         $form.find('[name=pax]').val(),
                 "Comment":              $form.find('[name=comments]').val(),
@@ -110,35 +124,39 @@ import css from 'bundle-text:./styles.less';
                 "Email":                $form.find('[name=email]').val(),
                 "Phone":                $form.find('[name=phone]').inputmask('unmaskedvalue')
             };
+            if (tour_date) {
+                req_data.DesiredDepartureDate = tour_date;
+            }
             console.log("req_data: %o", req_data);
-            (async function () {
-                try {
-                    var res = await fetch('http://apishar.coral.school:7001/CoralCustomersInfo/Api/SaveInfoForOffice', {
-                        method:  'POST',
-                        headers: {
-                            'Accept':       'application/json',
-                            'Content-Type': 'application/json; charset=utf-8'
-                        },
-                        body:    JSON.stringify(req_data)
-                    });
-                    console.log('OK');
-                    console.log(res)
-                } catch (ex) {
-                    console.warn('FAIL');
-                    console.warn(ex);
-                }
-            })();
-            // $.ajax('http://apishar.coral.school:7001/CoralCustomersInfo/Api/SaveInfoForOffice', {
-            //     type: 'POST',
-            //     contentType: 'application/json; charset=utf-8',
-            //     data:        JSON.stringify(req_data)
-            // }).done(function () {
-            //     console.log('OK');
-            //     console.log(arguments)
-            // }).fail(function () {
-            //     console.warn('FAIL');
-            //     console.warn(arguments)
-            // });
+            var $SaveInfoForOffice = $.ajax('//apishar.coral.school/CoralCustomersInfo/Api/SaveInfoForOffice', {
+                method: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data:        JSON.stringify(req_data)
+            });
+            var accept_req_data = {
+                FName:       $form.find('[name=fio]').val(),
+                PhoneNumber: $form.find('[name=phone]').inputmask('unmaskedvalue'),
+                Email:       $form.find('[name=email]').val(),
+                IPLocation:  '',
+                FUrl:        "https://www.coral.ru/",
+                ProjectId:   13,
+                DocumentId:  42,
+                Confirm:     true,
+                FormPage:   "https://www.coral.ru/where-to-buy/"
+            };
+            var $consentAccept = $.ajax('https://apishar.coral.school/consents/api/accept', {
+                method: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data:        JSON.stringify(accept_req_data)
+            });
+            $.when($SaveInfoForOffice, $consentAccept).done(function () {
+                $form.slideUp();
+                $form.siblings('.thanks').slideDown();
+            }).fail(function () {
+                console.log(arguments);
+                alert("Что-то пошло не так ;(\nПожалуста, попробуйте позже...");
+                location.hash = '#_';
+            });
         } else {
             $form.find('.invalid input').eq(0).focus();
         }
