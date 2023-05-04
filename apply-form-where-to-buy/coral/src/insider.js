@@ -177,4 +177,15 @@ import css from 'bundle-text:./styles.less';
     });
     mo.observe($card_body.get(0), { childList: true, subtree: true });
 
+    // Handling "Extended search... button"
+    $(document).on('click', 'button.btnFindAgency', async function () {
+        var searchCityID = $(this).closest('.colscontainer').find('select.slctCity').val();
+        agencies = await agenciesData(searchCityID);
+        setTimeout(async function () {
+            var cardbody = await cardBody();
+            patchCard(cardbody);
+            mo.observe(cardbody, { childList: true, subtree: true });
+        }, 100);
+    });
+
 })();
