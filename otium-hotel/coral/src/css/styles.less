@@ -1,0 +1,67 @@
+@coral-main-yellow: #F0AB00;
+@coral-main-yellow-accent: #E27300;
+@coral-main-blue: #0093D0;
+@coral-main-blue-accent: #0067B5;
+@coral-ramp-bg: linear-gradient(45.62deg, #FB7099 0%, #F0AB13 100%);
+@coral-hero-title: #033870;
+@coral-common-black: #000000;
+@coral-common-white: #FFFFFF;
+@coral-grey: #777777;
+@coral-grey-accent: #777777;
+@coral-page-bg: #EAF3FB;
+@coral-href: #1EBDFF;
+@coral-green-accent: #8ACB00;
+@coral-green-lite: #D0EA99;
+@coral-yellow-lite: #EFD48F;
+@coral-red-error: #FF3333;
+@coral-red-warn: #FFDCDC;
+
+.abs100x100() {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.proportional(@width2height-ratio) {
+	position: relative;
+	&:before {
+		content: '';
+		display: block;
+		padding-top: (1/@width2height-ratio) * 100%;
+	}
+	& > * {
+		.abs100x100;
+	}
+}
+
+section.otium-hotel {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: 2fr 1fr;
+	max-width: 1370px;
+	margin: auto;
+	.hotel-name-location {
+		.hoteltitle {
+			flex-direction: column-reverse!important;
+			flex-wrap: nowrap!important;
+			align-items: flex-start;
+			.stars {
+				color: @coral-main-yellow;
+			}
+		}
+	}
+	[data-module='hotelgallery'] {
+		.proportional(16/9);
+		.hotelgallery-wrap {
+			.gallery-layout {
+				border-radius: 20px;
+			}
+			.thumbs {
+				border-radius: 0 0 20px 20px;
+			}
+		}
+	}
+
+}
