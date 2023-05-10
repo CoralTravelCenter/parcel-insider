@@ -16,8 +16,10 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@parcel/optimizer-data-url": "^2.8.2",
         "@parcel/transformer-inline-string": "^2.8.2",
         "@parcel/transformer-less": "^2.8.2",
+        "@parcel/transformer-yaml": "^2.8.2",
         "mustache": "^4.2.0",
         "parcel": "^2.8.2"
     }
