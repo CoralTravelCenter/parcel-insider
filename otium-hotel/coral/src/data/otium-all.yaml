@@ -48,6 +48,13 @@ hotels:
         forceRating:
             source: tophotels.ru
             value:  4.67
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: \#63A650
+            - label: Семейный отдых
+              fore: black
+              back: white
         usps:
             -   label:  Стандарт CGH
                 iconID: CGH
@@ -91,6 +98,13 @@ hotels:
     -   name:   OTIUM FAMILY LYKIA BOTANIKA BEACH
         id:     17813
         logoID: otium_family
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: \#63A650
+            - label: Спокойный отдых
+              fore: black
+              back: white
         usps:
             -   label:  Стандарт CGH
                 iconID: CGH
@@ -133,6 +147,13 @@ hotels:
     -   name:   OTIUM PARK AQUA AYAZ BEACH
         id:     25495
         logoID: otium_park
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: \#63A650
+            - label: Активный отдых
+              fore: black
+              back: white
         usps:
             -   label:  Стандарт CGH
                 iconID: CGH
@@ -175,6 +196,13 @@ hotels:
     -   name:   OTIUM SENSES VERY CHIC HOTEL
         id:     34184
         logoID: otium_senses
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: \#63A650
+            - label: Молодежный отдых
+              fore: black
+              back: white
         usps:
             -   label:  Стандарт CGH
                 iconID: CGH
@@ -219,6 +247,13 @@ hotels:
         forceRating:
             source: tophotels.ru
             value:  4.3
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: \#63A650
+            - label: Спокойный отдых
+              fore: black
+              back: white
         usps:
             -   label:  Стандарт CGH
                 iconID: CGH
