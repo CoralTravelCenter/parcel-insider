@@ -230,6 +230,9 @@ body .hotellist .item {
 			position: absolute;
 			width: 100%;
 			z-index: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
 			background: white;
 			border-radius: 0 0 var(--rounding) var(--rounding);
 			margin-top: calc(var(--rounding) * -1);
@@ -242,38 +245,97 @@ body .hotellist .item {
 			.transit(padding-bottom, .25s);
 			.transit(max-height, .25s);
 			.transit(opacity, .25s);
+			.transit(background);
+			&:fullscreen {
+				background: @pricing-bg;
+				.switch-bodies {
+					.gallery-slider {
+						position: relative;
+						width: 90vw;
+						max-width: 800px;
+						margin: auto;
+						>.flickity-viewport {
+							overflow: visible;
+							margin: 0;
+						}
+						.gallery-slide {
+							.proportional(800/600);
+							width: 100%;
+							border: 0;
+							border-radius: 1.5em;
+							opacity: 0;
+							transform: scale(.5);
+							box-shadow: none;
+							.transit(opacity, .2s);
+							.transit(transform, .2s);
+							.transit(box-shadow, .2s);
+							&.is-selected {
+								opacity: 1;
+								transform: none;
+								box-shadow: 0 4px 32px fade(black, 75%);
+							}
+						}
+						.flickity-page-dots {
+							display: none;
+						}
+						.flickity-prev-next-button {
+							border: 1px solid red;
+							position: absolute;
+							top: 0;
+							width: 4em;
+							height: 100%;
+							&.previous {
+								right: 100%;
+							}
+							&.next {
+								left: 100%;
+							}
+							svg {
+								fill: white;
+							}
+						}
+					}
+				}
+			}
 			ul.switch-ctl {
 				position: relative;
 				list-style: none;
-				display: inline-flex;
+				display: flex;
 				background: @coral-page-bg;
 				border-radius: 100px;
 				padding: 3px;
+
 				&[data-selected-idx='0'] {
-					>li:nth-child(1) {
+					> li:nth-child(1) {
 						pointer-events: none;
 						color: black;
 					}
-					>li.marker {
+
+					> li.marker {
 						transform: translateX(0);
 					}
+
 					& + .switch-bodies > *:nth-child(1) {
 						display: block;
 					}
 				}
+
 				&[data-selected-idx='1'] {
-					>li:nth-child(2) {
+					> li:nth-child(2) {
 						pointer-events: none;
 						color: black;
 					}
-					>li.marker {
+
+					> li.marker {
 						transform: translateX(100%);
 					}
+
 					& + .switch-bodies > *:nth-child(2) {
 						display: block;
 					}
 				}
-				>li {
+
+				> li {
 					.interactive();
 					position: relative;
 					z-index: 1;
@@ -287,6 +349,7 @@ body .hotellist .item {
 					height: 40px;
 					padding: 0 1em;
 					cursor: pointer;
+
 					&.marker {
 						pointer-events: none;
 						position: absolute;
@@ -300,21 +363,84 @@ body .hotellist .item {
 					}
 				}
 			}
+
 			.switch-bodies {
+				width: 100%;
+				margin: auto;
 				> * {
 					display: none;
 				}
+
 				.gallery-slider {
 					outline: none;
 					width: 100%;
-					>.flickity-viewport {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: center;
+					align-items: center;
+
+					> .flickity-viewport {
+						order: 1;
 						overflow: hidden;
+						width: 100%;
+						margin-bottom: 1em;
 					}
+
+					> .flickity-page-dots {
+						order: 3;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						list-style: none;
+						margin: 0 1em;
+						padding: 0;
+
+						> .dot {
+							width: 1em;
+							height: 1em;
+							border-radius: 50%;
+							background: #d9d9d9;
+							margin: 0 .25em;
+							cursor: pointer;
+							.transit(background);
+
+							&.is-selected {
+								pointer-events: none;
+								background: #666;
+							}
+						}
+					}
+
+					> .flickity-prev-next-button {
+						border: 0;
+						width: 1.5em;
+						height: 1.5em;
+						margin: 0;
+						padding: 0;
+						background: none;
+						cursor: pointer;
+						outline: none;
+						.transit(opacity);
+
+						&[disabled] {
+							opacity: 0;
+						}
+
+						&.previous {
+							order: 2;
+						}
+
+						&.next {
+							order: 4;
+						}
+					}
+
 					.gallery-slide {
 						.proportional(1/1);
 						width: (100%/5);
 						background: center / cover no-repeat;
 						border: .5em solid white;
+						cursor: pointer;
 					}
 				}
 			}

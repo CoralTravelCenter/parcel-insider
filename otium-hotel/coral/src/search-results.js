@@ -56,8 +56,8 @@ function setupHotelItem_GalleryAndMap($hotel_item) {
                 cellSelector:    '.gallery-slide',
                 groupCells:      true,
                 contain:         true,
-                prevNextButtons: false,
-                pageDots:        false
+                prevNextButtons: true,
+                pageDots:        true
             }).on('select.flickity', function (e, idx) {
                 $($(this).data('flickity').selectedElements).each((idx, el) => {
                     const $el = $(el);
@@ -66,6 +66,12 @@ function setupHotelItem_GalleryAndMap($hotel_item) {
                         $el.css('backgroundImage', lazy_url).removeAttr('data-bg-url');
                     }
                 });
+            }).on('staticClick.flickity', function (e, p, el, idx) {
+                $(this).closest('.extended-view').get(0).requestFullscreen().then(() => {
+
+                });
+            }).on('scroll.flickity', function (e, progress) {
+
             }).on('wheel', _.debounce(function (e) {
                 e.stopPropagation();
                 console.log(e);
