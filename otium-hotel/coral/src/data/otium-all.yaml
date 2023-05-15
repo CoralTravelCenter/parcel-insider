@@ -45,13 +45,16 @@ hotels:
     -   name:   OTIUM FAMILY STONE PALACE
         id:     25065
         logoID: otium_family
+        visual:
+            desktop: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-desktop.jpg"
+            mobile: "https://placehold.co/720x405"
         forceRating:
             source: tophotels.ru
             value:  4.67
         badges:
             - label: Обратите внимание
               fore: white
-              back: \#63A650
+              back: "#63A650"
             - label: Семейный отдых
               fore: black
               back: white
@@ -101,7 +104,7 @@ hotels:
         badges:
             - label: Обратите внимание
               fore: white
-              back: \#63A650
+              back: "#63A650"
             - label: Спокойный отдых
               fore: black
               back: white
@@ -150,7 +153,7 @@ hotels:
         badges:
             - label: Обратите внимание
               fore: white
-              back: \#63A650
+              back: "#63A650"
             - label: Активный отдых
               fore: black
               back: white
@@ -199,7 +202,7 @@ hotels:
         badges:
             - label: Обратите внимание
               fore: white
-              back: \#63A650
+              back: "#63A650"
             - label: Молодежный отдых
               fore: black
               back: white
@@ -241,55 +244,55 @@ hotels:
                     list:
                         - Вечеринки известных диджеев
                         - Живая музыка и шоу
-    -   name:   OTIUM SENSES X LIFE HOTELS
-        id:     35631
-        logoID: otium_senses
-        forceRating:
-            source: tophotels.ru
-            value:  4.3
-        badges:
-            - label: Обратите внимание
-              fore: white
-              back: \#63A650
-            - label: Спокойный отдых
-              fore: black
-              back: white
-        usps:
-            -   label:  Стандарт CGH
-                iconID: CGH
-                details:
-                    heading: Coral Group Hotels & Resorts
-                    list:
-                        - Международный уровень сервиса
-                        - Надежные стандарты гостеприимства
-                        - Опытный персонал
-            -   label:  Живописная территория
-                iconID: nature
-                details:
-                    heading: Красивая природа
-                    list:
-                        - Зеленая территория 30&nbsp;000&nbsp;м²
-                        - Сосны, пальмы и&nbsp;цветы
-                        - Живописные горы
-            -   label:  Свежий ремонт
-                iconID: rehab
-                details:
-                    heading: Реновация 2023
-                    list:
-                        - Обновленный ресторан и&nbsp;пляжный бар
-                        - Частично обновленные номера
-            -   label:  Бесплатный Wi-Fi
-                iconID: free_wifi
-                details:
-                    heading: Wi-Fi Free
-                    list:
-                        - Бесплатный стабильный Wi-Fi
-                        - На всей территории отеля
-            -   label:  Трансфер до&nbsp;моря
-                iconID: sea_transfer
-                details:
-                    heading: Шаттл-сервис (до пляжа 2&nbsp;км)
-                    list:
-                        - 3 минуты в пути
-                        - Четкое расписание
-                        - Частое отправление
+#    -   name:   OTIUM SENSES X LIFE HOTELS
+#        id:     35631
+#        logoID: otium_senses
+#        forceRating:
+#            source: tophotels.ru
+#            value:  4.3
+#        badges:
+#            - label: Обратите внимание
+#              fore: white
+#              back: "#63A650"
+#            - label: Спокойный отдых
+#              fore: black
+#              back: white
+#        usps:
+#            -   label:  Стандарт CGH
+#                iconID: CGH
+#                details:
+#                    heading: Coral Group Hotels & Resorts
+#                    list:
+#                        - Международный уровень сервиса
+#                        - Надежные стандарты гостеприимства
+#                        - Опытный персонал
+#            -   label:  Живописная территория
+#                iconID: nature
+#                details:
+#                    heading: Красивая природа
+#                    list:
+#                        - Зеленая территория 30&nbsp;000&nbsp;м²
+#                        - Сосны, пальмы и&nbsp;цветы
+#                        - Живописные горы
+#            -   label:  Свежий ремонт
+#                iconID: rehab
+#                details:
+#                    heading: Реновация 2023
+#                    list:
+#                        - Обновленный ресторан и&nbsp;пляжный бар
+#                        - Частично обновленные номера
+#            -   label:  Бесплатный Wi-Fi
+#                iconID: free_wifi
+#                details:
+#                    heading: Wi-Fi Free
+#                    list:
+#                        - Бесплатный стабильный Wi-Fi
+#                        - На всей территории отеля
+#            -   label:  Трансфер до&nbsp;моря
+#                iconID: sea_transfer
+#                details:
+#                    heading: Шаттл-сервис (до пляжа 2&nbsp;км)
+#                    list:
+#                        - 3 минуты в пути
+#                        - Четкое расписание
+#                        - Частое отправление

@@ -1,0 +1,32 @@
+<div class="otium-hotel-card">
+    <div class="main-view">
+        <div class="visual">
+            <ul class="badges">
+                {{ #badges }}
+                <li style="color: {{ fore }}; background-color: {{ back }};">{{ label }}</li>
+                {{ /badges }}
+            </ul>
+        </div>
+        <div class="info">
+            {{name}}
+        </div>
+        <div class="pricing">
+            pricing
+        </div>
+    </div>
+    <div class="extended-view">
+        <ul class="switch-ctl" data-selected-idx="0">
+            <li>Фотогалерея</li>
+            <li>Отель на карте</li>
+            <li class="marker"></li>
+        </ul>
+        <div class="switch-bodies">
+            <div class="gallery-body">
+                <div class="gallery-slider"></div>
+            </div>
+            <div class="map-body">
+                map
+            </div>
+        </div>
+    </div>
+</div>
