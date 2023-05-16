@@ -248,6 +248,10 @@ body .hotellist .item {
 			.transit(background);
 			&:fullscreen {
 				background: @pricing-bg;
+				button.dismiss {
+					background: @coral-page-bg;
+					border-radius: 50%;
+				}
 				.switch-bodies {
 					.gallery-slider {
 						position: relative;
@@ -279,10 +283,9 @@ body .hotellist .item {
 							display: none;
 						}
 						.flickity-prev-next-button {
-							border: 1px solid red;
 							position: absolute;
 							top: 0;
-							width: 4em;
+							width: calc(~"(100vw - 100%) / 2");
 							height: 100%;
 							&.previous {
 								right: 100%;
@@ -292,10 +295,30 @@ body .hotellist .item {
 							}
 							svg {
 								fill: white;
+								width: 2em;
 							}
 						}
 					}
 				}
+			}
+			button.dismiss {
+				.interactive();
+				outline: none;
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				top: 1em;
+				right: 0.5em;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: none;
+				font-size: 3em;
+				line-height: 1;
+				font-weight: normal;
+				border: 0;
+				padding: 0 0 .05em 0;
+				cursor: pointer;
 			}
 			ul.switch-ctl {
 				position: relative;

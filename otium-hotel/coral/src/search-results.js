@@ -96,6 +96,17 @@ function setupHotelItem($hotel_item) {
         const $this = $(this);
         $this.parent().attr('data-selected-idx', $this.index());
     });
+    $hotel_item.find('button.dismiss').on('click', function () {
+        const $this = $(this);
+        const $extended_view = $this.closest('.extended-view');
+        debugger;
+        if ($extended_view.is(':fullscreen')) {
+            document.exitFullscreen();
+        } else {
+            $this.closest('.otium-hotel-card').removeClass('expanded');
+            $this.closest('.item').removeClass('focused');
+        }
+    });
     setupHotelItem_Visual($hotel_item);
     setupHotelItem_GalleryAndMap($hotel_item);
 }
