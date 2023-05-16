@@ -11,6 +11,14 @@ async function flickityReady() {
     });
     return flickityPromose;
 }
+let gmapsPromose;
+async function gmapsReady() {
+    gmapsPromose ||= new Promise(resolve => {
+        preload('https://maps.googleapis.com/maps/api/js?key=AIzaSyBnhDu-BFnKo1i6iHDLoHix0vfpwm1nnrM', () => resolve());
+    });
+    return gmapsPromose;
+}
+
 function setupHotelItem_Visual($hotel_item) {
     $hotel_item = $($hotel_item);
     const hotel_data = $hotel_item.get(0).hotel_data;
@@ -39,7 +47,6 @@ function setupHotelItem_GalleryAndMap($hotel_item) {
     $hotel_item = $($hotel_item);
     let api_panel_response;
     watchIntersection($('.gallery-body, .map-body', $hotel_item), { threshold: .01 }, async function (observer) {
-        console.log('+++ visible: %o', this);
         if (!api_panel_response) {
             api_panel_response = await fetch('https://www.coral.ru/v1/hotellist/getpanel?' + new URLSearchParams({
                 id:         $hotel_item.attr('data-hotelid'),
@@ -47,10 +54,11 @@ function setupHotelItem_GalleryAndMap($hotel_item) {
             }));
             const dp = new DOMParser();
             const doc = dp.parseFromString(await api_panel_response.text(), 'text/html');
+            // Setup Gallery
             const gallery_sources = Array.from(doc.querySelectorAll('.galleryItem img[src]')).map(img => img.getAttribute('src'));
             await flickityReady();
-            console.log('...constructing gallery');
-            $('.gallery-slider', $hotel_item).append(gallery_sources.map(src => {
+            $('.gallery-fullscreen-progress .total-count', $hotel_item).text(gallery_sources.length);
+            const $gallery_slider = $('.gallery-slider', $hotel_item).append(gallery_sources.map(src => {
                 return $('<div class="gallery-slide"></div>').attr({ 'data-bg-url': `url(${ src })` }).get(0)
             })).flickity({
                 cellSelector:    '.gallery-slide',
@@ -68,17 +76,29 @@ function setupHotelItem_GalleryAndMap($hotel_item) {
                 });
             }).on('staticClick.flickity', function (e, p, el, idx) {
                 $(this).closest('.extended-view').get(0).requestFullscreen().then(() => {
-
+                    setTimeout(() => {
+                        console.log("*** idx: %o", idx);
+                        $(this).flickity('select', idx);
+                    }, 510);
                 });
             }).on('scroll.flickity', function (e, progress) {
-
+                const current_slide = Math.round((gallery_sources.length - 1) * progress);
+                $(this).find('.gallery-fullscreen-progress')
+                    .attr('data-current-slide', current_slide + 1)
+                    .get(0).style.setProperty('--indicator-width', `calc(${ progress * 100 }% - 2px)`);
             }).on('wheel', _.debounce(function (e) {
                 e.stopPropagation();
-                console.log(e);
                 if (e.originalEvent.deltaX > 0) $(this).flickity('next')
                 else if (e.originalEvent.deltaX < 0) $(this).flickity('previous')
             }, 40, { leading: true, trailing: false }));
+            $('.gallery-fullscreen-progress', $hotel_item).on('click', function (e) {
+                const set_progress_ratio = e.offsetX / $(this).width();
+                const set_slide_idx = Math.round(set_progress_ratio * gallery_sources.length);
+                $gallery_slider.flickity('select', set_slide_idx);
+            });
             setTimeout(() => $('.flickity-enabled').flickity('resize'), 10);
+            // Setup Google Maps
+
         }
     });
 }
@@ -95,6 +115,7 @@ function setupHotelItem($hotel_item) {
     $hotel_item.find('.switch-ctl li:not(.marker)').on('click', function () {
         const $this = $(this);
         $this.parent().attr('data-selected-idx', $this.index());
+        setTimeout(() => $('.flickity-enabled').flickity('resize'), 0);
     });
     $hotel_item.find('button.dismiss').on('click', function () {
         const $this = $(this);
@@ -130,3 +151,28 @@ $(document).on('click', function (e) {
         $('.item.otium.focused').removeClass('focused').find('.expanded').removeClass('expanded');
     }
 });
+
+// just ex... should remove.......
+const zzz = {
+    initMap: function () {
+        var t = $("#map-container").data()
+            , i = new google.maps.LatLng(t.lat, t.lng)
+            , r = {
+            zoom:      11,
+            center:    i,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+            , n = new google.maps.Map(document.getElementById("map-container"), r)
+            , u = new google.maps.Marker({
+            position: i,
+            map:      n,
+            icon:     "/dist/img/pin.png",
+            title:    "image title"
+        });
+        google.maps.event.addDomListener(window, "resize", function () {
+            var t = n.getCenter();
+            google.maps.event.trigger(n, "resize");
+            n.setCenter(t)
+        })
+    }
+};
