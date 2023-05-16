@@ -98,7 +98,21 @@ function setupHotelItem_GalleryAndMap($hotel_item) {
             });
             setTimeout(() => $('.flickity-enabled').flickity('resize'), 10);
             // Setup Google Maps
-
+            await gmapsReady();
+            const org_map_container = doc.querySelector('[data-lat][data-lng]');
+            const gmap_el = $('.gmap', $hotel_item).get(0);
+            const hotel_latlng = new google.maps.LatLng(org_map_container.dataset.lat, org_map_container.dataset.lng);
+            const gmap = new google.maps.Map(gmap_el, {
+                zoom:      11,
+                center:    hotel_latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            new google.maps.Marker({
+                position: hotel_latlng,
+                map:      gmap,
+                icon:     "/dist/img/pin.png",
+                title:    "image title"
+            });
         }
     });
 }
