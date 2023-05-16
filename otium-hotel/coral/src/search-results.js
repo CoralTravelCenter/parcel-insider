@@ -166,27 +166,3 @@ $(document).on('click', function (e) {
     }
 });
 
-// just ex... should remove.......
-const zzz = {
-    initMap: function () {
-        var t = $("#map-container").data()
-            , i = new google.maps.LatLng(t.lat, t.lng)
-            , r = {
-            zoom:      11,
-            center:    i,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-            , n = new google.maps.Map(document.getElementById("map-container"), r)
-            , u = new google.maps.Marker({
-            position: i,
-            map:      n,
-            icon:     "/dist/img/pin.png",
-            title:    "image title"
-        });
-        google.maps.event.addDomListener(window, "resize", function () {
-            var t = n.getCenter();
-            google.maps.event.trigger(n, "resize");
-            n.setCenter(t)
-        })
-    }
-};
