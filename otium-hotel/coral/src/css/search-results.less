@@ -1,3 +1,5 @@
+@wide-breakpoint: 1339px;
+@mid-breakpoint: 1199px;
 @mobile-breakpoint: 1006px;
 @narrow-breakpoint: 575px;
 
@@ -150,6 +152,9 @@ body .hotellist .item {
 				border-radius: var(--rounding);
 				cursor: pointer;
 				.transit(box-shadow);
+				@media screen and (max-width: @wide-breakpoint) {
+					width: 18em;
+				}
 				@media screen and (max-width: @mobile-breakpoint) {
 					.proportional(16/9);
 					width: 100%;
@@ -214,7 +219,7 @@ body .hotellist .item {
 				}
 				display: grid;
 				grid-template-columns: repeat(4, 1fr);
-				grid-template-rows: repeat(6, 1fr);
+				grid-template-rows: repeat(6,minmax(1em, auto));
 				gap: 1em 1em;
 				grid-template-areas:
 					"stars . . reviews"

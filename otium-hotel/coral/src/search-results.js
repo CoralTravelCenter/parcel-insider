@@ -77,10 +77,7 @@ function setupHotelItem_GalleryAndMap($hotel_item) {
             }).on('staticClick.flickity', function (e, p, el, idx) {
                 $(this).closest('.extended-view').get(0).requestFullscreen().then(() => {
                     $(this).flickity('resize');
-                    setTimeout(() => {
-                        console.log("*** idx: %o", idx);
-                        $(this).flickity('select', idx);
-                    }, 510);
+                    setTimeout(() => $(this).flickity('select', idx), 510);
                 });
             }).on('scroll.flickity', function (e, progress) {
                 const current_slide = Math.round((gallery_sources.length - 1) * progress);
@@ -112,15 +109,23 @@ function setupHotelItem_GalleryAndMap($hotel_item) {
                 position: hotel_latlng,
                 map:      gmap,
                 icon:     "/dist/img/pin.png",
-                title:    "image title"
+                title:    $hotel_item.get(0).hotel_data.name
             });
         }
     });
 }
 
+function parseOriginalCard($hotel_item) {
+    $hotel_item = $($hotel_item);
+    const $original_contents = $hotel_item.get(0).$original_contents;
+    const hotel_data = $hotel_item.get(0).hotel_data;
+    hotel_data.name = $original_contents.find('h2').text()
+}
+
 function setupHotelItem($hotel_item) {
     $hotel_item = $($hotel_item);
     $hotel_item.get(0).$original_contents = $hotel_item.children().remove();
+    parseOriginalCard($hotel_item);
     $hotel_item.addClass('otium').append(Mustache.render(hotel_card_template, $hotel_item.get(0).hotel_data));
     $hotel_item.find('.visual').on('click', async function () {
         const $this = $(this);
