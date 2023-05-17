@@ -120,6 +120,7 @@ function parseOriginalCard($hotel_item) {
     const $original_contents = $hotel_item.get(0).$original_contents;
     const hotel_data = $hotel_item.get(0).hotel_data;
     hotel_data.name = $original_contents.find('h2').text()
+    hotel_data.stars = new Array($original_contents.find('.rating').children().length);
 }
 
 function setupHotelItem($hotel_item) {

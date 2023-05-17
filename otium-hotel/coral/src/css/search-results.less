@@ -231,7 +231,15 @@ body .hotellist .item {
 				>* {
 					background: #fed;
 				}
-				>.stars { grid-area: stars; }
+				> .stars {
+					grid-area: stars;
+					font-family: 'Material Icons';
+					font-size: (20/12em);
+					color: @coral-main-yellow;
+					align-self: center;
+					>* {
+					}
+				}
 				>.reviews { grid-area: reviews; }
 				> .name {
 					grid-area: name;
