@@ -76,6 +76,7 @@ function setupHotelItem_GalleryAndMap($hotel_item) {
                 });
             }).on('staticClick.flickity', function (e, p, el, idx) {
                 $(this).closest('.extended-view').get(0).requestFullscreen().then(() => {
+                    $(this).flickity('resize');
                     setTimeout(() => {
                         console.log("*** idx: %o", idx);
                         $(this).flickity('select', idx);
@@ -136,7 +137,9 @@ function setupHotelItem($hotel_item) {
         const $extended_view = $this.closest('.extended-view');
         debugger;
         if ($extended_view.is(':fullscreen')) {
-            document.exitFullscreen();
+            document.exitFullscreen().then(() => {
+                $extended_view.find('.flickity-enabled').flickity('resize');
+            });
         } else {
             $this.closest('.otium-hotel-card').removeClass('expanded');
             $this.closest('.item').removeClass('focused');
