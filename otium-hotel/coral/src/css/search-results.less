@@ -114,6 +114,7 @@ body .hotellist .item {
 		--rounding: 20px;
 		--fz: 12px;
 		font-size: var(--fz);
+		color: black;
 		width: 100%;
 		padding: 0;
 		&.expanded {
@@ -229,7 +230,7 @@ body .hotellist .item {
 					"accommodation accommodation accommodation accommodation"
 					"usps usps usps logo";
 				>* {
-					background: #fed;
+					//background: #fed;
 				}
 				> .stars {
 					grid-area: stars;
@@ -240,18 +241,96 @@ body .hotellist .item {
 					>* {
 					}
 				}
-				>.reviews { grid-area: reviews; }
+				> .reviews {
+					grid-area: reviews;
+					align-self: center;
+					[data-provider='tripadvisor'] {
+						display: flex;
+						justify-content: flex-end;
+						align-items: center;
+						line-height: 1;
+						font-size: (16/12em);
+						.value {
+							color: #009e63;
+							margin-right: .5em;
+						}
+					}
+					[data-provider='tophotels.ru'] {
+						display: flex;
+						justify-content: flex-end;
+						align-items: center;
+						font-size: (16/12em);
+						line-height: 1.1;
+						>*:nth-child(n+2) {
+							margin-left: .4em;
+						}
+						.value {
+							color: #01A451;
+						}
+						.logo {
+							width: 1.62em;
+							height: (18/24) * 1.62em;
+							background: url("data-url:/otium-hotel/coral/src/inline-assets/logo-tophotels.svg") center / cover no-repeat;
+						}
+					}
+				}
 				> .name {
 					grid-area: name;
 					font-size: (18/12em);
 					line-height: (24/18);
 				}
 				>.elite { grid-area: elite; }
-				>.hotel-location { grid-area: hotel-location; }
-				>.tour-details { grid-area: tour-details; }
+				> .hotel-location {
+					grid-area: hotel-location;
+					display: flex;
+					align-items: center;
+					font-size: (14/12em);
+					cursor: pointer;
+					&:before {
+						content: '';
+						font-family: 'Material Icons';
+						font-size: 1.5em;
+						margin-right: .1em;
+					}
+					>span {
+						text-decoration: underline;
+					}
+				}
+				> .tour-details {
+					grid-area: tour-details;
+					font-size: (14/12em);
+					line-height: 1.2;
+				}
 				>.accommodation { grid-area: accommodation; }
-				>.usps { grid-area: usps; }
-				>.logo { grid-area: logo; }
+				> .usps {
+					grid-area: usps;
+					display: flex;
+					justify-content: space-between;
+					>*{
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						text-align: center;
+						cursor: pointer;
+						.icon {
+							width: (32/12em);
+							height: (32/12em);
+							background-position: center;
+							background-size: contain;
+							background-repeat: no-repeat;
+							margin-bottom: .5em;
+						}
+						.label {
+							font-weight: normal;
+							line-height: 1.1;
+							padding: 0 .2em;
+						}
+					}
+				}
+				> .logo {
+					grid-area: logo;
+					background: bottom right / contain no-repeat;
+				}
 			}
 
 			.pricing {

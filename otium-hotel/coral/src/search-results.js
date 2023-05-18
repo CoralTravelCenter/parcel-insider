@@ -1,6 +1,8 @@
 import css from 'bundle-text:./css/search-results.less'
 import hotels_data from './data/otium-all.yaml'
 import hotel_card_template from 'bundle-text:./markup/otium-hotel-card.html'
+import partial_tripadvisor from 'bundle-text:./markup/partial-search-tripadvisor.html'
+import partial_tophotels from 'bundle-text:./markup/partial-search-tophotelsru.html'
 import * as Mustache from "mustache";
 import { preload, responsiveHandler, watchIntersection } from "../../../common/useful.js";
 
@@ -119,24 +121,54 @@ function parseOriginalCard($hotel_item) {
     $hotel_item = $($hotel_item);
     const $original_contents = $hotel_item.get(0).$original_contents;
     const hotel_data = $hotel_item.get(0).hotel_data;
+    hotel_data.partials = {};
+    // name
     hotel_data.name = $original_contents.find('h2').text()
+    // stars
     hotel_data.stars = new Array($original_contents.find('.rating').children().length);
+    // reviews
+    if (hotel_data.forceRating) {
+        switch (hotel_data.forceRating.source) {
+            case 'tophotels.ru':
+                hotel_data.partials.reviewsMarkup = partial_tophotels;
+                hotel_data.reviews = { value: hotel_data.forceRating.value };
+        }
+    } else {
+        var $tripadvisor_el = $original_contents.find('.tripadvisor');
+        const reviews_value = $tripadvisor_el.text();
+        if (reviews_value) {
+            hotel_data.reviews = { value: reviews_value, logoSrc: $tripadvisor_el.find('img').attr('src') };
+            hotel_data.partials.reviewsMarkup = partial_tripadvisor;
+        }
+    }
+    // location
+    hotel_data.location = $original_contents.find('.location abbr').text();
+    // tour details (infoblock)
+    hotel_data.tour_details_html = $original_contents.find('.infoblock').html();
 }
 
 function setupHotelItem($hotel_item) {
     $hotel_item = $($hotel_item);
     $hotel_item.get(0).$original_contents = $hotel_item.children().remove();
     parseOriginalCard($hotel_item);
-    $hotel_item.addClass('otium').append(Mustache.render(hotel_card_template, $hotel_item.get(0).hotel_data));
-    $hotel_item.find('.visual').on('click', async function () {
+    const hotel_data = $hotel_item.get(0).hotel_data;
+    $hotel_item.addClass('otium').append(Mustache.render(hotel_card_template, hotel_data, hotel_data.partials || {}));
+    $hotel_item.find('.visual').on('click', function () {
         const $this = $(this);
-        $this.closest('.otium-hotel-card').toggleClass('expanded');
-        $this.closest('.item').toggleClass('focused');
+        $this.closest('.otium-hotel-card').addClass('expanded');
+        $this.closest('.item').addClass('focused').find('.switch-ctl').attr('data-selected-idx', 0);
+        setTimeout(() => $.fn.flickity && $('.flickity-enabled', $hotel_item).flickity('resize'), 10);
+    });
+    $hotel_item.find('.hotel-location').on('click', function () {
+        const $this = $(this);
+        $this.closest('.otium-hotel-card').addClass('expanded');
+        $this.closest('.item').addClass('focused').find('.switch-ctl').attr('data-selected-idx', 1);
+        setTimeout(() => $.fn.flickity && $('.flickity-enabled', $hotel_item).flickity('resize'), 10);
     });
     $hotel_item.find('.switch-ctl li:not(.marker)').on('click', function () {
         const $this = $(this);
         $this.parent().attr('data-selected-idx', $this.index());
-        setTimeout(() => $('.flickity-enabled').flickity('resize'), 0);
+        setTimeout(() => $.fn.flickity && $('.flickity-enabled', $hotel_item).flickity('resize'), 10);
     });
     $hotel_item.find('button.dismiss').on('click', function () {
         const $this = $(this);
@@ -159,11 +191,24 @@ function setupHotelItem($hotel_item) {
 
 $('head').append(`<style>${ css }</style>`);
 
+let used_icons_ids = [];
 let $hotel_items = $('.hotellist [data-hotelid]').filter(function (idx, el) {
     let hotel_data = _.find(hotels_data.hotels, { id: Number($(el).attr('data-hotelid')) });
-    if (hotel_data) el.hotel_data = hotel_data;
+    if (hotel_data) {
+        used_icons_ids = used_icons_ids.concat(hotel_data.usps.map(usp => usp.iconID));
+        hotel_data.logo_base64 = _.find(hotels_data.logos, { id: hotel_data.logoID }).base64;
+        el.hotel_data = hotel_data;
+    }
     return !!hotel_data;
 });
+
+used_icons_ids = _.uniq(used_icons_ids);
+
+const icons_css = used_icons_ids.map(iid => {
+    let icon = _.find(hotels_data.icons, { id: iid });
+    return `.iconized.${ icon.id } .icon { background-image: url(data:image/svg+xml;base64,${ icon.normal }) } .iconized.${ icon.id }:hover .icon { background-image: url(data:image/svg+xml;base64,${ icon.hover }) }`;
+}).join("\n");
+$('head').append(`<style>${ icons_css }</style>`);
 
 $hotel_items.each((idx, card) => {
     setupHotelItem(card);
