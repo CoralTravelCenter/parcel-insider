@@ -145,6 +145,9 @@ function parseOriginalCard($hotel_item) {
     hotel_data.location = $original_contents.find('.location abbr').text();
     // tour details (infoblock)
     hotel_data.tour_details_html = $original_contents.find('.infoblock').html();
+    // accommodation (informations)
+    hotel_data.accommodation_html = $original_contents.find('.informations').html();
+
 }
 
 function setupHotelItem($hotel_item) {

@@ -149,6 +149,7 @@ body .hotellist .item {
 				.proportional(1/1);
 				z-index: 3;
 				width: 22em;
+				flex-shrink: 0;
 				background: center / cover no-repeat;
 				border-radius: var(--rounding);
 				cursor: pointer;
@@ -301,7 +302,10 @@ body .hotellist .item {
 					font-size: (14/12em);
 					line-height: 1.2;
 				}
-				>.accommodation { grid-area: accommodation; }
+				> .accommodation {
+					grid-area: accommodation;
+
+				}
 				> .usps {
 					grid-area: usps;
 					display: flex;
@@ -337,6 +341,7 @@ body .hotellist .item {
 				position: relative;
 				z-index: 1;
 				width: 17.5em;
+				flex-shrink: 0;
 				border-radius: 0 var(--rounding) var(--rounding) 0;
 				background: @pricing-bg;
 				color: white;
