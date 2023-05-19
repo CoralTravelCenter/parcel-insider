@@ -1,0 +1,28 @@
+.tooltip.otium {
+	&.show {
+		opacity: 1;
+	}
+	.tooltip-inner {
+		background: white;
+		color: black;
+		padding: 1em 1.5em;
+		border-radius: 1em;
+		font-size: 14px;
+		text-align: left;
+		@media screen and (max-width: @mobile-breakpoint) {
+			font-size: 11px;
+		}
+		.heading {
+			margin-bottom: .5em;
+		}
+		ul {
+			margin: 0;
+			font-weight: normal;
+			padding-left: 1.3em;
+		}
+	}
+	.arrow:before {
+		border-top-color: white;
+	}
+	filter: drop-shadow(0 4px 16px fade(black, 20%));
+}

@@ -13,7 +13,7 @@
                 {{> reviewsMarkup }}
             </div>
             <div class="name">{{ name }}</div>
-            <div class="elite"></div>
+            <div class="elite {{ #elite_service }}elite-service{{ /elite_service }}"></div>
             <div class="hotel-location">
                 <span>{{ location }}</span>
             </div>
@@ -25,13 +25,18 @@
             </div>
             <div class="usps">
                 {{ #usps }}
-                <div class="iconized {{{iconID}}}">
+                <div class="iconized {{{iconID}}}" title="{{ tooltip_markup }}">
                     <div class="icon"></div>
                     <div class="label">{{{ label }}}</div>
                 </div>
                 {{ /usps }}
             </div>
-            <div class="logo" style="background-image: url(data:image/svg+xml;base64,{{{logo_base64}}});"></div>
+            {{ #logo_base64 }}
+            <div class="logo" style="background-image: url(data:image/svg+xml;base64,{{{.}}});"></div>
+            {{ /logo_base64 }}
+            {{ #logo_src }}
+            <div class="logo" style="background-image: url({{{.}}});"></div>
+            {{ /logo_src }}
         </div>
         <div class="pricing">
             pricing

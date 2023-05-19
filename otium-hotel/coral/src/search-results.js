@@ -3,6 +3,8 @@ import hotels_data from './data/otium-all.yaml'
 import hotel_card_template from 'bundle-text:./markup/otium-hotel-card.html'
 import partial_tripadvisor from 'bundle-text:./markup/partial-search-tripadvisor.html'
 import partial_tophotels from 'bundle-text:./markup/partial-search-tophotelsru.html'
+import otium_tooltip_template from 'bundle-text:./markup/usp-tooltip.html'
+import otium_tooltip_body_template from 'bundle-text:./markup/usp-tooltip-body.html'
 import * as Mustache from "mustache";
 import { preload, responsiveHandler, watchIntersection } from "../../../common/useful.js";
 
@@ -19,6 +21,21 @@ async function gmapsReady() {
         preload('https://maps.googleapis.com/maps/api/js?key=AIzaSyBnhDu-BFnKo1i6iHDLoHix0vfpwm1nnrM', () => resolve());
     });
     return gmapsPromose;
+}
+
+function typesListWithSelectorAndContext(selector, $ctx) {
+    return Array.from((function*(list_items) {
+        for (let li of list_items) {
+            if (li.getAttribute('data-toggle') === 'tooltip') {
+                let $li = $(li);
+                for (let v of ($li.attr('title') || $li.attr('data-original-title')).split(/\s*,\s*/)) {
+                    yield v;
+                }
+            } else {
+                yield li.textContent;
+            }
+        }
+    })($(selector, $ctx).toArray()));
 }
 
 function setupHotelItem_Visual($hotel_item) {
@@ -137,17 +154,21 @@ function parseOriginalCard($hotel_item) {
         var $tripadvisor_el = $original_contents.find('.tripadvisor');
         const reviews_value = $tripadvisor_el.text();
         if (reviews_value) {
-            hotel_data.reviews = { value: reviews_value, logoSrc: $tripadvisor_el.find('img').attr('src') };
+            const $img = $tripadvisor_el.find('img');
+            hotel_data.reviews = { value: reviews_value, logoSrc: $img.attr('src') || $img.attr('data-src') };
             hotel_data.partials.reviewsMarkup = partial_tripadvisor;
         }
     }
+    // elite service
+    hotel_data.elite_service = !!$original_contents.find('.elite-service-logo').length;
     // location
     hotel_data.location = $original_contents.find('.location abbr').text();
     // tour details (infoblock)
     hotel_data.tour_details_html = $original_contents.find('.infoblock').html();
     // accommodation (informations)
-    hotel_data.accommodation_html = $original_contents.find('.informations').html();
-
+    // hotel_data.accommodation_html = $original_contents.find('.informations').html();
+    const meal_types = typesListWithSelectorAndContext('.informations .mealtype li', $original_contents);
+    const room_types = typesListWithSelectorAndContext('.informations .roomtype li', $original_contents);
 }
 
 function setupHotelItem($hotel_item) {
@@ -199,7 +220,12 @@ let $hotel_items = $('.hotellist [data-hotelid]').filter(function (idx, el) {
     let hotel_data = _.find(hotels_data.hotels, { id: Number($(el).attr('data-hotelid')) });
     if (hotel_data) {
         used_icons_ids = used_icons_ids.concat(hotel_data.usps.map(usp => usp.iconID));
-        hotel_data.logo_base64 = _.find(hotels_data.logos, { id: hotel_data.logoID }).base64;
+        const logo = _.find(hotels_data.logos, { id: hotel_data.logoID });
+        if (logo.base64) hotel_data.logo_base64 = logo.base64;
+        if (logo.src) hotel_data.logo_src = logo.src;
+        hotel_data.usps?.forEach(usp => {
+            usp.tooltip_markup = usp.details && Mustache.render(otium_tooltip_body_template, usp.details);
+        });
         el.hotel_data = hotel_data;
     }
     return !!hotel_data;
@@ -216,6 +242,7 @@ $('head').append(`<style>${ icons_css }</style>`);
 $hotel_items.each((idx, card) => {
     setupHotelItem(card);
 });
+$('.otium-hotel-card .iconized').tooltip({ template: otium_tooltip_template, html: true });
 
 $(document).on('click', function (e) {
     if ($(e.target).closest('.item.otium.focused .otium-hotel-card').length === 0) {

@@ -280,7 +280,12 @@ body .hotellist .item {
 					font-size: (18/12em);
 					line-height: (24/18);
 				}
-				>.elite { grid-area: elite; }
+				> .elite {
+					grid-area: elite;
+					&.elite-service {
+						background: url("data-url:/otium-hotel/coral/inline-assets/elite-service.svg") center / contain no-repeat;
+					}
+				}
 				> .hotel-location {
 					grid-area: hotel-location;
 					display: flex;
@@ -671,3 +676,4 @@ body .hotellist .item {
 	}
 }
 
+@import "otium-tooltip";
