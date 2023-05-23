@@ -36,7 +36,8 @@ function typesListWithSelectorAndContext(selector, $ctx, current_value) {
             }
         }
     })($(selector, $ctx).toArray()));
-    const current_idx = strings.indexOf(current_value);
+    let current_idx = strings.indexOf(current_value);
+    if (current_idx < 0) current_idx = 0;
     return strings.map((type_string, idx) => {
         const $li = $(`<li><span>${ type_string }</span></li>`);
         if (idx === current_idx) $li.addClass('chosen');
