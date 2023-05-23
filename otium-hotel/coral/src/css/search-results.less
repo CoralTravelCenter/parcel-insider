@@ -242,6 +242,9 @@ body .hotellist .item {
 					font-size: (20/12em);
 					color: @coral-main-yellow;
 					align-self: center;
+					@media screen and (max-width: @wide-breakpoint) {
+						font-size: 1.5em;
+					}
 					>* {
 					}
 				}
@@ -249,12 +252,20 @@ body .hotellist .item {
 					grid-area: reviews;
 					align-self: center;
 					white-space: nowrap;
+					[data-provider] {
+						font-size: (16/12em);
+						@media screen and (max-width: @wide-breakpoint) {
+							font-size: 1em;
+						}
+					}
 					[data-provider='tripadvisor'] {
 						display: flex;
 						justify-content: flex-end;
 						align-items: center;
 						line-height: 1;
-						font-size: (16/12em);
+						img {
+							width: 7em;
+						}
 						.value {
 							color: #009e63;
 							margin-right: .5em;
@@ -264,7 +275,6 @@ body .hotellist .item {
 						display: flex;
 						justify-content: flex-end;
 						align-items: center;
-						font-size: (16/12em);
 						line-height: 1.1;
 						>*:nth-child(n+2) {
 							margin-left: .4em;
@@ -328,6 +338,7 @@ body .hotellist .item {
 					    flex-wrap: wrap;
 					}
 					.available-options-popin {
+						min-width: 0;
 						display: flex;
 						align-items: center;
 						font-size: 12px;
@@ -374,10 +385,13 @@ body .hotellist .item {
 								display: flex;
 								align-items: center;
 								white-space: nowrap;
-								overflow: hidden;
-								text-overflow: ellipsis;
 								background: white;
 								padding: 0 .5em;
+								>* {
+									overflow: hidden;
+									text-overflow: ellipsis;
+									min-width: 0;
+								}
 								&:first-child {
 									border-radius: 3px 3px 0 0;
 								}

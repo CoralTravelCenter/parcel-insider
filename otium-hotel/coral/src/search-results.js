@@ -38,7 +38,7 @@ function typesListWithSelectorAndContext(selector, $ctx, current_value) {
     })($(selector, $ctx).toArray()));
     const current_idx = strings.indexOf(current_value);
     return strings.map((type_string, idx) => {
-        const $li = $(`<li>${ type_string }</li>`);
+        const $li = $(`<li><span>${ type_string }</span></li>`);
         if (idx === current_idx) $li.addClass('chosen');
         if (idx === 0) $li.css('marginTop', `${ -current_idx * 1.1 }em`);
         return $li.get(0).outerHTML;
