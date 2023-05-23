@@ -23,8 +23,8 @@ async function gmapsReady() {
     return gmapsPromose;
 }
 
-function typesListWithSelectorAndContext(selector, $ctx) {
-    return Array.from((function*(list_items) {
+function typesListWithSelectorAndContext(selector, $ctx, current_value) {
+    const strings = Array.from((function*(list_items) {
         for (let li of list_items) {
             if (li.getAttribute('data-toggle') === 'tooltip') {
                 let $li = $(li);
@@ -36,6 +36,13 @@ function typesListWithSelectorAndContext(selector, $ctx) {
             }
         }
     })($(selector, $ctx).toArray()));
+    const current_idx = strings.indexOf(current_value);
+    return strings.map((type_string, idx) => {
+        const $li = $(`<li>${ type_string }</li>`);
+        if (idx === current_idx) $li.addClass('chosen');
+        if (idx === 0) $li.css('marginTop', `${ -current_idx * 1.1 }em`);
+        return $li.get(0).outerHTML;
+    });
 }
 
 function setupHotelItem_Visual($hotel_item) {
@@ -164,11 +171,23 @@ function parseOriginalCard($hotel_item) {
     // location
     hotel_data.location = $original_contents.find('.location abbr').text();
     // tour details (infoblock)
-    hotel_data.tour_details_html = $original_contents.find('.infoblock').html();
+    const $info_block = $original_contents.find('.infoblock');
+    hotel_data.tour_details_html = $info_block.html();
+    let [, , , room, meal] = $info_block.text().split(/\s*,\s*/);
+    [room] = room.split(/\s*-\s*/);
     // accommodation (informations)
-    // hotel_data.accommodation_html = $original_contents.find('.informations').html();
-    const meal_types = typesListWithSelectorAndContext('.informations .mealtype li', $original_contents);
-    const room_types = typesListWithSelectorAndContext('.informations .roomtype li', $original_contents);
+    hotel_data.available_options = [
+        {
+            icon_symbol: '',
+            label:       'Тип питания:',
+            list:        typesListWithSelectorAndContext('.informations .mealtype li', $original_contents, meal)
+        },
+        {
+            icon_symbol: '',
+            label:       'Тип номера:',
+            list:        typesListWithSelectorAndContext('.informations .roomtype li', $original_contents, room)
+        },
+    ];
 }
 
 function setupHotelItem($hotel_item) {
@@ -242,11 +261,15 @@ $('head').append(`<style>${ icons_css }</style>`);
 $hotel_items.each((idx, card) => {
     setupHotelItem(card);
 });
-$('.otium-hotel-card .iconized').tooltip({ template: otium_tooltip_template, html: true });
+$('.otium-hotel-card .iconized').tooltip({ template: otium_tooltip_template, html: true, delay: { show: 300, hide: 100 } });
 
 $(document).on('click', function (e) {
     if ($(e.target).closest('.item.otium.focused .otium-hotel-card').length === 0) {
         $('.item.otium.focused').removeClass('focused').find('.expanded').removeClass('expanded');
     }
+    $('.available-options-popin .options.open').filter((idx, el) => !$.contains(el, e.target)).removeClass('open');
 });
 
+$(document).on('click', '.available-options-popin ul', function () {
+    $(this).toggleClass('open');
+});

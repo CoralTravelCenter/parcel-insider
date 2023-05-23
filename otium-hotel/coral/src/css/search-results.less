@@ -1,4 +1,4 @@
-@wide-breakpoint: 1339px;
+@wide-breakpoint: 1439px;
 @mid-breakpoint: 1199px;
 @mobile-breakpoint: 1006px;
 @narrow-breakpoint: 575px;
@@ -230,6 +230,9 @@ body .hotellist .item {
 					"tour-details tour-details tour-details tour-details"
 					"accommodation accommodation accommodation accommodation"
 					"usps usps usps logo";
+				@media screen and (max-width: @wide-breakpoint) {
+				    gap: 0 1em;
+				}
 				>* {
 					//background: #fed;
 				}
@@ -245,6 +248,7 @@ body .hotellist .item {
 				> .reviews {
 					grid-area: reviews;
 					align-self: center;
+					white-space: nowrap;
 					[data-provider='tripadvisor'] {
 						display: flex;
 						justify-content: flex-end;
@@ -278,7 +282,10 @@ body .hotellist .item {
 				> .name {
 					grid-area: name;
 					font-size: (18/12em);
-					line-height: (24/18);
+					line-height: 1.1;
+					@media screen and (max-width: @wide-breakpoint) {
+						font-size: (14/12em);
+					}
 				}
 				> .elite {
 					grid-area: elite;
@@ -292,6 +299,9 @@ body .hotellist .item {
 					align-items: center;
 					font-size: (14/12em);
 					cursor: pointer;
+					@media screen and (max-width: @wide-breakpoint) {
+						font-size: 1em;
+					}
 					&:before {
 						content: '';
 						font-family: 'Material Icons';
@@ -304,12 +314,91 @@ body .hotellist .item {
 				}
 				> .tour-details {
 					grid-area: tour-details;
-					font-size: (14/12em);
+					font-size: (14px);
 					line-height: 1.2;
+					@media screen and (max-width: @wide-breakpoint) {
+						font-size: 12px;
+					}
 				}
 				> .accommodation {
 					grid-area: accommodation;
-
+					display: flex;
+					align-items: baseline;
+					@media screen and (max-width: @wide-breakpoint) {
+					    flex-wrap: wrap;
+					}
+					.available-options-popin {
+						display: flex;
+						align-items: center;
+						font-size: 12px;
+						line-height: 1.1;
+						font-weight: normal;
+						&:not(:last-child) {
+							margin-right: 1em;
+						}
+						>label {
+							display: inline-flex;
+							align-items: center;
+							margin: 0;
+							font-weight: bold;
+							white-space: nowrap;
+							&:before {
+								flex-shrink: 0;
+								font-family: 'Material Icons';
+								color: @coral-main-yellow;
+								content: attr(data-icon-symbol);
+								font-size: 1.5em;
+								line-height: 0;
+								margin-right: .3em;
+							}
+						}
+						>ul.options {
+							list-style: none;
+							margin: 0;
+							padding: 0;
+							height: 1.1em;
+							position: relative;
+							z-index: 1;
+							overflow: hidden;
+							cursor: pointer;
+							&.open {
+								overflow: visible;
+								filter: drop-shadow(0 1px 2px fade(black, 20%));
+							}
+							&:not(.open) {
+								>li {
+									//background: transparent;
+								}
+							}
+							>li {
+								display: flex;
+								align-items: center;
+								white-space: nowrap;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								background: white;
+								padding: 0 .5em;
+								&:first-child {
+									border-radius: 3px 3px 0 0;
+								}
+								&:last-child {
+									border-radius: 0 0 3px 3px;
+								}
+								&:before {
+									content: '-';
+									margin-right: .5em;
+								}
+								&.chosen:not(:first-child:last-child):after {
+									font-family: "Material Icons";
+									font-size: 1.5em;
+									line-height: 0;
+									//content: '\E313';
+									content: '\E5C5';
+									margin-left: .1em;
+								}
+							}
+						}
+					}
 				}
 				> .usps {
 					grid-area: usps;
@@ -327,12 +416,16 @@ body .hotellist .item {
 							background-position: center;
 							background-size: contain;
 							background-repeat: no-repeat;
-							margin-bottom: .5em;
+							//margin-bottom: .5em;
 						}
 						.label {
 							font-weight: normal;
 							line-height: 1.1;
 							padding: 0 .2em;
+							margin-top: .5em;
+							@media screen and (max-width: @wide-breakpoint) {
+							    display: none;
+							}
 						}
 					}
 				}

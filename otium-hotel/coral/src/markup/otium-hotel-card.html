@@ -21,7 +21,16 @@
                 {{{ tour_details_html }}}
             </div>
             <div class="accommodation">
-                {{{ accommodation_html }}}
+                {{ #available_options }}
+                <div class="available-options-popin">
+                    <label data-icon-symbol="{{ icon_symbol }}">{{ label }}</label>
+                    <ul class="options">
+                        {{ #list }}
+                        {{{ . }}}
+                        {{ /list }}
+                    </ul>
+                </div>
+                {{ /available_options }}
             </div>
             <div class="usps">
                 {{ #usps }}
