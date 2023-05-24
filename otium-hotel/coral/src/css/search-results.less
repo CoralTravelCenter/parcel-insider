@@ -55,11 +55,17 @@
 }
 
 
-body .hotellist .item {
-	position: relative;
-	z-index: 1;
-	margin-bottom: 20px;
+body .hotellist {
+	.item {
+		position: relative;
+		z-index: 1;
+		margin-bottom: 20px;
+	}
+	.hellobar + .item {
+		margin-top: 1.5em;
+	}
 }
+
 .hotellist .item.otium {
 	border: 0;
 	background: none;
@@ -344,6 +350,9 @@ body .hotellist .item {
 						font-size: 12px;
 						line-height: 1.1;
 						font-weight: normal;
+						@media screen and (max-width: @wide-breakpoint) {
+							font-size: 11px;
+						}
 						&:not(:last-child) {
 							margin-right: 1em;
 						}
@@ -466,6 +475,25 @@ body .hotellist .item {
 					width: 100%;
 					border-radius: 0 0 var(--rounding) var(--rounding);
 					box-shadow: 0 calc(var(--rounding) * -1) 0 @pricing-bg;
+				}
+				display: grid;
+				grid-gap: 1em;
+				grid-template-rows: 1fr 1fr 36px 1fr;
+				grid-template-areas: "coralbonus" "pricing" "choose" "installment";
+				>* {
+					background: fade(#fed, 50%);
+				}
+				.coralbonus-cell {
+					grid-area: coralbonus;
+				}
+				.pricing-cell {
+					grid-area: pricing;
+				}
+				.choose-cell {
+					grid-area: choose;
+				}
+				.installment-cell {
+					grid-area: installment;
 				}
 			}
 		}

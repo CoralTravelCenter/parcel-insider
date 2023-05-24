@@ -62,33 +62,33 @@ logos:
         src:    "https://cdn.coral.ru/content/insider/russia/otium-hotels/logo-xanadu-high-class.png"
 
 hotels:
-#    -   name:   XANADU RESORT
-#        id:     983
-#        logoID: xanadu
-#        badges:
-#            - label: Обратите внимание
-#              fore: white
-#              back: "#63A650"
-#            - label: Семейный отдых
-#              fore: black
-#              back: white
-#        usps:
-#            -   label:  Стандарт CGH
-#                iconID: CGH
-#                details:
-#                    heading: Coral Group Hotels & Resorts
-#                    list:
-#                        - Международный уровень сервиса
-#                        - Надежные стандарты гостеприимства
-#                        - Опытный персонал
-#            -   label:  High Class «Всё включено»
-#                iconID: high_class
-#            -   label:  Детский клуб Fancyland
-#                iconID: fancyland
-#            -   label:  Лаундж зона для взрослых
-#                iconID: eighteen_plus
-#            -   label:  Развлечения и анимация
-#                iconID: clubs
+    -   name:   XANADU RESORT
+        id:     983
+        logoID: xanadu
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: "#63A650"
+            - label: Семейный отдых
+              fore: black
+              back: white
+        usps:
+            -   label:  Стандарт CGH
+                iconID: CGH
+                details:
+                    heading: Coral Group Hotels & Resorts
+                    list:
+                        - Международный уровень сервиса
+                        - Надежные стандарты гостеприимства
+                        - Опытный персонал
+            -   label:  High Class «Всё включено»
+                iconID: high_class
+            -   label:  Детский клуб Fancyland
+                iconID: fancyland
+            -   label:  Лаундж зона для взрослых
+                iconID: eighteen_plus
+            -   label:  Развлечения и анимация
+                iconID: clubs
 
     -   name:   OTIUM FAMILY STONE PALACE
         id:     25065

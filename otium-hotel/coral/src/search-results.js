@@ -11,14 +11,14 @@ import { preload, responsiveHandler, watchIntersection } from "../../../common/u
 let flickityPromose;
 async function flickityReady() {
     flickityPromose ||= new Promise(resolve => {
-        preload('https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js', () => resolve());
+        preload('https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js', resolve);
     });
     return flickityPromose;
 }
 let gmapsPromose;
 async function gmapsReady() {
     gmapsPromose ||= new Promise(resolve => {
-        preload('https://maps.googleapis.com/maps/api/js?key=AIzaSyBnhDu-BFnKo1i6iHDLoHix0vfpwm1nnrM', () => resolve());
+        preload('https://maps.googleapis.com/maps/api/js?key=AIzaSyBnhDu-BFnKo1i6iHDLoHix0vfpwm1nnrM', resolve);
     });
     return gmapsPromose;
 }
