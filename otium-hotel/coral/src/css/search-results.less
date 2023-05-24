@@ -481,7 +481,7 @@ body .hotellist {
 				grid-template-rows: 1fr 1fr 36px 1fr;
 				grid-template-areas: "coralbonus" "pricing" "choose" "installment";
 				>* {
-					background: fade(#fed, 50%);
+					//background: fade(#fed, 50%);
 				}
 				.coralbonus-cell {
 					grid-area: coralbonus;
@@ -491,6 +491,27 @@ body .hotellist {
 				}
 				.choose-cell {
 					grid-area: choose;
+					position: relative;
+					>a {
+						.interactive();
+						.abs100x100();
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						border-radius: 8px;
+						background: @coral-ramp-bg;
+						color: white;
+						font-size: 14px;
+						line-height: 1;
+						box-shadow: 0 2px 8px fade(black, 50%);
+						&:after {
+							font-family: "Material Icons";
+							content: 'arrow_forward_ios';
+							font-size: 1.2em;
+							line-height: 0;
+							margin-left: .5em;
+						}
+					}
 				}
 				.installment-cell {
 					grid-area: installment;

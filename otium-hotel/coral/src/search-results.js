@@ -189,6 +189,8 @@ function parseOriginalCard($hotel_item) {
             list:        typesListWithSelectorAndContext('.informations .roomtype li', $original_contents, room)
         },
     ];
+    // pricing -> choose btn
+    hotel_data.choose_room_href = $original_contents.find('.hotellist-actionlink').attr('href');
 }
 
 function setupHotelItem($hotel_item) {
