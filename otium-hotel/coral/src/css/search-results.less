@@ -515,6 +515,18 @@ body .hotellist {
 				}
 				.installment-cell {
 					grid-area: installment;
+					display: flex;
+					align-items: center;
+					line-height: 1.2;
+					font-size: 12px;
+					&:before {
+						flex-shrink: 0;
+						content: '';
+						width: 2.3em;
+						height: 2.3em;
+						margin-right: .6em;
+						background: url("data-url:../inline-assets/icon-percent.svg") center / cover no-repeat;
+					}
 				}
 			}
 		}

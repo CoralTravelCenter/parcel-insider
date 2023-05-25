@@ -46,6 +46,20 @@ function typesListWithSelectorAndContext(selector, $ctx, current_value) {
     });
 }
 
+Number.prototype.formatPrice = function() {
+    var s;
+    s = String(Math.round(this));
+    return s.split('').reverse().join('').replace(/\d{3}/g, "$& ").split('').reverse().join('');
+};
+
+function demanglePrice($els) {
+    $els.appendTo('body');
+    let visible_digits = $els.filter((idx, el) => !!el.getBoundingClientRect().width).toArray();
+    visible_digits.sort((a, b) => Number($(a).css('order')) - Number($(b).css('order')));
+    $els.remove();
+    return visible_digits.map(el => el.textContent).join('') * 1;
+}
+
 function setupHotelItem_Visual($hotel_item) {
     $hotel_item = $($hotel_item);
     const hotel_data = $hotel_item.get(0).hotel_data;
@@ -191,6 +205,10 @@ function parseOriginalCard($hotel_item) {
     ];
     // pricing -> choose btn
     hotel_data.choose_room_href = $original_contents.find('.hotellist-actionlink').attr('href');
+    // pricing -> price + instalement
+    let price = demanglePrice($original_contents.find('.action-discount-price > div > [class]'));
+    console.log('price: %o', price);
+    hotel_data.installment_value_formatted = Math.round(price / 36 * 1.25).formatPrice();
 }
 
 function setupHotelItem($hotel_item) {
