@@ -65,6 +65,9 @@ hotels:
     -   name:   XANADU RESORT
         id:     983
         logoID: xanadu
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-resort-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-resort-mobile.jpg'
         badges:
             - label: Обратите внимание
               fore: white
@@ -95,7 +98,7 @@ hotels:
         logoID: otium_family
         visual:
             desktop: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-desktop.jpg"
-            mobile: "https://placehold.co/720x405"
+            mobile: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-mobile.jpg"
         forceRating:
             source: tophotels.ru
             value:  4.67
@@ -149,6 +152,9 @@ hotels:
     -   name:   OTIUM FAMILY LYKIA BOTANIKA BEACH
         id:     17813
         logoID: otium_family
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-lykia-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-lykia-mobile.jpg'
         badges:
             - label: Обратите внимание
               fore: white
@@ -198,6 +204,9 @@ hotels:
     -   name:   OTIUM PARK AQUA AYAZ BEACH
         id:     25495
         logoID: otium_park
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-aqua-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-aqua-mobile.jpg'
         badges:
             - label: Обратите внимание
               fore: white
@@ -247,6 +256,9 @@ hotels:
     -   name:   OTIUM SENSES VERY CHIC HOTEL
         id:     34184
         logoID: otium_senses
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-very-chic-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-very-chic-mobile.jpg'
         badges:
             - label: Обратите внимание
               fore: white
@@ -295,6 +307,9 @@ hotels:
     -   name:   OTIUM SENSES X LIFE HOTELS
         id:     35631
         logoID: otium_senses
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-x-life-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-x-life-mobile.jpg'
         forceRating:
             source: tophotels.ru
             value:  4.3
