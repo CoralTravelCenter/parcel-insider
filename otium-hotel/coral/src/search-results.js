@@ -5,6 +5,7 @@ import partial_tripadvisor from 'bundle-text:./markup/partial-search-tripadvisor
 import partial_tophotels from 'bundle-text:./markup/partial-search-tophotelsru.html'
 import otium_tooltip_template from 'bundle-text:./markup/usp-tooltip.html'
 import otium_tooltip_body_template from 'bundle-text:./markup/usp-tooltip-body.html'
+import installment_info_popover from 'bundle-text:./markup/installment-info-popover.html'
 import * as Mustache from "mustache";
 import { preload, responsiveHandler, watchIntersection } from "../../../common/useful.js";
 
@@ -292,4 +293,12 @@ $(document).on('click', function (e) {
 
 $(document).on('click', '.available-options-popin ul', function () {
     $(this).toggleClass('open');
+});
+
+$('.installment-cell').popover({
+    template: '<div class="popover sber" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+    content:   installment_info_popover,
+    html:      true,
+    placement: 'auto',
+    trigger:   'hover'
 });
