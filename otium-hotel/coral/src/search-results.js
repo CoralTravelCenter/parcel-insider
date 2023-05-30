@@ -53,10 +53,8 @@ Number.prototype.formatPrice = function() {
 };
 
 function demanglePrice($els) {
-    $els.appendTo('body');
-    let visible_digits = $els.filter((idx, el) => !!el.getBoundingClientRect().width).toArray();
+    let visible_digits = $els.filter((idx, el) => !!el.clientWidth).toArray();
     visible_digits.sort((a, b) => Number($(a).css('order')) - Number($(b).css('order')));
-    $els.remove();
     return visible_digits.map(el => el.textContent).join('') * 1;
 }
 
@@ -213,8 +211,9 @@ function parseOriginalCard($hotel_item) {
 
 function setupHotelItem($hotel_item) {
     $hotel_item = $($hotel_item);
-    $hotel_item.get(0).$original_contents = $hotel_item.children().remove();
+    $hotel_item.get(0).$original_contents = $hotel_item.children();
     parseOriginalCard($hotel_item);
+    $hotel_item.get(0).$original_contents.remove();
     const hotel_data = $hotel_item.get(0).hotel_data;
     $hotel_item.addClass('otium').append(Mustache.render(hotel_card_template, hotel_data, hotel_data.partials || {}));
     $hotel_item.find('.visual').on('click', function () {
