@@ -488,6 +488,35 @@ body .hotellist {
 				}
 				.pricing-cell {
 					grid-area: pricing;
+					display: flex;
+					flex-wrap: wrap;
+					.from {
+
+					}
+					.original-price {
+						font-size: (14/12em);
+					}
+					.final-price {
+						width: 100%;
+						color: @coral-main-yellow;
+						> * {
+							font-size: (32/12em);
+						}
+					}
+					.additives {
+						width: 100%;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						font-size: 11px;
+						line-height: 1;
+						&:after {
+							font-family: "Header Fontello";
+							content: '';
+							font-size: 1.2em;
+							color: @coral-main-yellow;
+						}
+					}
 				}
 				.choose-cell {
 					grid-area: choose;
@@ -850,3 +879,4 @@ body .hotellist {
 
 @import "otium-tooltip";
 @import "installment-info-popover";
+@import "decorated-price";

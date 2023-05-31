@@ -49,7 +49,16 @@
         </div>
         <div class="pricing">
             <div class="coralbonus-cell">coral bonus</div>
-            <div class="pricing-cell">pricing</div>
+            <div class="pricing-cell">
+                <span class="from">цена от:</span>
+                <span class="original-price"></span>
+                <div class="final-price">
+                    {{{ final_price_html }}}
+                </div>
+                {{ #additives }}
+                <div class="additives">Включая доплату за перелет</div>
+                {{ /additives }}
+            </div>
             <div class="choose-cell">
                 <a href="{{ choose_room_href }}" target="_blank">Выбрать номер</a>
             </div>

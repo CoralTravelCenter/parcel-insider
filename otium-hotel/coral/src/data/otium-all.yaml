@@ -204,6 +204,7 @@ hotels:
     -   name:   OTIUM PARK AQUA AYAZ BEACH
         id:     25495
         logoID: otium_park
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-aqua-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-aqua-mobile.jpg'

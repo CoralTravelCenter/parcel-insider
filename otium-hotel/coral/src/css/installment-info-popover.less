@@ -1,14 +1,19 @@
 .popover.sber {
-	//background: none;
-	//box-shadow: none;
-	//border-radius: 0;
+	background: white;
+	box-shadow: none;
+	border-radius: 1em;
+	border-color: white;
+	filter: drop-shadow(0 2px 16px fade(black, 15%));
+	.arrow:before {
+		border-left-color: white;
+	}
 }
 .installment-info-popover {
 	background: white;
 	font-size: 13px;
 	color: black;
 	line-height: 1.2;
-	padding: 1.5em 2em;
+	padding: .5em 1em;
 	border-radius: 1em;
 	.logo {
 		width: 10em;
@@ -18,10 +23,35 @@
 	}
 	.body {
 		font-weight: normal;
+		> strong {
+			display: block;
+			margin-bottom: .5em;
+		}
+		> p > * {
+			display: flex;
+			&:before {
+				content: '-';
+				margin-right: .5em;
+			}
+		}
 		.note {
 			font-style: italic;
 			font-size: 11px;
 			line-height: 1.1;
+			>* {
+				display: flex;
+				&:before {
+					flex-shrink: 0;
+					content: attr(data-bullet);
+					width: 1.5em;
+					text-align: right;
+					padding-right: .5em;
+				}
+			}
 		}
 	}
+}
+
+.bs-popover-left .arrow.sber::before, .bs-popover-auto[x-placement^="left"] .arrow.sber::before {
+	border-left-color: white;
 }

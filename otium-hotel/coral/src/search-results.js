@@ -50,13 +50,32 @@ function typesListWithSelectorAndContext(selector, $ctx, current_value) {
 Number.prototype.formatPrice = function() {
     var s;
     s = String(Math.round(this));
-    return s.split('').reverse().join('').replace(/\d{3}/g, "$& ").split('').reverse().join('');
+    return s.split('').reverse().join('').replace(/\d{3}(?=\d)/g, "$& ").split('').reverse().join('');
+};
+Number.prototype.decoratedPriceHTML = function() {
+    let value = Math.floor(this).formatPrice();
+    let cents = Math.round(this * 100 % 100);
+    return `<div class="decorated-price"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">₽</span></div>`
+}
+String.prototype.zeroPad = function(len, c) {
+    var s;
+    s = '';
+    c || (c = '0');
+    len || (len = 2);
+    len -= this.length;
+    while (s.length < len) s += c;
+    return s + this;
+};
+Number.prototype.zeroPad = function(len, c) {
+    return String(this).zeroPad(len, c);
 };
 
-function demanglePrice($els) {
-    let visible_digits = $els.filter((idx, el) => !!el.clientWidth).toArray();
+function demanglePrice($container) {
+    let $rubs = $container.children('[class]');
+    let kops = $container.children(':not([class])').text().replace(/\D/g, '') * 1;
+    let visible_digits = $rubs.filter((idx, el) => !!el.clientWidth).toArray();
     visible_digits.sort((a, b) => Number($(a).css('order')) - Number($(b).css('order')));
-    return visible_digits.map(el => el.textContent).join('') * 1;
+    return visible_digits.map(el => el.textContent).join('') * 1 + kops / 100;
 }
 
 function setupHotelItem_Visual($hotel_item) {
@@ -204,10 +223,21 @@ function parseOriginalCard($hotel_item) {
     ];
     // pricing -> choose btn
     hotel_data.choose_room_href = $original_contents.find('.hotellist-actionlink').attr('href');
-    // pricing -> price + instalement
-    let price = demanglePrice($original_contents.find('.action-discount-price > div > [class]'));
-    console.log('price: %o', price);
+    // pricing
+    let price = demanglePrice($original_contents.find('.action-discount-price > div'));
+    let original_price = Number($original_contents.find('.action-price').text().replace(/[^0-9.,]/g, '').replace(',','.'));
+    // pricing -> instalement
     hotel_data.installment_value_formatted = Math.round(price / 36 * 1.25).formatPrice();
+    // pricing -> final price
+    hotel_data.final_price_html = price.decoratedPriceHTML();
+    // pricing -> additives
+    let additives_html = $original_contents.find('.icon-price-information').attr('data-content');
+    if (additives_html) {
+        hotel_data.additives = true;
+        hotel_data.additives_list = $(additives_html).find('div').map((idx, div) => {
+            div.textContent.replace(/доплата за /i, '')
+        });
+    }
 }
 
 function setupHotelItem($hotel_item) {
@@ -296,7 +326,7 @@ $(document).on('click', '.available-options-popin ul', function () {
 });
 
 $('.installment-cell').popover({
-    template: '<div class="popover sber" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+    template: '<div class="popover sber" role="tooltip"><div class="arrow sber"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
     content:   installment_info_popover,
     html:      true,
     placement: 'auto',
