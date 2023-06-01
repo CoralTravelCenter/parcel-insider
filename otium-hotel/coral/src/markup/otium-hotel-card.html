@@ -48,15 +48,23 @@
             {{ /logo_src }}
         </div>
         <div class="pricing">
-            <div class="coralbonus-cell">coral bonus</div>
+            <div class="coralbonus-cell">
+                {{ #CoralBonusPercent }}
+                {{{ coralbonus_html }}}
+                {{ /CoralBonusPercent }}
+            </div>
             <div class="pricing-cell">
                 <span class="from">цена от:</span>
-                <span class="original-price"></span>
+                <div class="original-price">
+                    {{ #original_price_html }}
+                    {{{ . }}}
+                    {{ /original_price_html }}
+                </div>
                 <div class="final-price">
                     {{{ final_price_html }}}
                 </div>
                 {{ #additives }}
-                <div class="additives">Включая доплату за перелет</div>
+                <div class="additives" data-content="{{ additives_popover_html }}">Включая доплату за перелет</div>
                 {{ /additives }}
             </div>
             <div class="choose-cell">

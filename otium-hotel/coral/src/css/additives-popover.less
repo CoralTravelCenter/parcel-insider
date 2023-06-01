@@ -1,0 +1,43 @@
+.popover.additives {
+	background: white;
+	box-shadow: none;
+	border-radius: 1em;
+	border-color: white;
+	filter: drop-shadow(0 2px 16px fade(black, 15%));
+	.arrow:before {
+		border-top-color: white;
+	}
+	.arrow:after {
+		border-top-color: transparent;
+	}
+}
+.additives-popover {
+	background: white;
+	font-size: 12px;
+	color: black;
+	line-height: 1.2;
+	padding: 0 .5em;
+	border-radius: .5em;
+	>ul {
+		list-style: none;
+		padding: 0;
+		margin: 0.5em 0 0;
+		font-weight: normal;
+		>li {
+			display: flex;
+			align-items: baseline;
+			width: 100%;
+			.value {
+				margin-left: auto;
+				font-weight: bold;
+			}
+			.currencyfont {
+				margin-left: .2em;
+			}
+		}
+	}
+}
+
+.bs-popover-top[x-placement^="top"] .arrow.additives::before {
+	border-top-color: white;
+}

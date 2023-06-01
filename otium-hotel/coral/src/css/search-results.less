@@ -22,6 +22,7 @@
 @coral-red-warn: #FFDCDC;
 
 @pricing-bg: #232935;
+@coralbonus-ramp: linear-gradient(37.53deg, #209CFF 1.18%, #68E0CF 86.66%);
 
 .abs100x100() {
 	position: absolute;
@@ -54,6 +55,22 @@
 	}
 }
 
+.rounded-ramp-border(@ramp; @thickness; @radius) {
+	position: relative;
+	border-radius: @radius - (@thickness / 2);
+	&:after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: @ramp;
+		padding: @thickness;
+		border-radius: @radius;
+		mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+		-webkit-mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+	}
+}
 
 body .hotellist {
 	.item {
@@ -478,23 +495,65 @@ body .hotellist {
 				}
 				display: grid;
 				grid-gap: 1em;
-				grid-template-rows: 1fr 1fr 36px 1fr;
+				grid-template-rows: auto auto 36px auto;
 				grid-template-areas: "coralbonus" "pricing" "choose" "installment";
 				>* {
 					//background: fade(#fed, 50%);
 				}
 				.coralbonus-cell {
 					grid-area: coralbonus;
+					.coralbonus-badge {
+						display: flex;
+						align-items: center;
+						cursor: pointer;
+						.value-box {
+							padding: 0 1em;
+							background: @coralbonus-ramp;
+							-webkit-background-clip: text;
+							-webkit-text-fill-color: transparent;
+							background-clip: text;
+							text-fill-color: transparent;
+							.rounded-ramp-border(@ramp: @coralbonus-ramp, @thickness: 2px, @radius: 4px);
+							.value {
+								display: inline-flex;
+								align-items: center;
+								font-size: (18/12em);
+								line-height: 2;
+								white-space: nowrap;
+								&:after {
+									content: '';
+									display: inline-block;
+									width: .62em;
+									height: (15/12) * .62em;
+									margin-left: .3em;
+									background: url("data-url:/otium-hotel/coral/src/inline-assets/coralbonus-sym.svg") center / contain no-repeat;
+								}
+							}
+						}
+						.label {
+							margin-left: 1em;
+							line-height: 1.2;
+						}
+					}
 				}
 				.pricing-cell {
 					grid-area: pricing;
 					display: flex;
 					flex-wrap: wrap;
+					align-items: baseline;
 					.from {
 
 					}
 					.original-price {
-						font-size: (14/12em);
+						position: relative;
+						font-size: (18/12em);
+						padding-left: .5em;
+						&:after {
+							content: '';
+							.abs100x100();
+							background: url("data-url:/otium-hotel/coral/src/inline-assets/price-strike-over.svg") 33% / 80% no-repeat;
+							filter: drop-shadow(1px 1px 2px black);
+						}
 					}
 					.final-price {
 						width: 100%;
@@ -510,6 +569,7 @@ body .hotellist {
 						align-items: center;
 						font-size: 11px;
 						line-height: 1;
+						cursor: default;
 						&:after {
 							font-family: "Header Fontello";
 							content: '';
@@ -879,4 +939,6 @@ body .hotellist {
 
 @import "otium-tooltip";
 @import "installment-info-popover";
+@import "additives-popover";
+@import "coralbonus-popover";
 @import "decorated-price";

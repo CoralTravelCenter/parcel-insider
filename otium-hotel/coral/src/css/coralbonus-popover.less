@@ -1,0 +1,57 @@
+.popover.coralbonus {
+	background: white;
+	box-shadow: none;
+	border-radius: 1em;
+	border-color: #326da7;
+	background: linear-gradient(to top, #326da7, #008bc7);
+	filter: drop-shadow(0 2px 16px fade(black, 15%));
+	.arrow:before {
+		border-top-color: #326da7;
+	}
+	.arrow:after {
+		border-top-color: transparent;
+	}
+}
+.coralbonus-popover {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	font-size: 12px;
+	font-weight: normal;
+	color: white;
+	line-height: 1.2;
+	padding: 1em;
+	border-radius: .5em;
+	max-width: 20em;
+	.c2a {
+		font-size: 1.5em;
+	}
+	.value {
+		font-size: 2em;
+		font-weight: bold;
+	}
+	.instructions {
+		padding: 1.5em 0;
+	}
+	.action-xlink {
+		.interactive();
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		line-height: 1;
+		height: 3em;
+		padding: 0 2em;
+		border: 2px solid currentColor;
+		border-radius: 1em;
+		color: inherit;
+		font-family: inherit;
+		font-weight: bold;
+		font-size: inherit;
+		text-decoration: none;
+	}
+}
+
+.bs-popover-top[x-placement^="top"] .arrow.coralbonus::before {
+	border-top-color: #326da7;
+}

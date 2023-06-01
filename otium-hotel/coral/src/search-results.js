@@ -6,6 +6,8 @@ import partial_tophotels from 'bundle-text:./markup/partial-search-tophotelsru.h
 import otium_tooltip_template from 'bundle-text:./markup/usp-tooltip.html'
 import otium_tooltip_body_template from 'bundle-text:./markup/usp-tooltip-body.html'
 import installment_info_popover from 'bundle-text:./markup/installment-info-popover.html'
+import additives_popover from 'bundle-text:./markup/additives-popover.html'
+import coralbonus_popover from 'bundle-text:./markup/coralbonus-popover.html'
 import * as Mustache from "mustache";
 import { preload, responsiveHandler, watchIntersection } from "../../../common/useful.js";
 
@@ -23,6 +25,8 @@ async function gmapsReady() {
     });
     return gmapsPromose;
 }
+
+const popoverTemplateWithClass = (klass = '') => `<div class="popover ${klass}" role="tooltip"><div class="arrow ${klass}"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>`;
 
 function typesListWithSelectorAndContext(selector, $ctx, current_value) {
     const strings = Array.from((function*(list_items) {
@@ -57,6 +61,10 @@ Number.prototype.decoratedPriceHTML = function() {
     let cents = Math.round(this * 100 % 100);
     return `<div class="decorated-price"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">₽</span></div>`
 }
+Number.prototype.decoratedCoralBonusHTML = function (popover_content_html) {
+    return `<div class="coralbonus-badge" data-content='${ popover_content_html }'><div class="value-box"><div class="value">${ this.formatPrice() }</div></div><div class="label">на карту CoralBonus</div></div>`
+}
+
 String.prototype.zeroPad = function(len, c) {
     var s;
     s = '';
@@ -230,13 +238,24 @@ function parseOriginalCard($hotel_item) {
     hotel_data.installment_value_formatted = Math.round(price / 36 * 1.25).formatPrice();
     // pricing -> final price
     hotel_data.final_price_html = price.decoratedPriceHTML();
+    // pricing -> original
+    if (original_price) {
+        hotel_data.original_price_html = original_price.decoratedPriceHTML();
+    }
     // pricing -> additives
     let additives_html = $original_contents.find('.icon-price-information').attr('data-content');
     if (additives_html) {
         hotel_data.additives = true;
-        hotel_data.additives_list = $(additives_html).find('div').map((idx, div) => {
-            div.textContent.replace(/доплата за /i, '')
-        });
+        let additives_list = hotel_data.additives_list = $(additives_html).filter('div').map((idx, div) => {
+            let [,akey,,avalue] = div.textContent.replace(/доплата за /i, '').match(/(.+?)(\s+)([0-9.,\s]+)/);
+            return { akey, avalue };
+        }).toArray();
+        hotel_data.additives_popover_html = Mustache.render(additives_popover, { list: additives_list });
+    }
+    // CoralBonus
+    if (hotel_data.CoralBonusPercent) {
+        const bonus_value = Math.round(price / 100 * hotel_data.CoralBonusPercent);
+        hotel_data.coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: bonus_value }));
     }
 }
 
@@ -326,9 +345,21 @@ $(document).on('click', '.available-options-popin ul', function () {
 });
 
 $('.installment-cell').popover({
-    template: '<div class="popover sber" role="tooltip"><div class="arrow sber"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+    template:  popoverTemplateWithClass('sber'),
     content:   installment_info_popover,
     html:      true,
     placement: 'auto',
+    trigger:   'hover'
+});
+$('.additives').popover({
+    template:  popoverTemplateWithClass('additives'),
+    html:      true,
+    placement: 'top',
+    trigger:   'hover'
+});
+$('.coralbonus-badge').popover({
+    template:  popoverTemplateWithClass('coralbonus'),
+    html:      true,
+    placement: 'top',
     trigger:   'hover'
 });

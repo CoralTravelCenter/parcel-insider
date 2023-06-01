@@ -1,0 +1,12 @@
+<div class="additives-popover">
+    <strong>В стоимость тура включены доплаты:</strong>
+    <ul>
+        {{ #list }}
+        <li>
+            <span class="key">{{ akey }}</span>
+            <span class="value">{{ avalue }}</span>
+            <span class="currencyfont">₽</span>
+        </li>
+        {{ /list }}
+    </ul>
+</div>
