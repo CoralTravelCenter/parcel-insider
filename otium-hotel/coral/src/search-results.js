@@ -59,7 +59,8 @@ Number.prototype.formatPrice = function() {
 Number.prototype.decoratedPriceHTML = function() {
     let value = Math.floor(this).formatPrice();
     let cents = Math.round(this * 100 % 100);
-    return `<div class="decorated-price"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">₽</span></div>`
+    let lots_of_money_klass = this > 1000000 ? 'lots-of-money' : '';
+    return `<div class="decorated-price ${ lots_of_money_klass }"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">₽</span></div>`
 }
 Number.prototype.decoratedCoralBonusHTML = function (popover_content_html) {
     return `<div class="coralbonus-badge" data-content='${ popover_content_html }'><div class="value-box"><div class="value">${ this.formatPrice() }</div></div><div class="label">на карту CoralBonus</div></div>`
@@ -255,7 +256,7 @@ function parseOriginalCard($hotel_item) {
     // CoralBonus
     if (hotel_data.CoralBonusPercent) {
         const bonus_value = Math.round(price / 100 * hotel_data.CoralBonusPercent);
-        hotel_data.coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: bonus_value }));
+        hotel_data.coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: bonus_value.formatPrice() }));
     }
 }
 
@@ -361,5 +362,5 @@ $('.coralbonus-badge').popover({
     template:  popoverTemplateWithClass('coralbonus'),
     html:      true,
     placement: 'top',
-    trigger:   'hover'
+    trigger:   'hover focus'
 });
