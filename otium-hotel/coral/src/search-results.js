@@ -63,7 +63,7 @@ Number.prototype.decoratedPriceHTML = function() {
     return `<div class="decorated-price ${ lots_of_money_klass }"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">₽</span></div>`
 }
 Number.prototype.decoratedCoralBonusHTML = function (popover_content_html) {
-    return `<div class="coralbonus-badge" data-content='${ popover_content_html }'><div class="value-box"><div class="value">${ this.formatPrice() }</div></div><div class="label">на карту CoralBonus</div></div>`
+    return `<div class="coralbonus-badge" tabindex="-1" data-content='${ popover_content_html }'><div class="value-box"><div class="value">${ this.formatPrice() }</div></div><div class="label">на карту CoralBonus</div></div>`
 }
 
 String.prototype.zeroPad = function(len, c) {

@@ -549,6 +549,27 @@ body .hotellist {
 				grid-gap: 1em;
 				grid-template-rows: auto auto 36px auto;
 				grid-template-areas: "coralbonus" "pricing" "choose" "installment";
+				@media screen and (max-width: @mobile-breakpoint) {
+				    grid-template-columns: 3fr 2fr;
+					grid-template-rows: auto auto;
+					grid-gap: 1.5em 1.5em;
+					grid-template-areas:
+						"pricing coralbonus"
+						"installment choose";
+				}
+				@media screen and (max-width: 700px) {
+					grid-template-columns: 1fr;
+					grid-template-rows: repeat(4, auto);
+					grid-template-areas:"coralbonus" "pricing" "choose" "installment";
+				}
+				@media screen and (max-width: @narrow-breakpoint) {
+				    grid-template-columns: 3fr 2fr;
+					grid-template-rows: auto auto;
+					grid-gap: 1.5em 1.5em;
+					grid-template-areas:
+						"pricing coralbonus"
+						"installment choose";
+				}
 				>* {
 					//background: fade(#fed, 50%);
 				}
@@ -627,11 +648,16 @@ body .hotellist {
 						font-size: 11px;
 						line-height: 1;
 						cursor: default;
+						@media screen and (max-width: @mobile-breakpoint) {
+							font-size: .9em;
+							width: auto;
+						}
 						&:after {
 							font-family: "Header Fontello";
 							content: '';
 							font-size: 1.2em;
 							color: @coral-main-yellow;
+							margin-left: .5em;
 						}
 					}
 				}
@@ -644,12 +670,16 @@ body .hotellist {
 						display: flex;
 						justify-content: center;
 						align-items: center;
+						text-align: center;
 						border-radius: 8px;
 						background: @coral-ramp-bg;
 						color: white;
 						font-size: 14px;
 						line-height: 1;
 						box-shadow: 0 2px 8px fade(black, 50%);
+						@media screen and (max-width: @mobile-breakpoint) {
+							font-size: 1em;
+						}
 						&:after {
 							font-family: "Material Icons";
 							content: 'arrow_forward_ios';
