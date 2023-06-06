@@ -8,6 +8,7 @@ import otium_tooltip_body_template from 'bundle-text:./markup/usp-tooltip-body.h
 import installment_info_popover from 'bundle-text:./markup/installment-info-popover.html'
 import additives_popover from 'bundle-text:./markup/additives-popover.html'
 import coralbonus_popover from 'bundle-text:./markup/coralbonus-popover.html'
+import eliteservice_popover from 'bundle-text:./markup/eliteservice-popover.html'
 import * as Mustache from "mustache";
 import { preload, responsiveHandler, watchIntersection } from "../../../common/useful.js";
 
@@ -363,4 +364,11 @@ $('.coralbonus-badge').popover({
     html:      true,
     placement: 'top',
     trigger:   'hover focus'
+});
+$('.info .elite-service').popover({
+    template:  popoverTemplateWithClass('eliteservice'),
+    content:   eliteservice_popover,
+    html:      true,
+    placement: 'top',
+    trigger:   'hover'
 });

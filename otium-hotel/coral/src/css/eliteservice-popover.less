@@ -1,0 +1,62 @@
+.popover.eliteservice {
+	background: fade(#5F6062, 95%);
+	backdrop-filter: blur(4px);
+	color: #5F6062;
+	box-shadow: none;
+	border-radius: 1em;
+	border-color: currentColor;
+	filter: drop-shadow(0 2px 16px fade(black, 15%));
+	max-width: 33em;
+	.arrow:before {
+		border-left-color: white;
+	}
+}
+.eliteservice-popover {
+	font-size: 13px;
+	color: white;
+	padding: 1em;
+	h5 {
+		font-size: 1em;
+		color: inherit;
+		font-size: 1.2em;
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		font-weight: normal;
+		>li {
+			display: flex;
+			align-items: center;
+			line-height: 1.2;
+			margin-top: 1em;
+			&:before {
+				flex-shrink: 0;
+				content: '';
+				width: 2.4em;
+				height: 2.4em;
+				background: center / contain no-repeat;
+				margin-right: 1em;
+			}
+			&.premium:before {
+				background-image: url(data-url:/otium-hotel/coral/src/inline-assets/icon-eliteservice-premium.svg);
+			}
+			&.dedicated:before {
+				background-image: url(data-url:/otium-hotel/coral/src/inline-assets/icon-eliteservice-vip.svg);
+			}
+			&.transfer:before {
+				background-image: url(data-url:/otium-hotel/coral/src/inline-assets/icon-eliteservice-transfer.svg);
+			}
+			&.unique:before {
+				background-image: url(data-url:/otium-hotel/coral/src/inline-assets/icon-eliteservice-unique.svg);
+			}
+			&.support:before {
+				background-image: url(data-url:/otium-hotel/coral/src/inline-assets/icon-eliteservice-support-24-7.svg);
+			}
+		}
+	}
+}
+
+.bs-popover-auto[x-placement^="left"] .arrow.sber::before {
+	border-left-color: currentColor;
+}

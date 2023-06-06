@@ -359,7 +359,7 @@ body .hotellist {
 				> .elite {
 					grid-area: elite;
 					&.elite-service {
-						background: url("data-url:/otium-hotel/coral/inline-assets/elite-service.svg") center / contain no-repeat;
+						background: url("data-url:/otium-hotel/coral/src/inline-assets/elite-service.svg") center / contain no-repeat;
 					}
 				}
 				> .hotel-location {
@@ -486,6 +486,14 @@ body .hotellist {
 					grid-area: usps;
 					display: flex;
 					justify-content: space-between;
+					@media screen and (max-width: 700px) {
+					    display: grid;
+						grid-template-columns: 1fr 1fr;
+						gap: 1em;
+					}
+					@media screen and (max-width: @narrow-breakpoint) {
+					    display: flex;
+					}
 					>*{
 						display: flex;
 						flex-direction: column;
@@ -564,7 +572,7 @@ body .hotellist {
 				}
 				@media screen and (max-width: @narrow-breakpoint) {
 				    grid-template-columns: 3fr 2fr;
-					grid-template-rows: auto auto;
+					grid-template-rows: auto minmax(2.6em,max-content);
 					grid-gap: 1.5em 1.5em;
 					grid-template-areas:
 						"pricing coralbonus"
@@ -649,7 +657,7 @@ body .hotellist {
 						line-height: 1;
 						cursor: default;
 						@media screen and (max-width: @mobile-breakpoint) {
-							font-size: .9em;
+							font-size: .85em;
 							width: auto;
 						}
 						&:after {
@@ -696,6 +704,9 @@ body .hotellist {
 					line-height: 1.2;
 					font-size: 12px;
 					cursor: default;
+					@media screen and (max-width: @narrow-breakpoint) {
+						font-size: .9em;
+					}
 					&:before {
 						flex-shrink: 0;
 						content: '';
@@ -1028,4 +1039,5 @@ body .hotellist {
 @import "installment-info-popover";
 @import "additives-popover";
 @import "coralbonus-popover";
+@import "eliteservice-popover";
 @import "decorated-price";
