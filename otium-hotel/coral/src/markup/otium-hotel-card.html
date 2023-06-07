@@ -35,7 +35,7 @@
             <div class="usps">
                 {{ #usps }}
                 <div class="iconized {{{iconID}}}" title="{{ tooltip_markup }}">
-                    <div class="icon"></div>
+                    <div class="icon {{ #iconKlass }}{{ . }}{{ /iconKlass }}"></div>
                     <div class="label">{{{ label }}}</div>
                 </div>
                 {{ /usps }}

@@ -153,7 +153,7 @@ hotels:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
                         - Опытный персонал
-            -   label:  1 береговая линия
+            -   label:  1&nbsp;береговая линия
                 iconID: first_line
                 details:
                     list:
@@ -227,6 +227,7 @@ hotels:
                         - Большой выбор тренажеров
             -   label:  Доступная среда
                 iconID: accessible
+                iconKlass: wide
                 details:
                     heading: Гостям с ограниченными возможностями
                     list:
@@ -278,6 +279,7 @@ hotels:
                         - 30 минут до Древнего города Эфес
             -   label:  Доступная среда
                 iconID: accessible
+                iconKlass: wide
                 details:
                     heading: Гостям с ограниченными возможностями
                     list:
