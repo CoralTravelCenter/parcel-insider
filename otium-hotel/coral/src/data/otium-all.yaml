@@ -1,4 +1,6 @@
 logos:
+    -   id:     otium
+        base64: PHN2ZyB3aWR0aD0iOTgiIGhlaWdodD0iNjEiIHZpZXdCb3g9IjAgMCA5OCA2MSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzcwMF8yNzIxNSkiPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDFfNzAwXzI3MjE1KSI+CjxwYXRoIGQ9Ik0yNC45ODI0IDUyLjk2OTdINzIuMjI2MiIgc3Ryb2tlPSIjMjEzRjc0IiBzdHJva2Utd2lkdGg9IjAuMzEwNTEyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMzQuNTI1NyA0My45OTUxQzM0LjUyNTcgNDEuOTk0NiAzMi44NTEgNDAuNDMxOSAzMC45OTgxIDQwLjQzMTlDMjkuMTQ1MiA0MC40MzE5IDI3LjQ3MDUgNDEuOTg5NSAyNy40NzA1IDQzLjk5NTFDMjcuNDcwNSA0Ni4wMDA3IDI5LjE0NTIgNDcuNTU4NCAzMC45OTgxIDQ3LjU1ODRDMzIuODUxIDQ3LjU1ODQgMzQuNTI1NyA0Ni4wMDA3IDM0LjUyNTcgNDMuOTk1MVpNMzAuOTk4MSAzOC42Mjk5QzM0LjA4MjkgMzguNjI5OSAzNi41MzEzIDQwLjk3NjUgMzYuNTMxMyA0My45OTUxQzM2LjUzMTMgNDcuMDEzNyAzNC4wODc5IDQ5LjM2MDMgMzAuOTk4MSA0OS4zNjAzQzI3LjkwODIgNDkuMzYwMyAyNS40NjQ4IDQ3LjAxMzcgMjUuNDY0OCA0My45OTUxQzI1LjQ2NDggNDAuOTc2NSAyNy45MDgyIDM4LjYyOTkgMzAuOTk4MSAzOC42Mjk5WiIgZmlsbD0iIzIyM0M3NCIvPgo8cGF0aCBkPSJNNDAuMjM3NiA0MC42NDU3SDM3LjIxMzlWMzguODQzOEg0NS4xNTk5VjQwLjY0NTdINDIuMTQxNFY0OS4xNDY2SDQwLjIzNzZWNDAuNjQ1N1oiIGZpbGw9IiMyMjNDNzQiLz4KPHBhdGggZD0iTTQ4LjY4OSAzOC44NDM4SDQ2Ljc4NTJWNDkuMTUxN0g0OC42ODlWMzguODQzOFoiIGZpbGw9IiMyMjNDNzQiLz4KPHBhdGggZD0iTTUxLjA2NjQgMzguODQzOEg1Mi45NzAyVjQ0LjUzOTlDNTIuOTcwMiA0Ni40Mjg0IDU0LjE2NjQgNDcuNTU4NCA1NS42NDc3IDQ3LjU1ODRDNTcuMTI5IDQ3LjU1ODQgNTguMzI1MyA0Ni40Mjg0IDU4LjMyNTMgNDQuNTM5OVYzOC44NDM4SDYwLjIyOTFWNDQuOTQ3MUM2MC4yMjkxIDQ3LjMyOTQgNTguNDA2NyA0OS4zNjA0IDU1LjY0NzcgNDkuMzYwNEM1Mi44ODg4IDQ5LjM2MDQgNTEuMDY2NCA0Ny4zMjQzIDUxLjA2NjQgNDQuOTQ3MVYzOC44NDM4WiIgZmlsbD0iIzIyM0M3NCIvPgo8cGF0aCBkPSJNNjIuMzkyNiAzOC40NjE5TDY3LjI5OTcgNDMuMjU3TDcyLjIwNjggMzguNDYxOVY0OS4xNDY2SDcwLjMwM1Y0Mi45NDY1TDY3LjI5OTcgNDUuODgzN0w2NC4yOTY0IDQyLjk0NjVWNDkuMTQ2Nkg2Mi4zOTI2VjM4LjQ2MTlaIiBmaWxsPSIjMjIzQzc0Ii8+CjxwYXRoIGQ9Ik0zNC4xOTIgNTYuOTA5MlY1OC40OTc0SDM2LjE1MThWNTYuOTA5MkgzNi44Nzk3VjYwLjY4NjJIMzYuMTUxOFY1OS4wOTI5SDM0LjE5MlY2MC42ODYySDMzLjQ1OVY1Ni45MDkySDM0LjE5MloiIGZpbGw9IiMyMjNDNzQiLz4KPHBhdGggZD0iTTQwLjQzMTMgNTguNzk4MkM0MC40MzEzIDU5LjA0NzcgNDAuNDg3MyA1OS4yNzE2IDQwLjYwNDQgNTkuNDc1M0M0MC43MTY0IDU5LjY3MzggNDAuODc0MiA1OS44MzE2IDQxLjA3NzggNTkuOTM4NUM0MS4yODE0IDYwLjA1MDUgNDEuNTEwNSA2MC4xMDE0IDQxLjc2NSA2MC4xMDE0QzQyLjE1MTkgNjAuMTAxNCA0Mi40NzI2IDU5Ljk3OTIgNDIuNzIyIDU5LjczNDlDNDIuOTcxNCA1OS40OTA1IDQzLjA5ODcgNTkuMTggNDMuMDk4NyA1OC43OTMxQzQzLjA5ODcgNTguNTQzNyA0My4wNDI3IDU4LjMxNDcgNDIuOTMwNyA1OC4xMTYxQzQyLjgxODcgNTcuOTEyNSA0Mi42NjA5IDU3Ljc1OTggNDIuNDUyMiA1Ny42NDc4QzQyLjI0ODYgNTcuNTM1OCA0Mi4wMTk1IDU3LjQ4NDkgNDEuNzU5OSA1Ny40ODQ5QzQxLjUwMDMgNTcuNDg0OSA0MS4yNzEyIDU3LjU0MDkgNDEuMDY3NiA1Ny42NTI5QzQwLjg2NCA1Ny43NjQ5IDQwLjcwNjIgNTcuOTE3NiA0MC41OTQyIDU4LjExNjFDNDAuNDgyMiA1OC4zMTQ3IDQwLjQzMTMgNTguNTQzNyA0MC40MzEzIDU4Ljc5MzFNNDEuNzY1IDU2Ljg1MzdDNDIuMTU3IDU2Ljg1MzcgNDIuNTA4MiA1Ni45MzUyIDQyLjgxODcgNTcuMDk4MUM0My4xMjkyIDU3LjI2MSA0My4zNzg2IDU3LjQ5IDQzLjU2NyA1Ny43OTU0QzQzLjc1NTMgNTguMTAwOSA0My44NDcgNTguNDMxNyA0My44NDcgNTguNzkzMUM0My44NDcgNTkuMTU0NiA0My43NTUzIDU5LjQ3NTMgNDMuNTc3MiA1OS43NzU2QzQzLjM5OSA2MC4wNzU5IDQzLjE0NDUgNjAuMzEwMSA0Mi44Mjg5IDYwLjQ3ODFDNDIuNTEzMyA2MC42NDYgNDIuMTU3IDYwLjcyNzUgNDEuNzU5OSA2MC43Mjc1QzQxLjM2MjkgNjAuNzI3NSA0MS4wMTE2IDYwLjY0MDkgNDAuNjkwOSA2MC40NzNDNDAuMzcwMiA2MC4zMDUgNDAuMTIwOCA2MC4wNzA4IDM5Ljk0MjYgNTkuNzc1NkMzOS43NjQ1IDU5LjQ4MDMgMzkuNjcyOSA1OS4xNDk1IDM5LjY3MjkgNTguNzkzMUMzOS42NzI5IDU4LjQzNjggMzkuNzY0NSA1OC4xMjEyIDM5Ljk0MjYgNTcuODE1OEM0MC4xMjA4IDU3LjUxMDQgNDAuMzY1MSA1Ny4yNzYyIDQwLjY4MDcgNTcuMTAzMkM0MC45OTYzIDU2LjkzNTIgNDEuMzUyNyA1Ni44NDg2IDQxLjc1OTkgNTYuODQ4NiIgZmlsbD0iIzIyM0M3NCIvPgo8cGF0aCBkPSJNNDkuNTYwMiA1Ni45MDkyVjU3LjQ3OTNINDguMjE2M1Y2MC42ODYySDQ3LjQ4ODRWNTcuNDc5M0g0Ni4xNDQ1VjU2LjkwOTJINDkuNTYwMloiIGZpbGw9IiMyMjNDNzQiLz4KPHBhdGggZD0iTTU0LjY2OSA1Ni45MDkyVjU3LjQ3OTNINTIuOTU4NlY1OC40NzE5SDU0LjU5MjZWNTkuMDQySDUyLjk1ODZWNjAuMTE2MUg1NC43MDQ2VjYwLjY4NjJINTIuMjI1NlY1Ni45MDkySDU0LjY2OVoiIGZpbGw9IiMyMjNDNzQiLz4KPHBhdGggZD0iTTU4LjIzMjggNTYuOTA5MlY2MC4xMTYxSDYwLjA2NTNWNjAuNjg2Mkg1Ny41MDQ5VjU2LjkwOTJINTguMjMyOFoiIGZpbGw9IiMyMjNDNzQiLz4KPHBhdGggZD0iTTYzLjc3NjEgNTYuODU4NEM2NC4xNDI3IDU2Ljg1ODQgNjQuNDk5IDU2Ljk1IDY0Ljg0IDU3LjEzMzNWNTcuNzc5OEM2NC40NDgxIDU3LjU0NTYgNjQuMTAxOSA1Ny40Mjg1IDYzLjgwMTYgNTcuNDI4NUM2My42MTgzIDU3LjQyODUgNjMuNDc1OCA1Ny40NjQyIDYzLjM2ODkgNTcuNTM1NEM2My4yNjcxIDU3LjYwNjcgNjMuMjExMSA1Ny43MDM0IDYzLjIxMTEgNTcuODIwNUM2My4yMTExIDU3Ljk2MyA2My4zMDc4IDU4LjA5NTQgNjMuNTAxMyA1OC4yMTI0QzYzLjU1NzMgNTguMjQ4MSA2My43NjA5IDU4LjM0OTkgNjQuMTI3NCA1OC41MTc5QzY0LjQzNzkgNTguNjY1NSA2NC42NjE5IDU4LjgyODQgNjQuNzk5MyA1OS4wMDY1QzY0LjkzNjggNTkuMTg0NyA2NS4wMDI5IDU5LjM5ODUgNjUuMDAyOSA1OS42NDc5QzY1LjAwMjkgNTkuOTczNyA2NC44ODU4IDYwLjIzMzMgNjQuNjUxNyA2MC40MzE4QzY0LjQxNzUgNjAuNjMwMyA2NC4xMTcyIDYwLjczMjIgNjMuNzQ1NiA2MC43MzIyQzYzLjUwNjQgNjAuNzMyMiA2My4yOTc3IDYwLjcwNjcgNjMuMTI0NiA2MC42NTA3QzYyLjk1MTUgNjAuNTk5OCA2Mi43NTMgNjAuNTAzMSA2Mi41MzkyIDYwLjM3NThWNTkuNjU4MUM2Mi45NDEzIDU5Ljk5NDEgNjMuMzIzMSA2MC4xNjIgNjMuNjc5NCA2MC4xNjJDNjMuODU3NiA2MC4xNjIgNjQuMDAwMSA2MC4xMjEzIDY0LjExMjEgNjAuMDQ1QzY0LjIyNDEgNTkuOTY4NiA2NC4yNzUgNTkuODY2OCA2NC4yNzUgNTkuNzM0NEM2NC4yNzUgNTkuNTYxNCA2NC4xNzgzIDU5LjQxODggNjMuOTg5OSA1OS4zMDY5QzYzLjgzMjEgNTkuMjIwMyA2My42Mjg1IDU5LjExODUgNjMuMzc0IDU4Ljk5NjNDNjMuMDc4OCA1OC44NTg5IDYyLjg1NDggNTguNzAxMSA2Mi43MDcyIDU4LjUyMjlDNjIuNTU5NSA1OC4zNDQ4IDYyLjQ4ODMgNTguMTM2MSA2Mi40ODgzIDU3Ljg5NjhDNjIuNDg4MyA1Ny41ODEyIDYyLjYwNTQgNTcuMzI2NyA2Mi44NDQ2IDU3LjEzODRDNjMuMDc4OCA1Ni45NSA2My4zOTQ0IDU2Ljg1ODQgNjMuNzgxMiA1Ni44NTg0IiBmaWxsPSIjMjIzQzc0Ii8+CjxwYXRoIGQ9Ik0zNy4zOTg0IDUuODQzMTJDNDAuNTE4OCAxLjY2Mzk0IDQ3LjgxMzQgLTAuNTc1ODEzIDUzLjU1MDIgMS41NTcwNUM1OS42ODQxIDMuODQyNjEgNjIuMzkyMiAxMC4xMDg4IDYxLjIzNjcgMTQuOTA5QzU5LjQ4MDUgMjIuMjA4NiA1My4zMTYgMjIuODM0NyA1My4zMTYgMjIuODM0N0M1Ny4zMzc0IDIxLjcxOTkgNjAuMTY3NyAxNi42Mzk4IDU5LjIxMDcgMTEuNDQyNUM1OC4zMTQ4IDYuNjAxNTkgNTQuMDEzNCAyLjM4Njc3IDQ2LjkyMjUgMi4yODQ5N0M0MS4xMzQ4IDIuMjAzNTIgMzcuMzk4NCA1LjgzODAzIDM3LjM5ODQgNS44MzgwMyIgZmlsbD0iIzAwODY0MSIvPgo8cGF0aCBkPSJNNDMuNDcxMiAzMC43NTU0QzM4LjI3MzkgMjkuMTU3IDMzLjUzNDcgMjIuNzc4OCAzMy42MjEzIDE2LjQwNTZDMzMuNzEyOSA5LjU4OTY2IDM4LjkyMDQgNC43NDM2NCA0NC4wMzExIDQuMTk4OTdDNTEuODA5MiAzLjM2OTI0IDU0LjU3MzMgOS4yMDI3OSA1NC41NzMzIDkuMjAyNzlDNTIuMDczOSA1LjY0OTcyIDQ2LjEwMjkgNC42NDE4MyA0MS4zNDM0IDcuNDAwOEMzNi45MDk3IDkuOTcxNDMgMzQuMjc3OSAxNS42NjI0IDM2LjY1NTEgMjIuNjU2NkMzOC41OTQ2IDI4LjM2MjkgNDMuNDcxMiAzMC43NTU0IDQzLjQ3MTIgMzAuNzU1NFoiIGZpbGw9IiMwMEE2NTEiLz4KPHBhdGggZD0iTTYxLjA4OTYgMjYuMzU2OEM1OC4wODYzIDMwLjM3ODIgNTEuMDcxOCAzMi41MzE0IDQ1LjU1MzggMzAuNDhDMzkuNjU0MSAyOC4yODYxIDM3LjA1MjkgMjIuMjU0IDM4LjE1NzUgMTcuNjM3MUMzOS44NDc1IDEwLjYxMjQgNDUuNzc3OCAxMC4wMTE3IDQ1Ljc3NzggMTAuMDExN0M0MS45MDkxIDExLjA4NTggMzkuMTg1NyAxNS45Njc0IDQwLjExMjIgMjAuOTY2MkM0MC45NzI1IDI1LjYyMzggNDUuMTEwOSAyOS42NzU4IDUxLjkzMjEgMjkuNzcyNUM1Ny40OTU4IDI5Ljg0ODggNjEuMDg5NiAyNi4zNTE4IDYxLjA4OTYgMjYuMzUxOCIgZmlsbD0iIzhGQzczRSIvPgo8cGF0aCBkPSJNNjAuNjkxNSA1LjI5ODgzQzY0LjQ1MzMgOC42MjI4MyA2Ni4wMTYgMTUuNzk1MSA2My41MTE1IDIxLjEyNDdDNjAuODM0IDI2LjgyNTkgNTQuNjA4NSAyOC45MTgxIDUwLjA5ODQgMjcuNDI2NkM0My4yMzY2IDI1LjE2MTQgNDMuMTM0OCAxOS4yMDA2IDQzLjEzNDggMTkuMjAwNkM0My44ODMxIDIzLjE0NTYgNDguNTI1NSAyNi4yNjYgNTMuNTgwMiAyNS43NTdDNTguMjg4OCAyNS4yODM2IDYyLjY3MTYgMjEuNTAxNCA2My4zMzM0IDE0LjcxMDlDNjMuODczIDkuMTcyNTkgNjAuNjg2NCA1LjI5ODgzIDYwLjY4NjQgNS4yOTg4MyIgZmlsbD0iI0MxRDgyRiIvPgo8L2c+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfNzAwXzI3MjE1Ij4KPHJlY3Qgd2lkdGg9Ijk3IiBoZWlnaHQ9IjYwIiBmaWxsPSJ3aGl0ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4xMDM1MTYgMC45ODczMDUpIi8+CjwvY2xpcFBhdGg+CjxjbGlwUGF0aCBpZD0iY2xpcDFfNzAwXzI3MjE1Ij4KPHJlY3Qgd2lkdGg9IjQ3LjU1OTQiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNC44MjQyIDAuNzM3MzA1KSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=
     -   id:     otium_family
         base64: PHN2ZyB3aWR0aD0iOTgiIGhlaWdodD0iNjEiIHZpZXdCb3g9IjAgMCA5OCA2MSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUuNTYzNiAzOC4wMjE3QzguNjY1NTUgMzguMDIxNyAxMS4xMjcyIDQwLjM2NzYgMTEuMTI3MiA0My4zODc1QzExLjEyNzIgNDYuNDA3NSA4LjY2ODI0IDQ4Ljc1MzQgNS41NjM2IDQ4Ljc1MzRDMi40NTg5NiA0OC43NTM0IDAgNDYuNDA3NSAwIDQzLjM4NzVDMCA0MC4zNjc2IDIuNDU4OTYgMzguMDIxNyA1LjU2MzYgMzguMDIxN1pNOS4xMTIxNCA0My4zODc1QzkuMTEyMTQgNDEuMzg0MSA3LjQyOCAzOS44MjczIDUuNTYzNiAzOS44MjczQzMuNjk5MiAzOS44MjczIDIuMDE1MDYgNDEuMzg2NyAyLjAxNTA2IDQzLjM4NzVDMi4wMTUwNiA0NS4zODg0IDMuNjk5MiA0Ni45NDc4IDUuNTYzNiA0Ni45NDc4QzcuNDI4IDQ2Ljk0NzggOS4xMTIxNCA0NS4zODg0IDkuMTEyMTQgNDMuMzg3NVoiIGZpbGw9IiMyMjNENzQiLz4KPHBhdGggZD0iTTE0Ljg1MzggNDAuMDQxNEgxMS44MTY0VjM4LjIzNThIMTkuODA2N1Y0MC4wNDE0SDE2Ljc2OTNWNDguNTQyMkgxNC44NTM4VjQwLjA0MTRaIiBmaWxsPSIjMjIzRDc0Ii8+CjxwYXRoIGQ9Ik0yMS40Mzk1IDM4LjIzNThIMjMuMzU1VjQ4LjU0MjJIMjEuNDM5NVYzOC4yMzU4WiIgZmlsbD0iIzIyM0Q3NCIvPgo8cGF0aCBkPSJNMjUuNzQ2MSAzOC4yMzU4SDI3LjY2MTZWNDMuOTMwN0MyNy42NjE2IDQ1LjgxOTEgMjguODY2OSA0Ni45NTA2IDMwLjM1MTkgNDYuOTUwNkMzMS44MzcgNDYuOTUwNiAzMy4wNDIzIDQ1LjgxOTEgMzMuMDQyMyA0My45MzA3VjM4LjIzNThIMzQuOTU3OFY0NC4zMzk5QzM0Ljk1NzggNDYuNzIwNiAzMy4xMjU3IDQ4Ljc1MzUgMzAuMzUxOSA0OC43NTM1QzI3LjU3ODIgNDguNzUzNSAyNS43NDYxIDQ2LjcxNzkgMjUuNzQ2MSA0NC4zMzk5VjM4LjIzNThaIiBmaWxsPSIjMjIzRDc0Ii8+CjxwYXRoIGQ9Ik0zNy4xMzY3IDM3Ljg1ODZMNDIuMDczNSA0Mi42NTJMNDcuMDEwMiAzNy44NTg2VjQ4LjU0MjFINDUuMDk0N1Y0Mi4zMzkxTDQyLjA3MzUgNDUuMjc2MUwzOS4wNTIyIDQyLjMzOTFWNDguNTQyMUgzNy4xMzY3VjM3Ljg1ODZaIiBmaWxsPSIjMjIzRDc0Ii8+CjxwYXRoIGQ9Ik00OS40NDgyIDM4LjIzNThINTYuNDk2OVYzOS4yMzYySDUwLjQ1NDRWNDIuOTMwM0g1NS4zMjM5VjQzLjg4MjVINTAuNDU0NFY0OC41NDIySDQ5LjQ0ODJWMzguMjM1OFoiIGZpbGw9IiMxNTgyOTQiLz4KPHBhdGggZD0iTTU3LjQxOTkgNDIuMTkxOUM1Ny40MTk5IDM5Ljc5NTIgNTkuMTIwMiAzOC4wMjQ0IDYxLjU3OTIgMzguMDI0NEM2NC4wMzgxIDM4LjAyNDQgNjUuNzIyMyAzOS43OTc5IDY1LjcyMjMgNDIuMTkxOVY0OC41NDIxSDY0LjcxNjFWNDYuMjEyMkg1OC40MjYxVjQ4LjU0MjFINTcuNDE5OVY0Mi4xOTE5Wk02NC43MTYxIDQ1LjIyNzlWNDIuNDg2MUM2NC43MTYxIDQwLjU5NzcgNjMuNjkzOCAzOS4wMjIxIDYxLjU3OTIgMzkuMDIyMUM1OS40NjQ2IDM5LjAyMjEgNTguNDI2MSA0MC41OTc3IDU4LjQyNjEgNDIuNDg2MVY0NS4yMjc5SDY0LjcxNjFaIiBmaWxsPSIjMTU4Mjk0Ii8+CjxwYXRoIGQ9Ik02OC4wODQgMzcuODQyNUw3Mi41NzQxIDQyLjQzOEw3Ny4wNDgyIDM3Ljg0MjVWNDguNTQyMUg3Ni4wNDJWNDAuMzE5NUw3Mi41NzY4IDQzLjk2MjdMNjkuMDkyOSA0MC4zMTk1VjQ4LjU0MjFINjguMDg2N1YzNy44NDI1SDY4LjA4NFoiIGZpbGw9IiMxNTgyOTQiLz4KPHBhdGggZD0iTTc5LjU4NzkgMzguMjM1OEg4MC41OTQxVjQ4LjU0MjJINzkuNTg3OVYzOC4yMzU4WiIgZmlsbD0iIzE1ODI5NCIvPgo8cGF0aCBkPSJNODMuMjAxMiAzOC4yMzU4SDg0LjIwNzRWNDcuNTQxOEg5MC4xOTg3VjQ4LjU0MjJIODMuMjAxMlYzOC4yMzU4WiIgZmlsbD0iIzE1ODI5NCIvPgo8cGF0aCBkPSJNOTIuNjQzOSA0My45MTQ2TDg5LjMxMDUgMzguMjM1OEg5MC40NDg2TDkzLjE1NSA0My4wNzc0TDk1Ljg2MTUgMzguMjM1OEg5Ni45OTk1TDkzLjY0NzQgNDMuOTE0NlY0OC41NDIySDkyLjY0MTJWNDMuOTE0Nkg5Mi42NDM5WiIgZmlsbD0iIzE1ODI5NCIvPgo8cGF0aCBkPSJNMzIuOTMyNCA1Ni40NzA1VjU4LjA0MDZIMzQuODgwMlY1Ni40NzA1SDM1LjYwNjZWNjAuMjAxOUgzNC44ODAyVjU4LjYyNjRIMzIuOTMyNFY2MC4yMDE5SDMyLjIwNjFWNTYuNDcwNUgzMi45MzI0WiIgZmlsbD0iIzIyM0Q3NCIvPgo8cGF0aCBkPSJNNDAuNzcxNSA1Ni40MjI0QzQxLjE1ODkgNTYuNDIyNCA0MS41MDg3IDU2LjUwMjYgNDEuODIwNyA1Ni42NjA0QzQyLjEzMDEgNTYuODIwOSA0Mi4zODAzIDU3LjA0ODMgNDIuNTYzMyA1Ny4zNTA1QzQyLjc0NjIgNTcuNjUyOCA0Mi44NDA0IDU3Ljk3OTEgNDIuODQwNCA1OC4zMzc2QzQyLjg0MDQgNTguNjk2IDQyLjc1MTYgNTkuMDA5IDQyLjU3MTMgNTkuMzA4NkM0Mi4zOTExIDU5LjYwODEgNDIuMTQzNiA1OS44MzgyIDQxLjgyODggNjAuMDA0QzQxLjUxNCA2MC4xNjk5IDQxLjE2MTYgNjAuMjUwMSA0MC43NjYxIDYwLjI1MDFDNDAuMzcwNyA2MC4yNTAxIDQwLjAyMzYgNjAuMTY3MiAzOS43MDYxIDU5Ljk5ODdDMzkuMzg4NyA1OS44MzAyIDM5LjE0MTIgNTkuNjAwMSAzOC45NjM2IDU5LjMwODZDMzguNzg2IDU5LjAxNyAzOC42OTczIDU4LjY5MzMgMzguNjk3MyA1OC4zMzc2QzM4LjY5NzMgNTcuOTgxOCAzOC43ODYgNTcuNjc0MiAzOC45NjM2IDU3LjM3NDZDMzkuMTQxMiA1Ny4wNzUgMzkuMzg2IDU2LjgzOTYgMzkuNjk4MSA1Ni42NzM4QzQwLjAxMDEgNTYuNTA4IDQwLjM2OCA1Ni40MjUgNDAuNzcxNSA1Ni40MjVWNTYuNDIyNFpNMzkuNDQ3OSA1OC4zMzc2QzM5LjQ0NzkgNTguNTg2MyAzOS41MDQ0IDU4LjgwODQgMzkuNjE3NCA1OS4wMDYzQzM5LjczMDQgNTkuMjA0MiAzOS44ODY0IDU5LjM1NjcgNDAuMDg4MiA1OS40NjY0QzQwLjI4OTkgNTkuNTc2MSA0MC41MTg2IDU5LjYyOTYgNDAuNzcxNSA1OS42Mjk2QzQxLjE1NjIgNTkuNjI5NiA0MS40NzM3IDU5LjUwOTIgNDEuNzIxMiA1OS4yNjg0QzQxLjk2ODcgNTkuMDI3NyA0Mi4wOTI1IDU4LjcxNzQgNDIuMDkyNSA1OC4zNDAzQzQyLjA5MjUgNTguMDk0MiA0Mi4wMzYgNTcuODY5NSA0MS45MjU3IDU3LjY3MTVDNDEuODE1NCA1Ny40NzM2IDQxLjY1NjYgNTcuMzE4NCA0MS40NTIyIDU3LjIxMTVDNDEuMjQ3NyA1Ny4xMDE4IDQxLjAxOSA1Ny4wNDgzIDQwLjc2NjEgNTcuMDQ4M0M0MC41MTMyIDU3LjA0ODMgNDAuMjgxOSA1Ny4xMDQ1IDQwLjA4MDEgNTcuMjExNUMzOS44NzU2IDU3LjMyMTEgMzkuNzE5NiA1Ny40NzM2IDM5LjYxMiA1Ny42NzE1QzM5LjUwMTcgNTcuODY5NSAzOS40NDc5IDU4LjA5MTUgMzkuNDQ3OSA1OC4zNDAzVjU4LjMzNzZaIiBmaWxsPSIjMjIzRDc0Ii8+CjxwYXRoIGQ9Ik00OS4wNDggNTYuNDcwNVY1Ny4wMzQ5SDQ3LjcxNjNWNjAuMjAxOUg0Ni45ODk5VjU3LjAzNDlINDUuNjU4MlY1Ni40NzA1SDQ5LjA0OFoiIGZpbGw9IiMyMjNENzQiLz4KPHBhdGggZD0iTTU0LjQzODQgNTYuNDcwNVY1Ny4wMzQ5SDUyLjczODFWNTguMDE2NUg1NC4zNjU4VjU4LjU4MDlINTIuNzM4MVY1OS42NDAySDU0LjQ3NjFWNjAuMjA0Nkg1Mi4wMTE3VjU2LjQ3MzFINTQuNDM4NFY1Ni40NzA1WiIgZmlsbD0iIzIyM0Q3NCIvPgo8cGF0aCBkPSJNNTguMjkzOCA1Ni40NzA1VjU5LjYzNzVINjAuMTE1MVY2MC4yMDE5SDU3LjU2NzRWNTYuNDcwNUg1OC4yOTM4WiIgZmlsbD0iIzIyM0Q3NCIvPgo8cGF0aCBkPSJNNjQuMTE2IDU2LjQyMjRDNjQuNDgxOSA1Ni40MjI0IDY0LjgzNDQgNTYuNTEzMyA2NS4xNzA2IDU2LjY5NTJWNTcuMzM3MkM2NC43ODMyIDU3LjEwNDUgNjQuNDM2MiA1Ni45ODY4IDY0LjEzNzYgNTYuOTg2OEM2My45NTQ2IDU2Ljk4NjggNjMuODEyIDU3LjAyMTUgNjMuNzA5OCA1Ny4wOTExQzYzLjYwNzYgNTcuMTYwNiA2My41NTY0IDU3LjI1NDMgNjMuNTU2NCA1Ny4zNzE5QzYzLjU1NjQgNTcuNTEzNyA2My42NTMzIDU3LjY0MjEgNjMuODQ0MyA1Ny43NjI1QzYzLjg5ODEgNTcuNzk3MyA2NC4xMDUzIDU3Ljg5ODkgNjQuNDY1OCA1OC4wNjIxQzY0Ljc3MjUgNTguMjA2NSA2NC45OTU4IDU4LjM2NyA2NS4xMzMgNTguNTQzNUM2NS4yNzAyIDU4LjcyMDEgNjUuMzM3NCA1OC45MzE0IDY1LjMzNzQgNTkuMTgwMkM2NS4zMzc0IDU5LjUwMTIgNjUuMjIxOCA1OS43NjA2IDY0Ljk5MDQgNTkuOTU1OUM2NC43NTkgNjAuMTUzOCA2NC40NTc3IDYwLjI1MDEgNjQuMDg5MSA2MC4yNTAxQzYzLjg0OTcgNjAuMjUwMSA2My42NDI1IDYwLjIyMzQgNjMuNDcwNCA2MC4xNzI2QzYzLjI5ODIgNjAuMTIxNyA2My4xMDQ1IDYwLjAzMDggNjIuODg5MiA1OS45MDI0VjU5LjE5MDlDNjMuMjkwMSA1OS41MjI2IDYzLjY2OTQgNTkuNjg4NCA2NC4wMjE5IDU5LjY4ODRDNjQuMTk5NCA1OS42ODg0IDY0LjM0MiA1OS42NTA5IDY0LjQ1MjMgNTkuNTczNEM2NC41NjI2IDU5LjQ5NTggNjQuNjE2NCA1OS4zOTQyIDY0LjYxNjQgNTkuMjY4NEM2NC42MTY0IDU5LjA5NDYgNjQuNTIyMyA1OC45NTU1IDY0LjMzMTMgNTguODQ1OEM2NC4xNzI1IDU4Ljc2MDIgNjMuOTcwOCA1OC42NTg2IDYzLjcyMDYgNTguNTM4MkM2My40MjQ2IDU4LjQwNDUgNjMuMjA0IDU4LjI0OTMgNjMuMDU4NyA1OC4wNzAxQzYyLjkxMzUgNTcuODkwOSA2Mi44NDA4IDU3LjY4NDkgNjIuODQwOCA1Ny40NDk1QzYyLjg0MDggNTcuMTM2NiA2Mi45NTkyIDU2Ljg4NzggNjMuMTkzMyA1Ni43MDA1QzYzLjQyNzMgNTYuNTEzMyA2My43MzY3IDU2LjQyMjQgNjQuMTI0MSA1Ni40MjI0SDY0LjExNloiIGZpbGw9IiMyMjNENzQiLz4KPHBhdGggZD0iTTAuMDM2MTMyOCA1Mi40OThIOTYuOTQ3MiIgc3Ryb2tlPSIjMjIzRDc0IiBzdHJva2Utd2lkdGg9IjAuNDczNTQxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMzcuMTExMSA1LjMzNzI2QzQwLjIxMyAxLjE2OTc5IDQ3LjQ2NjIgLTEuMDU4MzkgNTMuMTY3IDEuMDY4MTRDNTkuMjY1OSAzLjM0MTggNjEuOTU2MyA5LjU4NzY1IDYwLjgwNzUgMTQuMzY3N0M1OS4wNjE1IDIxLjY0MDcgNTIuOTMyOSAyMi4yNjEzIDUyLjkzMjkgMjIuMjYxM0M1Ni45MzA3IDIxLjE1MTIgNTkuNzQ3NSAxNi4wOTMgNTguNzg5OCAxMC45MTcxQzU3Ljg5OTMgNi4wOTQyNSA1My42MjQzIDEuODk3MzYgNDYuNTc1NyAxLjc5NTcxQzQwLjgyMzcgMS43MTI3OSAzNy4xMDg0IDUuMzM3MjYgMzcuMTA4NCA1LjMzNzI2IiBmaWxsPSIjMDA4NjQxIi8+CjxwYXRoIGQ9Ik00My4xNDc4IDMwLjE0NjdDMzcuOTg1IDI4LjU1MjUgMzMuMjY4OSAyMi4yMDIzIDMzLjM1NzcgMTUuODU0OEMzMy40NTE4IDkuMDY1OTcgMzguNjI1MyA0LjIzNzggNDMuNzA3NCAzLjY5NDhDNTEuNDM2NyAyLjg2ODI2IDU0LjE4NjIgOC42NzU0NCA1NC4xODYyIDguNjc1NDRDNTEuNzAzIDUuMTMzODkgNDUuNzY1NSA0LjEzMzQ4IDQxLjAzMzIgNi44ODMyN0MzNi42MjM3IDkuNDQzMTMgMzQuMDA4NyAxNS4xMTEyIDM2LjM3MzUgMjIuMDc2NkMzOC4zMDI1IDI3Ljc1ODEgNDMuMTQ3OCAzMC4xNDQxIDQzLjE0NzggMzAuMTQ0MSIgZmlsbD0iIzAwQTY1MSIvPgo8cGF0aCBkPSJNNjAuNjYxOSAyNS43NzA4QzU3LjY3ODQgMjkuNzc3OCA1MC43MDIzIDMxLjkyMDQgNDUuMjE2OCAyOS44NzY4QzM5LjM1MTggMjcuNjkxNCAzNi43NjM3IDIxLjY4MzYgMzcuODY2OCAxNy4wODU1QzM5LjU0NTUgMTAuMDkwNiA0NS40NDAxIDkuNDk0MTQgNDUuNDQwMSA5LjQ5NDE0QzQxLjU5NTYgMTAuNTYxNCAzOC44ODY0IDE1LjQyOTcgMzkuODA2NSAyMC40MDVDNDAuNjYyIDI1LjA0MzIgNDQuNzcyOSAyOS4wNzk2IDUxLjU1NTIgMjkuMTc1OUM1Ny4wODY1IDI5LjI1MzUgNjAuNjU5MyAyNS43NzA4IDYwLjY1OTMgMjUuNzcwOCIgZmlsbD0iIzhGQzczRSIvPgo8cGF0aCBkPSJNNjAuMjYzNyA0Ljc5MTQ5QzY0LjAwMzIgOC4xMDMgNjUuNTU1NiAxNS4yNDc2IDYzLjA2NyAyMC41NTQ2QzYwLjQwNjMgMjYuMjMwNyA1NC4yMTg1IDI4LjMxNzEgNDkuNzM2NCAyNi44MzI1QzQyLjkxOTEgMjQuNTc0OSA0Mi44MTE1IDE4LjYzOTQgNDIuODExNSAxOC42Mzk0QzQzLjU1NjcgMjIuNTY2MSA0OC4xNzA3IDI1LjY3NDMgNTMuMTk2MiAyNS4xNjg4QzU3Ljg4MDEgMjQuNjk4IDYyLjIzNTcgMjAuOTI2NCA2Mi44OTQ4IDE0LjE2NDNDNjMuNDMwMiA4LjY0NiA2MC4yNjM3IDQuNzg4ODIgNjAuMjYzNyA0Ljc4ODgyIiBmaWxsPSIjQzFEODJGIi8+Cjwvc3ZnPgo=
     -   id:     otium_park
@@ -11,6 +13,267 @@ logos:
         src:    "https://cdn.coral.ru/content/insider/russia/otium-hotels/logo-xanadu-high-class.png"
 
 hotels:
+    -   name:   OTIUM FAMILY ECO CLUB
+        id:     453
+        logoID: otium_family
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-eco-club-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-eco-club-mobile.jpg'
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: "#63A650"
+            - label: Идеален для детей
+              fore: black
+              back: white
+        usps:
+            -   label:  Стандарт CGH
+                icon: CGH
+                details:
+                    heading: Coral Group Hotels & Resorts
+                    list:
+                        - Международный уровень сервиса
+                        - Надежные стандарты гостеприимства
+                        - Регулярные проверки качества
+                        - Опытный персонал
+            -   label:  Концепция SFC
+                icon: family
+                details:
+                    heading: Концепция Sun Family Club
+                    list:
+                        - Мини-клуб Kids World 3350&nbsp;м²
+                        - Номера для больших семей
+                        - Бесплатная стирка детского белья до 5&nbsp;кг в&nbsp;неделю
+            -   label: Развлечения и&nbsp;анимация
+                icon: club
+                details:
+                    list:
+                        - Волейбол, теннис, фитнес-центр
+                        - Караоке, шоу, представления
+                        - Аренда велосипедов
+            -   label:  Доступная среда
+                icon: accessible
+                iconKlass: wide
+                details:
+                    heading: Гостям с ограниченными возможностями
+                    list:
+                        - 5 оборудованных номеров и&nbsp;пандусы
+                        - Комфорт и внимание персонала
+                        - Предоставляется кресло-коляска
+            -   label: Бережно к природе
+                icon: nature_care
+                details:
+                    list:
+                        - Экологичная концепция
+                        - Посадка цветов и&nbsp;деревьев
+                        - Экологические игры с&nbsp;детьми
+
+    -   name:   OTIUM SEALIGHT BEACH RESORT
+        id:     9408
+        logoID: otium
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-sealight-beach-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-sealight-beach-desktop.jpg'
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: "#63A650"
+            - label: Живописный отель
+              fore: black
+              back: white
+        usps:
+            -   label:  Стандарт CGH
+                icon: CGH
+                details:
+                    heading: Coral Group Hotels & Resorts
+                    list:
+                        - Международный уровень сервиса
+                        - Надежные стандарты гостеприимства
+                        - Регулярные проверки качества
+                        - Опытный персонал
+            -   label:  Отличный пляж
+                icon: beach
+                details:
+                    list:
+                        - Песчаный пляж 300&nbsp;м
+                        - Награжден «Голубым&nbsp;флагом»
+                        - Бесплатный шаттл
+            -   label: Живописная территория
+                icon: nature
+                details:
+                    list:
+                        - В окружении соснового леса
+                        - Лазурного цвета Эгейское море
+                        - Виден греческий остров Самос
+            -   label: Удобное расположение
+                icon: downtown
+                details:
+                    list:
+                        - Находится на холме — шикарный вид на&nbsp;море
+                        - Недалеко до баров и&nbsp;магазинов
+                        - 5 км до города Кушадасы
+            -   label: Мнообразие бассейнов
+                icon: pool
+                details:
+                    list:
+                        - 6 бассейнов для детей и&nbsp;взрослых
+                        - Бассейн с морской водой
+                        - 7 водных горок
+
+    -   name:   OTIUM FAMILY CLUB MARINE BEACH
+        id:     30559
+        logoID: otium_family
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-club-marine-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-club-marine-mobile.jpg'
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: "#63A650"
+            - label: Цена / качество
+              fore: black
+              back: white
+        usps:
+            -   label:  Стандарт CGH
+                icon: CGH
+                details:
+                    heading: Coral Group Hotels & Resorts
+                    list:
+                        - Международный уровень сервиса
+                        - Надежные стандарты гостеприимства
+                        - Регулярные проверки качества
+                        - Опытный персонал
+            -   label: Морская тематика
+                icon: sea_theme
+                details:
+                    list:
+                        - Пиратский аквапарк
+                        - Номера в стиле кают корабля
+                        - Атмосферный отель
+            -   label: Детский клуб
+                icon: fancy
+                details:
+                    list:
+                        - Мини-клуб для детей 4-12&nbsp;лет
+                        - Игровые автоматы
+                        - Крытая площадка на&nbsp;пляже
+            -   label: Доступная среда
+                icon: accessible
+                details:
+                    heading: Гостям с ограниченными возможностями
+                    list:
+                        - 3 оборудованных номера и&nbsp;пандусы
+                        - Комфорт и внимание персонала
+                        - Предоставляется кресло-коляска
+            -   label: Новый отель
+                icon: new
+
+
+    -   name:   SEVEN SEAS HOTEL LIFE
+        id:     11754
+        logoID: seven_seas
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-life-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-life-mobile.jpg'
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: "#63A650"
+            - label: Семейный отдых
+              fore: black
+              back: white
+        usps:
+            -   label:  Стандарт CGH
+                icon: CGH
+                details:
+                    heading: Coral Group Hotels & Resorts
+                    list:
+                        - Международный уровень сервиса
+                        - Надежные стандарты гостеприимства
+                        - Регулярные проверки качества
+                        - Опытный персонал
+            -   label: Живописная территория
+                icon: nature
+                details:
+                    list:
+                        - В окружении Таврских гор
+                        - Утопает в соснах и зелени
+                        - Собственный пляж с «Голубым&nbsp;флагом»
+            -   label: Детский клуб Kids&nbsp;World
+                icon: fancy
+                details:
+                    list:
+                        - Площадь 1850&nbsp;м²
+                        - Программа Sun Family Club
+                        - 3 возрастные группы 0-16&nbsp;лет
+                        - Baby-Zone и&nbsp;комната Playstation
+            -   label: Развлечения и анимация
+                icon: club
+                details:
+                    list:
+                        - Спорт, зумба и водная гимнастика
+                        - Живая музыка и шоу-программы
+                        - Магазины и клубы Кемера в&nbsp;15&nbsp;мин езды
+            -   label: Высокий рейтинг
+                icon: rating
+                details:
+                    list:
+                        - Рейтинг 5,0 на tripadvisor
+                        - 6000 довольных отзывов в&nbsp;интернете
+
+    -   name:   SEVEN SEAS GRAVEL SELECT
+        id:     31177
+        logoID: seven_seas
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-gravel-select-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-gravel-select-mobile.jpg'
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: "#63A650"
+            - label: Цена / качество
+              fore: black
+              back: white
+        usps:
+            -   label:  Стандарт CGH
+                icon: CGH
+                details:
+                    heading: Coral Group Hotels & Resorts
+                    list:
+                        - Международный уровень сервиса
+                        - Надежные стандарты гостеприимства
+                        - Регулярные проверки качества
+                        - Опытный персонал
+            -   label: Отличный пляж
+                icon: beach
+                details:
+                    list:
+                        - 1 береговая линия
+                        - Мелкая галька
+                        - Плавный заход в&nbsp;воду
+            -   label: Детский клуб
+                icon: fancy
+                details:
+                    list:
+                        - Русскоговорящие педагоги
+                        - Программа Sun Family Club
+                        - Занятия и игры для детей 4-12&nbsp;лет
+                        - Детская площадка и&nbsp;бассейны
+            -   label: Удобное расположение
+                icon: downtown
+                details:
+                    list:
+                        - 10 мин до центра Кемера
+                        - Близко к магазинам и&nbsp;барам
+                        - 15 мин до города Идирос 4&nbsp;века
+            -   label: Разнообразное питание
+                icon: AI
+                details:
+                    list:
+                        - «Ультра все включено» 24&nbsp;часа
+                        - 5 а-ля карт с разными кухнями мира
+                        - Полное обновление меню
+
     -   name:   XANADU MAKADI BAY
         id:     49757
         logoID: xanadu
