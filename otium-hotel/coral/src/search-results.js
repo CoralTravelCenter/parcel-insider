@@ -306,11 +306,9 @@ function setupHotelItem($hotel_item) {
 
 $('head').append(`<style>${ css }</style>`);
 
-let used_icons_ids = [];
 let $hotel_items = $('.hotellist [data-hotelid]').filter(function (idx, el) {
     let hotel_data = _.find(hotels_data.hotels, { id: Number($(el).attr('data-hotelid')) });
     if (hotel_data) {
-        used_icons_ids = used_icons_ids.concat(hotel_data.usps.map(usp => usp.iconID));
         const logo = _.find(hotels_data.logos, { id: hotel_data.logoID });
         if (logo.base64) hotel_data.logo_base64 = logo.base64;
         if (logo.src) hotel_data.logo_src = logo.src;
@@ -321,14 +319,6 @@ let $hotel_items = $('.hotellist [data-hotelid]').filter(function (idx, el) {
     }
     return !!hotel_data;
 });
-
-used_icons_ids = _.uniq(used_icons_ids);
-
-const icons_css = used_icons_ids.map(iid => {
-    let icon = _.find(hotels_data.icons, { id: iid });
-    return `.iconized.${ icon.id } .icon { background-image: url(data:image/svg+xml;base64,${ icon.normal }) } .iconized.${ icon.id }:hover .icon { background-image: url(data:image/svg+xml;base64,${ icon.hover }) }`;
-}).join("\n");
-$('head').append(`<style>${ icons_css }</style>`);
 
 $hotel_items.each((idx, card) => {
     setupHotelItem(card);
