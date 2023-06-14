@@ -15,6 +15,7 @@ logos:
 hotels:
     -   name:   OTIUM FAMILY ECO CLUB
         id:     453
+        SFC:    true
         logoID: otium_family
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-eco-club-desktop.jpg'
@@ -171,6 +172,7 @@ hotels:
 
     -   name:   SEVEN SEAS HOTEL LIFE
         id:     11754
+        SFC:    true
         logoID: seven_seas
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-life-desktop.jpg'
@@ -223,6 +225,7 @@ hotels:
 
     -   name:   SEVEN SEAS GRAVEL SELECT
         id:     31177
+        SFC:    true
         logoID: seven_seas
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-gravel-select-desktop.jpg'
@@ -382,6 +385,7 @@ hotels:
                         - Недалеко от Ликийской тропы
     -   name:   SEVEN SEAS HOTEL BLUE
         id:     11818
+        SFC:    true
         logoID: seven_seas
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-blue-desktop.jpg'
@@ -485,6 +489,7 @@ hotels:
                         - Предоставляется кресло-коляска
     -   name:   XANADU RESORT
         id:     983
+        SFC:    true
         logoID: xanadu
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-resort-desktop.jpg'
@@ -536,6 +541,7 @@ hotels:
 
     -   name:   OTIUM FAMILY STONE PALACE
         id:     25065
+        SFC:    true
         logoID: otium_family
         visual:
             desktop: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-desktop.jpg"
