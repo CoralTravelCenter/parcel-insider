@@ -30,7 +30,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -85,7 +85,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -137,7 +137,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -186,7 +186,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -238,7 +238,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -292,7 +292,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -346,7 +346,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -357,13 +357,13 @@ hotels:
                     list:
                         - 200 м песчано-галечный пляж
                         - Отмечен «Голубым флагом»
-                        - Комфортный заход в*nbsp;воду
+                        - Комфортный заход в&nbsp;воду
                         - Пирс с лестницей в&nbsp;море
             -   label:  Живописная территория
                 icon: nature
                 details:
                     list:
-                        - Утопает в*nbsp;зелени
+                        - Утопает в&nbsp;зелени
                         - Пальмы, цветы и&nbsp;апельсиновые деревья
                         - В окружении гор Тахталы
             -   label:  Программа для детей
@@ -397,7 +397,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -449,7 +449,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -500,7 +500,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -554,7 +554,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -607,7 +607,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -660,7 +660,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -712,7 +712,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства
@@ -766,7 +766,7 @@ hotels:
             -   label:  Стандарт CGH
                 icon: CGH
                 details:
-                    heading: Coral Group Hotels & Resorts
+                    heading: Coral Group Hotels
                     list:
                         - Международный уровень сервиса
                         - Надежные стандарты гостеприимства

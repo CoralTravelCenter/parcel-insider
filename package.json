@@ -4,7 +4,7 @@
     "description": "Insider mods powered by parceljs",
     "scripts": {
         "build-otium-hotels-search-coral": "parcel build --no-source-maps --dist-dir otium-hotel/coral/dist otium-hotel/coral/src/search-results.js",
-        "build-otium-hotel-coral": "parcel build --no-source-maps --dist-dir otium-hotel/coral/dist otium-hotel/coral/src/insider.js",
+        "build-otium-hotel-page-coral": "parcel build --no-source-maps --dist-dir otium-hotel/coral/dist otium-hotel/coral/src/hotel-page.js",
         "build-apply-form-where2buy-coral": "parcel build --no-source-maps --no-optimize --dist-dir apply-form-where-to-buy/coral/dist apply-form-where-to-buy/coral/src/insider.js",
         "build-friendly-404-v3-coral": "parcel build --no-source-maps --dist-dir friendly-404-v3/coral/dist friendly-404-v3/coral/src/index.js",
         "build-friendly-404-v3-sunmar": "parcel build --no-source-maps --dist-dir friendly-404-v3/sunmar/dist friendly-404-v3/sunmar/src/index.js",
