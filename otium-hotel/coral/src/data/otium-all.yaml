@@ -17,6 +17,7 @@ hotels:
         id:     453
         SFC:    true
         logoID: otium_family
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-eco-club-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-eco-club-mobile.jpg'
@@ -72,6 +73,7 @@ hotels:
     -   name:   OTIUM SEALIGHT BEACH RESORT
         id:     9408
         logoID: otium
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-sealight-beach-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-sealight-beach-desktop.jpg'
@@ -124,6 +126,7 @@ hotels:
     -   name:   OTIUM FAMILY CLUB MARINE BEACH
         id:     30559
         logoID: otium_family
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-club-marine-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-club-marine-mobile.jpg'
@@ -174,6 +177,7 @@ hotels:
         id:     11754
         SFC:    true
         logoID: seven_seas
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-life-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-life-mobile.jpg'
@@ -227,6 +231,7 @@ hotels:
         id:     31177
         SFC:    true
         logoID: seven_seas
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-gravel-select-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-gravel-select-mobile.jpg'
@@ -332,6 +337,7 @@ hotels:
     -   name:   OTIUM PARK CLUB AKMAN
         id:     4138
         logoID: otium_park
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-club-akman-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-club-akman-mobile.jpg'
@@ -387,6 +393,7 @@ hotels:
         id:     11818
         SFC:    true
         logoID: seven_seas
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-blue-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-blue-mobile.jpg'
@@ -439,6 +446,7 @@ hotels:
     -   name:   SEVEN SEAS SEALIGHT ELITE
         id:     14481
         logoID: seven_seas
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-sealight-elite-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-sealight-elite-mobile.jpg'
@@ -491,6 +499,7 @@ hotels:
         id:     983
         USFC:    true
         logoID: xanadu
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-resort-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-resort-mobile.jpg'
@@ -543,6 +552,7 @@ hotels:
         id:     25065
         SFC:    true
         logoID: otium_family
+        CoralBonusPercent: 1
         visual:
             desktop: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-desktop.jpg"
             mobile: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-mobile.jpg"
@@ -599,6 +609,7 @@ hotels:
     -   name:   OTIUM FAMILY LYKIA BOTANIKA BEACH
         id:     17813
         logoID: otium_family
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-lykia-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-lykia-mobile.jpg'
@@ -704,6 +715,7 @@ hotels:
     -   name:   OTIUM SENSES VERY CHIC HOTEL
         id:     34184
         logoID: otium_senses
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-very-chic-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-very-chic-mobile.jpg'
@@ -755,6 +767,7 @@ hotels:
     -   name:   OTIUM SENSES X LIFE HOTELS
         id:     35631
         logoID: otium_senses
+        CoralBonusPercent: 1
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-x-life-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-x-life-mobile.jpg'
