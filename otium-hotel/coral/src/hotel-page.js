@@ -5,7 +5,7 @@ import config from './data/otium-all.yaml'
 
 const HOTEL_ID = Number($('h1[data-hotelid]').attr('data-hotelid'));
 console.log('+++ HOTEL_ID: %o', HOTEL_ID);
-const hotel_data =  _.find(config.hotels, { id: HOTEL_ID });
+const hotel_data = _.find(config.hotels, { id: HOTEL_ID });
 console.log('+++ hotel_data: %o', hotel_data);
 
 if (hotel_data) {
@@ -23,6 +23,7 @@ if (hotel_data) {
     let badges = [];
     if (is_exclusive) badges.push('<div class="badge exclusive">EXCLUSIVE</div>');
     if (hotel_data.SFC) badges.push('<a href="https://www.coral.ru/sunfamilyclub/" target="_blank" class="badge sfc"></a>');
+    if (hotel_data.USFC) badges.push('<a href="https://www.coral.ru/sunfamilyclub/" target="_blank" class="badge usfc"></a>');
     if (badges.length) {
         const $badges_stack = $('<div class="badges-stack"></div>').append(badges);
         $visuals_gallery.append($badges_stack);

@@ -489,7 +489,7 @@ hotels:
                         - Предоставляется кресло-коляска
     -   name:   XANADU RESORT
         id:     983
-        SFC:    true
+        USFC:    true
         logoID: xanadu
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-resort-desktop.jpg'
