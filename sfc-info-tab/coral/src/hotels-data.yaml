@@ -1,0 +1,154 @@
+add_markup:
+    common: 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;01.06.'
+    about_sfc: 'Подробнее о программе Sun Family Club вы можете узнать <a href="https://www.coral.ru/sunfamilyclub/" target="_blank">Sun Family Club - развлечения и&nbsp;аниматоры для детей на отдыхе от Coral&nbsp;Travel</a>.'
+    miracle_and_ugra: 'Расписание работы мини-клуба: шесть дней в неделю, 1 выходной - понедельник.'
+hotels:
+    # Turkey
+    -   name: BLUE WATERS CLUB
+        id:   465
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/bluewatershotel3-6распорядокнасаит2023.docx" target="_blank">BLUE WATERS HOTEL 3-6 РАСПОРЯДОК 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/bluewatershotel7-9распорядокнасаит2023.docx" target="_blank">BLUE WATERS HOTEL 7-9 РАСПОРЯДОК 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/bluewatershotel10-13распорядокнасаит2023.docx" target="_blank">BLUE WATERS HOTEL 10-13 РАСПОРЯДОК 2023</a></p>
+    -   name: CLUB RESORT ATLANTIS
+        id:   9464
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/clubresortatlantishotelраспорядокнасаит2023.docx" target="_blank">CLUB RESORT ATLANTIS HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: TUANA CLUB FETHIYE
+        id:   17847
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/clubtuanafethiyehotelраспорядокнасаит2023.docx" target="_blank">CLUB TUANA FETHIYE HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: EFTALIA AQUA RESORT
+        id:   3815
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/eftaliaaquaresorthotelраспорядокнасаит2023.docx" target="_blank">EFTALIA AQUA RESORT HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: EFTALIA OCEAN
+        id:   21601
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/eftaliaoceanhotelраспорядокнасаит2023.docx" target="_blank">EFTALIA OCEAN HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: JUSTINIANO CLUB ALANYA
+        id:   748
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/justinianoclubalanyahotelраспорядокнасаит2023.docx" target="_blank">JUSTINIANO CLUB ALANYA HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: JUSTINIANO CLUB PARK CONTI
+        id:   749
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/justinianoclubalanyahotelраспорядокнасаит2023.docx" target="_blank">JUSTINIANO CLUB CONTI HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: KAMELYA SELIN HOTEL
+        id:   12880
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/kameliahotelsраспорядокнасаит2023.docx" target="_blank">KAMELIA HOTELS РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: OTIUM FAMILY ECO CLUB
+        id:   453
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/otiumecoclubhotelраспорядокнасаит2023.docx" target="_blank">OTIUM ECO CLUB HOTEL РАСПОРЯДОК НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/otiumecoclubраспорядокнянинасаит2023.docx" target="_blank">OTIUM ECO CLUB РАСПОРЯДОК НЯНИ НА САЙТ 2023</a></p>
+    -   name: OTIUM FAMILY STONE PALACE
+        id:   25065
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/otiumfamilystonepalacehotelраспорядокнасаит2023.docx" target="_blank">OTIUM FAMILY STONE PALACE HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: PAPILLON AYSCHA HOTEL
+        id:   973
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/papillonayshahotel4-7распорядокнасаит2023.docx" target="_blank">PAPILLON AYSHA HOTEL 4-7 РАСПОРЯДОК НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/papillonayshahotel8-12распорядокнасаит2023.docx" target="_blank">PAPILLON AYSHA HOTEL 8-12 РАСПОРЯДОК НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/papillonayshahotelраспорядокнянинасаит2023.docx" target="_blank">PAPILLON AYSHA HOTEL РАСПОРЯДОК НЯНИ НА САЙТ 2023</a></p>
+    -   name: PAPILLON ZEUGMA RELAXURY
+        id:   975
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/papillonzugmahotelраспорядокнасаит2023.docx" target="_blank">PAPILLON ZUGMA HOTEL РАСПОРЯДОК НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/papillonzugmahotelраспорядокнянинасаит2023.docx" target="_blank">PAPILLON ZUGMA HOTEL РАСПОРЯДОК НЯНИ НА САЙТ 2023</a></p>
+    -   name: PINE BAY HOLIDAY RESORT
+        id:   5174
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/pinebayholidayresorthotelраспорядокнасаит2023.docx" target="_blank">PINE BAY HOLIDAY RESORT HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: SEVEN SEAS GRAVEL SELECT
+        id:   31177
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/sevenseasgravelselecthotelраспорядокнасаит2023.docx" target="_blank">SEVEN SEAS GRAVEL SELECT HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: SEVEN SEAS HOTEL BLUE
+        id:   11818
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/sevenseashotelblueраспорядокнасаит2023.docx" target="_blank">SEVEN SEAS HOTEL BLUE РАСПОРЯДОК НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/sevenseashotelblueраспорядокнянинасаит2023.docx" target="_blank">SEVEN SEAS HOTEL BLUE РАСПОРЯДОК НЯНИ НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/sevenseashotelblueраспорядокплаваниенасаит2023.docx" target="_blank">SEVEN SEAS HOTEL BLUE РАСПОРЯДОК ПЛАВАНИЕ НА САЙТ 2023</a></p>
+    -   name: SEVEN SEAS HOTEL LIFE
+        id:   11754
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/sevenseashotellifeраспорядокнасаит2023.docx" target="_blank">SEVEN SEAS HOTEL LIFE РАСПОРЯДОК НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/sevenseashotellifeраспорядокнянинасаит2023.docx" target="_blank">SEVEN SEAS HOTEL LIFE РАСПОРЯДОК НЯНИ НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/sevenseashotellifeраспорядокплаваниенасаит2023.docx" target="_blank">SEVEN SEAS HOTEL LIFE РАСПОРЯДОК ПЛАВАНИЕ НА САЙТ 2023</a></p>
+    -   name: SIRENE BELEK HOTEL
+        id:   4093
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/sirenebelekgolfhotelраспорядокнасаит2023.docx" target="_blank">SIRENE BELEK GOLF HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: THE GARDEN BEACH HOTEL
+        id:   21627
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/thegardenbeachhotelраспорядокнасаит2023.docx" target="_blank">THE GARDEN BEACH HOTEL РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: ULUSOY KEMER HOLIDAY CLUB
+        id:   682
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/ulusoykemerholidayclubраспорядокнасаит2023.docx" target="_blank">ULUSOY KEMER HOLIDAY CLUB РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: XANADU RESORT
+        id:   983
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/xanaduresorthotelраспорядокнасаит2023.docx" target="_blank">XANADU RESORT HOTEL РАСПОРЯДОК НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/xanaduresorthotelраспорядокнянинасаит2023.docx" target="_blank">XANADU RESORT HOTEL РАСПОРЯДОК НЯНИ НА САЙТ 2023</a><a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/turkey/xanaduresorthotelраспорядокплаваниенасаит2023.docx" target="_blank">XANADU RESORT HOTEL РАСПОРЯДОК ПЛАВАНИЕ НА САЙТ 2023</a></p>
+    # Russia
+    -   name: КАБАРДИНКА ПАНСИОНАТ
+        id:   10617
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/russia/кабардинкараспорядокнасаит2023.docx" target="_blank">КАБАРДИНКА РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: ОТЕЛЬ МИРАКЛЕ (MIRACLE&N)
+        id:   23092
+        blocks:
+            - common
+            - miracle_and_ugra
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/russia/мираклераспорядокнасаит2023.docx" target="_blank">МИРАКЛЕ РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: ХУТОРОК ГОСТИНИЧНЫЙ КОМПЛЕКС
+        id:   10461
+        blocks:
+            - common
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/russia/хуторокраспорядокнасаит2023.docx" target="_blank">ХУТОРОК РАСПОРЯДОК НА САЙТ 2023</a></p>
+    -   name: ПАНСИОНАТ ЮГРА (ex. КАССАНДРА)
+        id:   10437
+        blocks:
+            - common
+            - miracle_and_ugra
+            - about_sfc
+            - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.coral.ru/content/cms/russia/sfc-schedules/russia/юграраспорядокнасаит2023.docx" target="_blank">ЮГРА РАСПОРЯДОК НА САЙТ 2023</a></p>
+
