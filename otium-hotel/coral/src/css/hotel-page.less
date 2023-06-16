@@ -42,7 +42,12 @@ section.otium-hotel {
 	grid-template-columns: 2fr 1fr;
 	max-width: 1370px;
 	margin: auto;
+	.visuals-gallery {
+		position: relative;
+		filter: drop-shadow(0 4px 16px fade(black, 15%));
+	}
 	.hotel-name-location {
+		z-index: 1;
 		.hoteltitle {
 			flex-direction: column-reverse!important;
 			flex-wrap: nowrap!important;
@@ -114,4 +119,64 @@ section.otium-hotel {
 		}
 	}
 
+}
+
+.badges-stack {
+	position: absolute;
+	left: 0;
+	top: 0;
+	min-width: 7em;
+	display: grid;
+	grid-gap: 16px;
+	padding-top: 2em;
+	filter: drop-shadow(0px 2px 4px fade(black, 15%));
+	.badge {
+		position: relative;
+		border-radius: 0 5px 5px 0;
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			border-style: solid;
+			border-width: 0 6px 6px 6px;
+			border-color: transparent transparent black transparent;
+			transform: rotate(45deg);
+			transform-origin: left bottom;
+			filter: saturate(0.5) brightness(0.5);
+		}
+		&.exclusive {
+			background: @coral-ramp-bg;
+			font-size: 14px;
+			letter-spacing: .15em;
+			font-weight: normal;
+			line-height: 1;
+			color: white;
+			padding: .7em 1.5em;
+			&:after {
+				border-bottom-color: #FB7099;
+			}
+		}
+		&.sfc {
+			display: block;
+			background: white url("data-url:/otium-hotel/coral/src/inline-assets/logo-sfc-normal.svg") center / auto 80% no-repeat;
+			min-height: 5em;
+			&:after {
+				border-bottom-color: white;
+			}
+		}
+		&.usfc {
+			display: block;
+			background: white url("https://cdn.coral.ru/content/insider/russia/otium-hotels/logo-usfc-normal.png") center / auto 80% no-repeat;
+			min-height: 5em;
+			&:after {
+				border-bottom-color: white;
+			}
+		}
+	}
+}
+
+// hide SFC/USFC old-style badges
+.gallery-layout > div {
+	display: none!important;
 }
