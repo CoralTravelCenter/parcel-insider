@@ -344,6 +344,7 @@ hotels:
         forceRating:
             source: tophotels.ru
             value:  4.2
+            count: 1567
         badges:
             - label: Обратите внимание
               fore: white
@@ -558,7 +559,8 @@ hotels:
             mobile: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-mobile.jpg"
         forceRating:
             source: tophotels.ru
-            value:  4.67
+            value:  3.9
+            count: 528
         badges:
             - label: Обратите внимание
               fore: white
@@ -774,6 +776,7 @@ hotels:
         forceRating:
             source: tophotels.ru
             value:  4.3
+            count: 823
         badges:
             - label: Обратите внимание
               fore: white

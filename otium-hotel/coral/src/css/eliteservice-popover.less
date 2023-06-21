@@ -8,7 +8,7 @@
 	filter: drop-shadow(0 2px 16px fade(black, 15%));
 	max-width: 34em;
 	.arrow:before {
-		border-left-color: white;
+		//border-left-color: white;
 	}
 }
 .eliteservice-popover {
@@ -16,7 +16,6 @@
 	color: white;
 	padding: 1em;
 	h5 {
-		font-size: 1em;
 		color: inherit;
 		font-size: 1.2em;
 	}
@@ -57,6 +56,15 @@
 	}
 }
 
-.bs-popover-auto[x-placement^="left"] .arrow.sber::before {
+.bs-popover-auto[x-placement^="left"] .arrow.eliteservice::before {
 	border-left-color: currentColor;
+}
+.bs-popover-auto[x-placement^="top"] .arrow.eliteservice::before {
+	border-top-color: currentColor;
+}
+.bs-popover-bottom[x-placement^="bottom"] .arrow.eliteservice::after {
+	content: none;
+}
+.bs-popover-bottom[x-placement^="bottom"] .arrow.eliteservice::before {
+	border-bottom-color: currentColor;
 }

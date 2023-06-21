@@ -6,16 +6,15 @@
         tools/shortcuts
     </div>
     <div class="hotel-name-location">
-        name / loaction
+        <div class="stars">{{ #stars }}<span>star_rate</span>{{ /stars }}</div>
+        <h1 class="name">{{ name }}</h1>
+        <div class="hotel-location">{{ location }}</div>
+        <button class="show-on-map">Показать отель на карте</button>
+        {{ #elite_service }}
+        <div class="elite-service"></div>
+        {{ /elite_service }}
     </div>
-    <div class="reviews-info">
-        <div class="rate-comp">
-            <span class="rate-value">...</span> <span>из 5</span>
-        </div>
-        <div class="count-comp">
-            <span class="count-value">...</span> отзывов на tophotels.ru
-        </div>
-    </div>
+    <div class="reviews-info">{{> reviewsMarkup }}</div>
     <div class="visuals-gallery">
         gallery
     </div>
