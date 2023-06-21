@@ -557,10 +557,6 @@ hotels:
         visual:
             desktop: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-desktop.jpg"
             mobile: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-mobile.jpg"
-        forceRating:
-            source: tophotels.ru
-            value:  3.9
-            count: 528
         badges:
             - label: Обратите внимание
               fore: white
@@ -615,6 +611,10 @@ hotels:
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-lykia-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-lykia-mobile.jpg'
+        forceRating:
+            source: tripadvisor
+            value: 4.5
+            count: 1713
         badges:
             - label: Обратите внимание
               fore: white
@@ -721,6 +721,10 @@ hotels:
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-very-chic-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-very-chic-mobile.jpg'
+        forceRating:
+            source: tripadvisor
+            value: 4.5
+            count: 2560
         badges:
             - label: Обратите внимание
               fore: white

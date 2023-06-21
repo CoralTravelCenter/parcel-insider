@@ -199,6 +199,14 @@ function parseOriginalCard($hotel_item) {
             case 'tophotels.ru':
                 hotel_data.partials.reviewsMarkup = partial_tophotels;
                 hotel_data.reviews = { value: hotel_data.forceRating.value };
+                break;
+            case 'tripadvisor':
+                hotel_data.partials.reviewsMarkup = partial_tripadvisor;
+                hotel_data.reviews = {
+                    value: hotel_data.forceRating.value,
+                    logoSrc: `https://static.tacdn.com/img2/brand_refresh/ratings/traveler/${ hotel_data.forceRating.value.toFixed(1) }.svg`
+                };
+                break;
         }
     } else {
         var $tripadvisor_el = $original_contents.find('.tripadvisor');
