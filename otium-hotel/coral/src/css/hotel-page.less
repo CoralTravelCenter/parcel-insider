@@ -1,3 +1,8 @@
+@wide-breakpoint: 1439px;
+@mid-breakpoint: 1199px;
+@mobile-breakpoint: 1006px;
+@narrow-breakpoint: 575px;
+
 @coral-main-yellow: #F0AB00;
 @coral-main-yellow-accent: #E27300;
 @coral-main-blue: #0093D0;
@@ -16,12 +21,25 @@
 @coral-red-error: #FF3333;
 @coral-red-warn: #FFDCDC;
 
+@coralbonus-ramp: linear-gradient(37.53deg, #209CFF 1.18%, #68E0CF 86.66%);
+
+@font-face {
+	font-family: 'OtiumFeatures';
+	src: url('data-url:/otium-hotel/coral/src/inline-assets/otium-features.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
 .abs100x100() {
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
+}
+
+.transit(@what: all, @duration: 0.5s) {
+	transition+: @what @duration;
 }
 
 .proportional(@width2height-ratio) {
@@ -35,6 +53,31 @@
 		.abs100x100;
 	}
 }
+
+.interactive() {
+	user-select: none;
+	&:active {
+		transform: translateY(2px);
+	}
+}
+
+.rounded-ramp-border(@ramp; @thickness; @radius) {
+	position: relative;
+	border-radius: @radius - (@thickness / 2);
+	&:after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: @ramp;
+		padding: @thickness;
+		border-radius: @radius;
+		mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+		-webkit-mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+	}
+}
+
 
 section.otium-hotel {
 	display: grid;
@@ -74,6 +117,7 @@ section.otium-hotel {
 			margin: 0.38em 0;
 		}
 		button.show-on-map {
+			.interactive();
 			outline: none;
 			display: inline-flex;
 			align-items: center;
@@ -82,6 +126,7 @@ section.otium-hotel {
 			border: 1px solid #DCDCDC;
 			padding: 0 1em 0 0.5em;
 			margin-left: 1em;
+			cursor: pointer;
 			&:before {
 				content: 'place';
 				font-family: "Material Icons";
@@ -149,6 +194,245 @@ section.otium-hotel {
 				border-radius: 0 0 20px 20px;
 			}
 		}
+	}
+
+	.about-pricing-etc {
+		display: grid;
+		grid-template-columns: 3fr 2fr;
+		grid-template-rows: repeat(auto-fit, minmax(1em, max-content));
+		grid-gap: 20px;
+		.pricing-cell {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: baseline;
+			font-size: 12px;
+			.from {
+
+			}
+			.original-price {
+				position: relative;
+				font-size: (18/12em);
+				padding-left: .5em;
+				color: #768092;
+				&:after {
+					content: '';
+					.abs100x100();
+					background: url("data-url:/otium-hotel/coral/src/inline-assets/price-strike-over.svg") 33% / 80% no-repeat;
+					filter: drop-shadow(1px 1px 2px fade(black, 33%));
+				}
+			}
+			.final-price {
+				width: 100%;
+				color: @coral-main-yellow;
+				> * {
+					font-size: (40/12em);
+				}
+				.decorated-price.lots-of-money {
+					.cents {
+						display: none;
+					}
+				}
+			}
+			.additives {
+				display: flex;
+				flex-direction: column;
+				font-size: 12px;
+				font-weight: normal;
+				line-height: 1.2;
+				cursor: default;
+				@media screen and (max-width: @mobile-breakpoint) {
+					font-size: .85em;
+					width: auto;
+				}
+				>em {
+					margin-top: .5em;
+					font-style: normal;
+					color: @coral-main-blue;
+					font-weight: bold;
+					//text-transform: uppercase;
+				}
+				.mandatories {
+					display: flex;
+					align-items: flex-end;
+					&:after {
+						font-family: "Header Fontello";
+						content: '';
+						font-size: 1.2em;
+						color: @coral-main-yellow;
+						margin-left: .5em;
+					}
+					>strong {
+						white-space: nowrap;
+						font-size: (14/12em);
+						margin: 0 .2em;
+					}
+				}
+			}
+		}
+		.coralbonus-cell {
+			align-self: start;
+			.coralbonus-badge {
+				display: inline-grid;
+				grid-auto-flow: column dense;
+				grid-gap: 1em;
+				padding: 1em 1em;
+				align-items: center;
+				cursor: pointer;
+				background: white;
+				font-size: 12px;
+				.rounded-ramp-border(@ramp: @coralbonus-ramp, @thickness: 2px, @radius: 4px);
+				.value-box {
+					background: @coralbonus-ramp;
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+					background-clip: text;
+					text-fill-color: transparent;
+					.value {
+						display: inline;
+						align-items: center;
+						font-size: 2.4em;
+						line-height: 1;
+						white-space: nowrap;
+						&:after {
+							content: '';
+							display: inline-block;
+							width: .62em;
+							height: (15/12) * .62em;
+							margin-left: .3em;
+							background: url("data-url:/otium-hotel/coral/src/inline-assets/coralbonus-sym.svg") center / contain no-repeat;
+						}
+					}
+				}
+				.label {
+					line-height: 1.2;
+				}
+			}
+		}
+
+		.installment-cell {
+			align-self: start;
+			padding-top: .3em;
+			display: flex;
+			align-items: center;
+			line-height: 1.2;
+			font-size: 13px;
+			font-weight: normal;
+			cursor: default;
+			@media screen and (max-width: @narrow-breakpoint) {
+				font-size: .9em;
+			}
+			&:before {
+				flex-shrink: 0;
+				content: '';
+				width: 2.3em;
+				height: 2.3em;
+				margin-right: .6em;
+				background: url("data-url:../inline-assets/icon-percent.svg") center / cover no-repeat;
+			}
+			.monthly {
+				font-weight: bold;
+			}
+		}
+
+		.early-booking-cell {
+			.early-booking-promo {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				font-size: 12px;
+				.banner {
+					width: 100%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					text-align: center;
+					height: 40px;
+					border-radius: 4px;
+					background: var(--coral-main-gradient, linear-gradient(45deg, #FB7099 0%, #F0AB13 100%));
+					box-shadow: 0 6px 10px rgba(250, 119, 138, 0.15);
+					color: white;
+				}
+				.terms {
+					font-weight: normal;
+					font-size: (10/12em);
+					margin-top: 1em;
+				}
+			}
+		}
+
+		.usps-cell {
+			grid-column: span 2;
+			.usps {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				font-size: 12px;
+				@media screen and (max-width: 700px) {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					gap: 1em;
+				}
+				@media screen and (max-width: @narrow-breakpoint) {
+					display: flex;
+				}
+				>*{
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					text-align: center;
+					cursor: pointer;
+					&:hover .icon {
+						color: @coral-main-yellow-accent;
+					}
+					.icon {
+						font-family: OtiumFeatures;
+						font-size: (32/12em);
+						line-height: 1;
+						background-position: center;
+						background-size: contain;
+						background-repeat: no-repeat;
+						.transit(color);
+						&:before {
+							content: attr(data-icon);
+						}
+						@media screen and (max-width: 1100px) {
+							font-size: 2em;
+						}
+						@media screen and (max-width: @narrow-breakpoint) {
+							font-size: 2.2em;
+						}
+					}
+					.label {
+						font-weight: normal;
+						line-height: 1.1;
+						padding: 0 .2em;
+						margin-top: .5em;
+						@media screen and (max-width: @wide-breakpoint) {
+							display: none;
+						}
+						@media screen and (max-width: @mobile-breakpoint) {
+							display: unset;
+						}
+						@media screen and (max-width: @narrow-breakpoint) {
+							font-size: .8em;
+						}
+					}
+				}
+			}
+		}
+
+		.hotel-info-cell {
+			grid-column: span 2;
+			.heading {
+				font-size: 1.2em;
+				margin-bottom: .5em;
+			}
+			.about-snip {
+				font-weight: normal;
+				line-height: 1.3;
+			}
+		}
+
 	}
 
 }
@@ -219,4 +503,9 @@ section.otium-hotel {
 	}
 }
 
+@import "otium-tooltip";
 @import "eliteservice-popover";
+@import "decorated-price";
+@import "coralbonus-popover";
+@import "additives-popover";
+@import "installment-info-popover";

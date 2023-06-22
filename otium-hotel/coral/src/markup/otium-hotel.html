@@ -19,7 +19,55 @@
         gallery
     </div>
     <div class="about-pricing-etc">
-        pricing etc...
+        <div class="pricing-cell">
+            <span class="from">цена от:</span>
+            <div class="original-price">
+                {{ #original_price_html }}
+                {{{ . }}}
+                {{ /original_price_html }}
+            </div>
+            <div class="final-price">
+                {{{ final_price_html }}}
+            </div>
+            {{ #additives }}
+            <div class="additives" data-content="{{ additives_popover_html }}">
+                <em>Включая перелет</em>
+                <div class="mandatories">и обязательные доплаты <strong>{{{ mandatories_total_html }}}</strong></div>
+            </div>
+            {{ /additives }}
+        </div>
+        <div class="coralbonus-cell">
+            {{ #CoralBonusPercent }}
+            {{{ coralbonus_html }}}
+            {{ /CoralBonusPercent }}
+        </div>
+        <div class="early-booking-cell">
+            {{ #early_booking_present }}
+            <div class="early-booking-promo">
+                <div class="banner">{{ early_booking_text }}</div>
+                <div class="terms">{{{ early_booking_info_html }}}</div>
+            </div>
+            {{ /early_booking_present }}
+        </div>
+        <div class="installment-cell">
+            <div>Доступно в&nbsp;рассрочку и&nbsp;кредит от&nbsp;<span class="monthly">{{ installment_value_formatted }}</span>&nbsp;₽/мес</div>
+        </div>
+        <div class="hotel-info-cell">
+            <div class="heading">Об отеле</div>
+            <div class="about-snip">
+                {{{ about_snip_html }}}
+            </div>
+        </div>
+        <div class="usps-cell">
+            <div class="usps">
+                {{ #usps }}
+                <div class="iconized" title="{{ tooltip_markup }}">
+                    <div class="icon" data-icon="{{ icon }}"></div>
+                    <div class="label">{{{ label }}}</div>
+                </div>
+                {{ /usps }}
+            </div>
+        </div>
     </div>
     <div class="lefty">
         lefty

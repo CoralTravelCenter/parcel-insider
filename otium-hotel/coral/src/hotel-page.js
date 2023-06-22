@@ -3,7 +3,13 @@ import markup from 'bundle-text:./markup/otium-hotel.html'
 import partial_tripadvisor from 'bundle-text:./markup/partial-hotel-tripadvisor.html'
 import partial_tophotels from 'bundle-text:./markup/partial-hotel-tophotels.html'
 import eliteservice_popover from 'bundle-text:./markup/eliteservice-popover.html'
+import additives_popover from 'bundle-text:./markup/additives-popover.html'
+import coralbonus_popover from 'bundle-text:./markup/coralbonus-popover.html'
+import installment_info_popover from 'bundle-text:./markup/installment-info-popover.html'
+import otium_tooltip_template from 'bundle-text:./markup/usp-tooltip.html'
+import otium_tooltip_body_template from 'bundle-text:./markup/usp-tooltip-body.html'
 import * as Mustache from "mustache";
+import { popoverTemplateWithClass, demanglePrice } from "./usefuls.js";
 
 import config from './data/otium-all.yaml'
 
@@ -16,7 +22,28 @@ Number.prototype.formatPrice = function() {
     return s.split('').reverse().join('').replace(/\d{3}(?=\d)/g, "$& ").split('').reverse().join('');
 };
 
-const popoverTemplateWithClass = (klass = '') => `<div class="popover ${klass}" role="tooltip"><div class="arrow ${klass}"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>`;
+Number.prototype.decoratedPriceHTML = function() {
+    let value = Math.floor(this).formatPrice();
+    let cents = Math.round(this * 100 % 100);
+    let lots_of_money_klass = this > 1000000 ? 'lots-of-money' : '';
+    return `<div class="decorated-price ${ lots_of_money_klass }"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">₽</span></div>`
+}
+Number.prototype.decoratedCoralBonusHTML = function (popover_content_html) {
+    return `<div class="coralbonus-badge" tabindex="-1" data-content='${ popover_content_html }'><div class="value-box"><div class="value">${ this.formatPrice() }</div></div><div class="label">на карту CoralBonus</div></div>`
+}
+
+String.prototype.zeroPad = function(len, c) {
+    var s;
+    s = '';
+    c || (c = '0');
+    len || (len = 2);
+    len -= this.length;
+    while (s.length < len) s += c;
+    return s + this;
+};
+Number.prototype.zeroPad = function(len, c) {
+    return String(this).zeroPad(len, c);
+};
 
 // =====================================================================================================================
 
@@ -60,6 +87,54 @@ function extendHotelData(hotel_data) {
     // ELITESERVICE
     hotel_data.elite_service = !!$('.eliteicon').length;
 
+    // pricing
+    let price = demanglePrice($('.price-big'));
+    let original_price = Number($('.oldprice').text().replace(/[^0-9.,]/g, '').replace(',','.'));
+    // pricing -> instalement
+    hotel_data.installment_value_formatted = Math.round(price / 36 * 1.25).formatPrice();
+    // pricing -> final price
+    hotel_data.final_price_html = price.decoratedPriceHTML();
+    // pricing -> original
+    if (original_price) {
+        hotel_data.original_price_html = original_price.decoratedPriceHTML();
+    }
+    // pricing -> additives
+    const $icon_price_info = $('.gallery-right .icon-price-information');
+    let additives_html = $icon_price_info.attr('data-content');
+    let is_package_tour =  !$('.flightincluded').text().match(/\s+не\s+/);
+    if (additives_html) {
+        hotel_data.additives = true;
+        let mandatories_total_html = $icon_price_info.siblings('span').get(0).innerHTML;
+        let additives_list = hotel_data.additives_list = $(additives_html).filter('div').map((idx, div) => {
+            let [,akey,,avalue] = div.textContent.replace(/доплата за /i, '').match(/(.+?)(\s+)([0-9.,\s]+)/);
+            return { akey, avalue };
+        }).toArray();
+        hotel_data.mandatories_total_html = mandatories_total_html;
+        hotel_data.additives_popover_html = Mustache.render(additives_popover, { list: additives_list });
+    }
+    // CoralBonus
+    if (hotel_data.CoralBonusPercent) {
+        const bonus_value = Math.round(price / 100 * hotel_data.CoralBonusPercent);
+        hotel_data.coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: bonus_value.formatPrice() }));
+    }
+    // Early booking promo
+    let $eb_container = $('.gallery-right .ebcontainer');
+    if ($eb_container.length) {
+        hotel_data.early_booking_present = true;
+        hotel_data.early_booking_text = $eb_container.find('.btn').text();
+        hotel_data.early_booking_info_html = $eb_container.find('.ebinfo').html();
+    }
+    // Hotel info
+    if (hotel_data.hotelInfoURL) {
+
+    } else {
+        hotel_data.about_snip_html = $('.gallery-right .hotelinfo p:nth-of-type(2)')[0]?.outerHTML || '';
+    }
+    // USPS
+    hotel_data.usps?.forEach(usp => {
+        usp.tooltip_markup = usp.details && Mustache.render(otium_tooltip_body_template, usp.details);
+    });
+
     return hotel_data;
 }
 
@@ -86,14 +161,33 @@ if (hotel_data) {
         $visuals_gallery.append($badges_stack);
     }
 
+    $markup.find('.iconized').tooltip({ template: otium_tooltip_template, html: true, delay: { show: 300, hide: 100 } });
 
-
+    $('.installment-cell').popover({
+        template:  popoverTemplateWithClass('sber'),
+        content:   installment_info_popover,
+        html:      true,
+        placement: 'auto',
+        trigger:   'hover'
+    });
     $('section.otium-hotel .elite-service').popover({
         template:  popoverTemplateWithClass('eliteservice'),
         content:   eliteservice_popover,
         html:      true,
         placement: 'top',
         trigger:   'hover'
+    });
+    $('.additives').popover({
+        template:  popoverTemplateWithClass('additives'),
+        html:      true,
+        placement: 'top',
+        trigger:   'hover'
+    });
+    $('.coralbonus-badge').popover({
+        template:  popoverTemplateWithClass('coralbonus'),
+        html:      true,
+        placement: 'top',
+        trigger:   'hover focus'
     });
 
 
