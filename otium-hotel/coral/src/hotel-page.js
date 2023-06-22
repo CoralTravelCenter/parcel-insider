@@ -127,7 +127,6 @@ function extendHotelData(hotel_data) {
     // Hotel info
     if (hotel_data.hotelInfoURL) {
         hotel_data.about_snip_html = '<div style="font-size: 2em;">...</div>';
-        hotel_data.about_snip_markup_url = `data-markup-url="${ hotel_data.hotelInfoURL }"`;
     } else {
         hotel_data.about_snip_html = $('.gallery-right .hotelinfo p:nth-of-type(2)')[0]?.outerHTML || '';
     }
@@ -163,7 +162,8 @@ if (hotel_data) {
     }
 
     $('[data-markup-url]').each((idx, el) => {
-        // $fetchElementMarkupFrom(el, $(el).attr('data-markeup-url'));
+        const url = $(el).attr('data-markup-url');
+        url && $fetchElementMarkupFrom(el, url);
     });
 
     $markup.find('.iconized').tooltip({ template: otium_tooltip_template, html: true, delay: { show: 300, hide: 100 } });
