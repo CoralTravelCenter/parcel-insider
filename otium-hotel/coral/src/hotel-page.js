@@ -9,7 +9,7 @@ import installment_info_popover from 'bundle-text:./markup/installment-info-popo
 import otium_tooltip_template from 'bundle-text:./markup/usp-tooltip.html'
 import otium_tooltip_body_template from 'bundle-text:./markup/usp-tooltip-body.html'
 import * as Mustache from "mustache";
-import { popoverTemplateWithClass, demanglePrice } from "./usefuls.js";
+import { popoverTemplateWithClass, demanglePrice, $fetchElementMarkupFrom } from "./usefuls.js";
 
 import config from './data/otium-all.yaml'
 
@@ -126,7 +126,8 @@ function extendHotelData(hotel_data) {
     }
     // Hotel info
     if (hotel_data.hotelInfoURL) {
-
+        hotel_data.about_snip_html = '<div style="font-size: 2em;">...</div>';
+        hotel_data.about_snip_markup_url = `data-markup-url="${ hotel_data.hotelInfoURL }"`;
     } else {
         hotel_data.about_snip_html = $('.gallery-right .hotelinfo p:nth-of-type(2)')[0]?.outerHTML || '';
     }
@@ -160,6 +161,10 @@ if (hotel_data) {
         const $badges_stack = $('<div class="badges-stack"></div>').append(badges);
         $visuals_gallery.append($badges_stack);
     }
+
+    $('[data-markup-url]').each((idx, el) => {
+        // $fetchElementMarkupFrom(el, $(el).attr('data-markeup-url'));
+    });
 
     $markup.find('.iconized').tooltip({ template: otium_tooltip_template, html: true, delay: { show: 300, hide: 100 } });
 
