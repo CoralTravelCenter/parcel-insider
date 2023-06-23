@@ -341,7 +341,6 @@ hotels:
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-club-akman-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-club-akman-mobile.jpg'
-        hotelInfoURL: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/hotel-info/4138.html'
         forceRating:
             source: tophotels.ru
             value:  4.2

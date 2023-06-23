@@ -8,9 +8,3 @@ export function demanglePrice($container) {
     visible_digits.sort((a, b) => Number($(a).css('order')) - Number($(b).css('order')));
     return visible_digits.map(el => el.textContent).join('') * 1 + kops / 100;
 }
-
-export function $fetchElementMarkupFrom(el, url) {
-    $.get(url).done((markup) => {
-        $(el).html(markup);
-    });
-}

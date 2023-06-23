@@ -2,14 +2,12 @@
     <div class="bread-crumbs">
         breadcrumbs
     </div>
-    <div class="tools-shortcuts">
-        tools/shortcuts
-    </div>
+    <div class="tools-shortcuts"></div>
     <div class="hotel-name-location">
         <div class="stars">{{ #stars }}<span>star_rate</span>{{ /stars }}</div>
-        <h1 class="name">{{ name }}</h1>
+        <h1 class="name" data-hotelid="{{ id }}">{{ name }}</h1>
         <div class="hotel-location">{{ location }}</div>
-        <button class="show-on-map">Показать отель на карте</button>
+        <button class="show-on-map" data-scrollto=".hotel-map">Показать отель на карте</button>
         {{ #elite_service }}
         <div class="elite-service"></div>
         {{ /elite_service }}
@@ -54,7 +52,7 @@
         </div>
         <div class="hotel-info-cell">
             <div class="heading">Об отеле</div>
-            <div class="about-snip" data-markup-url="{{ hotelInfoURL }}">
+            <div class="about-snip">
                 {{{ about_snip_html }}}
             </div>
         </div>
@@ -68,11 +66,15 @@
                 {{ /usps }}
             </div>
         </div>
+        <button class="more-about-hote-cell" data-scrollto=".informations">Подробнее об отеле</button>
+        <button class="choose-room-cell" data-scrollto=".search-summary">Выбрать номер</button>
     </div>
+<!--
     <div class="lefty">
         lefty
     </div>
     <div class="righty">
         righty
     </div>
+-->
 </section>

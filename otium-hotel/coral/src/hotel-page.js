@@ -9,10 +9,11 @@ import installment_info_popover from 'bundle-text:./markup/installment-info-popo
 import otium_tooltip_template from 'bundle-text:./markup/usp-tooltip.html'
 import otium_tooltip_body_template from 'bundle-text:./markup/usp-tooltip-body.html'
 import * as Mustache from "mustache";
-import { popoverTemplateWithClass, demanglePrice, $fetchElementMarkupFrom } from "./usefuls.js";
+import { popoverTemplateWithClass, demanglePrice } from "./usefuls.js";
+import { preload } from "../../../common/useful.js";
 
-import config from './data/otium-all.yaml'
-
+import config from './data/coral-group.yaml';
+import hotel_infos_lut from './data/hotel-infos.js';
 
 // =====================================================================================================================
 
@@ -125,8 +126,9 @@ function extendHotelData(hotel_data) {
         hotel_data.early_booking_info_html = $eb_container.find('.ebinfo').html();
     }
     // Hotel info
-    if (hotel_data.hotelInfoURL) {
-        hotel_data.about_snip_html = '<div style="font-size: 2em;">...</div>';
+    const hotel_info = hotel_infos_lut.find(item => item.id === hotel_data.id);
+    if (hotel_info?.markup) {
+        hotel_data.about_snip_html = $(hotel_info?.markup)[0].outerHTML;
     } else {
         hotel_data.about_snip_html = $('.gallery-right .hotelinfo p:nth-of-type(2)')[0]?.outerHTML || '';
     }
@@ -134,6 +136,8 @@ function extendHotelData(hotel_data) {
     hotel_data.usps?.forEach(usp => {
         usp.tooltip_markup = usp.details && Mustache.render(otium_tooltip_body_template, usp.details);
     });
+    // Choose room xlink
+
 
     return hotel_data;
 }
@@ -160,11 +164,6 @@ if (hotel_data) {
         const $badges_stack = $('<div class="badges-stack"></div>').append(badges);
         $visuals_gallery.append($badges_stack);
     }
-
-    $('[data-markup-url]').each((idx, el) => {
-        const url = $(el).attr('data-markup-url');
-        url && $fetchElementMarkupFrom(el, url);
-    });
 
     $markup.find('.iconized').tooltip({ template: otium_tooltip_template, html: true, delay: { show: 300, hide: 100 } });
 
@@ -195,6 +194,11 @@ if (hotel_data) {
         trigger:   'hover focus'
     });
 
+    preload('https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js', () => {
+        $('[data-scrollto]').on('click', function () {
+            $(window).scrollTo($(this).attr('data-scrollto'), 300, {offset: -150 });
+        });
+    });
 
 }
 

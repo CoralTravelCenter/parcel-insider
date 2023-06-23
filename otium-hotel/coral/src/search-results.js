@@ -1,5 +1,5 @@
 import css from 'bundle-text:./css/search-results.less'
-import hotels_data from './data/otium-all.yaml'
+import hotels_data from './data/coral-group.yaml'
 import hotel_card_template from 'bundle-text:./markup/otium-hotel-card.html'
 import partial_tripadvisor from 'bundle-text:./markup/partial-search-tripadvisor.html'
 import partial_tophotels from 'bundle-text:./markup/partial-search-tophotelsru.html'
