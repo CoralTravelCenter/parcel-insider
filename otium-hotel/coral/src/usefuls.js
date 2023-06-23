@@ -8,3 +8,13 @@ export function demanglePrice($container) {
     visible_digits.sort((a, b) => Number($(a).css('order')) - Number($(b).css('order')));
     return visible_digits.map(el => el.textContent).join('') * 1 + kops / 100;
 }
+
+export function waitForGlobalVar(prop, do_things) {
+    (function () {
+        if (window[prop]) {
+            do_things();
+        } else {
+            setTimeout(arguments.callee, 200);
+        }
+    })();
+}

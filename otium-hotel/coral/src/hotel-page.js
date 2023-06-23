@@ -9,7 +9,7 @@ import installment_info_popover from 'bundle-text:./markup/installment-info-popo
 import otium_tooltip_template from 'bundle-text:./markup/usp-tooltip.html'
 import otium_tooltip_body_template from 'bundle-text:./markup/usp-tooltip-body.html'
 import * as Mustache from "mustache";
-import { popoverTemplateWithClass, demanglePrice } from "./usefuls.js";
+import { popoverTemplateWithClass, demanglePrice, waitForGlobalVar } from "./usefuls.js";
 import { preload } from "../../../common/useful.js";
 
 import config from './data/coral-group.yaml';
@@ -198,6 +198,10 @@ if (hotel_data) {
         $('[data-scrollto]').on('click', function () {
             $(window).scrollTo($(this).attr('data-scrollto'), 300, {offset: -150 });
         });
+    });
+
+    waitForGlobalVar('ins_resent_default', function () {
+        $('.shortcuts').appendTo('.tools-shortcuts');
     });
 
 }
