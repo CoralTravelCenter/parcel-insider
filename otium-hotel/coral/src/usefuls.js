@@ -11,10 +11,11 @@ export function demanglePrice($container) {
 
 export function waitForGlobalVar(prop, do_things) {
     (function () {
-        if (window[prop]) {
-            do_things();
-        } else {
+        try {
+            eval(prop);
+        } catch (ex) {
             setTimeout(arguments.callee, 200);
         }
+        do_things();
     })();
 }

@@ -149,6 +149,8 @@ if (hotel_data) {
     let $markup = $(Mustache.render(markup, hotel_data, hotel_data.partials || {}));
     $('.notcritical').prepend($markup);
 
+    $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
+
     $markup.find('.bread-crumbs').empty().append($('.bcrumb'));
 
     const $original_hotelgallery_module = $('[data-module="hotelgallery"]');

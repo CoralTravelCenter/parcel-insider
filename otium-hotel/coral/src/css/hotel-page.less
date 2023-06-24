@@ -99,12 +99,31 @@ section.otium-hotel {
 	max-width: 1370px;
 	margin: auto;
 	color: black;
+	@media screen and (max-width: @wide-breakpoint) {
+		max-width: 1115px;
+	}
+	@media screen and (max-width: @mid-breakpoint) {
+		max-width: 100%;
+		padding: 0 15px;
+	}
 	.tools-shortcuts {
-		background: #fed;
-		border: 1px solid #000;
-		display: flex;
-		flex-direction: row-reverse;
-		align-items: center;
+		align-self: center;
+		.shortcuts {
+			.dm-ins-wish-list__add2 {
+				display: flex;
+			}
+		}
+		a.sharebtn {
+			display: inline-flex;
+			align-items: center;
+			color: @coral-main-blue;
+			&:before {
+				font-family: "Material Icons";
+				font-size: 1.2em;
+				content: 'share';
+				margin-right: .5em;
+			}
+		}
 	}
 	.visuals-gallery {
 		position: relative;
@@ -211,6 +230,12 @@ section.otium-hotel {
 
 	[data-module='hotelgallery'] {
 		.proportional(16/9);
+		@media screen and (max-width: @wide-breakpoint) {
+			height: 100%;
+		    &:before {
+				content: none;
+			}
+		}
 		.hotelgallery-wrap {
 			.gallery-layout {
 				border-radius: 20px;
@@ -552,6 +577,12 @@ section.otium-hotel {
 @media screen and (min-width: 1007px) {
 	[data-module="searchtabsmain"] {
 		min-height: 119px;
+	}
+}
+
+li.breadcrumb-item.breadcrumb-fake {
+	@media screen and (max-width: @wide-breakpoint) {
+	    display: none;
 	}
 }
 
