@@ -106,8 +106,14 @@ section.otium-hotel {
 		max-width: 100%;
 		padding: 0 15px;
 	}
+	@media screen and (max-width: @mobile-breakpoint) {
+		grid-template-columns: 1fr 1fr;
+	}
 	.tools-shortcuts {
 		align-self: center;
+		@media screen and (max-width: @mobile-breakpoint) {
+		    grid-column: span 2;
+		}
 		.shortcuts {
 			.dm-ins-wish-list__add2 {
 				display: flex;
@@ -123,12 +129,45 @@ section.otium-hotel {
 				content: 'share';
 				margin-right: .5em;
 			}
+			.shareicon {
+				display: none!important;
+			}
 		}
 	}
 	.visuals-gallery {
 		position: relative;
 		filter: drop-shadow(0 4px 16px fade(black, 15%));
+		@media screen and (max-width: @mobile-breakpoint) {
+			grid-column: span 2;
+		}
+		[data-module='hotelgallery'] {
+			.proportional(16/9);
+			@media screen and (max-width: @wide-breakpoint) {
+				height: 100%;
+				&:before {
+					content: none;
+				}
+			}
+			@media screen and (max-width: @mobile-breakpoint) {
+				.proportional(16/9);
+				height: unset;
+			}
+			@media screen and (max-width: @narrow-breakpoint) {
+				.proportional(1/1);
+				height: unset;
+			}
+			.hotelgallery-wrap {
+				.gallery-layout {
+					border-radius: 20px;
+					overflow: hidden;
+				}
+				.thumbs {
+					border-radius: 0 0 20px 20px;
+				}
+			}
+		}
 	}
+
 	.hotel-name-location {
 		z-index: 1;
 		width: 100%;
@@ -138,6 +177,9 @@ section.otium-hotel {
 		font-size: 14px;
 		font-weight: normal;
 		padding: 0 8px;
+		@media screen and (max-width: @mobile-breakpoint) {
+			grid-column: span 2;
+		}
 		.stars {
 			font-family: "Material Icons";
 			font-size: 20px;
@@ -172,6 +214,32 @@ section.otium-hotel {
 				font-size: 1.5em;
 				margin-right: .25em;
 			}
+			@media screen and (max-width: @mobile-breakpoint) {
+			    display: none;
+			}
+		}
+	}
+	>.show-on-map {
+		.interactive();
+		outline: none;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		background: none;
+		border: 0;
+		padding: 0 1em;
+		line-height: 1;
+		cursor: pointer;
+		border-radius: 20px;
+		box-shadow: inset 0 0 0 1px @coral-grey;
+		&:before {
+			content: 'place';
+			font-family: "Material Icons";
+			font-size: 1.5em;
+			margin-right: .25em;
+		}
+		@media screen and (min-width: (@mobile-breakpoint + 1px)) {
+		    display: none;
 		}
 	}
 	.reviews-info {
@@ -182,6 +250,9 @@ section.otium-hotel {
 		font-weight: normal;
 		color: black;
 		padding: 1.5em;
+		@media screen and (max-width: @mobile-breakpoint) {
+			padding: .7em 1.5em;
+		}
 		&:empty {
 			background: none;
 		}
@@ -190,7 +261,9 @@ section.otium-hotel {
 			display: flex;
 			align-items: baseline;
 			cursor: pointer;
-
+			@media screen and (max-width: 768px) {
+				justify-content: center;
+			}
 			.rate-comp {
 				display: flex;
 
@@ -204,11 +277,17 @@ section.otium-hotel {
 			.count-comp {
 				margin-left: auto;
 				font-weight: normal;
+				@media screen and (max-width: 768px) {
+					display: none;
+				}
 			}
 		}
 		[data-provider='tophotels.ru'] {
 			display: flex;
 			align-items: baseline;
+			@media screen and (max-width: 768px) {
+				justify-content: center;
+			}
 			.rate-comp {
 				display: flex;
 				.value {
@@ -224,24 +303,9 @@ section.otium-hotel {
 			.count-comp {
 				margin-left: auto;
 				font-weight: normal;
-			}
-		}
-	}
-
-	[data-module='hotelgallery'] {
-		.proportional(16/9);
-		@media screen and (max-width: @wide-breakpoint) {
-			height: 100%;
-		    &:before {
-				content: none;
-			}
-		}
-		.hotelgallery-wrap {
-			.gallery-layout {
-				border-radius: 20px;
-			}
-			.thumbs {
-				border-radius: 0 0 20px 20px;
+				@media screen and (max-width: 768px) {
+				    display: none;
+				}
 			}
 		}
 	}
@@ -251,6 +315,9 @@ section.otium-hotel {
 		grid-template-columns: 3fr 2fr;
 		//grid-template-rows: repeat(auto-fit, minmax(1em, max-content));
 		grid-gap: 20px;
+		@media screen and (max-width: @mobile-breakpoint) {
+		    grid-column: span 2;
+		}
 		.pricing-cell {
 			display: flex;
 			flex-wrap: wrap;
@@ -330,6 +397,9 @@ section.otium-hotel {
 				cursor: pointer;
 				background: white;
 				font-size: 12px;
+				@media screen and (max-width: @narrow-breakpoint) {
+					font-size: 2vw;
+				}
 				.rounded-ramp-border(@ramp: @coralbonus-ramp, @thickness: 2px, @radius: 4px);
 				.value-box {
 					background: @coralbonus-ramp;

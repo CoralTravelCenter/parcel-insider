@@ -157,6 +157,7 @@ if (hotel_data) {
     const is_exclusive = !!$original_hotelgallery_module.find('.hotelgallery-wrap.exclusive').removeClass('exclusive').length;
     const $visuals_gallery = $markup.find('.visuals-gallery');
     $visuals_gallery.empty().append($original_hotelgallery_module);
+    $('.gallery__overlay').appendTo($markup);
 
     let badges = [];
     if (is_exclusive) badges.push('<div class="badge exclusive">EXCLUSIVE</div>');
