@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Insider mods powered by parceljs",
     "scripts": {
+        "build-emergency-contact-field-coral": "parcel build --no-source-maps --dist-dir emergency-contact-field/coral/dist emergency-contact-field/coral/src/insider.js",
         "build-otium-hotels-search-coral": "parcel build --no-source-maps --dist-dir otium-hotel/coral/dist otium-hotel/coral/src/search-results.js",
         "build-otium-hotel-page-coral": "parcel build --no-source-maps --dist-dir otium-hotel/coral/dist otium-hotel/coral/src/hotel-page.js",
         "build-sfc-info-tab-coral": "parcel build --no-source-maps --dist-dir sfc-info-tab/coral/dist sfc-info-tab/coral/src/insider.js",
