@@ -184,7 +184,7 @@ if (hotel_data) {
         placement: 'top',
         trigger:   'hover'
     });
-    $('.additives').popover({
+    $('.additives, .additives-cell').popover({
         template:  popoverTemplateWithClass('additives'),
         html:      true,
         placement: 'top',

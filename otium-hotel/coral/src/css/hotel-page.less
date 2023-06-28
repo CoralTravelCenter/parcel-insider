@@ -85,11 +85,15 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 4px;
+	border-radius: 8px;
 	cursor: pointer;
 	box-shadow: 2px 6px 8px fade(black, 5%);
 	border: 0;
 	line-height: 1;
+	font-size: (14/12em);
+	@media screen and (max-width: @wide-breakpoint) {
+		font-size: 1em;
+	}
 }
 
 section.otium-hotel {
@@ -205,6 +209,7 @@ section.otium-hotel {
 			font-size: 10px;
 			background: none;
 			border: 1px solid #DCDCDC;
+			border-radius: 4px;
 			padding: 0 1em 0 0.5em;
 			margin-left: 1em;
 			cursor: pointer;
@@ -312,9 +317,9 @@ section.otium-hotel {
 
 	.about-pricing-etc {
 		display: grid;
-		grid-template-columns: 3fr 2fr;
-		//grid-template-rows: repeat(auto-fit, minmax(1em, max-content));
+		grid-template-columns: 2fr 2fr;
 		grid-gap: 20px;
+		font-size: 12px;
 		@media screen and (max-width: @mobile-breakpoint) {
 		    grid-column: span 2;
 		}
@@ -343,6 +348,15 @@ section.otium-hotel {
 				color: @coral-main-yellow;
 				> * {
 					font-size: (40/12em);
+					@media screen and (max-width: @wide-breakpoint) {
+						font-size: 2.8em;
+					}
+					@media screen and (max-width: @mobile-breakpoint) {
+						font-size: (40/12em);
+					}
+					@media screen and (max-width: @narrow-breakpoint) {
+						font-size: 3em;
+					}
 				}
 				.decorated-price.lots-of-money {
 					.cents {
@@ -350,53 +364,98 @@ section.otium-hotel {
 					}
 				}
 			}
-			.additives {
+			//.additives {
+			//	display: flex;
+			//	flex-direction: column;
+			//	font-size: 12px;
+			//	font-weight: normal;
+			//	line-height: 1.2;
+			//	cursor: default;
+			//	@media screen and (max-width: @mobile-breakpoint) {
+			//		font-size: .85em;
+			//		width: auto;
+			//	}
+			//	>em {
+			//		margin-top: .5em;
+			//		font-style: normal;
+			//		color: @coral-main-blue;
+			//		font-weight: bold;
+			//		//text-transform: uppercase;
+			//	}
+			//	.mandatories {
+			//		display: flex;
+			//		align-items: flex-end;
+			//		&:after {
+			//			font-family: "Header Fontello";
+			//			content: '';
+			//			font-size: 1.2em;
+			//			color: @coral-main-yellow;
+			//			margin-left: .5em;
+			//		}
+			//		>strong {
+			//			white-space: nowrap;
+			//			font-size: (14/12em);
+			//			margin: 0 .2em;
+			//		}
+			//	}
+			//}
+		}
+		.additives-cell {
+			margin-top: -20px;
+			grid-column: span 2;
+			display: flex;
+			flex-direction: column;
+			font-size: 12px;
+			font-weight: normal;
+			line-height: 1.2;
+			cursor: default;
+			@media screen and (max-width: @mobile-breakpoint) {
+				font-size: .85em;
+				width: auto;
+			}
+			>em {
+				font-style: normal;
+				color: @coral-main-blue;
+				font-weight: bold;
+				//text-transform: uppercase;
+			}
+			.mandatories {
 				display: flex;
-				flex-direction: column;
-				font-size: 12px;
-				font-weight: normal;
-				line-height: 1.2;
-				cursor: default;
-				@media screen and (max-width: @mobile-breakpoint) {
-					font-size: .85em;
-					width: auto;
+				align-items: baseline;
+				&:after {
+					font-family: "Header Fontello";
+					content: '';
+					font-size: 1.2em;
+					color: @coral-main-yellow;
+					margin-left: .5em;
 				}
-				>em {
-					margin-top: .5em;
-					font-style: normal;
-					color: @coral-main-blue;
-					font-weight: bold;
-					//text-transform: uppercase;
-				}
-				.mandatories {
-					display: flex;
-					align-items: flex-end;
-					&:after {
-						font-family: "Header Fontello";
-						content: '';
-						font-size: 1.2em;
-						color: @coral-main-yellow;
-						margin-left: .5em;
-					}
-					>strong {
-						white-space: nowrap;
-						font-size: (14/12em);
-						margin: 0 .2em;
-					}
+				>strong {
+					white-space: nowrap;
+					font-size: (14/12em);
+					margin: 0 .2em;
 				}
 			}
 		}
 		.coralbonus-cell {
 			align-self: start;
+			display: flex;
+			justify-content: flex-end;
 			.coralbonus-badge {
 				display: inline-grid;
 				grid-auto-flow: column dense;
-				grid-gap: 1em;
+				grid-gap: .5em;
 				padding: 1em 1em;
 				align-items: center;
 				cursor: pointer;
 				background: white;
 				font-size: 12px;
+				line-height: 1;
+				@media screen and (max-width: @wide-breakpoint) {
+					font-size: 80%;
+				}
+				@media screen and (max-width: @mobile-breakpoint) {
+					font-size: 100%;
+				}
 				@media screen and (max-width: @narrow-breakpoint) {
 					font-size: 2vw;
 				}
@@ -410,7 +469,7 @@ section.otium-hotel {
 					.value {
 						display: inline;
 						align-items: center;
-						font-size: 2.4em;
+						font-size: 1.5em;
 						line-height: 1;
 						white-space: nowrap;
 						&:after {
@@ -455,6 +514,12 @@ section.otium-hotel {
 		}
 
 		.early-booking-cell {
+			&:empty {
+				display: none;
+				& + * {
+					grid-column: span 2;
+				}
+			}
 			.early-booking-promo {
 				width: 100%;
 				display: flex;
