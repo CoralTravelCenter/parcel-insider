@@ -80,3 +80,7 @@ export function watchIntersection(targets, options, yes_handler, no_handler) {
     }
     return io;
 };
+
+export function popoverTemplateWithClass(klass = '') {
+    return `<div class="popover ${klass}" role="tooltip"><div class="arrow ${klass}"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>`;
+};

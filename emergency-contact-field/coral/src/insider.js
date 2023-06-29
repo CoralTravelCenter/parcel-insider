@@ -1,5 +1,5 @@
 import css from 'bundle-text:./insider.less';
-const popoverTemplateWithClass = (klass = '') => `<div class="popover ${ klass }" role="tooltip"><div class="arrow ${ klass }"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>`;
+import { popoverTemplateWithClass } from '../../../common/useful.js';
 
 $('head').append('<style>' + css + '</style>');
 
