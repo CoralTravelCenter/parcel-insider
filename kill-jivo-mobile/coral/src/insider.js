@@ -7,7 +7,7 @@ if (shouldDisplayJivo()) {
     $('head').append('<style>' + css + '</style>');
     awaitMobileButton();
 } else {
-    $('head').append('<style>body > jdiv { display: none!important; }</style>');
+    hideJivo();
 }
 
 function shouldDisplayJivo() {
@@ -15,6 +15,9 @@ function shouldDisplayJivo() {
     return now > Number(localStorage.getItem(ls_key));
 }
 
+function hideJivo() {
+    $('head').append('<style>body > jdiv { display: none!important; }</style>');
+}
 function awaitMobileButton() {
     const $jivoBitton = $('.__jivoMobileButton');
     if ($jivoBitton.length) {
@@ -57,4 +60,6 @@ function handleKill() {
     const mins = Number($this.attr('data-kill-timeout-mins'));
     const respawn_timestamp = new Date().getTime() + mins * 60000;
     localStorage.setItem(ls_key, respawn_timestamp);
+    $('#kill-jivo-options-modal').modal('hide');
+    hideJivo();
 }
