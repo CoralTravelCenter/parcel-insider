@@ -4,67 +4,71 @@
 @coral-main-blue-accent: #0067B5;
 
 .interactive() {
-  user-select: none;
-  &:active {
-    transform: translateY(2px);
-  }
+	user-select: none;
+	&:active {
+		transform: translateY(2px);
+	}
 }
 
 .jivo-killer {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Material Icons";
-  font-size: 28px;
-  line-height: 1;
-  color: @coral-main-blue;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  background: white;
-  box-shadow: -2px 2px 4px fade(black, 20%);
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateY(-50%);
+	width: 36px;
+	height: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Material Icons";
+	font-size: 28px;
+	line-height: 1;
+	color: @coral-main-blue;
+	border: 1px solid currentColor;
+	border-radius: 50%;
+	background: white;
+	box-shadow: -2px 2px 4px fade(black, 20%);
 }
 
 #kill-jivo-options-modal {
-  .modal-dialog-centered {
-    align-items: flex-end;
-  }
-  .modal-content {
-    .modal-body {
-      display: flex;
-      flex-wrap: wrap;
-      .heading {
-        width: 100%;
-        text-align: center;
-        font-size: 1.5em;
-      }
-      >button {
-        .interactive();
-        flex: 1 1 auto;
-        outline: none;
-        display: flex;
-        height: 3em;
-        justify-content: center;
-        align-items: center;
-        line-height: 1;
-        margin: 1em .5em;
-        border: 1px solid #000;
-        border-radius: 8px;
-        background: transparent;
-      }
-    }
-  }
+	.modal-dialog-centered {
+		align-items: flex-end;
+	}
+
+	.modal-content {
+		.modal-body {
+			display: flex;
+			flex-wrap: wrap;
+
+			.heading {
+				width: 100%;
+				text-align: center;
+				font-size: 1.5em;
+			}
+
+			> button {
+				.interactive();
+				flex: 1 1 auto;
+				outline: none;
+				display: flex;
+				height: 3em;
+				justify-content: center;
+				align-items: center;
+				line-height: 1;
+				margin: 1em .5em;
+				border: 1px solid #000;
+				border-radius: 8px;
+				background: transparent;
+			}
+		}
+	}
 }
 
 body.modal-open {
-  padding-right: 0!important;
-  > jdiv {
-    position: relative;
-    z-index: -1;
-  }
+	padding-right: 0 !important;
+
+	> jdiv {
+		position: relative;
+		z-index: -1;
+	}
 }
