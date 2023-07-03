@@ -5,6 +5,7 @@
     "scripts": {
         "build-kill-jivo-mobile-coral": "parcel build --no-source-maps --dist-dir kill-jivo-mobile/coral/dist kill-jivo-mobile/coral/src/insider.js",
         "build-order-comments-field-coral": "parcel build --no-source-maps --dist-dir order-comments-field/coral/dist order-comments-field/coral/src/insider.js",
+        "build-order-comments-field-sunmar": "parcel build --no-source-maps --dist-dir order-comments-field/sunmar/dist order-comments-field/sunmar/src/insider.js",
         "build-emergency-contact-field-coral": "parcel build --no-source-maps --dist-dir emergency-contact-field/coral/dist emergency-contact-field/coral/src/insider.js",
         "build-otium-hotels-search-coral": "parcel build --no-source-maps --dist-dir otium-hotel/coral/dist otium-hotel/coral/src/search-results.js",
         "build-otium-hotel-page-coral": "parcel build --no-source-maps --dist-dir otium-hotel/coral/dist otium-hotel/coral/src/hotel-page.js",
