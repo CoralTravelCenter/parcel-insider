@@ -183,7 +183,11 @@ function parseOriginalCard($hotel_item) {
     // name
     hotel_data.name = $original_contents.find('h2').text()
     // stars
-    hotel_data.stars = new Array($original_contents.find('.rating').children().length);
+    const $rating = $original_contents.find('.rating');
+    const n_stars = $rating.children('.material-icons').length;
+    hotel_data.stars = n_stars ? new Array(n_stars) : undefined;
+    // hotel_data.stars_klass = n_stars ? 'material-icons' : '';
+    hotel_data.category = n_stars ? undefined : $rating.text()
     // reviews
     if (hotel_data.forceRating) {
         switch (hotel_data.forceRating.source) {
