@@ -13,7 +13,44 @@ import h25495 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/
 import h34184 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/34184.html'
 import h35631 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/35631.html'
 
+import h34121 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/34121.html'
+import h34799 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/34799.html'
+import h36354 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/36354.html'
+import h36572 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/36572.html'
+import h24729 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/24729.html'
+import h27685 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/27685.html'
+
 export default [
+    {
+        name: 'OTIUM DELIGHT HOTEL & SPA',
+        id: 27685,
+        markup: h27685
+    },
+    {
+        name: 'OTIUM DELIGHT HOTEL',
+        id: 24729,
+        markup: h24729
+    },
+    {
+        name: 'OTIUM BOUTIQUE CASTLE OLD TOWN',
+        id: 36572,
+        markup: h36572
+    },
+    {
+        name: 'OTIUM BOUTIQUE HAPPY SUITES',
+        id: 36354,
+        markup: h36354
+    },
+    {
+        name: 'OTIUM BOUTIQUE MELISA MOMENT',
+        id: 34799,
+        markup: h34799
+    },
+    {
+        name: 'OTIUM INN BELDIBI BEACH',
+        id: 34121,
+        markup: h34121
+    },
     {
         name: "OTIUM FAMILY ECO CLUB",
         id: 453,

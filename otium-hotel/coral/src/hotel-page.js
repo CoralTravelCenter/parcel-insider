@@ -49,14 +49,18 @@ Number.prototype.zeroPad = function(len, c) {
 // =====================================================================================================================
 
 const HOTEL_ID = Number($('h1[data-hotelid]').attr('data-hotelid'));
-console.log('+++ HOTEL_ID: %o', HOTEL_ID);
+// console.log('+++ HOTEL_ID: %o', HOTEL_ID);
 const hotel_data = _.find(config.hotels, { id: HOTEL_ID });
-console.log('+++ hotel_data: %o', hotel_data);
+// console.log('+++ hotel_data: %o', hotel_data);
 
 function extendHotelData(hotel_data) {
     hotel_data.partials = {};
     // stars
-    hotel_data.stars = new Array($('.rating .material-icons').length);
+    // hotel_data.stars = new Array($('.rating .material-icons').length);
+    const $rating = $('.rating');
+    const n_stars = $rating.children('.material-icons').length;
+    hotel_data.stars = n_stars ? new Array(n_stars) : undefined;
+    hotel_data.category = n_stars ? undefined : $rating.text()
     // name
     hotel_data.name = $('h1[data-hotelid]').text();
     // location

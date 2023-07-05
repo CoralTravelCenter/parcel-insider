@@ -2,7 +2,7 @@
     <div class="bread-crumbs"></div>
     <div class="tools-shortcuts"></div>
     <div class="hotel-name-location">
-        <div class="stars">{{ #stars }}<span>star_rate</span>{{ /stars }}</div>
+        <div class="stars">{{ #stars }}<span class="material-icons">star</span>{{ /stars }}{{ ^stars }}{{ category }}{{ /stars }}</div>
         <h1 class="name">{{ name }}</h1>
         <div class="hotel-location">{{ location }}</div>
         <button class="show-on-map" data-scrollto=".hotel-map">Показать отель на&nbsp;карте</button>
