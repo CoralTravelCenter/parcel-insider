@@ -258,7 +258,7 @@ body .hotellist {
 				grid-template-rows: repeat(6,minmax(1em, auto));
 				gap: 1em 1em;
 				grid-template-areas:
-					"stars . . reviews"
+					"stars stars . reviews"
 					"name name name elite"
 					"hotel-location hotel-location hotel-location hotel-location"
 					"tour-details tour-details tour-details tour-details"
@@ -271,7 +271,7 @@ body .hotellist {
 					gap: 1em 0;
 					grid-template-rows: auto auto auto auto auto auto 3em;
 					grid-template-areas:
-						"stars . . elite"
+						"stars stars . elite"
 						"name name name name"
 						"hotel-location hotel-location hotel-location hotel-location"
 						"tour-details tour-details tour-details tour-details"
@@ -283,7 +283,7 @@ body .hotellist {
 					gap: 1em 0;
 					grid-template-rows: auto auto auto auto auto auto 3em;
 					grid-template-areas:
-						"stars . elite elite"
+						"stars stars elite elite"
 						"name name name name"
 						"hotel-location hotel-location hotel-location hotel-location"
 						"tour-details tour-details tour-details tour-details"
@@ -297,6 +297,7 @@ body .hotellist {
 				> .stars {
 					grid-area: stars;
 					//font-family: 'Material Icons';
+					white-space: nowrap;
 					font-size: (20/12em);
 					color: @coral-main-yellow;
 					align-self: center;
