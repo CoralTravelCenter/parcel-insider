@@ -1,0 +1,73 @@
+@hero-breakpoint: 1920px;
+@wide-breakpoint: 1440px;
+@mid-breakpoint: 1200px;
+@strange-breakpoint: 1006px;
+@mobile-breakpoint: 768px;
+@narrow-breakpoint: 576px;
+
+@max-content-width: 1370px;
+
+@coral-main-yellow: #F0AB00;
+@coral-main-yellow-accent: #E27300;
+@coral-main-blue: #0093D0;
+@coral-main-blue-accent: #0067B5;
+@coral-ramp-bg: linear-gradient(45.62deg, #FB7099 0%, #F0AB13 100%);
+@coral-hero-title: #033870;
+@coral-common-black: #000000;
+@coral-common-white: #FFFFFF;
+@coral-grey: #777777;
+@coral-grey-accent: #777777;
+@coral-page-bg: #EAF3FB;
+@coral-href: #1EBDFF;
+@coral-green-accent: #8ACB00;
+@coral-green-lite: #D0EA99;
+@coral-yellow-lite: #EFD48F;
+@coral-red-error: #FF3333;
+@coral-red-warn: #FFDCDC;
+
+@font-face {
+  font-family: 'museosans';
+  font-weight: 900;
+  src: url('https://font.static.useinsider.com/coraltravel/museosanscyrl-900-webfont.ttf');
+}
+
+@font-face {
+  font-family: 'museosans';
+  font-weight: bold;
+  src: url('https://font.static.useinsider.com/coraltravel/museosanscyrl-700-webfont.ttf');
+}
+
+@font-face {
+  font-family: 'museosans';
+  font-weight: normal;
+  src: url('https://font.static.useinsider.com/coraltravel/museosanscyrl-500-webfont.ttf');
+}
+
+@font-face {
+  font-family: 'museosans';
+  font-weight: 300;
+  src: url('https://font.static.useinsider.com/coraltravel/museosanscyrl-300-webfont.ttf');
+}
+
+.widgetcontainer {
+  .wrapper {
+    font-family: museosans, Rubik, sans-serif;
+    font-weight: 400;
+  }
+
+  section.post {
+    display: grid;
+    grid-gap: 60px;
+    >* {
+      margin: 0;
+    }
+    h2 {
+      font-weight: 700!important;
+      font-size: 28px;
+      @media screen and (max-width: @mobile-breakpoint) {
+        font-size: 17px;
+      }
+    }
+  }
+}
+

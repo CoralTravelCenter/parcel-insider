@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Insider mods powered by parceljs",
     "scripts": {
+        "build-main-coral-press": "parcel build --no-source-maps --dist-dir main-coral-press/coral/dist main-coral-press/coral/src/insider.js",
         "build-kill-jivo-mobile-coral": "parcel build --no-source-maps --dist-dir kill-jivo-mobile/coral/dist kill-jivo-mobile/coral/src/insider.js",
         "build-order-comments-field-coral": "parcel build --no-source-maps --dist-dir order-comments-field/coral/dist order-comments-field/coral/src/insider.js",
         "build-order-comments-field-sunmar": "parcel build --no-source-maps --dist-dir order-comments-field/sunmar/dist order-comments-field/sunmar/src/insider.js",
