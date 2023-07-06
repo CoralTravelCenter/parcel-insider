@@ -94,6 +94,7 @@ function extendHotelData(hotel_data) {
 
     // pricing
     let price = demanglePrice($('.price-big'));
+    hotel_data.pricing_klass = price ? '' : 'nothing-available';
     let original_price = Number($('.oldprice').text().replace(/[^0-9.,]/g, '').replace(',','.'));
     // pricing -> instalement
     hotel_data.installment_value_formatted = Math.round(price / 36 * 1.25).formatPrice();
@@ -140,8 +141,17 @@ function extendHotelData(hotel_data) {
     hotel_data.usps?.forEach(usp => {
         usp.tooltip_markup = usp.details && Mustache.render(otium_tooltip_body_template, usp.details);
     });
-    // Choose room xlink
 
+    // Search summary info
+    // Туры с 01.08.2023 - Ночей                        7, 8, 9, 10, 11, 12, 13, 14                        - Взрослых: 2  - Детей: 1
+    const $search_summary = $('.search-summary');
+    const summary_text = $search_summary.eq(0).clone().children().remove().end().text();
+    let [date, nights, adults, children] = summary_text.split('-');
+    hotel_data.tour_date = date = date.match(/[0-9.]+/)[0];
+    hotel_data.tour_nights = nights = nights.replace(/[^0-9,]/g, '').split(',').map(n => Number(n));
+    adults = Number(adults.replace(/\D/g, ''));
+    children = children && Number(children.replace(/\D/g, '')) || 0;
+    hotel_data.isFlightIncluded = !!~$search_summary.text().indexOf('включен');
 
     return hotel_data;
 }

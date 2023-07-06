@@ -15,7 +15,7 @@
     <div class="visuals-gallery">
         gallery
     </div>
-    <div class="about-pricing-etc">
+    <div class="about-pricing-etc {{ pricing_klass }}">
         <div class="pricing-cell">
             <span class="from">цена от:</span>
             <div class="original-price">
@@ -66,12 +66,24 @@
         <button class="more-about-hote-cell" data-scrollto=".informations">Подробнее об отеле</button>
         <button class="choose-room-cell" data-scrollto=".search-summary">Выбрать номер</button>
     </div>
-<!--
     <div class="lefty">
-        lefty
+        <div class="tour-summary-grid">
+            <div class="date-since">
+                <span class="label">Туры с</span>
+                <span class="value selected">{{ tour_date }}</span>
+            </div>
+            <div class="nights">
+                <span class="label">на</span>
+                <ul class="value">
+                    {{ #tour_nights }}
+                    <li>{{ . }}</li>
+                    {{ /tour_nights }}
+                </ul>
+                <span class="label">ночей</span>
+            </div>
+        </div>
     </div>
     <div class="righty">
         righty
     </div>
--->
 </section>
