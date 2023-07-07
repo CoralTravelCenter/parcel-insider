@@ -655,45 +655,100 @@ section.otium-hotel {
 		}
 
 	}
-
+	.full-width {
+		grid-column: span 2;
+		z-index: 1;
+	}
 	.lefty {
 		z-index: 1;
-		font-size: 12px;
-		.tour-summary-grid {
-			display: flex;
+
+	}
+	.room-selector {
+		ul.selector {
+			list-style: none;
+			display: grid;
 			grid-auto-flow: column;
-			font-size: 2em;
-			padding: 0 20px;
-			>* {
-				//border: 1px solid #000;
-				&:nth-child(n+2) {
-					margin-left: .3em;
+			font-weight: normal;
+			margin: 0;
+			padding: 0;
+			background: #EBEBEB;
+			border-radius: 8px;
+			overflow: hidden;
+			> li {
+				.interactive();
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				padding: .75em;
+				color: #c4c4c4;
+				pointer-events: none;
+				background: transparent;
+				.transit(background);
+				.transit(color);
+				cursor: pointer;
+				&[data-state='available'] {
+					background: white;
+					color: black;
+					pointer-events: auto;
+				}
+
+				&[data-state='selected'] {
+					background: @coral-main-yellow;
+					color: white;
+				}
+
+				.count {
+					font-size: 2em;
+					line-height: 1;
+				}
+
+				.wording {
+					line-height: 1;
+					margin-top: .25em;
 				}
 			}
-			.label {
-				font-weight: normal;
+		}
+	}
+	.tour-summary-grid {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		font-size: 24px;
+		padding: 0 20px;
+		@media screen and (max-width: @mobile-breakpoint) {
+			padding: unset;
+		}
+		>* {
+			//border: 1px solid #000;
+			&:nth-child(n+2) {
+				margin-left: .3em;
 			}
-			.value {
-				font-weight: bold;
-			}
-			.selected {
-				color: @coral-main-blue;
-			}
-			.nights {
-				ul.value {
-					display: inline-flex;
-					align-items: baseline;
-					list-style: none;
-					margin: 0;
-					padding: 0;
-					>li {
-						&:not(.selected) {
-							font-weight: normal;
-						}
-						&:nth-child(n+2):before {
-							content: ', ';
-							font-weight: normal;
-						}
+		}
+		.label {
+			font-weight: normal;
+		}
+		.value {
+			font-weight: bold;
+		}
+		.selected {
+			color: @coral-main-blue;
+			font-size: 1.05em;
+		}
+		.nights {
+			ul.value {
+				display: inline-flex;
+				align-items: baseline;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				>li {
+					&:not(.selected) {
+						font-weight: normal;
+					}
+					&:nth-child(n+2):before {
+						content: ', ';
+						font-weight: normal;
 					}
 				}
 			}

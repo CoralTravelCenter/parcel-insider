@@ -66,7 +66,7 @@
         <button class="more-about-hote-cell" data-scrollto=".informations">Подробнее об отеле</button>
         <button class="choose-room-cell" data-scrollto=".search-summary">Выбрать номер</button>
     </div>
-    <div class="lefty">
+    <div class="full-width">
         <div class="tour-summary-grid">
             <div class="date-since">
                 <span class="label">Туры с</span>
@@ -81,7 +81,22 @@
                 </ul>
                 <span class="label">ночей</span>
             </div>
+            <div class="adults">
+                <span class="label">для</span>
+                <span class="value selected">{{ adults }}</span>
+                <span class="label">{{ adults_wording }}</span>
+            </div>
+            {{ #children }}
+            <div class="children">
+                <span class="label">и</span>
+                <span class="value selected">{{ . }}</span>
+                <span class="label">{{ children_wording }}</span>
+            </div>
+            {{ /children }}
         </div>
+    </div>
+    <div class="lefty">
+        <div class="room-selector"><!----></div>
     </div>
     <div class="righty">
         righty

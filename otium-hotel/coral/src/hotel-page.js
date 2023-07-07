@@ -14,6 +14,7 @@ import { preload } from "../../../common/useful.js";
 
 import config from './data/coral-group.yaml';
 import hotel_infos_lut from './data/hotel-infos.js';
+import {RoomSelector} from "./room-selector";
 
 // =====================================================================================================================
 
@@ -44,6 +45,22 @@ String.prototype.zeroPad = function(len, c) {
 };
 Number.prototype.zeroPad = function(len, c) {
     return String(this).zeroPad(len, c);
+};
+
+Number.prototype.pluralForm = function (root, suffix_list) {
+    return root + (this >= 11 && this <= 14 ? suffix_list[0] : suffix_list[this % 10]);
+}
+Number.prototype.asAdults = function () {
+    const n = Math.floor(this);
+    return n.pluralForm('взросл', ['ых', 'ого', 'ых', 'ых', 'ых', 'ых', 'ых', 'ых', 'ых', 'ых']);
+};
+Number.prototype.asChildren = function () {
+    const n = Math.floor(this);
+    return n.pluralForm('', ['детей', 'ребенка', 'детей', 'детей', 'детей', 'детей', 'детей', 'детей', 'детей', 'детей']);
+};
+Number.prototype.asNights = function () {
+    const n = Math.floor(this);
+    return n.pluralForm('ноч', ['ей', 'ь', 'и', 'и', 'и', 'ей', 'ей', 'ей', 'ей', 'ей']);
 };
 
 // =====================================================================================================================
@@ -149,8 +166,10 @@ function extendHotelData(hotel_data) {
     let [date, nights, adults, children] = summary_text.split('-');
     hotel_data.tour_date = date = date.match(/[0-9.]+/)[0];
     hotel_data.tour_nights = nights = nights.replace(/[^0-9,]/g, '').split(',').map(n => Number(n));
-    adults = Number(adults.replace(/\D/g, ''));
-    children = children && Number(children.replace(/\D/g, '')) || 0;
+    hotel_data.adults = adults = Number(adults.replace(/\D/g, ''));
+    hotel_data.adults_wording = adults.asAdults();
+    hotel_data.children = children = children && Number(children.replace(/\D/g, '')) || 0;
+    hotel_data.children_wording = children.asChildren();
     hotel_data.isFlightIncluded = !!~$search_summary.text().indexOf('включен');
 
     return hotel_data;
@@ -162,6 +181,9 @@ if (hotel_data) {
     extendHotelData(hotel_data);
     let $markup = $(Mustache.render(markup, hotel_data, hotel_data.partials || {}));
     $('.notcritical').prepend($markup);
+
+    const roomSelector = new RoomSelector('.room-selector', hotel_data.tour_nights);
+    roomSelector.init();
 
     $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
 
