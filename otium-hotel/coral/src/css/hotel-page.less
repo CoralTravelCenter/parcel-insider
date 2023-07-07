@@ -664,6 +664,7 @@ section.otium-hotel {
 
 	}
 	.room-selector {
+		font-size: 12px;
 		ul.selector {
 			list-style: none;
 			display: grid;
@@ -692,17 +693,15 @@ section.otium-hotel {
 					color: black;
 					pointer-events: auto;
 				}
-
 				&[data-state='selected'] {
 					background: @coral-main-yellow;
 					color: white;
 				}
-
 				.count {
-					font-size: 2em;
+					font-size: (26/12em);
 					line-height: 1;
+					letter-spacing: normal;
 				}
-
 				.wording {
 					line-height: 1;
 					margin-top: .25em;
