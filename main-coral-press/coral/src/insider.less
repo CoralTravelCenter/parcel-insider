@@ -62,17 +62,25 @@
       margin: 0;
     }
     h1 {
-      font-weight: 900;
+      font-weight: 700;
+      font-size: 40px;
+      @media screen and (max-width: @mobile-breakpoint) {
+        font-size: 28px;
+      }
     }
     h2 {
-      font-weight: 700!important;
-      font-size: 28px;
+      font-weight: 400;
+      font-size: 32px;
       @media screen and (max-width: @mobile-breakpoint) {
         font-size: 17px;
       }
       & + .post__text {
         //margin-top: -20px;
       }
+    }
+    h3 {
+      font-weight: 700;
+      font-size: 24px;
     }
     .post__data-block {
       .post__source {
