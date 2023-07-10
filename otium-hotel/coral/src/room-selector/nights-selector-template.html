@@ -1,8 +1,12 @@
 <ul class="selector">
     {{ #list }}
-    <li>
-        <span class="count">{{ number }}</span>
+    <li data-nights="{{ nights }}">
+        <span class="count">{{ nights }}</span>
         <span class="wording">{{ wording }}</span>
     </li>
     {{ /list }}
 </ul>
+
+<div class="rooms-holder">
+
+</div>

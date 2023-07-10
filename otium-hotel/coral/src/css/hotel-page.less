@@ -697,6 +697,31 @@ section.otium-hotel {
 					background: @coral-main-yellow;
 					color: white;
 				}
+				&[data-state='loading'] {
+					position: relative;
+					&:after {
+						content: '';
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						width: 30px;
+						height: 30px;
+						border-top: 6px solid fade(white, 50%);
+						border-right: 6px solid fade(white, 50%);
+						border-bottom: 6px solid fade(white, 50%);
+						border-left: 6px solid fade(white, 95%);
+						border-radius: 50%;
+						animation: loading-wheel 1s infinite linear;
+					}
+					@-webkit-keyframes loading-wheel {
+						0% {
+							transform: translate(-50%,-50%) rotate(0deg);
+						}
+						100% {
+							transform: translate(-50%,-50%) rotate(360deg);
+						}
+					}
+				}
 				.count {
 					font-size: (26/12em);
 					line-height: 1;
@@ -707,6 +732,10 @@ section.otium-hotel {
 					margin-top: .25em;
 				}
 			}
+		}
+		.rooms-holder {
+			border: 1px solid #000;
+			padding: 3em;
 		}
 	}
 	.tour-summary-grid {

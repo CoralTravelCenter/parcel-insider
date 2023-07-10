@@ -79,7 +79,10 @@ function extendHotelData(hotel_data) {
     hotel_data.stars = n_stars ? new Array(n_stars) : undefined;
     hotel_data.category = n_stars ? undefined : $rating.text()
     // name
-    hotel_data.name = $('h1[data-hotelid]').text();
+    const $h1 = $('h1[data-hotelid]');
+    hotel_data.name = $h1.text();
+    hotel_data.h1_available_filter = $h1.attr('data-availablefilter');
+    hotel_data.h1_selected_date = $h1.attr('data-selecteddate');
     // location
     hotel_data.location = $('.location > span').text();
     // reviews
@@ -160,7 +163,6 @@ function extendHotelData(hotel_data) {
     });
 
     // Search summary info
-    // Туры с 01.08.2023 - Ночей                        7, 8, 9, 10, 11, 12, 13, 14                        - Взрослых: 2  - Детей: 1
     const $search_summary = $('.search-summary');
     const summary_text = $search_summary.eq(0).clone().children().remove().end().text();
     let [date, nights, adults, children] = summary_text.split('-');
@@ -171,6 +173,7 @@ function extendHotelData(hotel_data) {
     hotel_data.children = children = children && Number(children.replace(/\D/g, '')) || 0;
     hotel_data.children_wording = children.asChildren();
     hotel_data.isFlightIncluded = !!~$search_summary.text().indexOf('включен');
+    hotel_data.nights_selected = $('[data-module="roomlist"] li.active[data-night]').attr('data-night');
 
     return hotel_data;
 }
@@ -182,8 +185,12 @@ if (hotel_data) {
     let $markup = $(Mustache.render(markup, hotel_data, hotel_data.partials || {}));
     $('.notcritical').prepend($markup);
 
-    const roomSelector = new RoomSelector('.room-selector', hotel_data.tour_nights);
-    roomSelector.init();
+    const roomSelector = new RoomSelector('.room-selector', hotel_data.tour_nights, {
+        hotelId: hotel_data.id,
+        nightsSelected: Number(hotel_data.nights_selected),
+        availableFilter: Number(hotel_data.h1_available_filter),
+        selectedDate: hotel_data.h1_selected_date,
+    });
 
     $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
 
