@@ -734,8 +734,55 @@ section.otium-hotel {
 			}
 		}
 		.rooms-holder {
-			border: 1px solid #000;
-			padding: 3em;
+			margin-top: 20px;
+			.rooms-for-nights {
+				display: grid;
+				grid-gap: 20px;
+				.room {
+					font-size: 12px;
+					background: white;
+					border-radius: 1em;
+					padding: 1em 1.25em;
+					box-shadow: 0 4px 16px fade(black, 15%);
+					.layout-grid {
+						display: grid;
+						grid-template-columns: 2fr 3fr 3fr;
+						grid-gap: 1px;
+						background: #E8E9EC;
+						> * {
+							background: white;
+						}
+						.room-heading {
+							grid-area: 1 / 1 / 2 / -1;
+							display: flex;
+							align-items: baseline;
+							padding-bottom: 1em;
+							h4 {
+								margin: 0;
+								line-height: 1;
+							}
+						}
+						room-gallery {
+							grid-area: 2 / 1 / -1 / 2;
+							padding: 1em 1em 0 0;
+						}
+						room-meal-and-guests {
+							grid-column: 2;
+							padding: 1em;
+							&:last-of-type {
+								padding-bottom: 0;
+							}
+						}
+						room-pricing {
+							grid-column: 3;
+							padding: 1em 0 1em 1em;
+							&:last-of-type {
+								padding-bottom: 0;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	.tour-summary-grid {

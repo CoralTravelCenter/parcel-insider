@@ -1,0 +1,22 @@
+<div class="rooms-for-nights">
+    {{ #rooms_list }}
+    <div class="room">
+        <div class="layout-grid">
+            <div class="room-heading">
+                <h4>{{ name }}</h4>
+            </div>
+            <room-gallery>
+                gallery
+            </room-gallery>
+            {{ #variants }}
+            <room-meal-and-guests>
+                {{ meal.name }}
+            </room-meal-and-guests>
+            <room-pricing>
+                pricing
+            </room-pricing>
+            {{ /variants }}
+        </div>
+    </div>
+    {{ /rooms_list }}
+</div>
