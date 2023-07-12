@@ -791,6 +791,48 @@ section.otium-hotel {
 								width: 100%;
 								overflow: hidden;
 							}
+							> .flickity-page-dots {
+								order: 3;
+								list-style: none;
+								margin: .5em .5em 0;
+								padding: 0;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								> .dot {
+									width: 10px;
+									height: 10px;
+									border-radius: 50%;
+									margin: 0 .25em;
+									background: #EBEBEB;
+									.transit(background);
+									&:first-child:last-child {
+										display: none;
+									}
+									&.is-selected {
+										background: #555;
+									}
+								}
+							}
+							> .flickity-prev-next-button {
+								outline: none;
+								display: inline-flex;
+								align-items: center;
+								background: none;
+								border: 0;
+								width: 1em;
+								padding: 0;
+								margin-top: .5em;
+								&[disabled] {
+									display: none;
+								}
+								&.previous {
+									order: 2;
+								}
+								&.next {
+									order: 4;
+								}
+							}
 							img {
 								width: 100%;
 								opacity: 0;
