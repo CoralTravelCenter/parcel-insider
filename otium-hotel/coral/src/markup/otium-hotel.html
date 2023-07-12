@@ -63,7 +63,7 @@
                 {{ /usps }}
             </div>
         </div>
-        <button class="more-about-hote-cell" data-scrollto=".informations">Подробнее об отеле</button>
+        <button class="more-about-hotel-cell" data-scrollto=".informations">Подробнее об отеле</button>
         <button class="choose-room-cell" data-scrollto=".search-summary">Выбрать номер</button>
     </div>
     <div class="full-width">
@@ -74,9 +74,9 @@
             </div>
             <div class="nights">
                 <span class="label">на</span>
-                <ul class="value">
+                <ul class="values">
                     {{ #tour_nights }}
-                    <li>{{ . }}</li>
+                    <li data-value="{{.}}">{{ . }}</li>
                     {{ /tour_nights }}
                 </ul>
                 <span class="label">ночей</span>

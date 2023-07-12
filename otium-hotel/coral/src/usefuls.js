@@ -1,3 +1,4 @@
+import {preload} from "/common/useful.js";
 export const popoverTemplateWithClass = (klass = '') => `<div class="popover ${ klass }" role="tooltip"><div class="arrow ${ klass }"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>`;
 
 export function demanglePrice($container) {
@@ -18,4 +19,12 @@ export function waitForGlobalVar(prop, do_things) {
         }
         do_things();
     })();
+}
+
+let flickityPromise = null;
+export function flickityReady() {
+    flickityPromise ||= new Promise(resolve => {
+        preload('https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js', resolve);
+    });
+    return flickityPromise;
 }

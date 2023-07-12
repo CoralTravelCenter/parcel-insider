@@ -250,5 +250,15 @@ if (hotel_data) {
         $('.shortcuts').appendTo('.tools-shortcuts');
     });
 
+
+    $(document).on('wheel', '.flickity-enabled', _.debounce(function(e) {
+        e.stopPropagation();
+        if (e.originalEvent.deltaX > 0) {
+            $(this).flickity('next');
+        } else if (e.originalEvent.deltaX < 0) {
+            $(this).flickity('previous');
+        }
+    }, 40, { leading: true, trailing: false }));
+
 }
 

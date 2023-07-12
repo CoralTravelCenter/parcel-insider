@@ -631,7 +631,7 @@ section.otium-hotel {
 			}
 		}
 
-		.more-about-hote-cell {
+		.more-about-hotel-cell {
 			.button-cell();
 			background: white;
 			text-transform: uppercase;
@@ -735,51 +735,77 @@ section.otium-hotel {
 		}
 		.rooms-holder {
 			margin-top: 20px;
+			h4 {
+				margin: 0;
+				&[data-label] {
+					display: inline-flex;
+					flex-direction: column;
+					&:before {
+						content: attr(data-label);
+						text-transform: uppercase;
+						white-space: nowrap;
+						font-weight: normal;
+						font-size: 62%;
+						line-height: 1;
+						margin-bottom: .25em;
+						color: @coral-grey;
+					}
+				}
+			}
 			.rooms-for-nights {
 				display: grid;
 				grid-gap: 20px;
-				.room {
+				&:not(.shown) {
+					display: none;
+				}
+				.room-grid {
+					--variants-qty: 1;
+					display: grid;
+					grid-template-columns: 2fr 3fr 3fr;
+					grid-gap: 1px;
+					background: #E8E9EC;
 					font-size: 12px;
-					background: white;
 					border-radius: 1em;
-					padding: 1em 1.25em;
-					box-shadow: 0 4px 16px fade(black, 15%);
-					.layout-grid {
-						display: grid;
-						grid-template-columns: 2fr 3fr 3fr;
-						grid-gap: 1px;
-						background: #E8E9EC;
-						> * {
-							background: white;
-						}
-						.room-heading {
-							grid-area: 1 / 1 / 2 / -1;
+					overflow: hidden;
+					box-shadow: 2px 6px 8px fade(black, 5%);
+					> * {
+						background: white;
+						padding: .75em 1em;
+					}
+					.room-heading {
+						grid-area: 1 / 1 / 2 / -1;
+						display: flex;
+						align-items: baseline;
+					}
+					room-gallery {
+						grid-area: 2 / 1 / auto / 2;
+						grid-row-end: calc(2 + var(--variants-qty));
+						.compact-slider {
+							width: 100%;
 							display: flex;
-							align-items: baseline;
-							padding-bottom: 1em;
-							h4 {
-								margin: 0;
-								line-height: 1;
+							justify-content: center;
+							align-items: center;
+							flex-wrap: wrap;
+							> .flickity-viewport {
+								order: 1;
+								width: 100%;
+								overflow: hidden;
+							}
+							img {
+								width: 100%;
+								opacity: 0;
+								.transit(opacity);
+								&.is-selected {
+									opacity: 1;
+								}
 							}
 						}
-						room-gallery {
-							grid-area: 2 / 1 / -1 / 2;
-							padding: 1em 1em 0 0;
-						}
-						room-meal-and-guests {
-							grid-column: 2;
-							padding: 1em;
-							&:last-of-type {
-								padding-bottom: 0;
-							}
-						}
-						room-pricing {
-							grid-column: 3;
-							padding: 1em 0 1em 1em;
-							&:last-of-type {
-								padding-bottom: 0;
-							}
-						}
+					}
+					room-meal-and-guests {
+						grid-column: 2;
+					}
+					room-pricing {
+						grid-column: 3;
 					}
 				}
 			}
@@ -811,7 +837,7 @@ section.otium-hotel {
 			font-size: 1.05em;
 		}
 		.nights {
-			ul.value {
+			ul.values {
 				display: inline-flex;
 				align-items: baseline;
 				list-style: none;
@@ -828,6 +854,10 @@ section.otium-hotel {
 				}
 			}
 		}
+	}
+
+	.flickity-enabled {
+		outline: none;
 	}
 
 }
