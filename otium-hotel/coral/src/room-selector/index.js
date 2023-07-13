@@ -26,6 +26,9 @@ export class RoomSelector {
         });
         this.$container.append(this.$roomsSelector);
         this.selectNights(this.config.nightsSelected);
+
+        // this.roomsRefByNights.forEach((rr) => this.fetchRoomsData(rr));
+
         return this;
     }
 
