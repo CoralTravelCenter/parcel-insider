@@ -76,6 +76,7 @@ export class RoomSelector {
                         });
                         return {
                             name: room_node.querySelector('.roominfo h4')?.textContent,
+                            privileges: [...room_node.querySelectorAll('.room-name p')].map(p => p.textContent),
                             gallery_images_xxl: gallery_collection,
                             gallery_images_xxm: slider_collection.slice(0,7),
                             variants

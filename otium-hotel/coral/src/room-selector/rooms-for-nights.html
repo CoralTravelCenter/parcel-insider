@@ -3,6 +3,13 @@
     <div class="room-grid">
         <div class="room-heading">
             <h4 data-label="Тип номера">{{ name }}</h4>
+            {{ #privileges.length }}
+                <ul class="privileges">
+                {{ #privileges }}
+                    <li>{{ . }}</li>
+                {{ /privileges }}
+                </ul>
+            {{ /privileges.length }}
         </div>
         <room-gallery>
             {{ #gallery_images_xxm.length }}
