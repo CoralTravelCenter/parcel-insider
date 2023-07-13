@@ -780,12 +780,17 @@ section.otium-hotel {
 					room-gallery {
 						grid-area: 2 / 1 / auto / 2;
 						grid-row-end: calc(2 + var(--variants-qty));
+						.gallery-stub {
+							.proportional(4/3);
+							background: url("https://www.coral.ru/dist/img/no-photo.png") center no-repeat;
+						}
 						.compact-slider {
 							width: 100%;
 							display: flex;
 							justify-content: center;
 							align-items: center;
 							flex-wrap: wrap;
+							cursor: pointer;
 							> .flickity-viewport {
 								order: 1;
 								width: 100%;
@@ -845,6 +850,44 @@ section.otium-hotel {
 					}
 					room-meal-and-guests {
 						grid-column: 2;
+						display: grid;
+						grid-auto-flow: column;
+						grid-gap: 2em;
+						.pax-info {
+							justify-self: end;
+							display: flex;
+							align-items: baseline;
+							>* {
+								margin-left: 4px;
+								flex: 0 0 auto;
+							}
+							.pax {
+								display: inline-flex;
+								align-items: baseline;
+								>* {
+									flex: 0 0 auto;
+								}
+								&:after {
+									content: '';
+									background: url("https://www.coral.ru/dist/img/person.svg") center / contain no-repeat;
+								}
+								&[data-count] {
+									&:before {
+										content: attr(data-count);
+										font-size: 130%;
+										margin-right: 2px;
+									}
+								}
+								&.adult:after {
+									width: 11px;
+									height: 31px;
+								}
+								&.child:after {
+									width: 7px;
+									height: 20px;
+								}
+							}
+						}
 					}
 					room-pricing {
 						grid-column: 3;
@@ -974,6 +1017,10 @@ li.breadcrumb-item.breadcrumb-fake {
 	@media screen and (max-width: @wide-breakpoint) {
 	    display: none;
 	}
+}
+
+body {
+	overscroll-behavior-x: none;
 }
 
 @import "otium-tooltip";

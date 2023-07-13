@@ -6,14 +6,14 @@ import {flickityReady} from "../usefuls.js";
 export class RoomSelector {
     roomsRef = null;
     constructor(container, nights_list, config = {}) {
-        this.roomsRef = nights_list.map(n => {
+        this.roomsRefByNights = nights_list.map(n => {
             return {
                 nights:  n,
                 wording: n.asNights(),
             };
         });
         this.$container = $(container);
-        this.$roomsSelector = $(Mustache.render(nights_selector_t, { list: this.roomsRef }));
+        this.$roomsSelector = $(Mustache.render(nights_selector_t, { list: this.roomsRefByNights }));
         this.$nightsSelector = this.$roomsSelector.filter('ul.selector');
         this.$roomsHolder = this.$roomsSelector.filter('.rooms-holder');
         this.config = config;
@@ -21,7 +21,7 @@ export class RoomSelector {
     }
 
     init() {
-        this.roomsRef.forEach(ref => {
+        this.roomsRefByNights.forEach(ref => {
             ref.$buttonEl = this.$nightsSelector.find(`li[data-nights='${ ref.nights }']`);
         });
         this.$container.append(this.$roomsSelector);
@@ -30,7 +30,7 @@ export class RoomSelector {
     }
 
     findRoomsRefForNights(n) {
-        return this.roomsRef.find(d => d.nights === n);
+        return this.roomsRefByNights.find(d => d.nights === n);
     }
 
     fetchRoomsData(rooms_ref) {
@@ -50,15 +50,15 @@ export class RoomSelector {
                     const variant_nodes = room_node.querySelectorAll('.variant');
                     const variants = [...variant_nodes].map(variant_node => {
                         const pax_count_el = variant_node.querySelector('.pax-count');
+                        const adults = Number(pax_count_el.getAttribute('data-adultcount'));
+                        const children = Number(pax_count_el.getAttribute('data-childcount'));
                         return {
                             meal: {
                                 id: variant_node.getAttribute('data-mealid'),
                                 name: variant_node.querySelector('.m-meal-name').textContent
                             },
-                            pax: {
-                                adults: Number(pax_count_el.getAttribute('data-adultcount')),
-                                children: Number(pax_count_el.getAttribute('data-childcount'))
-                            }
+                            pax: {adults, children},
+                            pax_markup: paxMarkupFor(adults, children)
                         }
                     });
                     const gallery_collection = JSON.parse(room_node.querySelector('.roominfo .custom-gallery-wrapper').getAttribute('data-images'));
@@ -77,29 +77,55 @@ export class RoomSelector {
                 const $roomsList = rooms_ref.$roomsList = $(Mustache.render(rooms_for_nights_t, { rooms_list }));
                 $roomsList.find('.room-grid').each((idx, el) => el.style.setProperty('--variants-qty', rooms_list[idx].variants.length));
                 this.$roomsHolder.append($roomsList);
-                resolve();
+                resolve(rooms_list);
             });
         });
         return rooms_ref.roomsData;
     }
     async selectNights(n) {
         const roomsRef = this.findRoomsRefForNights(n);
-        await this.fetchRoomsData(roomsRef);
+        const rooms_data = await this.fetchRoomsData(roomsRef);
         this.$container.closest('.otium-hotel').find('.tour-summary-grid .nights .values').children().filter((idx, li) => {
             return li.getAttribute('data-value') == roomsRef.nights;
         }).addClass('selected').siblings().removeClass('selected');
         roomsRef.$buttonEl.attr('data-state', 'selected');
         roomsRef.$roomsList.addClass('shown').siblings('.shown').removeClass('shown');
         await flickityReady();
-        roomsRef.$roomsList.find('.compact-slider').flickity({
-            cellSelector: 'img',
-            lazyLoad: 1,
-            imagesLoaded: true,
-            wrapAround: true,
-            prevNextButtons: true,
-            pageDots: true
-        });
+        roomsRef.$roomsList.find('.compact-slider')
+            .on('staticClick.flickity', async (e, pointer, cellElement, idx) => {
+                $.magnificPopup.open({
+                    type: "image",
+                    items: rooms_data[$(cellElement).closest('.room-grid').index()].gallery_images_xxl,
+                    tLoading: i18n_en.global.loading + " #%curr%...",
+                    gallery: {
+                        index: idx, // seems doesn't work ;(
+                        enabled: true,
+                        navigateByImgClick: true
+                    }
+                });
+            })
+            .flickity({
+                cellSelector: 'img',
+                lazyLoad: 1,
+                imagesLoaded: true,
+                wrapAround: true,
+                prevNextButtons: true,
+                pageDots: true
+            });
         return this;
     }
 
+}
+
+function paxMarkupFor(adults_count, children_count) {
+    const els = [];
+    if (adults_count + children_count <= 4) {
+        Array.from({length: adults_count}).forEach(() => els.push('<span class="pax adult"></span>'));
+        Array.from({length: children_count}).forEach(() => els.push('<span class="pax child"></span>'));
+    } else {
+        els.push(`<span class="pax adult" data-count="${adults_count}"></span>`);
+        if (children_count)
+            els.push(`<span class="pax child" data-count="${ children_count }"></span>`);
+    }
+    return els.join('');
 }

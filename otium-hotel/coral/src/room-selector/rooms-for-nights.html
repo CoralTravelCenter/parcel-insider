@@ -5,15 +5,21 @@
             <h4 data-label="Тип номера">{{ name }}</h4>
         </div>
         <room-gallery>
+            {{ #gallery_images_xxm.length }}
             <div class="compact-slider">
                 {{ #gallery_images_xxm }}
                 <img data-flickity-lazyload="{{{ src }}}">
                 {{ /gallery_images_xxm }}
             </div>
+            {{ /gallery_images_xxm.length }}
+            {{ ^gallery_images_xxm.length }}
+            <div class="gallery-stub"></div>
+            {{ /gallery_images_xxm.length }}
         </room-gallery>
         {{ #variants }}
         <room-meal-and-guests>
             <h4 data-label="Тип питания">{{ meal.name }}</h4>
+            <div class="pax-info">{{{ pax_markup }}}</div>
         </room-meal-and-guests>
         <room-pricing>
             pricing
