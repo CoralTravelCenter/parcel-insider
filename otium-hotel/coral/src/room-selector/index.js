@@ -3,7 +3,7 @@ import rooms_for_nights_t from 'bundle-text:./rooms-for-nights.html'
 import additives_popover from 'bundle-text:../markup/additives-popover.html'
 import coralbonus_popover from 'bundle-text:../markup/coralbonus-popover.html'
 import * as Mustache from "mustache";
-import { demanglePrice, flickityReady } from "../usefuls.js";
+import { demanglePrice, flickityReady, visuallyDemanglePrice } from "../usefuls.js";
 
 export class RoomSelector {
     roomsRef = null;
@@ -56,9 +56,9 @@ export class RoomSelector {
                 const rooms_nodes_list = doc.querySelectorAll('.room.row');
                 if (rooms_nodes_list.length) {
                     rooms_ref.$buttonEl.attr('data-state', 'available');
-                    const rooms_list = [...rooms_nodes_list].map(room_node => {
+                    const rooms_list = [...rooms_nodes_list].map((room_node, room_idx) => {
                         const variant_nodes = room_node.querySelectorAll('.variant');
-                        const variants = [...variant_nodes].map(variant_node => {
+                        const variants = [...variant_nodes].map((variant_node, variant_idx) => {
                             const pax_count_el = variant_node.querySelector('.pax-count');
                             const adults = Number(pax_count_el.getAttribute('data-adultcount'));
                             const children = Number(pax_count_el.getAttribute('data-childcount'));
@@ -67,9 +67,9 @@ export class RoomSelector {
                                 chooseRoomButton_node.setAttribute('href', variant_node.querySelector(chooseRoomButton_node?.getAttribute('href')).querySelector('a').getAttribute('href'));
                             }
                             let price = Number(chooseRoomButton_node && window.global.dataLayerManager.formatAscrPrice(chooseRoomButton_node.getAttribute('data-price-layer')));
-                            // indefined 'price' from dataLayer means room is unavailable
+                            // undefined 'price' from dataLayer means room is unavailable
                             if (!price) {
-                                price = demanglePrice($(variant_node).find('.price > div'));
+                                price = visuallyDemanglePrice(response, room_idx, variant_idx);
                                 debugger;
                             }
                             price ||= 0;

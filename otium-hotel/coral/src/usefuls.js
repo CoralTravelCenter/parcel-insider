@@ -10,6 +10,16 @@ export function demanglePrice($container) {
     return visible_digits.map(el => el.textContent).join('') * 1 + kops / 100;
 }
 
+export function visuallyDemanglePrice(markup, room_idx, variant_idx) {
+    const $div = $(document.createElement('div'));
+    $div.html(markup);
+    $div.appendTo('body');
+    const $price_els = $div.find('.room.row').eq(room_idx).find('.variant').eq(variant_idx).find('.price > div');
+    const price = demanglePrice($price_els);
+    $div.remove();
+    return price;
+}
+
 export function waitForGlobalVar(prop, do_things) {
     (function () {
         try {
