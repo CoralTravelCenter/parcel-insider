@@ -187,6 +187,7 @@ if (hotel_data) {
 
     const roomSelector = new RoomSelector('.room-selector', hotel_data.tour_nights, {
         hotelId: hotel_data.id,
+        CoralBonusPercent: hotel_data.CoralBonusPercent,
         nightsSelected: Number(hotel_data.nights_selected),
         availableFilter: Number(hotel_data.h1_available_filter),
         selectedDate: hotel_data.h1_selected_date,

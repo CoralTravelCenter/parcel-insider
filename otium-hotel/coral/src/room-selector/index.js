@@ -1,7 +1,9 @@
 import nights_selector_t from 'bundle-text:./nights-selector-template.html'
 import rooms_for_nights_t from 'bundle-text:./rooms-for-nights.html'
+import additives_popover from 'bundle-text:../markup/additives-popover.html'
+import coralbonus_popover from 'bundle-text:../markup/coralbonus-popover.html'
 import * as Mustache from "mustache";
-import {flickityReady} from "../usefuls.js";
+import { demanglePrice, flickityReady } from "../usefuls.js";
 
 export class RoomSelector {
     roomsRef = null;
@@ -20,7 +22,7 @@ export class RoomSelector {
         this.init();
     }
 
-    init() {
+    async init() {
         this.roomsRefByNights.forEach(ref => {
             ref.$buttonEl = this.$nightsSelector.find(`li[data-nights='${ ref.nights }']`);
             ref.$buttonEl.on('click', () => {
@@ -28,8 +30,8 @@ export class RoomSelector {
             });
         });
         this.$container.append(this.$roomsSelector);
-        this.selectNights(this.config.nightsSelected);
 
+        await this.selectNights(this.config.nightsSelected);
         this.roomsRefByNights.forEach((rr) => this.fetchRoomsData(rr));
 
         return this;
@@ -46,6 +48,7 @@ export class RoomSelector {
                 night: rooms_ref.nights,
                 hotelId: this.config.hotelId,
                 availableFilter: this.config.availableFilter,
+                // availableFilter: 1,
                 selectedDate: this.config.selectedDate
             }).done((response) => {
                 const dp = new DOMParser();
@@ -59,13 +62,66 @@ export class RoomSelector {
                             const pax_count_el = variant_node.querySelector('.pax-count');
                             const adults = Number(pax_count_el.getAttribute('data-adultcount'));
                             const children = Number(pax_count_el.getAttribute('data-childcount'));
+                            const chooseRoomButton_node= variant_node.querySelector('.action > .roomAction');
+                            if (chooseRoomButton_node) {
+                                chooseRoomButton_node.setAttribute('href', variant_node.querySelector(chooseRoomButton_node?.getAttribute('href')).querySelector('a').getAttribute('href'));
+                            }
+                            let price = Number(chooseRoomButton_node && window.global.dataLayerManager.formatAscrPrice(chooseRoomButton_node.getAttribute('data-price-layer')));
+                            // indefined 'price' from dataLayer means room is unavailable
+                            if (!price) {
+                                price = demanglePrice($(variant_node).find('.price > div'));
+                                debugger;
+                            }
+                            price ||= 0;
+                            let original_price = Number(variant_node.querySelector('.discountedprice')?.textContent.replace(/[^0-9.,]/g, '').replace(',','.'));
+                            // pricing -> additives
+                            const $icon_price_info = $(variant_node).find('.icon-price-information');
+                            let additives_html = $icon_price_info.attr('data-content');
+                            // let is_package_tour =  !$('.flightincluded').text().match(/\s+не\s+/);
+                            let mandatories_total_html, additives_popover_html, additives_list;
+                            if (additives_html) {
+                                mandatories_total_html = $icon_price_info.siblings('span').get(0).innerHTML;
+                                additives_list = $(additives_html).filter('div').map((idx, div) => {
+                                    let [,akey,,avalue] = div.textContent.replace(/доплата за /i, '').match(/(.+?)(\s+)([0-9.,\s]+)/);
+                                    return { akey, avalue };
+                                }).toArray();
+                                additives_popover_html = Mustache.render(additives_popover, { list: additives_list });
+                            }
+                            // CoralBonus
+                            let coralbonus_html;
+                            if (this.config.CoralBonusPercent) {
+                                const bonus_value = Math.round(price / 100 * this.config.CoralBonusPercent);
+                                coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: bonus_value.formatPrice() }));
+                            }
+                            let eb_container = variant_node.querySelector('.ebcontainer');
+                            let early_booking_present, early_booking_text, early_booking_info_html;
+                            if (eb_container) {
+                                early_booking_present = true;
+                                early_booking_text = eb_container.querySelector('.btn')?.textContent;
+                                early_booking_info_html = eb_container.querySelector('.ebinfo').innerHTML;
+                            }
+
                             return {
+                                chooseRoomButton_markup: chooseRoomButton_node?.outerHTML ?? 'stub',
                                 meal: {
                                     id: variant_node.getAttribute('data-mealid'),
                                     name: variant_node.querySelector('.m-meal-name').textContent
                                 },
                                 pax: {adults, children},
-                                pax_markup: paxMarkupFor(adults, children)
+                                pax_markup: paxMarkupFor(adults, children),
+                                price,
+                                final_price_html: price.decoratedPriceHTML(),
+                                original_price_html: original_price && original_price.decoratedPriceHTML(),
+                                installment_value_formatted: Math.round(price / 36 * 1.25).formatPrice(),
+                                additives: !!additives_html,
+                                mandatories_total_html,
+                                additives_popover_html,
+                                additives_list,
+                                CoralBonusPercent: this.config.CoralBonusPercent,
+                                coralbonus_html,
+                                early_booking_present,
+                                early_booking_text,
+                                early_booking_info_html
                             }
                         });
                         const gallery_collection = JSON.parse(room_node.querySelector('.roominfo .custom-gallery-wrapper').getAttribute('data-images'));
@@ -76,6 +132,9 @@ export class RoomSelector {
                         });
                         return {
                             name: room_node.querySelector('.roominfo h4')?.textContent,
+                            id: room_node.getAttribute('data-roomid'),
+                            providerRoomId: room_node.getAttribute('data-providerroomid'),
+                            providerId: room_node.getAttribute('data-providerid'),
                             privileges: [...room_node.querySelectorAll('.room-name p')].map(p => p.textContent),
                             gallery_images_xxl: gallery_collection,
                             gallery_images_xxm: slider_collection.slice(0,7),
@@ -83,6 +142,7 @@ export class RoomSelector {
                         };
                     });
                     const $roomsList = rooms_ref.$roomsList = $(Mustache.render(rooms_for_nights_t, { rooms_list }));
+                    this.setupHandlersForRoomsRef(rooms_ref);
                     $roomsList.find('.room-grid').each((idx, el) => el.style.setProperty('--variants-qty', rooms_list[idx].variants.length));
                     this.$roomsHolder.append($roomsList);
                     resolve(rooms_list);
@@ -94,6 +154,74 @@ export class RoomSelector {
         });
         return rooms_ref.roomsData;
     }
+
+    setupHandlersForRoomsRef(roomsRef) {
+        const me = this;
+        roomsRef.$roomsList.on('click', '.room-heading', async function(){
+            const $room_heading = $(this);
+            const $roomGrid = $room_heading.closest('.room-grid');
+            const rooms_data = await roomsRef.roomsData;
+            const room_data = rooms_data[$roomGrid.index()];
+            const $room_details = $room_heading.next();
+            $room_details.toggleClass('open');
+            if ($room_details.hasClass('open')) {
+                $room_details.slideDown();
+                if (!$room_details.hasClass('loaded')) {
+                    // beginDate: 2023-08-01T00:00:00Z
+                    $.get('/v1/hoteldetail/getroompanel', {
+                        hotelId:        me.config.hotelId,
+                        eeRoomId:       room_data.id,
+                        providerRoomId: room_data.providerRoomId,
+                        providerId:     room_data.providerId,
+                        beginDate:      me.config.selectedDate
+                    }).done(function (response_markup) {
+                        const $details_markup = $(response_markup);
+                        const $privilenges = $details_markup.find('.card.privileges .card-body');
+                        if ($privilenges.length && $privilenges.find('li').length === 0) {
+                            const with_li_tags =  $privilenges.text().replace(/•[^\n\r]+/g, (li) => {
+                                return `<li>${ li.replace(/•\s*/, '') }</li>`;
+                            });
+                            $privilenges.html(`<ul>${ with_li_tags }</ul>`);
+                        }
+                        $room_details.empty().append($details_markup).addClass('loaded');
+                    });
+                }
+            } else {
+                $room_details.slideUp();
+            }
+
+        });
+        roomsRef.$roomsList.on('click', 'a.roomAction', async function () {
+            // const $chooseRoomButton = $(this);
+            // const $roomGrid = $chooseRoomButton.closest('.room-grid');
+            // const $variantPricing = $chooseRoomButton.closest('room-pricing');
+            // const rooms_data = await roomsRef.roomsData;
+            // const room_data = rooms_data[$roomGrid.index()];
+            // const variant_idx = $roomGrid.find('room-pricing').index($variantPricing);
+            // const variant = room_data.variants[variant_idx];
+            // console.log('+++ variant clicked: %o', variant);
+            let t = $(this).data("roomLayer");
+            t.Price = $(this).data("priceLayer");
+            t.MealType = $(this).data("mealLayer");
+            window.global.dataLayerManager.chooseRoom({
+                country:          $(".hoteldetailpage").data("hotelcountry"),
+                currency:         window.global.getActiveCurrency().name,
+                dates:            $(".data-layer-dates", '[data-module="hoteldetail"]').data("layerDates"),
+                departure:        window.global.getActiveDeparture().name,
+                destination:      $(".hoteldetailpage", '[data-module="hoteldetail"]').data("hotelcity"),
+                hotel:            $('[data-module="hoteldetail"]').data("hotel"),
+                hotelid:          $(".hoteltitle > h1", '[data-module="hoteldetail"]').data("hotelid"),
+                passengers:       $(".data-layer-passenger", '[data-module="hoteldetail"]').data("layerPassenger"),
+                quantity:         1,
+                hotelOnly:        $(".data-layer-hotel-only", '[data-module="hoteldetail"]').data("layerHotelOnly"),
+                price:            t.Price,
+                roomType:         t.Name,
+                selectedFoodType: t.MealType
+            });
+            window.global.travelloader.show();
+        });
+    }
+
     async selectNights(n) {
         const roomsRef = this.findRoomsRefForNights(n);
         const rooms_data = await this.fetchRoomsData(roomsRef);
@@ -124,6 +252,9 @@ export class RoomSelector {
                 prevNextButtons: true,
                 pageDots: true
             });
+        setTimeout(function () {
+            roomsRef.$roomsList.find('.flickity-enabled').flickity('resize');
+        }, 0);
         return this;
     }
 

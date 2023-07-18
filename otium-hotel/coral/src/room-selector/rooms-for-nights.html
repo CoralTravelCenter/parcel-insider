@@ -1,15 +1,21 @@
 <div class="rooms-for-nights">
     {{ #rooms_list }}
     <div class="room-grid">
-        <div class="room-heading">
-            <h4 data-label="Тип номера">{{ name }}</h4>
-            {{ #privileges.length }}
+        <div class="room-heading-details">
+            <div class="room-heading">
+                <h4 data-label="Тип номера">{{ name }}</h4>
+                <button class="toggle-details">Описание номера</button>
+                {{ #privileges.length }}
                 <ul class="privileges">
-                {{ #privileges }}
+                    {{ #privileges }}
                     <li>{{ . }}</li>
-                {{ /privileges }}
+                    {{ /privileges }}
                 </ul>
-            {{ /privileges.length }}
+                {{ /privileges.length }}
+            </div>
+            <div class="room-details">
+                Загружаем описание номера...
+            </div>
         </div>
         <room-gallery>
             {{ #gallery_images_xxm.length }}
@@ -29,7 +35,43 @@
             <div class="pax-info">{{{ pax_markup }}}</div>
         </room-meal-and-guests>
         <room-pricing>
-            pricing
+            <div class="pricing-cell">
+                <span class="from">цена от:</span>
+                <div class="original-price">
+                    {{ #original_price_html }}
+                    {{{ . }}}
+                    {{ /original_price_html }}
+                </div>
+                <div class="final-price">
+                    {{{ final_price_html }}}
+                </div>
+            </div>
+            <div class="coralbonus-cell">
+                {{ #CoralBonusPercent }}
+                {{{ coralbonus_html }}}
+                {{ /CoralBonusPercent }}
+            </div>
+            {{ #additives }}
+            <div class="additives-cell" data-content="{{ additives_popover_html }}">
+                <em>Включая перелет</em>
+                <div class="mandatories">и обязательные доплаты <strong>{{{ mandatories_total_html }}}</strong></div>
+            </div>
+            {{ /additives }}
+            <div class="early-booking-cell">{{ #early_booking_present }}
+                <div class="early-booking-promo">
+                    <div class="banner">{{ early_booking_text }}</div>
+                    <div class="terms">{{{ early_booking_info_html }}}</div>
+                </div>
+                {{ /early_booking_present }}</div>
+            <div class="installment-cell">
+                <div>
+                    Доступно в&nbsp;рассрочку и&nbsp;кредит
+                    <span style="white-space: nowrap">от&nbsp;<span class="monthly">{{ installment_value_formatted }}</span>&nbsp;₽/мес</span>
+                </div>
+            </div>
+            <button class="price-cal-cell">Календарь цен</button>
+<!--            <button class="choose-room-cell">Выбрать</button>-->
+            {{{ chooseRoomButton_markup }}}
         </room-pricing>
         {{ /variants }}
     </div>
