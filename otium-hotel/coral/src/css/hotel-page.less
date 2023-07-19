@@ -22,6 +22,7 @@
 @coral-red-warn: #FFDCDC;
 
 @coralbonus-ramp: linear-gradient(37.53deg, #209CFF 1.18%, #68E0CF 86.66%);
+@theme-lite-gray: #E8E9EC;
 
 @font-face {
 	font-family: 'OtiumFeatures';
@@ -86,6 +87,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	border-radius: 8px;
 	cursor: pointer;
 	box-shadow: 2px 6px 8px fade(black, 5%);
@@ -771,7 +773,7 @@ section.otium-hotel {
 					//grid-template-columns: 2fr 3fr 3fr;
 					grid-template-columns: 25% 30% 45%;
 					grid-gap: 1px;
-					background: #E8E9EC;
+					background: @theme-lite-gray;
 					font-size: 12px;
 					border-radius: 1em;
 					overflow: hidden;
@@ -784,7 +786,7 @@ section.otium-hotel {
 						grid-area: 1 / 1 / 2 / -1;
 						display: grid;
 						grid-gap: 1px;
-						background: #E8E9EC;
+						background: @theme-lite-gray;
 						padding: 0;
 						> * {
 							background: white;
@@ -861,7 +863,7 @@ section.otium-hotel {
 										text-transform: uppercase;
 										font-size: 1em;
 										line-height: 2em;
-										background: #e8e9ec;
+										background: @theme-lite-gray;
 										margin-bottom: 1em;
 										padding: 0 .7em 0;
 									}
@@ -897,7 +899,7 @@ section.otium-hotel {
 										background: none;
 										border-bottom: 0;
 										margin-bottom: 1em;
-										background: #e8e9ec;
+										background: @theme-lite-gray;
 									}
 									.card-body {
 										padding: 0;
@@ -1258,6 +1260,52 @@ section.otium-hotel {
 								font-size: 1.2em;
 								margin-left: .5em;
 								text-transform: none;
+							}
+						}
+						.price-cal-cell {
+							.button-cell();
+							font-size: inherit;
+							justify-content: flex-start;
+							background: transparent;
+							text-align: left;
+							box-shadow: none;
+							padding: 0;
+							&:before {
+								content: 'analytics';
+								font-family: "Material Icons";
+								color: @coral-main-yellow;
+								font-size: 3em;
+								line-height: 0;
+								margin-right: 0.1em;
+								margin-left: -0.1em;
+							}
+						}
+						.unavailable-stub {
+							pointer-events: none;
+							background: @theme-lite-gray;
+							line-height: 1.1;
+							height: (48/12em);
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							text-align: left;
+							font-weight: normal;
+							text-transform: uppercase;
+							padding: 0 1em;
+							&:before {
+								content: 'block';
+								text-transform: none;
+								font-family: "Material Icons";
+								font-size: 2.2em;
+								line-height: 0;
+								margin-right: .2em;
+								//color: @coral-grey;
+								color: @coral-red-error;
+							}
+						}
+						&.unavailable {
+							.final-price {
+								color: @coral-grey;
 							}
 						}
 					}

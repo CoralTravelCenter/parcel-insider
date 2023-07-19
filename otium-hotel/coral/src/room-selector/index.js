@@ -59,6 +59,8 @@ export class RoomSelector {
                     const rooms_list = [...rooms_nodes_list].map((room_node, room_idx) => {
                         const variant_nodes = room_node.querySelectorAll('.variant');
                         const variants = [...variant_nodes].map((variant_node, variant_idx) => {
+                            let room_pricing_klass;
+                            let variant_available = true;
                             const pax_count_el = variant_node.querySelector('.pax-count');
                             const adults = Number(pax_count_el.getAttribute('data-adultcount'));
                             const children = Number(pax_count_el.getAttribute('data-childcount'));
@@ -69,8 +71,9 @@ export class RoomSelector {
                             let price = Number(chooseRoomButton_node && window.global.dataLayerManager.formatAscrPrice(chooseRoomButton_node.getAttribute('data-price-layer')));
                             // undefined 'price' from dataLayer means room is unavailable
                             if (!price) {
+                                room_pricing_klass = 'unavailable';
+                                variant_available = false;
                                 price = visuallyDemanglePrice(response, room_idx, variant_idx);
-                                debugger;
                             }
                             price ||= 0;
                             let original_price = Number(variant_node.querySelector('.discountedprice')?.textContent.replace(/[^0-9.,]/g, '').replace(',','.'));
@@ -102,7 +105,8 @@ export class RoomSelector {
                             }
 
                             return {
-                                chooseRoomButton_markup: chooseRoomButton_node?.outerHTML ?? 'stub',
+                                chooseRoomButton_markup: chooseRoomButton_node?.outerHTML ?? '<span class="unavailable-stub">Недоступен на выбранные даты</span>',
+                                room_pricing_klass,
                                 meal: {
                                     id: variant_node.getAttribute('data-mealid'),
                                     name: variant_node.querySelector('.m-meal-name').textContent

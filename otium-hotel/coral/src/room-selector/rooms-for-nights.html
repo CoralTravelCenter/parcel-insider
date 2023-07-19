@@ -34,7 +34,7 @@
             <h4 data-label="Тип питания">{{ meal.name }}</h4>
             <div class="pax-info">{{{ pax_markup }}}</div>
         </room-meal-and-guests>
-        <room-pricing>
+        <room-pricing class="{{ #room_pricing_klass }}{{ . }}{{ /room_pricing_klass }}">
             <div class="pricing-cell">
                 <span class="from">цена от:</span>
                 <div class="original-price">
@@ -70,7 +70,6 @@
                 </div>
             </div>
             <button class="price-cal-cell">Календарь цен</button>
-<!--            <button class="choose-room-cell">Выбрать</button>-->
             {{{ chooseRoomButton_markup }}}
         </room-pricing>
         {{ /variants }}
