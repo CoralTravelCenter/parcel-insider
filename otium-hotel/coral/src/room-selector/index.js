@@ -159,8 +159,20 @@ export class RoomSelector {
         return rooms_ref.roomsData;
     }
 
+    async roomVariantDatasFromClickedElement(el, roomsRef) {
+        const $el = $(el);
+        const $roomGrid = $el.closest('.room-grid');
+        const $variantPricing = $el.closest('room-pricing');
+        const rooms_data = await roomsRef.roomsData;
+        const room_data = rooms_data[$roomGrid.index()];
+        const variant_idx = $roomGrid.find('room-pricing').index($variantPricing);
+        const variant = room_data.variants[variant_idx];
+        return [room_data, variant];
+    }
+
     setupHandlersForRoomsRef(roomsRef) {
         const me = this;
+        // Toggle room info panel / load if needed
         roomsRef.$roomsList.on('click', '.room-heading', async function(){
             const $room_heading = $(this);
             const $roomGrid = $room_heading.closest('.room-grid');
@@ -195,15 +207,8 @@ export class RoomSelector {
             }
 
         });
+        // Choose room button
         roomsRef.$roomsList.on('click', 'a.roomAction', async function () {
-            // const $chooseRoomButton = $(this);
-            // const $roomGrid = $chooseRoomButton.closest('.room-grid');
-            // const $variantPricing = $chooseRoomButton.closest('room-pricing');
-            // const rooms_data = await roomsRef.roomsData;
-            // const room_data = rooms_data[$roomGrid.index()];
-            // const variant_idx = $roomGrid.find('room-pricing').index($variantPricing);
-            // const variant = room_data.variants[variant_idx];
-            // console.log('+++ variant clicked: %o', variant);
             let t = $(this).data("roomLayer");
             t.Price = $(this).data("priceLayer");
             t.MealType = $(this).data("mealLayer");
@@ -223,6 +228,39 @@ export class RoomSelector {
                 selectedFoodType: t.MealType
             });
             window.global.travelloader.show();
+        });
+        // Price calendar
+        roomsRef.$roomsList.on('click', 'button.price-cal-cell', async function () {
+            const $button = $(this);
+            const $roomPricing = $button.closest('room-pricing');
+            const $roomGrid = $button.closest('.room-grid');
+            const $roomPricingCals = $roomGrid.find('room-price-cal');
+            const $roomPricingCal = $roomPricing.next();
+
+            $roomPricingCal.toggleClass('open');
+
+            $roomGrid.get(0).style.setProperty('--opened-cals', $roomPricingCals.filter('.open').length);
+            let opened_before_current = 0;
+            $roomPricingCals.each((idx, el) => {
+                el.style.gridRowStart = 3 + idx + opened_before_current;
+                opened_before_current += el.classList.contains('open') ? 1 : 0;
+            });
+
+            if ($roomPricingCal.hasClass('open')) {
+                $roomPricingCal.slideDown();
+                if (!$roomPricingCal.hasClass('loaded')) {
+                    const [room_data, variant_data] = await me.roomVariantDatasFromClickedElement(this, roomsRef);
+                    $.get('/v1/hoteldetail/getpricecalendar', {
+                        roomId: room_data.id,
+                        mealId: variant_data.meal.id,
+                        night: roomsRef.nights
+                    }).done(function (response_markup) {
+                        $roomPricingCal.html(response_markup).addClass('loaded');
+                    });
+                }
+            } else {
+                $roomPricingCal.hide();
+            }
         });
     }
 

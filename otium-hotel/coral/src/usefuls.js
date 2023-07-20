@@ -19,7 +19,7 @@ export function visuallyDemanglePrice(markup, room_idx, variant_idx) {
     let kops = kops_text.replace(/\D/g, '') * 1;
     const price = [...$price_els_container.children().filter((idx, el) => {
         const $el = $(el);
-        return $el.is('[class]:visible') && !!parseFloat($el.css('font-size'));
+        return $el.is('[class]:visible') && !!parseFloat($el.css('font-size')) && !!parseFloat($el.css('width')) && $el.css('overflow') !== 'hidden';
     })].sort((a, b) => Number($(a).css('order')) - Number($(b).css('order'))).map(el => el.textContent).join('') * 1 + kops / 100;
     $div.remove();
     return price;

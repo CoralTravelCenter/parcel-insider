@@ -771,6 +771,7 @@ section.otium-hotel {
 				}
 				.room-grid {
 					--variants-qty: 1;
+					--opened-cals: 0;
 					display: grid;
 					//grid-template-columns: 2fr 3fr 3fr;
 					grid-template-columns: 25% 30% 45%;
@@ -938,8 +939,7 @@ section.otium-hotel {
 						}
 					}
 					room-gallery {
-						grid-area: 2 / 1 / auto / 2;
-						grid-row-end: calc(2 + var(--variants-qty));
+						grid-area: 2 / 1 / calc(2 + var(--opened-cals) + var(--variants-qty)) / 2;
 						.gallery-stub {
 							.proportional(4/3);
 							background: url("https://www.coral.ru/dist/img/no-photo.png") center no-repeat;
@@ -1316,6 +1316,14 @@ section.otium-hotel {
 								color: @coral-grey;
 							}
 						}
+					}
+					room-price-cal {
+						display: none;
+						font-weight: normal;
+						&:not(.loaded) {
+							.infinite-progress(@coral-main-blue, 20px, 4px);
+						}
+						grid-area: auto / 1 / auto / -1;
 					}
 				}
 			}
