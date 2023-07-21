@@ -255,7 +255,7 @@ export class RoomSelector {
                         mealId: variant_data.meal.id,
                         night: roomsRef.nights
                     }).done(function (response_markup) {
-                        console.log(me.parsePriceCalResponse(response_markup));
+                        // console.log(me.parsePriceCalResponse(response_markup));
                         $roomPricingCal.html(response_markup).addClass('loaded');
                     });
                 }
