@@ -255,7 +255,7 @@ export class RoomSelector {
                         mealId: variant_data.meal.id,
                         night: roomsRef.nights
                     }).done(function (response_markup) {
-                        me.parsePriceCalResponse(response_markup);
+                        console.log(me.parsePriceCalResponse(response_markup));
                         $roomPricingCal.html(response_markup).addClass('loaded');
                     });
                 }
@@ -270,11 +270,12 @@ export class RoomSelector {
         const doc = dp.parseFromString(markup, 'text/html');
         const ru_months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
         const day_els = doc.querySelectorAll('.datesinner > *');
-        return [...day_els].map(el => {
+        return [...day_els].filter(el => el.querySelector('span[title]')).map(el => {
             const span = el.querySelector('span[title]');
-            const [,ru_month_name, date, rub, rub_fraction] = span.getAttribute('title').match(/(\S)+\s+(\d+),\D+(\d+),(\d+)/);
+            const [, ru_month_name, date, rub, rub_fraction] = span.getAttribute('title').match(/(\S)+\s+(\d+),\D+(\d+),(\d+)/);
             return {
-                moment: moment().set({month: ru_months.indexOf(ru_month_name), date: Number(date)}),
+                // moment: moment().set({month: ru_months.indexOf(ru_month_name), date: Number(date)}),
+                moment: moment().month(ru_months.indexOf(ru_month_name)).date(Number(date)),
                 price: parseFloat(`${rub}.${rub_fraction}`),
                 flight: !el.querySelector('.flight-available').classList.contains('notavailable')
             }
