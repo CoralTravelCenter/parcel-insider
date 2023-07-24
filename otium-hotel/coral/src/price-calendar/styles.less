@@ -1,0 +1,109 @@
+@item-width: 20px;
+
+price-calendar {
+	display: grid;
+	.graph {
+		position: relative;
+		display: flex;
+		align-items: flex-end;
+		max-width: 100%;
+		font-size: 11px;
+		font-weight: normal;
+		padding-bottom: 1.5em;
+		overflow: hidden;
+		.ps__rail-x {
+			opacity: 1;
+		}
+		.ps__thumb-x {
+			//background: @coral-main-yellow!important;
+			background: @coral-main-blue!important;
+		}
+		>* {
+			flex: 0 0 @item-width;
+			&:nth-child(n+2) {
+				margin-left: 2px;
+			}
+		}
+		.month-name {
+			pointer-events: none;
+			position: sticky;
+			z-index: 1;
+			left: 0;
+			writing-mode: vertical-lr;
+			font-weight: bold;
+			color: black;
+			transform: rotate(180deg);
+			background: fade(white, 90%);
+			inline-size: 20.5em;
+			padding-top: 5.2em;
+		}
+		.item {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			&:hover:not(.hidden) {
+				box-shadow: inset 0 0 0 1px @coral-main-yellow;
+				.bar .filler {
+					color: black;
+				}
+			}
+			&.instant {
+				.bar .filler {
+					background: fade(@coral-green-accent, 30%);
+					//background: fade(@coral-main-blue, 30%);
+				}
+			}
+			&.confirm {
+				.bar .filler {
+					background: fade(@coral-main-yellow, 30%);
+				}
+			}
+			&.unavailable {
+				.bar .filler {
+					background: fade(@coral-red-error, 30%);
+				}
+			}
+			&.hidden {
+				.bar .filler {
+					display: none;
+				}
+			}
+			.bar {
+				position: relative;
+				height: 15em;
+				.filler {
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					line-height: (18/11);
+					writing-mode: vertical-lr;
+					transform: rotate(180deg);
+					text-align: right;
+					padding-bottom: .5em;
+					background: #eee;
+					color: transparent;
+					.transit(color, .2s);
+				}
+			}
+			.flight {
+				font-family: "Material Icons";
+				font-size: 1.5em;
+				&.available:after {
+					content: 'airplanemode_on';
+					color: @coral-green-accent;
+				}
+				&.unavailable:after {
+					content: 'airplanemode_off';
+					color: @coral-red-error;
+				}
+			}
+			.date {
+
+			}
+			.day-of-week.weekend {
+				font-weight: bold;
+			}
+		}
+	}
+}

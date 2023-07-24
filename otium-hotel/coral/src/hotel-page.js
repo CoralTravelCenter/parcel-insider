@@ -18,10 +18,11 @@ import {RoomSelector} from "./room-selector";
 
 // =====================================================================================================================
 
-Number.prototype.formatPrice = function() {
+Number.prototype.formatPrice = function(prefix, suffix) {
     var s;
     s = String(Math.round(this));
-    return s.split('').reverse().join('').replace(/\d{3}(?=\d)/g, "$& ").split('').reverse().join('');
+    var sum = s.split('').reverse().join('').replace(/\d{3}(?=\d)/g, "$& ").split('').reverse().join('');
+    return `${ prefix ? (prefix + ' ') : '' }${ sum }${ suffix ? (' ' + suffix) : '' }`;
 };
 
 Number.prototype.decoratedPriceHTML = function() {

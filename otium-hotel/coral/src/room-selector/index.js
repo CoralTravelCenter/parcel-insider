@@ -4,6 +4,7 @@ import additives_popover from 'bundle-text:../markup/additives-popover.html'
 import coralbonus_popover from 'bundle-text:../markup/coralbonus-popover.html'
 import * as Mustache from "mustache";
 import { demanglePrice, flickityReady, visuallyDemanglePrice } from "../usefuls.js";
+import { PriceCalendar } from "../price-calendar";
 
 export class RoomSelector {
     roomsRef = null;
@@ -81,9 +82,10 @@ export class RoomSelector {
                             const $icon_price_info = $(variant_node).find('.icon-price-information');
                             let additives_html = $icon_price_info.attr('data-content');
                             // let is_package_tour =  !$('.flightincluded').text().match(/\s+не\s+/);
-                            let mandatories_total_html, additives_popover_html, additives_list;
+                            let mandatories_total_html, mandatories_total_value, additives_popover_html, additives_list;
                             if (additives_html) {
                                 mandatories_total_html = $icon_price_info.siblings('span').get(0).innerHTML;
+                                mandatories_total_value = mandatories_total_html && Number(mandatories_total_html.replace(/[^0-9,]/g, '').replace(',','.')) || 0;
                                 additives_list = $(additives_html).filter('div').map((idx, div) => {
                                     let [,akey,,avalue] = div.textContent.replace(/доплата за /i, '').match(/(.+?)(\s+)([0-9.,\s]+)/);
                                     return { akey, avalue };
@@ -119,6 +121,7 @@ export class RoomSelector {
                                 installment_value_formatted: Math.round(price / 36 * 1.25).formatPrice(),
                                 additives: !!additives_html,
                                 mandatories_total_html,
+                                mandatories_total_value,
                                 additives_popover_html,
                                 additives_list,
                                 CoralBonusPercent: this.config.CoralBonusPercent,
@@ -255,37 +258,14 @@ export class RoomSelector {
                         mealId: variant_data.meal.id,
                         night: roomsRef.nights
                     }).done(function (response_markup) {
-                        console.table(me.parsePriceCalResponse(response_markup));
-                        $roomPricingCal.html(response_markup).addClass('loaded');
+                        const priceCal = new PriceCalendar(response_markup, variant_data);
+                        console.table(priceCal.calData);
+                        // $roomPricingCal.html(response_markup).addClass('loaded');
+                        $roomPricingCal.empty().append(priceCal.render()).addClass('loaded');
                     });
                 }
             } else {
                 $roomPricingCal.hide();
-            }
-        });
-    }
-
-    parsePriceCalResponse(markup) {
-        const dp = new DOMParser();
-        const doc = dp.parseFromString(markup, 'text/html');
-        const ru_months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-        const day_els = doc.querySelectorAll('.datesinner > *');
-        return [...day_els].filter(el => !!el.querySelector('span[title]')).map(el => {
-            const span= el.querySelector('span[title]');
-            const [, ru_month_name, date, rub,, rub_fraction] = span.getAttribute('title').match(/(\S+)\s+(\d+),\D+(\d+)(,(\d+))?/);
-            // span has class "bg-warning" -- needs confirmation
-            // span has class "bg-danger" -- unavailable
-            // span has class "d-none" -- unavailable and shouldn't be displayed
-            return {
-                moment: moment().month(ru_months.indexOf(ru_month_name)).date(Number(date)),
-                price: Math.round(parseFloat(`${rub}.${rub_fraction || 0}`)),
-                flight: !el.querySelector('.flight-available').classList.contains('notavailable'),
-                booking: {
-                    'bg-info': 'instant',
-                    'bg-warning': 'confirm',
-                    'bg-danger': 'unavailable',
-                    'd-none': 'hidden'
-                }[span.getAttribute('class')]
             }
         });
     }
