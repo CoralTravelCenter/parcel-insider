@@ -707,6 +707,9 @@ section.otium-hotel {
 			background: #c8c8c8;
 			border-radius: 8px;
 			overflow: hidden;
+			@media screen and (max-width: @narrow-breakpoint) {
+				font-size: 2vw;
+			}
 			> li {
 				.interactive();
 				display: flex;
@@ -784,6 +787,9 @@ section.otium-hotel {
 					@media screen and (max-width: @mobile-breakpoint) {
 					    grid-template-columns: 25% 25% 50%;
 					}
+					@media screen and (max-width: @narrow-breakpoint) {
+					    grid-template-columns: 100%;
+					}
 					> * {
 						background: white;
 						padding: .75em 1em;
@@ -794,20 +800,30 @@ section.otium-hotel {
 						grid-gap: 1px;
 						background: @theme-lite-gray;
 						padding: 0;
+						@media screen and (max-width: @narrow-breakpoint) {
+						    grid-area: 1 / 1 / 2 / 2;
+						}
 						> * {
 							background: white;
 							padding: .75em 1em;
 						}
 						.room-heading {
 							display: flex;
-							align-items: center;
+							align-items: flex-end;
 							cursor: pointer;
+							@media screen and (max-width: @narrow-breakpoint) {
+							    flex-wrap: wrap;
+							}
 							ul.privileges {
 								list-style: none;
 								margin: 0 0 0 auto;
 								padding: 0;
 								display: grid;
 								grid-gap: 2px;
+								@media screen and (max-width: @narrow-breakpoint) {
+								    flex-basis: 100%;
+									margin-top: .5em;
+								}
 								>li {
 									background: #565655;
 									color: white;
@@ -828,6 +844,9 @@ section.otium-hotel {
 								font-size: inherit;
 								line-height: 1.2;
 								cursor: pointer;
+								@media screen and (max-width: @narrow-breakpoint) {
+									margin-left: auto;
+								}
 								&:after {
 									content: 'keyboard_arrow_down';
 									font-family: "Material Icons";
@@ -845,11 +864,17 @@ section.otium-hotel {
 							}
 							.roominfowrapper {
 								padding: .5em 1em;
+								@media screen and (max-width: @narrow-breakpoint) {
+									padding: 0;
+								}
 								.comma-list {
 									list-style: none;
 									column-count: 3;
 									column-gap: 2em;
 									padding: 0;
+									@media screen and (max-width: @narrow-breakpoint) {
+									    column-count: 2;
+									}
 									>li {
 										width: 100%;
 										display: inline-flex;
@@ -940,6 +965,9 @@ section.otium-hotel {
 					}
 					room-gallery {
 						grid-area: 2 / 1 / calc(2 + var(--opened-cals) + var(--variants-qty)) / 2;
+						@media screen and (max-width: @narrow-breakpoint) {
+						    grid-area: auto;
+						}
 						.gallery-stub {
 							.proportional(4/3);
 							background: url("https://www.coral.ru/dist/img/no-photo.png") center no-repeat;
@@ -1013,6 +1041,10 @@ section.otium-hotel {
 						display: grid;
 						grid-auto-flow: column;
 						grid-gap: 2em;
+						@media screen and (max-width: @narrow-breakpoint) {
+						    grid-area: auto;
+							align-items: end;
+						}
 						.pax-info {
 							justify-self: end;
 							display: flex;
@@ -1060,8 +1092,11 @@ section.otium-hotel {
 							font-size: 10px;
 						}
 						@media screen and (max-width: @mobile-breakpoint) {
-							//grid-column: span 2;
 							font-size: 1.2vw;
+						}
+						@media screen and (max-width: @narrow-breakpoint) {
+						    grid-area: auto;
+							font-size: 2.5vw;
 						}
 						&.nothing-available {
 							.pricing-cell, .coralbonus-cell, .installment-cell, .early-booking-cell, .additives-cell, .choose-room-cell {
@@ -1122,6 +1157,9 @@ section.otium-hotel {
 							@media screen and (max-width: @mobile-breakpoint) {
 								font-size: .85em;
 								width: auto;
+							}
+							@media screen and (max-width: @narrow-breakpoint) {
+								font-size: inherit;
 							}
 							>em {
 								font-style: normal;
@@ -1207,7 +1245,7 @@ section.otium-hotel {
 							font-weight: normal;
 							cursor: default;
 							@media screen and (max-width: @narrow-breakpoint) {
-								font-size: .9em;
+								//font-size: .9em;
 							}
 							&:before {
 								flex-shrink: 0;
@@ -1324,6 +1362,9 @@ section.otium-hotel {
 							.infinite-progress(@coral-main-blue, 20px, 4px);
 						}
 						grid-area: auto / 1 / auto / -1;
+						@media screen and (max-width: @narrow-breakpoint) {
+						    grid-area: auto!important;
+						}
 					}
 				}
 			}

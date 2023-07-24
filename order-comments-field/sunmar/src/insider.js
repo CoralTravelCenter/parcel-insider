@@ -11,7 +11,17 @@ $('.orderNoteInputWrapper .nameWrapper').popover({
     trigger: 'manual',
     placement: 'top'
 }).on('focusin', function () {
-    $(this).popover('show');
+    const $this = $(this);
+    if (!$this.find('input').val()) {
+        $this.popover('show');
+    }
 }).on('focusout', function () {
-    $(this).popover('hide');
-}).popover('show');
+    $(this).removeClass('hilited').popover('hide');
+}).on('keyup', function (e) {
+    const $this = $(this);
+    if ($this.find('input').val()) {
+        $this.popover('hide');
+    } else {
+        $this.popover('show');
+    }
+}).addClass('hilited').popover('show');

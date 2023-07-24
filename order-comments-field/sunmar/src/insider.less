@@ -23,10 +23,12 @@
     }
 }
 
-.orderNoteInputWrapper .nameWrapper:focus-within {
-    & > * {
-        .rounded-ramp-border(@sunmar-ramp, 2px, 4px);
-    }
+.orderNoteInputWrapper {
+	.nameWrapper:focus-within, .nameWrapper.hilited {
+		& > * {
+			.rounded-ramp-border(@sunmar-ramp, 2px, 4px);
+		}
+	}
 }
 
 .popover.order-comments {
