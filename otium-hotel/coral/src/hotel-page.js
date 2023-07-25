@@ -197,6 +197,7 @@ if (hotel_data) {
     $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
 
     $markup.find('.bread-crumbs').empty().append($('.bcrumb'));
+    $markup.find('.righty').append($('[data-module="whereToBuyWidget"]'));
 
     const $original_hotelgallery_module = $('[data-module="hotelgallery"]');
     const is_exclusive = !!$original_hotelgallery_module.find('.hotelgallery-wrap.exclusive').removeClass('exclusive').length;

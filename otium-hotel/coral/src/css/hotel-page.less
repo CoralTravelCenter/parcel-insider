@@ -693,6 +693,65 @@ section.otium-hotel {
 		    grid-column: span 2;
 		}
 	}
+	.righty {
+		align-self: start;
+		display: grid;
+		grid-gap: 20px;
+		filter: drop-shadow(2px 6px 8px fade(black, 5%));
+		@media screen and (max-width: @mobile-breakpoint) {
+		    grid-column: span 2;
+			display: none;
+		}
+		@media screen and (max-width: @narrow-breakpoint) {
+			grid-column: span 2;
+		    display: grid;
+		}
+		>* {
+			border-radius: 1em;
+			overflow: hidden;
+		}
+		.member-of-coralgroup {
+			background: url("https://cdn.coral.ru/content/insider/russia/otium-hotels/coralgroup-block-visual.jpg") top center / 100% auto no-repeat;
+			padding-top: 52%;
+			.info {
+				background: white;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				padding: 2em;
+				border-radius: 1em;
+				>*:nth-child(n+2) {
+					margin: 5% 0 0;
+				}
+				.thumb-up {
+					max-width: 70px;
+				}
+				.logos {
+					width: 100%;
+				}
+				p, ul {
+					font-weight: normal;
+					padding: 0;
+					margin-bottom: 0;
+				}
+				ul {
+					list-style: none;
+					>li {
+						line-height: 1.2;
+						&:before {
+							content: '\2022';
+							margin-right: .5em;
+							color: @coral-main-blue;
+						}
+					}
+				}
+			}
+		}
+		[data-module="whereToBuyWidget"] .card {
+			border: 0;
+		}
+	}
 	.room-selector {
 		font-size: 12px;
 		ul.selector {
