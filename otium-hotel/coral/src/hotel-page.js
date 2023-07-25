@@ -155,6 +155,7 @@ function extendHotelData(hotel_data) {
     const hotel_info = hotel_infos_lut.find(item => item.id === hotel_data.id);
     if (hotel_info?.markup) {
         hotel_data.about_snip_html = $(hotel_info?.markup)[0].outerHTML;
+        hotel_data.about_html = hotel_info.markup;
     } else {
         hotel_data.about_snip_html = $('.gallery-right .hotelinfo p:nth-of-type(2)')[0]?.outerHTML || '';
     }
