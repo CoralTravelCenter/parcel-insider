@@ -1,9 +1,12 @@
 <price-calendar>
-    <div class="heading">heading</div>
     <div class="graph">
         {{ #items }}
         {{{ . }}}
         {{ /items }}
     </div>
-    <div class="legend">legend</div>
+    <ul class="legend">
+        <li class="instant">Моментальное подтверждение</li>
+        <li class="confirm">Требуется подтверждение отеля</li>
+        <li class="unavailable">Мест нет</li>
+    </ul>
 </price-calendar>

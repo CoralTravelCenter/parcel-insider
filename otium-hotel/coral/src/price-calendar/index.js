@@ -28,9 +28,16 @@ export class PriceCalendar {
             }
         });
         mo.observe(document, { childList: true, subtree: true });
+        this.setupListeners();
         return this.el;
     }
 
+    setupListeners() {
+        const me = this;
+        $(this.el).on('click', '[data-date]', function () {
+            me.selectExactDate($(this).attr('data-date'));
+        });
+    }
     async appendScrollbars() {
         if (!PriceCalendar.perfectScrollbarInitialized) {
             $('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/css/perfect-scrollbar.min.css">');
@@ -60,12 +67,12 @@ export class PriceCalendar {
                     yield `<div class="month-name">${ PriceCalendar.ru_months[month_idx] }</div>`
                 }
                 const date_price = d.price + (me.variantData.mandatories_total_value || 0);
-                yield `<a class="item ${ d.booking }" href="#" target="_blank">
+                yield `<div class="item ${ d.booking }" data-date="${ d.moment.format('YYYY-MM-DD') }">
                     <span class="bar"><span class="filler" style="height: ${ d.price / price_max * 100 }%">${ date_price.formatPrice('от', '₽') }</span></span>
                     <span class="flight ${ d.flight ? 'available' : 'unavailable' }"></span>
                     <span class="date">${ d.moment.date() }</span>
                     <span class="day-of-week ${ is_weekend }">${ day_name }</span>
-                </a>`;
+                </div>`;
             }
         })(this.calData)];
     }
@@ -94,6 +101,23 @@ export class PriceCalendar {
                 }[span.getAttribute('class')]
             };
         });
+    }
+
+    async selectExactDate(date_str) {
+
+        const search_params_data = $(".container-tabItemWrap").attr("data-searchparams");
+        const packageSearchQuery = JSON.parse(search_params_data).PackageSearchQuery;
+
+        packageSearchQuery.BeginDate = packageSearchQuery.EndDate = packageSearchQuery.SelectedDate = date_str;
+        packageSearchQuery.DateRange = 0;
+
+        window.global.travelloader.show();
+        $.post('/v1/package/search', packageSearchQuery).done((response) => {
+            location.href = response;
+        }).fail(err => {
+            window.global.travelloader.hide();
+        });
+
     }
 
 }
