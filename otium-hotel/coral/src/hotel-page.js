@@ -177,6 +177,8 @@ function extendHotelData(hotel_data) {
     hotel_data.isFlightIncluded = !!~$search_summary.text().indexOf('включен');
     hotel_data.nights_selected = $('[data-module="roomlist"] li.active[data-night]').attr('data-night');
 
+    hotel_data.tripadvosor_present = !!$('.ta-wrap').length;
+
     return hotel_data;
 }
 
@@ -195,10 +197,15 @@ if (hotel_data) {
         selectedDate: hotel_data.h1_selected_date,
     });
 
-    $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
+    // $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
+    $('.hoteldetailpage').attr('style', 'display:none!important');
 
     $markup.find('.bread-crumbs').empty().append($('.bcrumb'));
-    $markup.find('.righty').append($('[data-module="whereToBuyWidget"]'));
+    $markup.find('.righty.primary').append($('[data-module="whereToBuyWidget"]'));
+    $markup.find('.lefty.primary .hotel-facilities-anchor').after($('#hotelfacilities'));
+    $markup.find('.lefty.primary .hotel-on-map').append($('.map-wrap'));
+
+    $markup.find('.lefty.secondary .tripadvisor-anchor').after($('.ta-wrap'));
 
     const $original_hotelgallery_module = $('[data-module="hotelgallery"]');
     const is_exclusive = !!$original_hotelgallery_module.find('.hotelgallery-wrap.exclusive').removeClass('exclusive').length;

@@ -95,7 +95,7 @@
             {{ /children }}
         </div>
     </div>
-    <div class="lefty">
+    <div class="lefty primary">
         <div class="room-selector"><!----></div>
         {{ #about_html }}
         <div class="about-hotel">
@@ -105,8 +105,12 @@
             </div>
         </div>
         {{ /about_html }}
+        <div class="hotel-facilities-anchor"></div>
+        <div class="hotel-on-map">
+            <h3>{{ name }} на карте</h3>
+        </div>
     </div>
-    <div class="righty">
+    <div class="righty primary">
         <div class="member-of-coralgroup">
             <div class="info">
                 <img class="thumb-up" src="https://cdn.coral.ru/content/insider/russia/otium-hotels/thumb-up.png">
@@ -124,4 +128,11 @@
             </div>
         </div>
     </div>
+    {{ #tripadvosor_present }}
+    <div class="lefty secondary">
+        <h3>Отзывы</h3>
+        <div class="tripadvisor-anchor"></div>
+    </div>
+    <div class="righty secondary"></div>
+    {{ /tripadvosor_present }}
 </section>

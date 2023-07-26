@@ -694,6 +694,9 @@ section.otium-hotel {
 		}
 		.about-hotel {
 			margin-top: 3em;
+			h3 {
+				margin: 0 0 1em;
+			}
 			.info {
 				background: white;
 				font-weight: normal;
@@ -709,6 +712,77 @@ section.otium-hotel {
 				p {
 					margin-bottom: 0;
 				}
+			}
+		}
+		#hotelfacilities {
+			margin-top: 3em;
+			h3 {
+				margin: 0 0 1em;
+			}
+			.facilitytabcontainer {
+				background: white;
+				border-radius: 1em;
+				overflow: hidden;
+				box-shadow: 2px 6px 8px fade(black, 5%);
+				ul.nav-tabs {
+					border-bottom: 1px solid @coral-main-yellow;
+					>li.nav-item {
+						flex: 1 1 auto;
+						text-align: center;
+						margin: 0;
+						>a.nav-link {
+							border: 0!important;
+							.transit(color);
+							.transit(background);
+							&.active {
+								color: white;
+								background: @coral-main-yellow;
+							}
+						}
+					}
+				}
+				.tab-content {
+					font-weight: normal;
+					padding: 1em 1.5em;
+					a[href] {
+						color: @coral-main-blue;
+						text-decoration: underline;
+					}
+					ul {
+						padding-left: 1.5em;
+						>li::marker {
+							color: @coral-main-blue;
+						}
+					}
+				}
+			}
+		}
+		.hotel-on-map {
+			margin-top: 3em;
+			h3 {
+				margin: 0 0 1em;
+			}
+			.map-wrap {
+				position: relative;
+				height: 217px;
+				border-radius: 1em;
+				overflow: hidden;
+				box-shadow: 2px 6px 8px fade(black, 5%);
+				.map-trigger {
+					position: relative;
+					z-index: 1;
+				}
+				#map-container {
+					position: absolute;
+					inset: 0;
+				}
+			}
+		}
+		.ta-wrap {
+			>iframe {
+				border-radius: 1em;
+				overflow: hidden;
+				box-shadow: 2px 6px 8px fade(black, 5%);
 			}
 		}
 	}
@@ -771,6 +845,13 @@ section.otium-hotel {
 			border: 0;
 		}
 	}
+
+	.lefty, .righty {
+		&.secondary {
+			padding-top: 2em;
+		}
+	}
+
 	.room-selector {
 		font-size: 12px;
 		ul.selector {
@@ -1574,6 +1655,10 @@ li.breadcrumb-item.breadcrumb-fake {
 
 body {
 	overscroll-behavior-x: none;
+}
+
+[data-module="hoteldetail"] {
+	margin-bottom: 4em;
 }
 
 @import "otium-tooltip";
