@@ -196,6 +196,30 @@ if (hotel_data) {
         availableFilter: Number(hotel_data.h1_available_filter),
         selectedDate: hotel_data.h1_selected_date,
     });
+    roomSelector.init().then(() => {
+        $('.installment-cell').popover({
+            template:  popoverTemplateWithClass('sber'),
+            content:   installment_info_popover,
+            html:      true,
+            placement: 'auto',
+            trigger: 'hover',
+            delay: { show: 500 }
+        });
+        $('.additives, .additives-cell').popover({
+            template:  popoverTemplateWithClass('additives'),
+            html:      true,
+            placement: 'top',
+            trigger: 'hover',
+            delay: { show: 500 }
+        });
+        $('.coralbonus-badge').popover({
+            template:  popoverTemplateWithClass('coralbonus'),
+            html:      true,
+            placement: 'top',
+            trigger: 'hover focus',
+            delay: { show: 500 }
+        });
+    });
 
     // $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
     $('.hoteldetailpage').attr('style', 'display:none!important');

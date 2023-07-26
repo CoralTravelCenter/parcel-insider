@@ -33,9 +33,7 @@ export class RoomSelector {
         this.$container.append(this.$roomsSelector);
 
         await this.selectNights(this.config.nightsSelected);
-        this.roomsRefByNights.forEach((rr) => this.fetchRoomsData(rr));
-
-        return this;
+        return Promise.all(this.roomsRefByNights.map((rr) => this.fetchRoomsData(rr)));
     }
 
     findRoomsRefForNights(n) {
