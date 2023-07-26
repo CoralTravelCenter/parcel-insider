@@ -5,12 +5,12 @@
         <div class="stars">{{ #stars }}<span class="material-icons">star</span>{{ /stars }}{{ ^stars }}{{ category }}{{ /stars }}</div>
         <h1 class="name">{{ name }}</h1>
         <div class="hotel-location">{{ location }}</div>
-        <button class="show-on-map" data-scrollto=".hotel-map">Показать отель на&nbsp;карте</button>
+        <button class="show-on-map" data-scrollto=".hotel-on-map">Показать отель на&nbsp;карте</button>
         {{ #elite_service }}
         <div class="elite-service"></div>
         {{ /elite_service }}
     </div>
-    <button class="show-on-map" data-scrollto=".hotel-map">Показать отель на&nbsp;карте</button>
+    <button class="show-on-map" data-scrollto=".hotel-on-map">Показать отель на&nbsp;карте</button>
     <div class="reviews-info">{{> reviewsMarkup }}</div>
     <div class="visuals-gallery">
         gallery

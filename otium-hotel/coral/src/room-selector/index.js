@@ -50,7 +50,8 @@ export class RoomSelector {
                 hotelId: this.config.hotelId,
                 availableFilter: this.config.availableFilter,
                 // availableFilter: 1,
-                selectedDate: this.config.selectedDate
+                selectedDate: this.config.selectedDate,
+                _: Math.round(Math.random() * 1000000)
             }).done((response) => {
                 const dp = new DOMParser();
                 const doc = dp.parseFromString(response, 'text/html');
