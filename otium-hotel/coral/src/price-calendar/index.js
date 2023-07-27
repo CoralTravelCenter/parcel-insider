@@ -3,6 +3,7 @@
 import markup from 'bundle-text:./markup.html'
 import * as Mustache from 'mustache';
 import {preload} from "/common/useful.js";
+import {mostRecentQuery} from "../usefuls.js";
 
 export class PriceCalendar {
     static ru_months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
@@ -105,16 +106,7 @@ export class PriceCalendar {
 
     async selectExactDate(date_str) {
 
-        const search_params_data = JSON.parse($(".container-tabItemWrap").attr("data-searchparams"));
-        const requestType = search_params_data.RequestType;
-        let query = search_params_data[{
-            packageSearch: 'PackageSearchQuery',
-            onlyHotel: 'OnlyHotelQuery'
-        }[requestType]];
-        const api_endpoint = {
-            packageSearch: '/v1/package/search',
-            onlyHotel: '/v1/onlyhotel/search'
-        }[requestType];
+        let { requestType, query, apiEndpoint } = mostRecentQuery()
 
         if (requestType === 'packageSearch') {
             query.BeginDate = query.EndDate = query.SelectedDate = date_str;
@@ -127,7 +119,7 @@ export class PriceCalendar {
         }
 
         window.global.travelloader.show();
-        $.post(api_endpoint, query).done((response) => {
+        $.post(apiEndpoint, query).done((response) => {
             location.href = response;
         }).fail(err => {
             window.global.travelloader.hide();

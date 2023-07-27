@@ -43,3 +43,21 @@ export function flickityReady() {
     });
     return flickityPromise;
 }
+
+export function mostRecentQuery() {
+    const search_params_data = JSON.parse($(".container-tabItemWrap").attr("data-searchparams"));
+    const requestType = search_params_data.RequestType;
+    let query = search_params_data[{
+        packageSearch: 'PackageSearchQuery',
+        onlyHotel: 'OnlyHotelQuery'
+    }[requestType]];
+    const apiEndpoint = {
+        packageSearch: '/v1/package/search',
+        onlyHotel: '/v1/onlyhotel/search'
+    }[requestType];
+    return {
+        requestType,
+        query,
+        apiEndpoint
+    };
+}

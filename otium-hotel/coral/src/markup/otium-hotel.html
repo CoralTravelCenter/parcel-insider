@@ -136,6 +136,11 @@
     <div class="righty secondary"></div>
     {{ /tripadvosor_present }}
 
-    {{{ similar_hotels_markup }}}
+    {{ #should_propose_similar_hotels }}
+    <div class="similar-hotels">
+        <h3>Другие отели сети CoralGroup Hotels</h3>
+        <similar-hotels></similar-hotels>
+    </div>
+    {{ /should_propose_similar_hotels }}
 
 </section>

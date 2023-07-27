@@ -184,6 +184,8 @@ function extendHotelData(hotel_data) {
 
     hotel_data.tripadvosor_present = !!$('.ta-wrap').length;
 
+    hotel_data.should_propose_similar_hotels = !!$('[data-hotelcountry="Турция"]').length;
+
     return hotel_data;
 }
 
@@ -226,8 +228,13 @@ if (hotel_data) {
         });
     });
 
-    $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
-    // $('.hoteldetailpage').attr('style', 'display:none!important');
+    let similarHotels;
+    if (hotel_data.should_propose_similar_hotels) {
+        similarHotels = new SimilarHotels(HOTEL_ID, $markup.find('similar-hotels').get(0));
+    }
+
+    // $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
+    $('.hoteldetailpage').attr('style', 'display:none!important');
 
     $markup.find('.bread-crumbs').empty().append($('.bcrumb'));
     $markup.find('.righty.primary').append($('[data-module="whereToBuyWidget"]'));
