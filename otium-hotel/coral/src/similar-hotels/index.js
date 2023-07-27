@@ -1,6 +1,7 @@
 import hotel_card_template from 'bundle-text:./hotel-card.html';
 import config from '../data/coral-group.yaml';
 import { mostRecentQuery } from "../usefuls.js";
+import { watchIntersection } from "/common/useful.js";
 
 const destination_Turkey = {
     "Id": "Country1",
@@ -24,9 +25,13 @@ const destination_Turkey = {
 export class SimilarHotels {
     hotelData;
     constructor(to_hotel_id, container) {
+        this.container = container;
         this.hotelData = _.find(config.hotels, {id: to_hotel_id });
         console.log("+++ SimilarHotels: to hotel: %o", this.hotelData);
-        this.init();
+        watchIntersection(container, { threshold: .1 }, (observer) => {
+            observer.unobserve(this.container);
+            this.init();
+        });
     }
 
     init() {
@@ -56,6 +61,19 @@ export class SimilarHotels {
                     return parsed;
                 });
                 console.log('+++ found_hotels: %o', found_hotels);
+                const hotels2show = [...(function* (relevant, found, count) {
+                    let rel;
+                    while (count--) {
+                        while (rel = relevant.shift()) {
+                            let relevant_found = found_hotels.find((h) => h.Hotel.Id == rel.id);
+                            if (relevant_found) {
+                                yield relevant_found;
+                                break;
+                            }
+                        }
+                    }
+                })(most_relevant, found_hotels, 3)];
+                console.log('+++ hotels2show: %o', hotels2show);
             });
         });
 
