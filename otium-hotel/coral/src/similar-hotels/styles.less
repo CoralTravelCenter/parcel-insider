@@ -1,0 +1,36 @@
+similar-hotels {
+    grid-column: span 2;
+    .hotel-card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        filter: drop-shadow(0 4px 16px fade(black, 15%));
+        @media screen and (max-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media screen and (max-width: @narrow-breakpoint) {
+            grid-template-columns: 1fr;
+        }
+        .hotel-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            border-radius: 1em;
+            background: white;
+            .visual {
+                .proportional(16/9);
+                width: 100%;
+                background: center / cover no-repeat;
+                border-radius: 1em;
+            }
+            .info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 2em;
+            }
+        }
+    }
+}

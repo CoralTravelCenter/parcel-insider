@@ -19,6 +19,8 @@ hotels:
         id:     24729
         logoID: otium
         CoralBonusPercent: 1
+        similarity:
+            price: 188945
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-delight-hotel-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-delight-hotel-mobile.jpg'
@@ -70,6 +72,8 @@ hotels:
         id:     27685
         logoID: otium
         CoralBonusPercent: 1
+        similarity:
+            price: 182361
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-delight-hotel-spa-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-delight-hotel-spa-mobile.jpg'
@@ -120,6 +124,8 @@ hotels:
         id:     36572
         logoID: otium_boutique
         CoralBonusPercent: 1
+        similarity:
+            price: 149042
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-boutique-castle-desktop.jpg'
             mobile:  'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-boutique-castle-mobile.jpg'
@@ -167,6 +173,8 @@ hotels:
         id:     36354
         logoID: otium_boutique
         CoralBonusPercent: 1
+        similarity:
+            price: 133081
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-boutique-happy-desktop.jpg'
             mobile:  'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-boutique-happy-mobile.jpg'
@@ -218,6 +226,8 @@ hotels:
         id:     34799
         logoID: otium_boutique
         CoralBonusPercent: 1
+        similarity:
+            price: 111533
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-boutique-melisa-desktop.jpg'
             mobile:  'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-boutique-melisa-mobile.jpg'
@@ -268,6 +278,8 @@ hotels:
         id:     34121
         logoID: otium
         CoralBonusPercent: 1
+        similarity:
+            price: 126705
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-inn-beldibi-desktop.jpg'
             mobile:  'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-inn-beldibi-mobile.jpg'
@@ -320,6 +332,8 @@ hotels:
         SFC:    true
         logoID: otium_family
         CoralBonusPercent: 1
+        similarity:
+            price: 209574
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-eco-club-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-eco-club-mobile.jpg'
@@ -376,6 +390,8 @@ hotels:
         id:     9408
         logoID: otium
         CoralBonusPercent: 1
+        similarity:
+            price: 193223
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-sealight-beach-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-sealight-beach-desktop.jpg'
@@ -429,6 +445,8 @@ hotels:
         id:     30559
         logoID: otium_family
         CoralBonusPercent: 1
+        similarity:
+            price: 170820
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-club-marine-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-club-marine-mobile.jpg'
@@ -480,6 +498,8 @@ hotels:
         SFC:    true
         logoID: seven_seas
         CoralBonusPercent: 1
+        similarity:
+            price: 268252
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-life-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-life-mobile.jpg'
@@ -534,6 +554,8 @@ hotels:
         SFC:    true
         logoID: seven_seas
         CoralBonusPercent: 1
+        similarity:
+            price: 172762
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-gravel-select-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-gravel-select-mobile.jpg'
@@ -640,6 +662,8 @@ hotels:
         id:     4138
         logoID: otium_park
         CoralBonusPercent: 1
+        similarity:
+            price: 146762
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-club-akman-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-club-akman-mobile.jpg'
@@ -697,6 +721,8 @@ hotels:
         SFC:    true
         logoID: seven_seas
         CoralBonusPercent: 1
+        similarity:
+            price: 273957
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-blue-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-hotel-blue-mobile.jpg'
@@ -750,6 +776,8 @@ hotels:
         id:     14481
         logoID: seven_seas
         CoralBonusPercent: 1
+        similarity:
+            price: 210264
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-sealight-elite-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/seven-seas-sealight-elite-mobile.jpg'
@@ -803,6 +831,8 @@ hotels:
         USFC:    true
         logoID: xanadu
         CoralBonusPercent: 1
+        similarity:
+            price: 357791
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-resort-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-resort-mobile.jpg'
@@ -856,6 +886,8 @@ hotels:
         SFC:    true
         logoID: otium_family
         CoralBonusPercent: 1
+        similarity:
+            price: 139011
         visual:
             desktop: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-desktop.jpg"
             mobile: "https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-stone-mobile.jpg"
@@ -910,6 +942,8 @@ hotels:
         id:     17813
         logoID: otium_family
         CoralBonusPercent: 1
+        similarity:
+            price: 196283
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-lykia-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-family-lykia-mobile.jpg'
@@ -967,6 +1001,8 @@ hotels:
         id:     25495
         logoID: otium_park
         CoralBonusPercent: 1
+        similarity:
+            price: 161316
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-aqua-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-park-aqua-mobile.jpg'
@@ -1020,6 +1056,8 @@ hotels:
         id:     34184
         logoID: otium_senses
         CoralBonusPercent: 1
+        similarity:
+            price: 214674
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-very-chic-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-very-chic-mobile.jpg'
@@ -1076,6 +1114,8 @@ hotels:
         id:     35631
         logoID: otium_senses
         CoralBonusPercent: 1
+        similarity:
+            price: 170936
         visual:
             desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-x-life-desktop.jpg'
             mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-x-life-mobile.jpg'

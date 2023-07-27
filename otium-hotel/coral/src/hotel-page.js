@@ -15,6 +15,7 @@ import { preload } from "../../../common/useful.js";
 import config from './data/coral-group.yaml';
 import hotel_infos_lut from './data/hotel-infos.js';
 import {RoomSelector} from "./room-selector";
+import {SimilarHotels} from "./similar-hotels";
 
 // =====================================================================================================================
 
@@ -175,7 +176,11 @@ function extendHotelData(hotel_data) {
     hotel_data.children = children = children && Number(children.replace(/\D/g, '')) || 0;
     hotel_data.children_wording = children.asChildren();
     hotel_data.isFlightIncluded = !!~$search_summary.text().indexOf('включен');
-    hotel_data.nights_selected = $('[data-module="roomlist"] li.active[data-night]').attr('data-night');
+    if (hotel_data.tour_nights.length > 1) {
+        hotel_data.nights_selected = $('[data-module="roomlist"] li.active[data-night]').attr('data-night');
+    } else {
+        hotel_data.nights_selected = hotel_data.tour_nights[0];
+    }
 
     hotel_data.tripadvosor_present = !!$('.ta-wrap').length;
 
@@ -221,8 +226,8 @@ if (hotel_data) {
         });
     });
 
-    // $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
-    $('.hoteldetailpage').attr('style', 'display:none!important');
+    $('.hoteldetailpage').find('.contentheader, .contentbase').attr('style', 'display:none!important');
+    // $('.hoteldetailpage').attr('style', 'display:none!important');
 
     $markup.find('.bread-crumbs').empty().append($('.bcrumb'));
     $markup.find('.righty.primary').append($('[data-module="whereToBuyWidget"]'));

@@ -105,14 +105,29 @@ export class PriceCalendar {
 
     async selectExactDate(date_str) {
 
-        const search_params_data = $(".container-tabItemWrap").attr("data-searchparams");
-        const packageSearchQuery = JSON.parse(search_params_data).PackageSearchQuery;
+        const search_params_data = JSON.parse($(".container-tabItemWrap").attr("data-searchparams"));
+        const requestType = search_params_data.RequestType;
+        let query = search_params_data[{
+            packageSearch: 'PackageSearchQuery',
+            onlyHotel: 'OnlyHotelQuery'
+        }[requestType]];
+        const api_endpoint = {
+            packageSearch: '/v1/package/search',
+            onlyHotel: '/v1/onlyhotel/search'
+        }[requestType];
 
-        packageSearchQuery.BeginDate = packageSearchQuery.EndDate = packageSearchQuery.SelectedDate = date_str;
-        packageSearchQuery.DateRange = 0;
+        if (requestType === 'packageSearch') {
+            query.BeginDate = query.EndDate = query.SelectedDate = date_str;
+            query.DateRange = 0;
+        } else if (requestType === 'onlyHotel') {
+            const shift = moment(date_str).diff(moment(query.BeginDate));
+            query.BeginDate = date_str;
+            query.EndDate = moment(query.EndDate).add(shift).format('YYYY-MM-DD');
+            query = (({Destination, BeginDate, EndDate, Guest}) => ({Destination, BeginDate, EndDate, Guest}))(query);
+        }
 
         window.global.travelloader.show();
-        $.post('/v1/package/search', packageSearchQuery).done((response) => {
+        $.post(api_endpoint, query).done((response) => {
             location.href = response;
         }).fail(err => {
             window.global.travelloader.hide();
