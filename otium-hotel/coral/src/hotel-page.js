@@ -178,8 +178,10 @@ function extendHotelData(hotel_data) {
     hotel_data.isFlightIncluded = !!~$search_summary.text().indexOf('включен');
     if (hotel_data.tour_nights.length > 1) {
         hotel_data.nights_selected = $('[data-module="roomlist"] li.active[data-night]').attr('data-night');
+        hotel_data.tour_nights_wording = 'ночей';
     } else {
         hotel_data.nights_selected = hotel_data.tour_nights[0];
+        hotel_data.tour_nights_wording = hotel_data.tour_nights[0].asNights();
     }
 
     hotel_data.tripadvosor_present = !!$('.ta-wrap').length;

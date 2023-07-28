@@ -1,6 +1,17 @@
 <div class="hotel-card">
-    <div class="visual"></div>
+    <div class="visual" style="background-image: url({{ visual_url }});"></div>
     <div class="info">
-        {{ name }}
+        <div class="category {{ category_klass }}">{{{ category }}}</div>
+        <div class="name">{{ name }}</div>
+        <div class="place-area">{{ place_area }}</div>
+        <div class="details-grid">
+            <div class="flight-or-checkin-date">{{ flight_or_checkin_date }}</div>
+            <div class="nights" data-icon-value="{{ nights }}">{{ nights_wording }}</div>
+            <div class="meal-type">{{ meal_type }}</div>
+        </div>
+        <div class="price">{{{ price_formatted }}}</div>
+        <div class="actions">
+            <a href="{{ hotel_page_href }}" target="_blank">Выбрать</a>
+        </div>
     </div>
 </div>

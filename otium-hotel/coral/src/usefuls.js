@@ -50,11 +50,11 @@ export function mostRecentQuery() {
     let query = search_params_data[{
         packageSearch: 'PackageSearchQuery',
         onlyHotel: 'OnlyHotelQuery'
-    }[requestType]];
+    }[requestType] || 'PackageSearchQuery'];
     const apiEndpoint = {
         packageSearch: '/v1/package/search',
         onlyHotel: '/v1/onlyhotel/search'
-    }[requestType];
+    }[requestType] || '/v1/package/search';
     return {
         requestType,
         query,

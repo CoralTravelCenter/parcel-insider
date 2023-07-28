@@ -2,6 +2,7 @@ import hotel_card_template from 'bundle-text:./hotel-card.html';
 import config from '../data/coral-group.yaml';
 import { mostRecentQuery } from "../usefuls.js";
 import { watchIntersection } from "/common/useful.js";
+import * as Mustache from 'mustache';
 
 const destination_Turkey = {
     "Id": "Country1",
@@ -41,9 +42,10 @@ export class SimilarHotels {
         let { requestType, query, apiEndpoint } = mostRecentQuery();
         if (requestType === 'onlyHotel') {
             query = (({Destination, BeginDate, EndDate, Guest}) => ({Destination, BeginDate, EndDate, Guest}))(query);
+            query.Destination = destination_Turkey;
+        } else {
+            query.Destination = [destination_Turkey];
         }
-
-        query.Destination = [destination_Turkey];
 
         $.post(apiEndpoint, query).done((response) => {
             let [url, query_string] = response.split('?');
@@ -58,6 +60,7 @@ export class SimilarHotels {
                 const found_hotels = [...doc.querySelectorAll('.row.item')].map(el => {
                     const parsed = JSON.parse(el.dataset.packageLayer);
                     parsed.Price = Number(window.global.dataLayerManager.formatAscrPrice(parsed.Price));
+                    parsed.ActionLink = el.querySelector('a.hotellist-actionlink').getAttribute('href');
                     return parsed;
                 });
                 console.log('+++ found_hotels: %o', found_hotels);
@@ -73,7 +76,10 @@ export class SimilarHotels {
                         }
                     }
                 })(most_relevant, found_hotels, 3)];
-                console.log('+++ hotels2show: %o', hotels2show);
+                const hotel_cards_model = hotels2show.map(packageLayerDataToHotelCardModel);
+                console.log('+++ hotel_cards_model: %o', hotel_cards_model);
+                this.container.innerHTML = hotel_cards_model.map(model => Mustache.render(hotel_card_template, model)).join('');
+                this.container.classList.add('loaded');
             });
         });
 
@@ -94,4 +100,22 @@ export class SimilarHotels {
         return all_hotels_except_ref.slice(0, n);
     }
 
+}
+
+function packageLayerDataToHotelCardModel(package_layer) {
+    const { Hotel } = package_layer;
+    const stars = parseInt(Hotel.Category.Name);
+    return {
+        name: Hotel.Name,
+        category: stars ? Array(stars).fill('star').join(' ') : Hotel.Category.Name,
+        category_klass: stars ? 'stars' : '',
+        visual_url: `//content.coral.ru/resize/800x600/${ Hotel.Images[0].ImageUrl }`,
+        place_area: Hotel.Location.Place === Hotel.Location.Area ? Hotel.Location.Place : `${ Hotel.Location.Place }, ${ Hotel.Location.Area }`,
+        flight_or_checkin_date: (package_layer.FlightDate && moment(package_layer.FlightDate).format('DD.MM.YYYY')) || (package_layer.CheckInDate && moment(package_layer.CheckInDate).format('DD.MM.YYYY')),
+        nights: package_layer.Night,
+        nights_wording: package_layer.Night.asNights(),
+        meal_type: Hotel.MealType.split(/,\s*/)[0],
+        price_formatted: package_layer.Price.decoratedPriceHTML(),
+        hotel_page_href: package_layer.ActionLink,
+    };
 }
