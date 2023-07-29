@@ -93,9 +93,9 @@ export class SimilarHotels {
         all_hotels_except_ref.sort((a, b) => {
             const a_trait = a.badges?.at(1)?.label;
             const b_trait = b.badges?.at(1)?.label;
-            const a_score = (ref_trait !== a_trait) * trait_weight + (a.similarity?.price || Infinity)
-            const b_score = (ref_trait !== b_trait) * trait_weight + (b.similarity?.price || Infinity)
-            return Math.abs(a_score - ref_score) - Math.abs(b_score - ref_score);
+            const a_score = (ref_trait !== a_trait) * trait_weight + Math.abs((a.similarity?.price || Infinity) - ref_score)
+            const b_score = (ref_trait !== b_trait) * trait_weight + Math.abs((b.similarity?.price || Infinity) - ref_score)
+            return a_score - b_score;
         });
         return all_hotels_except_ref.slice(0, n);
     }
@@ -105,11 +105,13 @@ export class SimilarHotels {
 function packageLayerDataToHotelCardModel(package_layer) {
     const { Hotel } = package_layer;
     const stars = parseInt(Hotel.Category.Name);
+    const hotel_cofig = config.hotels.find((hotel) => hotel.id === Hotel.Id);
     return {
         name: Hotel.Name,
         category: stars ? Array(stars).fill('star').join(' ') : Hotel.Category.Name,
         category_klass: stars ? 'stars' : '',
         visual_url: `//content.coral.ru/resize/800x600/${ Hotel.Images[0].ImageUrl }`,
+        visual_klass: (hotel_cofig.SFC && 'sfc') || (hotel_cofig.USFC && 'usfc') || '',
         place_area: Hotel.Location.Place === Hotel.Location.Area ? Hotel.Location.Place : `${ Hotel.Location.Place }, ${ Hotel.Location.Area }`,
         flight_or_checkin_date: (package_layer.FlightDate && moment(package_layer.FlightDate).format('DD.MM.YYYY')) || (package_layer.CheckInDate && moment(package_layer.CheckInDate).format('DD.MM.YYYY')),
         nights: package_layer.Night,
