@@ -57,13 +57,22 @@ export class SimilarHotels {
             $.get(query_uri).done((search_result_response) => {
                 const dp = new DOMParser();
                 const doc= dp.parseFromString(search_result_response, 'text/html');
-                const found_hotels = [...doc.querySelectorAll('.row.item')].map(el => {
-                    const parsed = JSON.parse(el.dataset.packageLayer);
-                    parsed.Price = Number(window.global.dataLayerManager.formatAscrPrice(parsed.Price));
-                    parsed.ActionLink = el.querySelector('a.hotellist-actionlink').getAttribute('href');
-                    return parsed;
+                let found_hotels = [...doc.querySelectorAll('.row.item')].map(el => {
+                    try {
+                        const parsed = JSON.parse(el.dataset.packageLayer);
+                        parsed.Price = Number(window.global.dataLayerManager.formatAscrPrice(parsed.Price));
+                        parsed.ActionLink = el.querySelector('a.hotellist-actionlink').getAttribute('href');
+                        return parsed;
+                    } catch (e) {
+                        return null;
+                    }
                 });
+                found_hotels = found_hotels.filter(hotel => hotel);
                 console.log('+++ found_hotels: %o', found_hotels);
+                if (found_hotels.length === 0) {
+                    $(this.container).closest('.similar-hotels').remove();
+                    return;
+                }
                 const hotels2show = [...(function* (relevant, found, count) {
                     let rel;
                     while (count--) {
