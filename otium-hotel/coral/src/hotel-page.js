@@ -188,6 +188,10 @@ function extendHotelData(hotel_data) {
 
     hotel_data.should_propose_similar_hotels = !!$('[data-hotelcountry="Турция"]').length;
 
+    // try {
+    //     hotel_data.video_url = hotelDetail.InfoSheet.Video[0].VideoURL;
+    // } catch (e) {}
+
     return hotel_data;
 }
 

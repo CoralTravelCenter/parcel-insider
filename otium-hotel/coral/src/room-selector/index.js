@@ -54,7 +54,7 @@ export class RoomSelector {
                 const dp = new DOMParser();
                 const doc = dp.parseFromString(response, 'text/html');
                 const rooms_nodes_list = doc.querySelectorAll('.room.row');
-                if (rooms_nodes_list.length) {
+                if (rooms_nodes_list?.length) {
                     rooms_ref.$buttonEl.attr('data-state', 'available');
                     const rooms_list = [...rooms_nodes_list].map((room_node, room_idx) => {
                         const variant_nodes = room_node.querySelectorAll('.variant');
@@ -64,7 +64,7 @@ export class RoomSelector {
                             const pax_count_el = variant_node.querySelector('.pax-count');
                             const adults = Number(pax_count_el.getAttribute('data-adultcount'));
                             const children = Number(pax_count_el.getAttribute('data-childcount'));
-                            const chooseRoomButton_node= variant_node.querySelector('.action > .roomAction');
+                            const chooseRoomButton_node = variant_node.querySelector('.action > .roomAction');
                             if (chooseRoomButton_node) {
                                 chooseRoomButton_node.setAttribute('href', variant_node.querySelector(chooseRoomButton_node?.getAttribute('href')).querySelector('a').getAttribute('href'));
                             }
@@ -76,7 +76,7 @@ export class RoomSelector {
                                 price = visuallyDemanglePrice(response, room_idx, variant_idx);
                             }
                             price ||= 0;
-                            let original_price = Number(variant_node.querySelector('.discountedprice')?.textContent.replace(/[^0-9.,]/g, '').replace(',','.'));
+                            let original_price = Number(variant_node.querySelector('.discountedprice')?.textContent.replace(/[^0-9.,]/g, '').replace(',', '.'));
                             // pricing -> additives
                             const $icon_price_info = $(variant_node).find('.icon-price-information');
                             let additives_html = $icon_price_info.attr('data-content');
@@ -84,9 +84,9 @@ export class RoomSelector {
                             let mandatories_total_html, mandatories_total_value, additives_popover_html, additives_list;
                             if (additives_html) {
                                 mandatories_total_html = $icon_price_info.siblings('span').get(0).innerHTML;
-                                mandatories_total_value = mandatories_total_html && Number(mandatories_total_html.replace(/[^0-9,]/g, '').replace(',','.')) || 0;
+                                mandatories_total_value = mandatories_total_html && Number(mandatories_total_html.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
                                 additives_list = $(additives_html).filter('div').map((idx, div) => {
-                                    let [,akey,,avalue] = div.textContent.replace(/доплата за /i, '').match(/(.+?)(\s+)([0-9.,\s]+)/);
+                                    let [, akey, , avalue] = div.textContent.replace(/доплата за /i, '').match(/(.+?)(\s+)([0-9.,\s]+)/);
                                     return { akey, avalue };
                                 }).toArray();
                                 additives_popover_html = Mustache.render(additives_popover, { list: additives_list });
@@ -106,24 +106,24 @@ export class RoomSelector {
                             }
 
                             return {
-                                chooseRoomButton_markup: chooseRoomButton_node?.outerHTML ?? '<span class="unavailable-stub">Недоступен на выбранные даты</span>',
+                                chooseRoomButton_markup:     chooseRoomButton_node?.outerHTML ?? '<span class="unavailable-stub">Недоступен на выбранные даты</span>',
                                 room_pricing_klass,
-                                meal: {
-                                    id: variant_node.getAttribute('data-mealid'),
+                                meal:                        {
+                                    id:   variant_node.getAttribute('data-mealid'),
                                     name: variant_node.querySelector('.m-meal-name').textContent
                                 },
-                                pax: {adults, children},
-                                pax_markup: paxMarkupFor(adults, children),
+                                pax:                         { adults, children },
+                                pax_markup:                  paxMarkupFor(adults, children),
                                 price,
-                                final_price_html: price.decoratedPriceHTML(),
-                                original_price_html: original_price && original_price.decoratedPriceHTML(),
+                                final_price_html:            price.decoratedPriceHTML(),
+                                original_price_html:         original_price && original_price.decoratedPriceHTML(),
                                 installment_value_formatted: Math.round(price / 36 * 1.25).formatPrice(),
-                                additives: !!additives_html,
+                                additives:                   !!additives_html,
                                 mandatories_total_html,
                                 mandatories_total_value,
                                 additives_popover_html,
                                 additives_list,
-                                CoralBonusPercent: this.config.CoralBonusPercent,
+                                CoralBonusPercent:           this.config.CoralBonusPercent,
                                 coralbonus_html,
                                 early_booking_present,
                                 early_booking_text,
@@ -137,13 +137,13 @@ export class RoomSelector {
                             return { src: parts.join('/') };
                         });
                         return {
-                            name: room_node.querySelector('.roominfo h4')?.textContent,
-                            id: room_node.getAttribute('data-roomid'),
-                            providerRoomId: room_node.getAttribute('data-providerroomid'),
-                            providerId: room_node.getAttribute('data-providerid'),
-                            privileges: [...room_node.querySelectorAll('.room-name p')].map(p => p.textContent),
+                            name:               room_node.querySelector('.roominfo h4')?.textContent,
+                            id:                 room_node.getAttribute('data-roomid'),
+                            providerRoomId:     room_node.getAttribute('data-providerroomid'),
+                            providerId:         room_node.getAttribute('data-providerid'),
+                            privileges:         [...room_node.querySelectorAll('.room-name p')].map(p => p.textContent),
                             gallery_images_xxl: gallery_collection,
-                            gallery_images_xxm: slider_collection.slice(0,7),
+                            gallery_images_xxm: slider_collection.slice(0, 7),
                             variants
                         };
                     });
@@ -156,6 +156,9 @@ export class RoomSelector {
                     rooms_ref.$buttonEl.attr('data-state', 'unavailable');
                     reject();
                 }
+            }).fail(function () {
+                rooms_ref.$buttonEl.attr('data-state', 'unavailable');
+                reject();
             });
         });
         return rooms_ref.roomsData;

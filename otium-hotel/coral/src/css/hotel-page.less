@@ -785,6 +785,19 @@ section.otium-hotel {
 				box-shadow: 2px 6px 8px fade(black, 5%);
 			}
 		}
+
+		.hotel-video-player {
+			.proportional(16/9);
+			border-radius: 1em;
+			overflow: hidden;
+			margin-top: 3em;
+			-webkit-mask-image: -webkit-radial-gradient(white, black);
+			>video {
+				object-fit: cover;
+				opacity: 1;
+			}
+		}
+
 	}
 	.righty {
 		align-self: start;
