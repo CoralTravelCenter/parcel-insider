@@ -11,7 +11,7 @@ import coralbonus_popover from 'bundle-text:./markup/coralbonus-popover.html'
 import eliteservice_popover from 'bundle-text:./markup/eliteservice-popover.html'
 import * as Mustache from "mustache";
 import { preload, responsiveHandler, watchIntersection } from "../../../common/useful.js";
-import { demanglePrice, popoverTemplateWithClass } from "./usefuls.js";
+import { demanglePrice, popoverTemplateWithClass, currency } from "./usefuls.js";
 
 let flickityPromose;
 async function flickityReady() {
@@ -60,10 +60,12 @@ Number.prototype.decoratedPriceHTML = function() {
     let value = Math.floor(this).formatPrice();
     let cents = Math.round(this * 100 % 100);
     let lots_of_money_klass = this > 1000000 ? 'lots-of-money' : '';
-    return `<div class="decorated-price ${ lots_of_money_klass }"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">₽</span></div>`
+    const { symbol } = currency();
+    return `<div class="decorated-price ${ lots_of_money_klass }"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">${ symbol }</span></div>`;
 }
 Number.prototype.decoratedCoralBonusHTML = function (popover_content_html) {
-    return `<div class="coralbonus-badge" tabindex="-1" data-content='${ popover_content_html }'><div class="value-box"><div class="value">${ this.formatPrice() }</div></div><div class="label">на карту CoralBonus</div></div>`
+    const { rate } = currency();
+    return `<div class="coralbonus-badge" tabindex="-1" data-content='${ popover_content_html }'><div class="value-box"><div class="value">${ (this * rate).formatPrice() }</div></div><div class="label">на карту CoralBonus</div></div>`
 }
 
 String.prototype.zeroPad = function(len, c) {
@@ -187,6 +189,8 @@ function parseOriginalCard($hotel_item) {
     const n_stars = $rating.children('.material-icons').length;
     hotel_data.stars = n_stars ? new Array(n_stars) : undefined;
     hotel_data.category = n_stars ? undefined : $rating.text()
+    // currency
+    hotel_data.currency_symbol = currency().symbol;
     // reviews
     if (hotel_data.forceRating) {
         switch (hotel_data.forceRating.source) {
@@ -254,12 +258,13 @@ function parseOriginalCard($hotel_item) {
             let [,akey,,avalue] = div.textContent.replace(/доплата за /i, '').match(/(.+?)(\s+)([0-9.,\s]+)/);
             return { akey, avalue };
         }).toArray();
-        hotel_data.additives_popover_html = Mustache.render(additives_popover, { list: additives_list });
+        hotel_data.additives_popover_html = Mustache.render(additives_popover, { list: additives_list, currency_symbol: currency().symbol });
     }
     // CoralBonus
     if (hotel_data.CoralBonusPercent) {
+        const { rate } = currency();
         const bonus_value = Math.round(price / 100 * hotel_data.CoralBonusPercent);
-        hotel_data.coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: bonus_value.formatPrice() }));
+        hotel_data.coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: (bonus_value * rate).formatPrice() }));
     }
 }
 

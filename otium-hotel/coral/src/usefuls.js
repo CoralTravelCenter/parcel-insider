@@ -61,3 +61,25 @@ export function mostRecentQuery() {
         apiEndpoint
     };
 }
+
+function getActiveCurrency() {
+    return {
+        name: $('.currency-list .selected .currency-name', '.headerCurrency').text(),
+        value: $('.currency-list .selected', '.headerCurrency').data('currencyid')
+    };
+}
+export function currency() {
+    const { name: code } = getActiveCurrency();
+    let rate = 1.0;
+    let symbol = '₽';
+    const [usd_rate, eur_rate] = $('.flexbox-exchange').eq(0).find('img').next().map((idx, el) => parseFloat(el.textContent.replace(',', '.'))).toArray();
+    if (code === 'USD') {
+        rate = usd_rate;
+        symbol = '$';
+    }
+    if (code === 'EUR') {
+        rate = eur_rate;
+        symbol = '€';
+    }
+    return { code, symbol, rate }
+}
