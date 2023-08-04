@@ -3,7 +3,7 @@
 import markup from 'bundle-text:./markup.html'
 import * as Mustache from 'mustache';
 import {preload} from "/common/useful.js";
-import {mostRecentQuery} from "../usefuls.js";
+import { currency, mostRecentQuery } from "../usefuls.js";
 
 export class PriceCalendar {
     static ru_months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
@@ -50,6 +50,7 @@ export class PriceCalendar {
 
     itemsMarkup() {
         const me = this;
+        const { symbol } = currency();
         const [price_min, price_max] = this.calData.reduce((minmax, d, idx) => {
             if (d.price) {
                 if (d.price < minmax[0]) minmax[0] = d.price;
@@ -69,7 +70,7 @@ export class PriceCalendar {
                 }
                 const date_price = d.price + (me.variantData.mandatories_total_value || 0);
                 yield `<div class="item ${ d.booking }" data-date="${ d.moment.format('YYYY-MM-DD') }">
-                    <span class="bar"><span class="filler" style="height: ${ d.price / price_max * 100 }%">${ date_price.formatPrice('от', '₽') }</span></span>
+                    <span class="bar"><span class="filler" style="height: ${ d.price / price_max * 100 }%">${ date_price.formatPrice('от', symbol) }</span></span>
                     <span class="flight ${ d.flight ? 'available' : 'unavailable' }"></span>
                     <span class="date">${ d.moment.date() }</span>
                     <span class="day-of-week ${ is_weekend }">${ day_name }</span>

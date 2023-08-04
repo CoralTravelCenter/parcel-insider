@@ -9,7 +9,7 @@ import installment_info_popover from 'bundle-text:./markup/installment-info-popo
 import otium_tooltip_template from 'bundle-text:./markup/usp-tooltip.html'
 import otium_tooltip_body_template from 'bundle-text:./markup/usp-tooltip-body.html'
 import * as Mustache from "mustache";
-import { popoverTemplateWithClass, demanglePrice, waitForGlobalVar } from "./usefuls.js";
+import { popoverTemplateWithClass, demanglePrice, waitForGlobalVar, currency } from "./usefuls.js";
 import { preload } from "../../../common/useful.js";
 
 import config from './data/coral-group.yaml';
@@ -30,10 +30,13 @@ Number.prototype.decoratedPriceHTML = function() {
     let value = Math.floor(this).formatPrice();
     let cents = Math.round(this * 100 % 100);
     let lots_of_money_klass = this > 1000000 ? 'lots-of-money' : '';
-    return `<div class="decorated-price ${ lots_of_money_klass }"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">₽</span></div>`
+    const { symbol } = currency();
+    return `<div class="decorated-price ${ lots_of_money_klass }"><span class="value">${ value }</span><span class="cents">,${ cents.zeroPad(2) }</span><span class="currencyfont currency-symbol">${ symbol }</span></div>`;
 }
 Number.prototype.decoratedCoralBonusHTML = function (popover_content_html) {
-    return `<div class="coralbonus-badge" tabindex="-1" data-content='${ popover_content_html }'><div class="value-box"><div class="value">${ this.formatPrice() }</div></div><div class="label">на карту CoralBonus</div></div>`
+    const { rate } = currency();
+    return `<div class="coralbonus-badge" tabindex="-1" data-content='${ popover_content_html }'><div class="value-box"><div class="value">${ (this * rate).formatPrice() }</div></div><div class="label">на карту CoralBonus</div></div>`
+
 }
 
 String.prototype.zeroPad = function(len, c) {
@@ -74,6 +77,8 @@ const hotel_data = _.find(config.hotels, { id: HOTEL_ID });
 
 function extendHotelData(hotel_data) {
     hotel_data.partials = {};
+    // currency
+    hotel_data.currency_symbol = currency().symbol;
     // stars
     // hotel_data.stars = new Array($('.rating .material-icons').length);
     const $rating = $('.rating');
@@ -138,12 +143,13 @@ function extendHotelData(hotel_data) {
             return { akey, avalue };
         }).toArray();
         hotel_data.mandatories_total_html = mandatories_total_html;
-        hotel_data.additives_popover_html = Mustache.render(additives_popover, { list: additives_list });
+        hotel_data.additives_popover_html = Mustache.render(additives_popover, { list: additives_list, currency_symbol: currency().symbol });
     }
     // CoralBonus
     if (hotel_data.CoralBonusPercent) {
+        const { rate } = currency();
         const bonus_value = Math.round(price / 100 * hotel_data.CoralBonusPercent);
-        hotel_data.coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: bonus_value.formatPrice() }));
+        hotel_data.coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: (bonus_value * rate).formatPrice() }));
     }
     // Early booking promo
     let $eb_container = $('.gallery-right .ebcontainer');

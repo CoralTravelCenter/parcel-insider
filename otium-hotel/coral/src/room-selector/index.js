@@ -3,7 +3,7 @@ import rooms_for_nights_t from 'bundle-text:./rooms-for-nights.html'
 import additives_popover from 'bundle-text:../markup/additives-popover.html'
 import coralbonus_popover from 'bundle-text:../markup/coralbonus-popover.html'
 import * as Mustache from "mustache";
-import { demanglePrice, flickityReady, visuallyDemanglePrice } from "../usefuls.js";
+import { currency, demanglePrice, flickityReady, visuallyDemanglePrice } from "../usefuls.js";
 import { PriceCalendar } from "../price-calendar";
 
 export class RoomSelector {
@@ -41,6 +41,7 @@ export class RoomSelector {
     }
 
     fetchRoomsData(rooms_ref) {
+        const { symbol: currency_symbol } = currency();
         rooms_ref.roomsData ||= new Promise((resolve, reject) => {
             rooms_ref.$buttonEl.attr('data-state', 'loading');
             $.get('/v1/hoteldetail/getroomlist', {
@@ -89,13 +90,14 @@ export class RoomSelector {
                                     let [, akey, , avalue] = div.textContent.replace(/доплата за /i, '').match(/(.+?)(\s+)([0-9.,\s]+)/);
                                     return { akey, avalue };
                                 }).toArray();
-                                additives_popover_html = Mustache.render(additives_popover, { list: additives_list });
+                                additives_popover_html = Mustache.render(additives_popover, { list: additives_list, currency_symbol });
                             }
                             // CoralBonus
                             let coralbonus_html;
                             if (this.config.CoralBonusPercent) {
+                                const { rate } = currency();
                                 const bonus_value = Math.round(price / 100 * this.config.CoralBonusPercent);
-                                coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: bonus_value.formatPrice() }));
+                                coralbonus_html = bonus_value.decoratedCoralBonusHTML(Mustache.render(coralbonus_popover, { value_formatted: (bonus_value * rate).formatPrice() }));
                             }
                             let eb_container = variant_node.querySelector('.ebcontainer');
                             let early_booking_present, early_booking_text, early_booking_info_html;
@@ -147,7 +149,7 @@ export class RoomSelector {
                             variants
                         };
                     });
-                    const $roomsList = rooms_ref.$roomsList = $(Mustache.render(rooms_for_nights_t, { rooms_list }));
+                    const $roomsList = rooms_ref.$roomsList = $(Mustache.render(rooms_for_nights_t, { rooms_list, currency_symbol }));
                     this.setupHandlersForRoomsRef(rooms_ref);
                     $roomsList.find('.room-grid').each((idx, el) => el.style.setProperty('--variants-qty', rooms_list[idx].variants.length));
                     this.$roomsHolder.append($roomsList);
