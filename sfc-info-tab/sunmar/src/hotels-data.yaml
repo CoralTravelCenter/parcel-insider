@@ -1,5 +1,5 @@
 add_markup:
-    common: 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;01.06.'
+    common: 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;25.04.'
     about_sfc: 'Подробнее о программе Sun Family Club вы можете узнать <a href="https://www.sunmar.ru/sun-family-club/" target="_blank">Sun Family Club - развлечения и&nbsp;аниматоры для детей на отдыхе от Sunmar</a>.'
     miracle_and_ugra: 'Расписание работы мини-клуба: шесть дней в неделю, 1 выходной - понедельник.'
 hotels:
@@ -7,19 +7,19 @@ hotels:
     -   name: BLUE WATERS CLUB
         id:   465
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;01.04.'
             - about_sfc
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/blue-waters-hotel-3-6-распорядок-2023.pdf" target="_blank">Minis ( 3 – 6 Лет )</a><a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/blue-waters-hotel-7-9-распорядок-2023.pdf" target="_blank">Minis ( 7– 9 Лет )</a><a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/blue-waters-hotel-10-13-распорядок-2023.pdf" target="_blank">Kids ( 10 – 13 Лет )</a></p>
     -   name: CLUB RESORT ATLANTIS
         id:   9464
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;01.05.'
             - about_sfc
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/club-resort-atlantis-hotel-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a></p>
     -   name: TUANA CLUB FETHIYE
         id:   17847
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;01.05.'
             - about_sfc
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/club-tuana-fethiye-hotel-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a></p>
     -   name: EFTALIA AQUA RESORT
@@ -45,6 +45,7 @@ hotels:
         blocks:
             - common
             - about_sfc
+            - 'Расписание работы мини-клуба: шесть дней в неделю, 1 выходной – суббота'
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/justiniano-club-conti-hotel-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a></p>
     -   name: KAMELYA SELIN HOTEL
         id:   12880
@@ -55,14 +56,15 @@ hotels:
     -   name: OTIUM FAMILY ECO CLUB
         id:   453
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;20.04.'
             - about_sfc
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/otium-eco-club-hotel-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a><a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/otium-eco-club-распорядок-няни-2023.pdf" target="_blank">РАСПИСАНИЕ ГРУПП РАННЕГО РАЗВИТИЯ 2-4 ГОДА</a></p>
     -   name: OTIUM FAMILY STONE PALACE
         id:   25065
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;10.05.'
             - about_sfc
+            - 'Расписание работы мини-клуба: шесть дней в неделю, 1 выходной – воскресенье'
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/otium-family-stone-palace-hotel-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a></p>
     -   name: PAPILLON AYSCHA HOTEL
         id:   973
@@ -79,7 +81,7 @@ hotels:
     -   name: PINE BAY HOLIDAY RESORT
         id:   5174
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;01.05.'
             - about_sfc
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/pine-bay-holiday-resort-hotel-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a></p>
     -   name: SEVEN SEAS GRAVEL SELECT
@@ -91,13 +93,13 @@ hotels:
     -   name: SEVEN SEAS HOTEL BLUE
         id:   11818
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;20.04.'
             - about_sfc
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/seven-seas-hotel-blue-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a><a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/seven-seas-hotel-blue-распорядок-няни-2023.pdf" target="_blank">РАСПИСАНИЕ ГРУПП РАННЕГО РАЗВИТИЯ 2-4 ГОДА</a><a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/seven-seas-hotel-blue-распорядок-плавание-2023.pdf" target="_blank">РАСПИСАНИЕ ЗАНЯТИЙ ПО ПЛАВАНИЮ SUN FAMILY CLUB</a></p>
     -   name: SEVEN SEAS HOTEL LIFE
         id:   11754
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;20.04.'
             - about_sfc
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/seven-seas-hotel-life-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a><a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/seven-seas-hotel-life-распорядок-няни-2023.pdf" target="_blank">РАСПИСАНИЕ ГРУПП РАННЕГО РАЗВИТИЯ 2-4 ГОДА</a><a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/seven-seas-hotel-life-распорядок-плавание-2023.pdf" target="_blank">РАСПИСАНИЕ ЗАНЯТИЙ ПО ПЛАВАНИЮ SUN FAMILY CLUB</a></p>
     -   name: SIRENE BELEK HOTEL
@@ -109,19 +111,21 @@ hotels:
     -   name: THE GARDEN BEACH HOTEL
         id:   21627
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;10.05.'
             - about_sfc
+            - 'Расписание работы мини-клуба: шесть дней в неделю, 1 выходной – воскресенье'
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/the-garden-beach-hotel-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a></p>
     -   name: ULUSOY KEMER HOLIDAY CLUB
         id:   682
         blocks:
             - common
             - about_sfc
+            - 'Расписание работы мини-клуба: шесть дней в неделю, 1 выходной – воскресенье'
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/ulusoy-kemer-holiday-club-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a></p>
     -   name: XANADU RESORT
         id:   983
         blocks:
-            - common
+            - 'Бельчонок Санни ждёт юных гостей для активного отдыха и&nbsp;незабываемых приключений, а&nbsp;команда педагогов SFC ежедневно отправляется вместе с&nbsp;юными гостями от четырех лет в "Путешествие Бельчонка Санни по горам Истории"! <br>Программа Sun Family Club начинает работать с&nbsp;01.04.'
             - about_sfc
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/xanadu-resort-hotel-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a><a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/xanadu-resort-hotel-распорядок-няни-2023.pdf" target="_blank">РАСПИСАНИЕ ГРУПП РАННЕГО РАЗВИТИЯ 2-4 ГОДА SUN FAMILY CLUB</a><a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/turkey/xanadu-resort-hotel-распорядок-плавание-2023.pdf" target="_blank">РАСПИСАНИЕ ЗАНЯТИЙ ПО ПЛАВАНИЮ SUN FAMILY CLUB</a></p>
     # Russia
@@ -135,7 +139,6 @@ hotels:
         id:   23092
         blocks:
             - common
-            - miracle_and_ugra
             - about_sfc
             - <p>Распорядок мероприятий:<a class="docx" href="https://cdn.sunmar.ru/content/cms/russia/sfc-schedules/russia/миракле-распорядок-2023.pdf" target="_blank">ЕЖЕДНЕВНЫЕ МЕРОПРИЯТИЯ SUN FAMILY CLUB</a></p>
     -   name: ХУТОРОК ГОСТИНИЧНЫЙ КОМПЛЕКС
