@@ -20,7 +20,7 @@ export class RoomSelector {
         this.$nightsSelector = this.$roomsSelector.filter('ul.selector');
         this.$roomsHolder = this.$roomsSelector.filter('.rooms-holder');
         this.config = config;
-        this.init();
+        // this.init();
     }
 
     async init() {
@@ -33,7 +33,7 @@ export class RoomSelector {
         this.$container.append(this.$roomsSelector);
 
         await this.selectNights(this.config.nightsSelected);
-        return Promise.all(this.roomsRefByNights.map((rr) => this.fetchRoomsData(rr)));
+        return Promise.allSettled(this.roomsRefByNights.map((rr) => this.fetchRoomsData(rr)));
     }
 
     findRoomsRefForNights(n) {
