@@ -32,7 +32,7 @@ export class RoomSelector {
         });
         this.$container.append(this.$roomsSelector);
 
-        await this.selectNights(this.config.nightsSelected);
+        await this.selectNights(this.config.nightsSelected, 'parse_from_dom');
         return Promise.allSettled(this.roomsRefByNights.map((rr) => this.fetchRoomsData(rr)));
     }
 
@@ -40,18 +40,25 @@ export class RoomSelector {
         return this.roomsRefByNights.find(d => d.nights == n);
     }
 
-    fetchRoomsData(rooms_ref) {
+    fetchRoomsData(rooms_ref, parse_from_dom) {
         const { symbol: currency_symbol } = currency();
         rooms_ref.roomsData ||= new Promise((resolve, reject) => {
             rooms_ref.$buttonEl.attr('data-state', 'loading');
-            $.get('/v1/hoteldetail/getroomlist', {
-                night: rooms_ref.nights,
-                hotelId: this.config.hotelId,
-                availableFilter: this.config.availableFilter,
-                // availableFilter: 1,
-                selectedDate: this.config.selectedDate,
-                _: Math.round(Math.random() * 1000000)
-            }).done((response) => {
+            let $fetcher;
+            if (parse_from_dom) {
+                $fetcher = $.Deferred();
+                $fetcher.resolve($('.roomlist_new').html());
+            } else {
+                $fetcher = $.get('/v1/hoteldetail/getroomlist', {
+                    night:           rooms_ref.nights,
+                    hotelId:         this.config.hotelId,
+                    availableFilter: this.config.availableFilter,
+                    // availableFilter: 1,
+                    selectedDate: this.config.selectedDate,
+                    _:            Math.round(Math.random() * 1000000)
+                });
+            }
+            $fetcher.done((response) => {
                 const dp = new DOMParser();
                 const doc = dp.parseFromString(response, 'text/html');
                 const rooms_nodes_list = doc.querySelectorAll('.room.row');
@@ -274,9 +281,9 @@ export class RoomSelector {
         });
     }
 
-    async selectNights(n) {
+    async selectNights(n, parse_from_dom) {
         const roomsRef = this.findRoomsRefForNights(n);
-        const rooms_data = await this.fetchRoomsData(roomsRef);
+        const rooms_data = await this.fetchRoomsData(roomsRef, parse_from_dom);
         this.$container.closest('.otium-hotel').find('.tour-summary-grid .nights .values').children().filter((idx, li) => {
             return li.getAttribute('data-value') == roomsRef.nights;
         }).addClass('selected').siblings().removeClass('selected');

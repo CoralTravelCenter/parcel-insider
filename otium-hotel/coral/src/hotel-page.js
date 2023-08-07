@@ -14,8 +14,9 @@ import { preload } from "../../../common/useful.js";
 
 import config from './data/coral-group.yaml';
 import hotel_infos_lut from './data/hotel-infos.js';
-import {RoomSelector} from "./room-selector";
-import {SimilarHotels} from "./similar-hotels";
+import { RoomSelector } from "./room-selector";
+import { SimilarHotels } from "./similar-hotels";
+import { HotelVideoPlayer } from "./hotel-video-player";
 
 // =====================================================================================================================
 
@@ -194,9 +195,9 @@ function extendHotelData(hotel_data) {
 
     hotel_data.should_propose_similar_hotels = !!$('[data-hotelcountry="Турция"]').length;
 
-    // try {
-    //     hotel_data.video_url = hotelDetail.InfoSheet.Video[0].VideoURL;
-    // } catch (e) {}
+    try {
+        hotel_data.video_url = hotelDetail.InfoSheet.Video[0].VideoURL;
+    } catch (e) {}
 
     return hotel_data;
 }
@@ -260,6 +261,11 @@ if (hotel_data) {
     const $visuals_gallery = $markup.find('.visuals-gallery');
     $visuals_gallery.empty().append($original_hotelgallery_module);
     $('.gallery__overlay').appendTo($markup);
+
+    // if (hotel_data.video_url) {
+    //     const hotelVideoPlayer = new HotelVideoPlayer(hotel_data.video_url);
+    //     $('section.otium-hotel .gallery-layout').append(hotelVideoPlayer.render());
+    // }
 
     let badges = [];
     if (is_exclusive) badges.push('<div class="badge exclusive">EXCLUSIVE</div>');
