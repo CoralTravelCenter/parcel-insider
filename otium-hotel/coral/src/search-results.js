@@ -13,6 +13,12 @@ import * as Mustache from "mustache";
 import { preload, responsiveHandler, watchIntersection } from "../../../common/useful.js";
 import { demanglePrice, popoverTemplateWithClass, currency } from "./usefuls.js";
 
+// =====================================================================================================================
+const this_script_id = 'CORALGROUP_HOTEL_SEARCH';
+if (window[this_script_id]) throw `${ this_script_id } -> stop`;
+window[this_script_id] ||= true;
+// =====================================================================================================================
+
 let flickityPromose;
 async function flickityReady() {
     flickityPromose ||= new Promise(resolve => {

@@ -19,6 +19,10 @@ import { SimilarHotels } from "./similar-hotels";
 import { HotelVideoPlayer } from "./hotel-video-player";
 
 // =====================================================================================================================
+const this_script_id = 'CORALGROUP_HOTEL_PAGE';
+if (window[this_script_id]) throw `${ this_script_id } -> stop`;
+window[this_script_id] ||= true;
+// =====================================================================================================================
 
 Number.prototype.formatPrice = function(prefix, suffix) {
     var s;
