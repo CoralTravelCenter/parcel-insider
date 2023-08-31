@@ -3,6 +3,12 @@
 import popin_markup from 'bundle-text:./app-form-custom.html';
 import css from 'bundle-text:./styles.less';
 
+// =====================================================================================================================
+const this_script_id = 'Apply form @where-to-buy';
+if (window[this_script_id]) throw `${ this_script_id } -> stop`;
+window[this_script_id] ||= true;
+// =====================================================================================================================
+
 (async function () {
     function cardBody() {
         return new Promise((resolve) => {
