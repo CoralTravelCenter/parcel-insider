@@ -33,7 +33,8 @@ export class RoomSelector {
         this.$container.append(this.$roomsSelector);
 
         await this.selectNights(this.config.nightsSelected, 'parse_from_dom');
-        return Promise.allSettled(this.roomsRefByNights.map((rr) => this.fetchRoomsData(rr)));
+        // return Promise.allSettled(this.roomsRefByNights.map((rr) => this.fetchRoomsData(rr)));
+        return Promise.resolve();
     }
 
     findRoomsRefForNights(n) {
