@@ -606,58 +606,6 @@ hotels:
                         - 5 а-ля карт с разными кухнями мира
                         - Полное обновление меню
 
-    -   name:   XANADU MAKADI BAY
-        id:     49757
-        logoID: xanadu
-        CoralBonusPercent: 1
-        visual:
-            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-makadi-bay-desktop.jpg'
-            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-makadi-bay-mobile.jpg'
-        badges:
-            - label: Обратите внимание
-              fore: white
-              back: "#63A650"
-            - label: Семейный отдых
-              fore: black
-              back: white
-        usps:
-            -   label:  Стандарт CGH
-                icon: CGH
-                details:
-                    heading: Coral Group Hotels
-                    list:
-                        - Международный уровень сервиса
-                        - Надежные стандарты гостеприимства
-                        - Опытный персонал
-            -   label:  Шикарный риф
-                icon: reef
-                details:
-                    list:
-                        - Живой риф недалеко от&nbsp;берега
-                        - Черепахи, рыбы и&nbsp;кораллы
-                        - Идеально для снорклинга и&nbsp;дайвинга
-            -   label:  Детский клуб Fancyland
-                icon: fancy
-                details:
-                    list:
-                        - 3 группы от года до 16&nbsp;лет
-                        - Площадь 1500&nbsp;м²
-                        - Пенные шоу, x-box, мастер-классы
-            -   label:  Фитнес-центр
-                icon: fitness
-                details:
-                    list:
-                        - Находится рядом с&nbsp;пляжем
-                        - Полностью прозрачные стены
-                        - Большой выбор тренажеров
-            -   label:  Изысканная еда и&nbsp;напитки
-                icon: AI
-                details:
-                    list:
-                        - 5 бесплатных ресторанов а-ля&nbsp;карт
-                        - Напитки премиум-класса
-                        - Вкуснейшие коктейли
-
     -   name:   OTIUM PARK CLUB AKMAN
         id:     4138
         logoID: otium_park
@@ -1169,3 +1117,108 @@ hotels:
                         - 3 минуты в пути
                         - Четкое расписание
                         - Частое отправление
+
+    # Egypt
+    -   name:   XANADU MAKADI BAY
+        id:     49757
+        logoID: xanadu
+        CoralBonusPercent: 1
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-makadi-bay-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/xanadu-makadi-bay-mobile.jpg'
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: "#63A650"
+            - label: Семейный отдых
+              fore: black
+              back: white
+        usps:
+            -   label:  Стандарт CGH
+                icon: CGH
+                details:
+                    heading: Coral Group Hotels
+                    list:
+                        - Международный уровень сервиса
+                        - Надежные стандарты гостеприимства
+                        - Опытный персонал
+            -   label:  Шикарный риф
+                icon: reef
+                details:
+                    list:
+                        - Живой риф недалеко от&nbsp;берега
+                        - Черепахи, рыбы и&nbsp;кораллы
+                        - Идеально для снорклинга и&nbsp;дайвинга
+            -   label:  Детский клуб Fancyland
+                icon: fancy
+                details:
+                    list:
+                        - 3 группы от года до 16&nbsp;лет
+                        - Площадь 1500&nbsp;м²
+                        - Пенные шоу, x-box, мастер-классы
+            -   label:  Фитнес-центр
+                icon: fitness
+                details:
+                    list:
+                        - Находится рядом с&nbsp;пляжем
+                        - Полностью прозрачные стены
+                        - Большой выбор тренажеров
+            -   label:  Изысканная еда и&nbsp;напитки
+                icon: AI
+                details:
+                    list:
+                        - 5 бесплатных ресторанов а-ля&nbsp;карт
+                        - Напитки премиум-класса
+                        - Вкуснейшие коктейли
+
+    -   name:   OTIUM SENSES ONATTI
+        id:     6263
+        logoID: otium
+        CoralBonusPercent: 1
+        visual:
+            desktop: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-onatti-desktop.jpg'
+            mobile: 'https://cdn.coral.ru/content/insider/russia/otium-hotels/otium-senses-onatti-mobile.jpg'
+        badges:
+            - label: Обратите внимание
+              fore: white
+              back: "#63A650"
+            - label: Цена / качество
+              fore: black
+              back: white
+        usps:
+            -   label:  Стандарт CGH
+                icon: CGH
+                details:
+                    heading: Coral Group Hotels
+                    list:
+                        - Международный уровень сервиса
+                        - Надежные стандарты гостеприимства
+                        - Опытный персонал
+            -   label:  Только для взрослых
+                icon: 16+
+                details:
+                    list:
+                        - Гости 16+
+            -   label: Отличный пляж
+                icon: beach
+                details:
+                    list:
+                        - 1 береговая линия
+                        - Песчано-галечный
+                        - Ровный заход в&nbsp;воду
+                        - Много зонтиков и&nbsp;лежаков
+            -   label:  Все включено
+                icon: AI
+                details:
+                    list:
+                        - Завтрак, обед, ужин и&nbsp;закуски бесплатно
+                        - Напитки местного производства
+                        - Приветственный пакет для именинников
+                        - Кондитерская
+            -   label: Развлечения и&nbsp;анимация
+                icon: club
+                details:
+                    list:
+                        - Дайвинг
+                        - Дискотека
+                        - Стрельба из лука, футбол, дартс, зумба, пилатес

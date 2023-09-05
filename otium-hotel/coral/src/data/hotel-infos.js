@@ -20,7 +20,14 @@ import h36572 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/
 import h24729 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/24729.html'
 import h27685 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/27685.html'
 
+import h6263 from 'bundle-text:/otium-hotel/coral/src/inline-assets/hotel-info/6263.html'
+
 export default [
+    {
+        name: 'OTIUM SENSES ONATTI',
+        id: 6263,
+        markup: h6263
+    },
     {
         name: 'OTIUM DELIGHT HOTEL & SPA',
         id: 27685,
