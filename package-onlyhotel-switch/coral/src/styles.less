@@ -1,0 +1,50 @@
+.package-onlyhotel-switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: .5em;
+    &.yet-not-defined {
+        display: none!important;
+    }
+    >* {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        line-height: 1;
+        padding: .62em 1em;
+        background-color: white;
+        color: black;
+        border: 0;
+        cursor: pointer;
+        outline: none;
+        &:active {
+            transform: translateY(2px);
+        }
+        &:before {
+            font-family: "Material Icons";
+            font-weight: normal;
+            margin-right: .3em;
+            font-size: 1.4em;
+        }
+        &.package {
+            border-radius: .5em 0 0 .5em;
+            &:before {
+                content: 'flight_takeoff';
+            }
+        }
+        &.onlyhotel {
+            border-radius: 0 .5em .5em 0;
+            &:before {
+                content: 'domain';
+            }
+        }
+        &[href] {
+            color: black!important;
+        }
+        &:not([href]) {
+            z-index: 1;
+            pointer-events: none;
+            color: #0093D0!important;
+            box-shadow: 0 2px 8px fade(black,10%);
+        }
+    }
+}
