@@ -41,7 +41,9 @@ if (recentQuery.requestType !== 'onlyHotel') {
         EndDate: moment(SelectedDate).add({ d: Acc[0] }).format('YYYY-MM-DD'),
         Guest
     }).done((response) => {
-        $('.package-onlyhotel-switch').removeClass('yet-not-defined').find('a.onlyhotel').attr('href', response);
+        const a = $('.package-onlyhotel-switch').removeClass('yet-not-defined').find('a.onlyhotel');
+        a.attr('href', response);
+        a.on('click', () => ym(553380, 'reachGoal', 'hotel-butonlyhotel'));
     });
 } else {
     let { Destination, BeginDate, EndDate, Guest } = recentQueryParams;
@@ -60,7 +62,9 @@ if (recentQuery.requestType !== 'onlyHotel') {
         Acc: [moment.duration(moment(EndDate).diff(moment(BeginDate))).as('days')],
         Guest,
     }).done(response => {
-        $('.package-onlyhotel-switch').removeClass('yet-not-defined').find('a.package').attr('href', response);
+        const a = $('.package-onlyhotel-switch').removeClass('yet-not-defined').find('a.package');
+        a.attr('href', response);
+        a.on('click', () => ym(553380,'reachGoal','hotel-buttour'));
     });
 
 }
