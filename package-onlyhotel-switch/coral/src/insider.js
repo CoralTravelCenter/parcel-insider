@@ -26,7 +26,8 @@ const recentQueryParams = recentQuery.query;
 console.log('+++ recentQuery: %o', recentQuery);
 
 $('head').eq(0).append(`<style>${ css }</style>`);
-$('.hoteldetailpage .price-wrap').before(markup);
+// $('.hoteldetailpage .price-wrap').before(markup);
+$('.hoteldetailpage .contentbase .gallery-right').prepend(markup);
 
 if (recentQuery.requestType !== 'onlyHotel') {
     let { Destination, BeginDate, EndDate, Guest, SelectedDate, Acc } = recentQueryParams;

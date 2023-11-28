@@ -1,50 +1,38 @@
+.hoteldetailpage .contentbase .gallery-right {
+	display: grid;
+	background: white;
+	padding: .5em 1em 1em;
+}
+
 .package-onlyhotel-switch {
+	order: -1;
     display: flex;
     align-items: center;
-    margin-bottom: .5em;
+	background: #f1f7fc;
+	margin: -.5em -1em 0;
     &.yet-not-defined {
         display: none!important;
     }
     >* {
-        position: relative;
-        display: flex;
-        align-items: center;
-        line-height: 1;
-        padding: .62em 1em;
-        background-color: white;
-        color: black;
-        border: 0;
-        cursor: pointer;
-        outline: none;
-        &:active {
-            transform: translateY(2px);
-        }
-        &:before {
-            font-family: "Material Icons";
-            font-weight: normal;
-            margin-right: .3em;
-            font-size: 1.4em;
-        }
+        flex: 1;
+		text-align: center;
+		border-radius: .75em .75em 0 0;
+		padding: .75em 1em;
         &.package {
-            border-radius: .5em 0 0 .5em;
-            &:before {
-                content: 'flight_takeoff';
-            }
+
         }
         &.onlyhotel {
-            border-radius: 0 .5em .5em 0;
-            &:before {
-                content: 'domain';
-            }
+
         }
         &[href] {
-            color: black!important;
+            //color: black!important;
+			background: #DAEAF7;
+			margin-left: 1em;
+			margin-right: 1em;
         }
         &:not([href]) {
-            z-index: 1;
             pointer-events: none;
-            color: #0093D0!important;
-            box-shadow: 0 2px 8px fade(black,10%), inset 0 0 0 2px #0093D0;
+			background: white;
         }
     }
 }
