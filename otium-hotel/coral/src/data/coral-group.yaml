@@ -17,9 +17,10 @@ logos:
         src:    "https://cdn.coral.ru/content/insider/russia/otium-hotels/logo-xanadu-high-class.png"
 
 hotels:
-    -   name:   OTIUM DELIGHT HOTEL
+#    -   name:   OTIUM DELIGHT HOTEL
+    -   name:   MARVIDA HOTEL DELIGHT
         id:     24729
-        logoID: otium
+        logoID: marvida
         CoralBonusPercent: 1
         similarity:
             price: 188945
@@ -70,9 +71,10 @@ hotels:
                         - Сауна и&nbsp;хамам
                         - Центр красоты
                         - Массаж
-    -   name:   OTIUM DELIGHT HOTEL & SPA
+#    -   name:   OTIUM DELIGHT HOTEL & SPA
+    -   name:   MARVIDA HOTEL DELIGHT DELUXE & SPA
         id:     27685
-        logoID: otium
+        logoID: marvida
         CoralBonusPercent: 1
         similarity:
             price: 182361
@@ -122,9 +124,10 @@ hotels:
                     list:
                         - Каждый номер индивидуален
                         - Современные интерьеры
-    -   name:   OTIUM BOUTIQUE CASTLE OLD TOWN
+#    -   name:   OTIUM BOUTIQUE CASTLE OLD TOWN
+    -   name:   MARVIDA HOTEL CASTLE OLD TOWN
         id:     36572
-        logoID: otium_boutique
+        logoID: marvida
         CoralBonusPercent: 1
         similarity:
             price: 149042
@@ -171,9 +174,10 @@ hotels:
                         - Номер для новобрачных с&nbsp;джакузи
                         - Бесплатный сейф и&nbsp;кондиционер
                         - Свежий ремонт
-    -   name:   OTIUM BOUTIQUE HAPPY SUITES
+#    -   name:   OTIUM BOUTIQUE HAPPY SUITES
+    -   name:   MARVIDA HOTEL HAPPY SUITES
         id:     36354
-        logoID: otium_boutique
+        logoID: marvida
         CoralBonusPercent: 1
         similarity:
             price: 133081
@@ -224,9 +228,10 @@ hotels:
                     list:
                         - Кухня в&nbsp;номере
                         - Чайник, посуда и&nbsp;плитка
-    -   name:   OTIUM BOUTIQUE MELISA MOMENT
+#    -   name:   OTIUM BOUTIQUE MELISA MOMENT
+    -   name:   MARVIDA HOTEL MELISA MOMENT
         id:     34799
-        logoID: otium_boutique
+        logoID: marvida
         CoralBonusPercent: 1
         similarity:
             price: 111533
@@ -608,9 +613,10 @@ hotels:
                         - 5 а-ля карт с разными кухнями мира
                         - Полное обновление меню
 
-    -   name:   OTIUM PARK CLUB AKMAN
+#    -   name:   OTIUM PARK CLUB AKMAN
+    -   name:   MARVIDA HOTEL AKMAN PARK
         id:     4138
-        logoID: otium_park
+        logoID: marvida
         CoralBonusPercent: 1
         similarity:
             price: 146762
@@ -831,10 +837,11 @@ hotels:
                         - Живая музыка по&nbsp;вечерам
                         - Гольф, теннис, виндсерфинг
 
-    -   name:   OTIUM FAMILY STONE PALACE
+#    -   name:   OTIUM FAMILY STONE PALACE
+    -   name:   MARVIDA FAMILY SUNSET BEACH
         id:     25065
         SFC:    true
-        logoID: otium_family
+        logoID: marvida
         CoralBonusPercent: 1
         similarity:
             price: 139011
@@ -888,9 +895,9 @@ hotels:
                     list:
                         - Зона отдыха для взрослых
                         - Только для&nbsp;16+
-    -   name:   OTIUM FAMILY LYKIA BOTANIKA BEACH
+    -   name:   MARVIDA FAMILY LYKIA BOTANIKA BEACH
         id:     17813
-        logoID: otium_family
+        logoID: marvida
         CoralBonusPercent: 1
         similarity:
             price: 196283
@@ -1002,7 +1009,8 @@ hotels:
                         - Бюджетный отель
                         - Привлекательная цена
                         - Высокий уровень качества
-    -   name:   OTIUM SENSES VERY CHIC HOTEL
+#    -   name:   OTIUM SENSES VERY CHIC HOTEL
+    -   name:   MARVIDA SENSES VERY CHIC
         id:     34184
         logoID: otium_senses
         CoralBonusPercent: 1
