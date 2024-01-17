@@ -1,0 +1,25 @@
+
+#popup-support-jan-2024-modal {
+    background: fade(black, 50%);
+    backdrop-filter: blur(8px);
+    .modal-dialog {
+        justify-content: center;
+        max-width: unset;
+        min-width: unset;
+    }
+    .modal-content {
+        --dim: 30em;
+        border-radius: 1em;
+        border: 0;
+        background-color: #def;
+        width: var(--dim);
+        height: calc(var(--dim) * 4 / 3);
+        @media screen and (min-aspect-ratio: 1/1) {
+            font-size: clamp(0px, 2vh, 20px);
+        }
+    }
+}
+
+body.modal-open {
+    padding-right: 0 !important;
+}
