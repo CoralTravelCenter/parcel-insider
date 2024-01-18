@@ -8,6 +8,7 @@ import markup from 'bundle-text:./markup.html';
 import css from 'bundle-text:./insider.less';
 import { fetchNowMoment } from '/common/useful.js';
 
+const promo_href = 'https://www.coral.ru/poleznaya-informatsiya/offers/hot-offers/action-hotjanuary/';
 function phase(now_moment) {
     return now_moment.isBefore(moment('2024-01-19T16:00:00Z')) ? 1 : 2;
 }
