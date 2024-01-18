@@ -1,25 +1,36 @@
 @font-face {
-    font-family: 'museosans';
-    font-weight: 900;
-    src: url('https://font.static.useinsider.com/coraltravel/museosanscyrl-900-webfont.ttf');
-}
-
-@font-face {
-    font-family: 'museosans';
-    font-weight: bold;
-    src: url('https://font.static.useinsider.com/coraltravel/museosanscyrl-700-webfont.ttf');
-}
-
-@font-face {
-    font-family: 'museosans';
+    font-family: 'BlissPro';
+    src: url('https://font.static.useinsider.com/sunmar/BlissPro.ttf');
     font-weight: normal;
-    src: url('https://font.static.useinsider.com/coraltravel/museosanscyrl-500-webfont.ttf');
 }
 
 @font-face {
-    font-family: 'museosans';
+    font-family: 'BlissPro';
+    src: url('https://font.static.useinsider.com/sunmar/BlissPro-Bold.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'BlissPro';
+    src: url('https://font.static.useinsider.com/sunmar/BlissPro-Heavy.ttf');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'BlissPro-Italic';
+    src: url('https://font.static.useinsider.com/sunmar/BlissPro-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'BlissPro';
+    src: url('https://font.static.useinsider.com/sunmar/BlissPro-Light.ttf');
     font-weight: 300;
-    src: url('https://font.static.useinsider.com/coraltravel/museosanscyrl-300-webfont.ttf');
+}
+
+@font-face {
+    font-family: 'BlissPro';
+    src: url('https://font.static.useinsider.com/sunmar/BlissPro-Medium.ttf');
+    font-weight: 500;
 }
 
 .interactive() {
@@ -49,8 +60,11 @@
     }
 }
 
+@sunmar-ramp: linear-gradient(225deg, #E7317D 0%, #D8242A 100%);
+
 #popup-support-jan-2024-modal {
     // aspect: 422 / 690
+    // aspect: 486 / 685
     background: fade(black, 50%);
     backdrop-filter: blur(8px);
     .modal-dialog {
@@ -60,11 +74,11 @@
     }
     .modal-content {
         border: 0;
-        width: (422/20em);
+        width: (486/20em);
         background: none;
         //height: calc(var(--dim) * 4 / 3);
-        @media screen and (min-aspect-ratio: 422/690) {
-            font-size: clamp(0px, (20/690*100vh), 20px);
+        @media screen and (min-aspect-ratio: 486/685) {
+            font-size: clamp(0px, (20/685*100vh), 20px);
         }
         .modal-body {
             display: grid;
@@ -74,24 +88,25 @@
             background-color: white;
             .visual {
                 width: 100%;
-                border-radius: 1em;
+                //border-radius: 1em;
             }
             .info {
                 display: flex;
                 gap: .75em;
                 flex-direction: column;
                 align-items: center;
-                font-family: museosans;
+                font-family: BlissPro;
                 padding: 1em;
                 color: black;
                 .line {
-                    font-size: (24/20em);
+                    font-size: (28/20em);
                     font-weight: 700;
                     line-height: 1;
                     text-align: center;
                 }
                 .subline {
                     font-size: (16/20em);
+                    font-weight: 500;
                     line-height: 1.2;
                     text-align: center;
                     strong {
@@ -100,7 +115,7 @@
                     }
                     em {
                         font-weight: 700;
-                        color: #E27300;
+                        color: #C70053;
                         font-style: normal;
                     }
                 }
@@ -117,11 +132,24 @@
                     }
                     ul {
                         list-style: none;
+                        font-weight: 300;
                         padding: 0;
                         margin: 0;
+                        >li {
+                            display: flex;
+                            align-items: center;
+                        }
+                        >li:before {
+                            content: 'check';
+                            font-family: "Material Icons";
+                            flex-shrink: 0;
+                            font-size: 1.2em;
+                            margin-right: .25em;
+                            color: #D8242A;
+                        }
                     }
                     ul, .howto {
-                        font-size: (12/16em);
+                        //font-size: (12/16em);
                     }
                 }
                 .action {
@@ -129,15 +157,14 @@
                     outline: none;
                     font-size: 1em;
                     line-height: 1;
-                    font-weight: 300;
-                    text-transform: uppercase;
+                    font-weight: 500;
                     height: (48/20em);
-                    border-radius: (12/20em);
-                    background-color: #F0AB00;
+                    border-radius: 100px;
+                    background: @sunmar-ramp;
                     color: white;
                     border: 0;
                     cursor: pointer;
-                    padding: 0 1em;
+                    padding: 0 3em;
                 }
                 ul.disclaim {
                     display: grid;
@@ -147,6 +174,7 @@
                     margin: 0;
                     font-size: (12/20em);
                     line-height: 1.1;
+                    font-weight: 300;
                     >li {
                         display: flex;
                         gap: .7em;
@@ -167,21 +195,19 @@
         }
         .dismiss {
             position: absolute;
-            top: 0;
-            right: 0;
-            transform: translate(35%,-35%);
+            top: .2em;
+            right: .2em;
             border: 0;
             font-family: "Material Icons";
             display: inline-grid;
             place-content: center;
-            width: 2em;
-            height: 2em;
+            font-size: 2em;
+            width: 1em;
+            height: 1em;
             line-height: 1;
-            border-radius: 50%;
-            background-color: white;
-            color: black;
+            background: none;
+            color: white;
             cursor: pointer;
-            box-shadow: 0 2px 4px fade(black, 30%);
         }
     }
 }
