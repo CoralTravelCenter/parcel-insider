@@ -11,7 +11,7 @@ import { fetchNowMoment } from '/common/useful.js';
 
 let promo_href = 'https://www.sunmar.ru/info-actions/aktsiya-shedryj-yanvar/?erid=LjN8KPZoK';
 function phase(now_moment) {
-    return now_moment.isBefore(moment('2024-01-19T16:00:00Z')) ? 1 : 2;
+    return now_moment.isBefore(moment('2024-01-26T16:00:00Z')) ? 1 : 2;
 }
 
 function atPackage() {

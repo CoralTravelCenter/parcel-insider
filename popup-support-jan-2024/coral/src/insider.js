@@ -11,7 +11,7 @@ import { fetchNowMoment } from '/common/useful.js';
 
 let promo_href = 'https://www.coral.ru/poleznaya-informatsiya/offers/hot-offers/action-hotjanuary/?erid=LjN8KTG6Z';
 function phase(now_moment) {
-    return now_moment.isBefore(moment('2024-01-19T16:00:00Z')) ? 1 : 2;
+    return now_moment.isBefore(moment('2024-01-26T16:00:00Z')) ? 1 : 2;
 }
 
 function atPackage() {
