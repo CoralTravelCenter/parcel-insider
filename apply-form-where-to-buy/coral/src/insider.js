@@ -108,6 +108,7 @@ window[this_script_id] ||= true;
         });
         if (ok2send) {
             $form.addClass('blocked');
+            $('input:focus').blur();
             var adata = $form.prop('agency-data');
             var tour_date = $form.find('[name=tour_date]').inputmask('unmaskedvalue');
             if (tour_date) {
@@ -168,8 +169,8 @@ window[this_script_id] ||= true;
         }
         return false;
     });
-    $form.find('[name=phone]').inputmask({ "mask": "+7 (999) 999-99-99" });
-    $form.find('[name=tour_date]').inputmask({ mask: "99/99/9999", clearIncomplete: true });
+    $form.find('[name=phone]').inputmask({ "mask": "+7 (999) 999-99-99", clearMaskOnLostFocus: false });
+    $form.find('[name=tour_date]').inputmask({ mask: "99/99/9999", clearIncomplete: true, clearMaskOnLostFocus: false });
     $('body').append($popin);
 
     patchCard($card_body);
