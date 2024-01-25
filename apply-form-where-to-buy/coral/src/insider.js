@@ -58,6 +58,12 @@ window[this_script_id] ||= true;
         var agency_data = _.find(agencies, { Id: Number(a_id) });
         console.log(agency_data);
         $form.prop('agency-data', agency_data);
+
+        // Lname2, Address, Email1
+        $popin.find('.value.office-name').text(agency_data.Lname2);
+        $popin.find('.value.office-address').text(agency_data.Address);
+        $popin.find('.value.office-email').text(agency_data.Email1);
+
         $form.show().removeClass('blocked').siblings('.thanks').hide();
     });
 
