@@ -90,3 +90,31 @@ export function fetchNowMoment() {
         $.get('/', { method: 'HEAD' }).then((a, b, c) => resolve(moment(c.getResponseHeader('Date'))));
     });
 }
+
+export function queryParam(p, source) {
+    source ||= location.href;
+    const [url, query] = source.split('?');
+    const params_kv = query.split('&');
+    const params = {};
+    for (const kv of params_kv) {
+        let [k, v] = kv.split('=');
+        try {
+            v = decodeURIComponent(v);
+            v = JSON.parse(v);
+        } catch (ex) {}
+        params[k] = v;
+    }
+    if (p) {
+        return params[p];
+    } else {
+        return params;
+    }
+}
+
+export function params2query(p) {
+    const kv = [];
+    for (let [k, v] of Object.entries(p)) {
+        kv.push(`${ k }=${ encodeURIComponent(typeof v === 'object' ? JSON.stringify(v) : v) }`);
+    }
+    return kv.join('&');
+}

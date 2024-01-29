@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Insider mods powered by parceljs",
     "scripts": {
+        "build-priority-hotels-coral": "parcel build --no-source-maps --dist-dir priority-hotels/coral/dist priority-hotels/coral/src/insider.js",
         "build-popup-support-jan-2024-coral": "parcel build --no-source-maps --dist-dir popup-support-jan-2024/coral/dist popup-support-jan-2024/coral/src/insider.js",
         "build-popup-support-jan-2024-sunmar": "parcel build --no-source-maps --dist-dir popup-support-jan-2024/sunmar/dist popup-support-jan-2024/sunmar/src/insider.js",
         "build-package-onlyhotel-switch-coral": "parcel build --no-source-maps --dist-dir package-onlyhotel-switch/coral/dist package-onlyhotel-switch/coral/src/insider.js",
