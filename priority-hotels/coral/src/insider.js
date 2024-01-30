@@ -33,7 +33,7 @@ if (rightCountry()) {
     const filters_black_list = ["Rg","Lt", "Hf", "Rt", "Rf", "Bch"];
     const filters_used = Object.keys(query_params.f);
     const blacklisted = filters_used.some(filter_key => filters_black_list.includes(filter_key));
-    if (query_params.f && !blacklisted) {
+    if (query_params.f && !blacklisted && !query_params.f.Hid) {
         query_params.f.Hid = hotel_ids;
         console.log('+++ query_params: %o', query_params);
         const priority_href = location.pathname + '?' + params2query(query_params);
