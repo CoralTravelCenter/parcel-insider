@@ -1,0 +1,38 @@
+{
+    "flightType": 0,
+    "reservationType": 1,
+    "beginDates": [],
+    "datePickerMode": 0,
+    "nights": [{"value": 7}],
+    "roomCriterias": [{"passengers": [{"passengerType": 0}, {"passengerType": 0}]}],
+    "departureLocations": [
+        {
+            "id": "2671-5",
+            "type": 5,
+            "name": "Москва",
+            "friendlyUrl": "moskva"
+        }
+    ],
+    "arrivalLocations": [
+        {
+            "id": "983-7",
+            "type": 7,
+            "name": "XANADU RESORT",
+            "friendlyUrl": "turkey/xanadu-resort-belek",
+            "parent": {
+                "id": "1948",
+                "type": 6,
+                "name": "Аджису (Acisu), Белек (Belek), Турция",
+                "countryId": "1-0"
+            }
+        }
+    ],
+    "paging": {
+        "hasPreviousPage": false,
+        "hasNextPage": false,
+        "pageNumber": 1,
+        "pageSize": 20,
+        "sortType": 0
+    },
+    "imageSizes": [4]
+}
