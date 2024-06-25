@@ -13,6 +13,20 @@ export async function hostReactAppReady(selector = '#__next > div', timeout = 50
     });
 }
 
+export async function waitForSelector(selector, interaval = 500) {
+    return new Promise(resolve => {
+        const waiter = () => {
+            const el = document.querySelector(selector);
+            if (el) {
+                resolve(el);
+            } else {
+                setTimeout(waiter, interaval);
+            }
+        };
+        waiter();
+    });
+}
+
 export async function asap(cb) {
     if (['complete', 'interactive'].includes(document.readyState)) {
         cb && cb();

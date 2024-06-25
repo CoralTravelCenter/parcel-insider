@@ -1,0 +1,46 @@
+
+.ant-space-item.longterm-price-calendar {
+    h2 {
+        //color: fade(black, 88%);
+    }
+
+    .pricing-chart-combo {
+        position: relative;
+        z-index: 0;
+        background-color: white;
+        border-radius: 1em;
+        padding: 2em 1.5em;
+
+        .pricing-chart {
+            position: absolute;
+            z-index: -1;
+            inset: 2em 1.5em;
+            .ct-series-a {
+                .ct-line {
+                    fill: none;
+                    stroke: #E5F7FF;
+                    stroke-width: 2px;
+                }
+                .ct-point {
+                    fill: none;
+                    stroke: #99E0FF;
+                    stroke-width: 8px;
+                    stroke-linecap: round;
+                }
+            }
+        }
+
+        ul {
+            width: 100%;
+            display: flex;
+            overflow: auto;
+            list-style: none;
+            >li {
+                flex: 0 0 (100%/7);
+                height: 10em;
+            }
+        }
+
+    }
+
+}
