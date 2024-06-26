@@ -126,7 +126,11 @@ const months2scan = 7;
                 if (offer) {
                     chartData.labels.splice(idx, 1, dayjs(offer.checkInDate).format('DD.MM'));
                     chartData.series[0].splice(idx, 1, offer.price.amount);
-                    chart.update(chartData);
+                    const max_value = chartData.series[0].reduce((high, value) => {
+                        const v = typeof value === 'number' ? value : value.y;
+                        return Math.max(high, v);
+                    }, 0);
+                    chart.update(chartData, { high: max_value * 1.05 }, true);
                     const a = document.createElement('a');
                     a.href = `/hotels${ offer.link.redirectionUrl }/?qp=${ offer.link.queryParam }&p=${ isPackageTour ? 1 : 2 }`;
                     a.target = '_blank';
