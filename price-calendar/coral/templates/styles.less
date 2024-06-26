@@ -1,7 +1,40 @@
 
 .ant-space-item.longterm-price-calendar {
+    margin-bottom: 1em;
     h2 {
-        //color: fade(black, 88%);
+        margin-bottom: 12px;
+    }
+
+    .pricing-chart-legend {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+        font-size: 12px;
+        line-height: 1;
+        padding: 1.5em;
+        >li {
+            display: inline-flex;
+            align-items: center;
+            &:before {
+                content: '';
+                margin-right: .5em;
+                width: 1.2em;
+                height: 1.2em;
+                background: center / cover no-repeat;
+            }
+            &[data-icon="desired-date"]:before {
+                background-image: url("data-url:/price-calendar/coral/assets-inline/icon-desired.svg");
+            }
+            &[data-icon="best-price"]:before {
+                background-image: url("data-url:/price-calendar/coral/assets-inline/icon-star.svg");
+            }
+            &:nth-of-type(n+2) {
+                margin-left: 3em;
+                padding-left: 3em;
+                border-left: 1px solid fade(black, 6%);
+            }
+        }
     }
 
     .pricing-chart-combo {
@@ -9,12 +42,13 @@
         z-index: 0;
         background-color: white;
         border-radius: 1em;
-        padding: 2em 1.5em;
+        padding: 1em 0;
 
         .pricing-chart {
             position: absolute;
             z-index: -1;
-            inset: 2em 1.5em;
+            inset: 1em 0;
+            margin-left: (100%/14);
             .ct-series-a {
                 .ct-line {
                     fill: none;
@@ -28,19 +62,69 @@
                     stroke-linecap: round;
                 }
             }
+            .ct-labels {
+                text-align: center;
+            }
+            .ct-label.ct-horizontal.ct-end {
+                display: block;
+                transform: translateX(-50%);
+                font-size: 12px;
+            }
+
+            .calendar-offer-value {
+                display: flex;
+                justify-content: center;
+                transform: translateY(-150%);
+                @media screen and (max-width: 1530px) {
+                    font-size: 1vw;
+                }
+            }
+
         }
 
         ul {
+            box-sizing: border-box;
+            * {
+                box-sizing: border-box;
+            }
             width: 100%;
             display: flex;
+            justify-content: center;
+            padding: 0 7%;
             overflow: auto;
             list-style: none;
             >li {
+                //border: 1px solid fade(black, 33%);
+                position: relative;
                 flex: 0 0 (100%/7);
                 height: 10em;
+                display: grid;
+                place-content: center;
+                >a {
+                    //background: fade(black, 10%);
+                    position: absolute;
+                    inset: 0;
+                }
+
+                .waiting {
+                    width: 32px;
+                    --b: 4px;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    padding: 1px;
+                    background: conic-gradient(#0000 10%,#99E0FF) content-box;
+                    -webkit-mask:
+                            repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+                            radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+                    -webkit-mask-composite: destination-in;
+                    mask-composite: intersect;
+                    animation:l4 1s infinite steps(10);
+                }
+                @keyframes l4 {to{transform: rotate(1turn)}}
             }
         }
 
     }
 
 }
+
