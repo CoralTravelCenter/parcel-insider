@@ -1,3 +1,5 @@
+@mobile-breakpoint: 768px;
+@narrow-breakpoint: 576px;
 
 .ant-space-item.longterm-price-calendar {
     margin-bottom: 1em;
@@ -22,6 +24,9 @@
         font-size: 12px;
         line-height: 1;
         padding: 0 1.5em;
+		@media screen and (max-width: @mobile-breakpoint) {
+		    display: none;
+		}
         >li {
             display: inline-flex;
             align-items: center;
@@ -52,7 +57,9 @@
         background-color: white;
         border-radius: 1em;
         padding: 1em 0;
-
+		@media screen and (max-width: @mobile-breakpoint) {
+		    display: none;
+		}
         .pricing-chart {
             position: absolute;
             z-index: -1;
@@ -138,6 +145,46 @@
         }
 
     }
+
+	.pricing-table {
+		--price-fill-generic: fade(#bbb, 30%);
+		--price-selected: #0092D0;
+		--price-fill-selected: fade(#0092D0, 30%);
+		--price-best: #389E0D;
+		--price-fill-best: fade(#B7EB8F, 50%);
+
+		display: none;
+		width: 100%;
+		@media screen and (max-width: @mobile-breakpoint) {
+			display: table;
+			border-spacing: 0 .5em;
+		}
+
+		> a {
+			display: table-row;
+			border-radius: 1em;
+			color: inherit;
+			text-decoration: none;
+			line-height: 1;
+
+			> span {
+				display: table-cell;
+				padding: 1em;
+				background-color: #fff;
+
+				&.price-cell {
+					border-radius: 1em 0 0 1em;
+				}
+
+				&.date-cell {
+					width: 1%;
+					white-space: nowrap;
+					border-radius: 0 1em 1em 0;
+					text-align: center;
+				}
+			}
+		}
+	}
 
 }
 

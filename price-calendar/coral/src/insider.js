@@ -111,6 +111,12 @@ const months2scan = 7;
     });
 
     const calendar_items = document.querySelectorAll('.pricing-chart-combo li');
+    const calendar_rows = document.querySelectorAll('.pricing-table a');
+    allBeginDates.forEach((dates, idx) => {
+        const label = desiredDate.isBetween(...dates, 'day', '[]') ? desiredDate.format('DD.MM') : dayjs(dates[0]).format('MMMM');
+        calendar_rows[idx].querySelector('.date-cell').textContent = label;
+    });
+
     allBeginDates.forEach((dates, idx) => {
         if (desiredDate.isBetween(...dates, 'day', '[]')) {
 
