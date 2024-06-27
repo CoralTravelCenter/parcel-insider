@@ -1,18 +1,27 @@
 
 .ant-space-item.longterm-price-calendar {
     margin-bottom: 1em;
+
+	.heading {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		margin-bottom: 12px;
+	}
+
     h2 {
-        margin-bottom: 12px;
+		line-height: 1;
+		margin: 0;
     }
 
     .pricing-chart-legend {
-        width: 100%;
+        //width: 100%;
         display: flex;
         justify-content: flex-end;
         list-style: none;
         font-size: 12px;
         line-height: 1;
-        padding: 1.5em;
+        padding: 0 1.5em;
         >li {
             display: inline-flex;
             align-items: center;
@@ -30,8 +39,8 @@
                 background-image: url("data-url:/price-calendar/coral/assets-inline/icon-star.svg");
             }
             &:nth-of-type(n+2) {
-                margin-left: 3em;
-                padding-left: 3em;
+                margin-left: 2em;
+                padding-left: 2em;
                 border-left: 1px solid fade(black, 6%);
             }
         }
@@ -75,8 +84,9 @@
                 display: flex;
                 justify-content: center;
                 transform: translateY(-150%);
+				font-size: 16px;
                 @media screen and (max-width: 1530px) {
-                    font-size: 1vw;
+                    font-size: 1.1vw;
                 }
             }
 
