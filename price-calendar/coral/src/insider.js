@@ -61,8 +61,9 @@ const months2scan = 7;
             allBeginDates.map(dates => {
                 const isDesiredDate = desiredDate.isBetween(...dates, 'day', '[]');
                 return {
-                    meta: { isDesiredDate },
-                    y: isDesiredDate ? insider_object?.product?.unit_sale_price || insider_object?.product?.unit_price || null : null
+                    meta: { isDesiredDate, gotResponse: isDesiredDate },
+                    // y: isDesiredDate ? insider_object?.product?.unit_sale_price || insider_object?.product?.unit_price || null : null
+                    y: isDesiredDate ? insider_object?.product?.unit_sale_price || insider_object?.product?.unit_price || 0.0 : 0.0
                 };
             })
         ]
@@ -78,9 +79,9 @@ const months2scan = 7;
             // console.log('+++ point: %o', data);
             const isDesiredDate = data.meta?.isDesiredDate ?? false;
             const isBestOffer = lowestPrice(data);
-            const hilite = isDesiredDate ? '#0092D0' : (isBestOffer ? '#389E0D' : '#999');
-            const weight = isDesiredDate || isBestOffer ? '600' : '400';
-            if (isBestOffer) {
+            const hilite = (isDesiredDate && data.value.y) ? '#0092D0' : (isBestOffer && data.value.y ? '#389E0D' : '#999');
+            const weight = ((isDesiredDate || isBestOffer) && data.value.y) ? '600' : '400';
+            if (isBestOffer && data.value.y) {
                 const group = new Svg('g', {
                     style: `transform: translate(${ data.x - 7.5 }px,${ data.y - 6.5 }px)`,
                 });
@@ -90,7 +91,7 @@ const months2scan = 7;
                 }, 'best-star');
                 group.append(star);
                 data.element.replace(group);
-            } else if (isDesiredDate) {
+            } else if (isDesiredDate && data.value.y) {
                 const group = new Svg('g', {
                     style: `transform: translate(${ data.x - 7.5 }px,${ data.y - 6.5 }px)`,
                 });
@@ -101,7 +102,7 @@ const months2scan = 7;
                 group.append(spot);
                 data.element.replace(group);
             }
-            data.group.foreignObject(`<div class="calendar-offer-value" style="color: ${ hilite }; font-weight: ${ weight };">${ data.value.y.formatCurrency() }</div>`, {
+            data.group.foreignObject(`<div class="calendar-offer-value" style="color: ${ hilite }; font-weight: ${ weight };">${ data.value.y ? data.value.y.formatCurrency() : (data.meta.gotResponse ? '<span class="no-offers">нет мест</span>' : '') }</div>`, {
                 style: 'overflow: visible; line-height: 1',
                 x: data.x, y: data.y
             });
@@ -123,14 +124,16 @@ const months2scan = 7;
                 const offer = json?.result?.products?.at(0)?.offers?.at(0);
                 console.log('+++ offer: %o', offer);
                 calendar_items[idx].innerHTML = '';
+                chartData.series[0][idx].meta.gotResponse = true;
                 if (offer) {
                     chartData.labels.splice(idx, 1, dayjs(offer.checkInDate).format('DD.MM'));
-                    chartData.series[0].splice(idx, 1, offer.price.amount);
+                    // chartData.series[0].splice(idx, 1, offer.price.amount);
+                    chartData.series[0][idx].y = offer.price.amount;
                     const max_value = chartData.series[0].reduce((high, value) => {
                         const v = typeof value === 'number' ? value : value.y;
                         return Math.max(high, v);
                     }, 0);
-                    chart.update(chartData, { high: max_value * 1.05 }, true);
+                    chart.update(chartData, { high: max_value * 1.06 }, true);
                     const a = document.createElement('a');
                     a.href = `/hotels${ offer.link.redirectionUrl }/?qp=${ offer.link.queryParam }&p=${ isPackageTour ? 1 : 2 }`;
                     a.target = '_blank';
@@ -160,7 +163,7 @@ function renderWidget(model) {
 
 function lowestPrice(point_data) {
     return point_data.series.every(value => {
-        const series_value = value ? (typeof value === 'number' ? value : (Number(value.y) || Infinity)) : Infinity;
+        const series_value = value ? (typeof value === 'number' ? value || Infinity : (Number(value.y) || Infinity)) : Infinity;
         return series_value >= point_data.value.y;
     });
 }
