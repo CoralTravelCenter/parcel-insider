@@ -119,9 +119,12 @@ const months2scan = 7;
 
     allBeginDates.forEach((dates, idx) => {
         if (desiredDate.isBetween(...dates, 'day', '[]')) {
-
+            const sel_price = insider_object?.product?.unit_sale_price || insider_object?.product?.unit_price;
+            calendar_rows[idx].querySelector('.readout').textContent = (sel_price && sel_price.formatCurrency()) || 'нет мест';
         } else {
             calendar_items[idx].innerHTML = '<div class="waiting"></div>';
+            const price_cell = calendar_rows[idx].querySelector('.price-cell');
+            price_cell.insertAdjacentHTML('beforeend', '<div class="loader"><div class="waiting"></div></div>');
             fetch(`//b2capi.coral.ru/${ isPackageTour ? 'PackageTourHotelProduct' : 'OnlyHotelProduct' }/PriceSearchList`, {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
@@ -131,19 +134,28 @@ const months2scan = 7;
                 console.log('+++ offer: %o', offer);
                 calendar_items[idx].innerHTML = '';
                 chartData.series[0][idx].meta.gotResponse = true;
+                price_cell.querySelector('.loader').remove();
+                const readout = price_cell.querySelector('.readout');
                 if (offer) {
-                    chartData.labels.splice(idx, 1, dayjs(offer.checkInDate).format('DD.MM'));
+                    const date_label = dayjs(offer.checkInDate).format('DD.MM');
+                    chartData.labels[idx] = date_label;
+                    calendar_rows[idx].querySelector('.date-cell').textContent = date_label;
                     // chartData.series[0].splice(idx, 1, offer.price.amount);
                     chartData.series[0][idx].y = offer.price.amount;
+                    readout.textContent = offer.price.amount.formatCurrency();
                     const max_value = chartData.series[0].reduce((high, value) => {
                         const v = typeof value === 'number' ? value : value.y;
                         return Math.max(high, v);
                     }, 0);
                     chart.update(chartData, { high: max_value * 1.06 }, true);
+                    updateMobileSeries(calendar_rows, chartData.series[0]);
                     const a = document.createElement('a');
-                    a.href = `/hotels${ offer.link.redirectionUrl }/?qp=${ offer.link.queryParam }&p=${ isPackageTour ? 1 : 2 }`;
-                    a.target = '_blank';
+                    const href = `/hotels${ offer.link.redirectionUrl }/?qp=${ offer.link.queryParam }&p=${ isPackageTour ? 1 : 2 }`;
+                    calendar_rows[idx].href = a.href = href;
+                    calendar_rows[idx].target = a.target = '_blank';
                     calendar_items[idx].appendChild(a);
+                } else {
+                    readout.textContent = 'нет мест';
                 }
             });
         }
@@ -171,5 +183,39 @@ function lowestPrice(point_data) {
     return point_data.series.every(value => {
         const series_value = value ? (typeof value === 'number' ? value || Infinity : (Number(value.y) || Infinity)) : Infinity;
         return series_value >= point_data.value.y;
+    });
+}
+
+function updateMobileSeries(calendar_rows, series) {
+    const max_price = series.reduce((high, value) => {
+        const v = typeof value === 'number' ? value : value.y;
+        return Math.max(high, v);
+    }, 0);
+    const min_price = series.reduce((low, value) => {
+        const v = typeof value === 'number' ? value : value.y;
+        return Math.min(low, v || Infinity);
+    }, Infinity);
+    calendar_rows.forEach((row, idx) => {
+        let value = series[idx];
+        const price_value = typeof value === 'number' ? value : value.y;
+        const filler_style = row.querySelector('.filler').style;
+        const readout_style = row.querySelector('.readout').style;
+        filler_style.width = `${ price_value / max_price * 100 }%`;
+        if (value.meta?.isDesiredDate) {
+            filler_style.background = 'var(--price-fill-selected)';
+            readout_style.fontWeight = 'bold';
+            readout_style.color = 'var(--price-selected)';
+        } else if (price_value === min_price) {
+            readout_style.fontWeight = 'bold';
+            readout_style.color = 'var(--price-best)';
+        } else {
+            filler_style.background = 'var(--price-fill-generic)';
+            readout_style.fontWeight = 'normal';
+            readout_style.color = 'unset';
+        }
+        if (price_value === min_price) {
+            filler_style.background = 'var(--price-fill-best)';
+        }
+
     });
 }
