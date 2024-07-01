@@ -41,14 +41,14 @@ const months2scan = 7;
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ queryParam: encodeURIComponent(qp) })
     }).then(response => response.json());
-    console.log(query);
+    // console.log(query);
     searchCriterias = query.result.searchCriterias;
     delete searchCriterias.advancedParameters;
     desiredDate = dayjs(searchCriterias.beginDates[0]);
     const range_start = dayjs.max(desiredDate.subtract(3, 'months'), dayjs());
 
     const allBeginDates = [...beginDates2Scan(range_start, months2scan)];
-    console.log('+++ allBeginDates: %o', allBeginDates);
+    // console.log('+++ allBeginDates: %o', allBeginDates);
 
     await waitForSelector('#hotelDetailMap');
     renderWidget();
@@ -131,7 +131,7 @@ const months2scan = 7;
                 body: JSON.stringify({ searchCriterias: Object.assign({}, searchCriterias, { beginDates: dates }) })
             }).then(response => response.json()).then(json => {
                 const offer = json?.result?.products?.at(0)?.offers?.at(0);
-                console.log('+++ offer: %o', offer);
+                // console.log('+++ offer: %o', offer);
                 calendar_items[idx].innerHTML = '';
                 chartData.series[0][idx].meta.gotResponse = true;
                 price_cell.querySelector('.loader').remove();
