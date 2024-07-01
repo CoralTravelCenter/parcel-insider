@@ -8,7 +8,7 @@ import html from 'bundle-text:../templates/price-calendar-widget.html';
 import { LineChart, Svg } from "chartist";
 import p from './prototypes.js';
 
-import { hostReactAppReady, queryParam, waitForSelector } from "./usefuls";
+import { hostReactAppReady, params2query, queryParam, waitForSelector } from "./usefuls";
 import dayjs from "dayjs";
 import locale_ru from 'dayjs/locale/ru';
 import minMax from 'dayjs/plugin/minMax'
@@ -147,13 +147,19 @@ const months2scan = 7;
                         const v = typeof value === 'number' ? value : value.y;
                         return Math.max(high, v);
                     }, 0);
-                    chart.update(chartData, { high: max_value * 1.06 }, true);
-                    updateMobileSeries(calendar_rows, chartData.series[0]);
                     const a = document.createElement('a');
-                    const href = `/hotels${ offer.link.redirectionUrl }/?qp=${ offer.link.queryParam }&p=${ isPackageTour ? 1 : 2 }`;
+                    const month_seq = dayjs(dates[0]).month() + 1;
+                    const href = `/hotels${ offer.link.redirectionUrl }/?qp=${ offer.link.queryParam }&p=${ isPackageTour ? 1 : 2 }&pricing-chart=${ month_seq }`;
                     calendar_rows[idx].href = a.href = href;
                     calendar_rows[idx].target = a.target = '_blank';
                     calendar_items[idx].appendChild(a);
+                    //
+                    chart.update(chartData, { high: max_value * 1.06 }, true);
+                    updateChartLinks(calendar_items, chartData.series[0]);
+                    updateMobileSeries(calendar_rows, chartData.series[0]);
+                    // ym tracking
+                    a.addEventListener('click', handleClick);
+                    calendar_rows[idx].addEventListener('click', handleClick);
                 } else {
                     readout.textContent = 'нет мест';
                 }
@@ -164,6 +170,14 @@ const months2scan = 7;
 
 })();
 
+function handleClick() {
+    try {
+        ym(96674199, 'reachGoal', 'Pricing-chart_click');
+    } catch (ex) {
+        console.log(ex);
+    }
+    return true;
+}
 
 function *beginDates2Scan(start, months_count) {
     let run = dayjs(start);
@@ -183,6 +197,32 @@ function lowestPrice(point_data) {
     return point_data.series.every(value => {
         const series_value = value ? (typeof value === 'number' ? value || Infinity : (Number(value.y) || Infinity)) : Infinity;
         return series_value >= point_data.value.y;
+    });
+}
+
+function updateChartLinks(calendar_items, series) {
+    const min_price = series.reduce((low, value) => {
+        const v = typeof value === 'number' ? value : value.y;
+        return Math.min(low, v || Infinity);
+    }, Infinity);
+    calendar_items.forEach((item, idx) => {
+        const a = item.querySelector('a');
+        if (a) {
+            const href_param = queryParam(null, a.href);
+            let value = series[idx];
+            const price_value = typeof value === 'number' ? value : value.y;
+            if (price_value === min_price) {
+                if (href_param.qp) {
+                    href_param['pricing-chart_bestprice'] = 1;
+                    a.href = a.href.split('?')[0] + '?' + params2query(href_param);
+                }
+            } else {
+                if (href_param.qp) {
+                    delete href_param['pricing-chart_bestprice'];
+                    a.href = a.href.split('?')[0] + '?' + params2query(href_param);
+                }
+            }
+        }
     });
 }
 
@@ -213,8 +253,18 @@ function updateMobileSeries(calendar_rows, series) {
             readout_style.fontWeight = 'normal';
             readout_style.color = 'unset';
         }
+        const href_param = queryParam(null, row.href);
         if (price_value === min_price) {
             filler_style.background = 'var(--price-fill-best)';
+            if (href_param.qp) {
+                href_param['pricing-chart_bestprice'] = 1;
+                row.href = row.href.split('?')[0] + '?' + params2query(href_param);
+            }
+        } else {
+            if (href_param.qp) {
+                delete href_param['pricing-chart_bestprice'];
+                row.href = row.href.split('?')[0] + '?' + params2query(href_param);
+            }
         }
 
     });
