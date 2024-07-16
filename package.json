@@ -7,7 +7,7 @@
         "build-priority-hotels-coral": "parcel build --no-source-maps --dist-dir priority-hotels/coral/dist priority-hotels/coral/src/insider.js",
         "build-popup-support-jan-2024-coral": "parcel build --no-source-maps --dist-dir popup-support-jan-2024/coral/dist popup-support-jan-2024/coral/src/insider.js",
         "build-popup-support-jan-2024-sunmar": "parcel build --no-source-maps --dist-dir popup-support-jan-2024/sunmar/dist popup-support-jan-2024/sunmar/src/insider.js",
-        "build-package-onlyhotel-switch-coral": "parcel build --no-source-maps --dist-dir package-onlyhotel-switch/coral/dist package-onlyhotel-switch/coral/src/insider.js",
+        "build-package-onlyhotel-switch-coral": "parcel build --no-optimize --no-source-maps --dist-dir package-onlyhotel-switch/coral/dist package-onlyhotel-switch/coral/src/insider.js",
         "build-bonus4review-at-thankyou-coral": "parcel build --no-source-maps --dist-dir binus4review-at-thnankyou/coral/dist binus4review-at-thnankyou/coral/src/insider.js",
         "build-recommended-as-bestoffer-hotel": "parcel build --no-source-maps --dist-dir recommended-as-bestoffer/coral-sunmar/dist recommended-as-bestoffer/coral-sunmar/src/hotel-page.js",
         "build-recommended-as-bestoffer-search": "parcel build --no-source-maps --dist-dir recommended-as-bestoffer/coral-sunmar/dist recommended-as-bestoffer/coral-sunmar/src/search-results.js",

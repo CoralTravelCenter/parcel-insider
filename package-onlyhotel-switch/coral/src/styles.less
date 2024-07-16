@@ -1,38 +1,27 @@
-.hoteldetailpage .contentbase .gallery-right {
-	display: grid;
-	background: white;
-	padding: .5em 1em 1em;
-}
+
 
 .package-onlyhotel-switch {
-	order: -1;
     display: flex;
-    align-items: center;
-	background: #f1f7fc;
-	margin: -.5em -1em 0;
-    &.yet-not-defined {
-        display: none!important;
-    }
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    gap: 0!important;
     >* {
-        flex: 1;
-		text-align: center;
-		border-radius: .75em .75em 0 0;
-		padding: .75em 1em;
-        &.package {
-
-        }
-        &.onlyhotel {
-
-        }
-        &[href] {
-            //color: black!important;
-			background: #DAEAF7;
-			margin-left: 1em;
-			margin-right: 1em;
-        }
+        flex: 1 1 auto;
+        line-height: 1;
+        display: inline-grid;
+        place-content: center;
+        padding: 12px;
+        background: white;
         &:not([href]) {
             pointer-events: none;
-			background: white;
+            background: #EAF3FB;
+            box-shadow: inset 0 0 0 1px currentColor;
+        }
+        &:first-child {
+            border-radius: 12px 0 0 12px;
+        }
+        &:last-child {
+            border-radius: 0 12px 12px 0;
         }
     }
 }
