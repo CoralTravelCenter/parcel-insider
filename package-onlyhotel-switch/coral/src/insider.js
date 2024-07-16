@@ -28,7 +28,7 @@ import { getNextData, hostReactAppReady, queryParam } from "./usefuls";
         }
         const { result: { queryParam: qp_param, redirectionUrl } } = await obtainHotelLink(api_host, !isPackage, searchCriteria);
         if (qp_param && redirectionUrl) {
-            const alt_link = `${ redirectionUrl }?qp=${ qp_param }&p=${ isPackage ? 2 : 1 }`;
+            const alt_link = `${ redirectionUrl }?qp=${ qp_param }&p=${ isPackage ? 2 : 1 }&item_variant_switch=${ isPackage ? 'onlyhotel' : 'tour' }`;
             // console.log('+++ alt_link: %o', alt_link);
             const switch_el = injectMarkup();
             const link_sel = isPackage ? '.onlyhotel' : '.package';
