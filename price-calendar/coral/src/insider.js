@@ -22,7 +22,7 @@ const css_el = document.createElement('style');
 css_el.textContent = css;
 document.head.appendChild(css_el);
 
-const months2scan = 7;
+const months2scan = window.innerWidth <= 768 ? 5 : 7;
 
 (async function () {
 
