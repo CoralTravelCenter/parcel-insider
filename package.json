@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Insider mods powered by parceljs",
     "scripts": {
+        "warn-if-no-transfer": "parcel build --no-source-maps --dist-dir warn-if-no-transfer/coral/dist warn-if-no-transfer/coral/src/insider.js",
         "build-price-calendar-coral": "parcel build --no-source-maps --dist-dir price-calendar/coral/dist price-calendar/coral/src/insider.js",
         "build-priority-hotels-coral": "parcel build --no-source-maps --dist-dir priority-hotels/coral/dist priority-hotels/coral/src/insider.js",
         "build-popup-support-jan-2024-coral": "parcel build --no-source-maps --dist-dir popup-support-jan-2024/coral/dist popup-support-jan-2024/coral/src/insider.js",
