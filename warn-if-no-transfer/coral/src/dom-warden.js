@@ -1,4 +1,6 @@
 export default function (dom_matcher, mutation_matcher, payload) {
+    window.dom_matcher = dom_matcher;
+    window.mutation_matcher = mutation_matcher;
     dom_matcher() && payload();
     const mo = new MutationObserver((list) => {
         for (const rec of list) {
