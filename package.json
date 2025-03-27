@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Insider mods powered by parceljs",
     "scripts": {
+        "xtra-services-hide": "parcel build --no-source-maps --dist-dir @minbox/xtra-services/coral/dist @minbox/xtra-services/coral/src/mindox.js",
         "warn-if-no-transfer-coral": "parcel build --no-source-maps --dist-dir warn-if-no-transfer/coral/dist warn-if-no-transfer/coral/src/insider.js",
         "warn-if-no-transfer-sunmar": "parcel build --no-source-maps --dist-dir warn-if-no-transfer/sunmar/dist warn-if-no-transfer/sunmar/src/insider.js",
         "build-price-calendar-coral": "parcel build --no-source-maps --dist-dir price-calendar/coral/dist price-calendar/coral/src/insider.js",
