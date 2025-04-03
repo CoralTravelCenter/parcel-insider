@@ -4,6 +4,11 @@ import markup from 'bundle-text:./markup.html';
 
 (async function () {
     console.warn('@minbox/xtra-services/coral');
+    try {
+        ym(96674199, 'reachGoal', 'dop_uslugi_close');
+    } catch (ex) {
+        console.warn(ex);
+    }
     const h2 = await waitForSelector(() => {
         return [...document.querySelectorAll('h2')].find(h2 => h2.textContent.trim() === 'Дополнительные услуги');
     }, 200);
@@ -21,6 +26,11 @@ import markup from 'bundle-text:./markup.html';
         xtraShow.classList.remove('ant-alert-success');
         commonContainer.querySelector('#xtra-show button').addEventListener('click', () => {
             commonContainer.classList.remove('trim-xtras');
+            try {
+                ym(96674199, 'reachGoal', 'dop_uslugi_open');
+            } catch (ex) {
+                console.warn(ex);
+            }
         });
     }
 })();
