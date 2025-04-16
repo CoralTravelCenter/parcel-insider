@@ -12,11 +12,11 @@ import styles from 'bundle-text:./templates/styles.less';
     }, () => {
         const no_transfer_flag_el = noTransferFlagEl();
         if (!no_transfer_flag_el) return;
-        if (no_transfer_flag_el.classList.contains('checked')) return;
+        if (no_transfer_flag_el.classList.contains('mb-checked')) return;
 
         console.log('*** PAYLOAD SHOULD EXEC ***');
         // noTransferFlagEl().style.display = 'none';
-        no_transfer_flag_el?.classList.add('checked');
+        no_transfer_flag_el?.classList.add('mb-checked');
 
         const service_block_el = transferAddServiceBlock();
         service_block_el.insertAdjacentHTML('beforeend', msg_template);
@@ -27,12 +27,15 @@ import styles from 'bundle-text:./templates/styles.less';
     });
 
     function noTransferFlagEl() {
-        // const no_transfer_flag_el = [...document.querySelectorAll('.product-summary-row')].find((el) => {
-        //     return el.textContent.indexOf('Трансфер') === 0;
-        // });
-        // const displayed_price = parseFloat(no_transfer_flag_el?.querySelector('.price').textContent);
-        // return !!no_transfer_flag_el && displayed_price === 0.0 ? no_transfer_flag_el : null;
-        return document.querySelector('.product-summary-row:has(.price.not-include)');
+        const explicit_no_transfer_row = document.querySelector('.product-summary-row:has(.price.not-include)');
+        if (!explicit_no_transfer_row) {
+            // if not -- check for complete absence "transfer" row in case of "hotel only"
+            debugger;
+            const summary_rows = document.querySelectorAll('.product-summary-row');
+            const there_is_no_transfer_row = [...summary_rows].every(row => row.textContent.trim().indexOf('Трансфер') !== 0);
+            return there_is_no_transfer_row ? summary_rows[0] : null;
+        }
+        return explicit_no_transfer_row;
     }
 
     function transferAddServiceBlock() {
