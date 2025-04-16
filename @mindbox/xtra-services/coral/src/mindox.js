@@ -1,37 +1,30 @@
 import { waitForSelector } from "./usefuls";
-import css from 'bundle-text:./styles.less';
-import markup from 'bundle-text:./markup.html';
 
 (async function () {
     console.warn('@minbox/xtra-services/coral');
-    try {
-        ym(96674199, 'reachGoal', 'dop_uslugi_close');
-    } catch (ex) {
-        console.warn(ex);
-    }
-    const h2 = await waitForSelector(() => {
-        return [...document.querySelectorAll('h2')].find(h2 => h2.textContent.trim() === 'Дополнительные услуги');
-    }, 200);
-    const commonContainer = h2?.parentElement;
-    if (commonContainer) {
-        commonContainer.classList.add('trim-xtras');
-        const css_el = document.createElement('style');
-        css_el.textContent = css;
-        document.head.appendChild(css_el);
-        commonContainer.insertAdjacentHTML('beforeend', markup);
-        const klasses = commonContainer.querySelector('[data-show]').getAttribute('class');
-        const xtraShow = commonContainer.querySelector('#xtra-show');
-        xtraShow.setAttribute('class', klasses);
-        xtraShow.classList.add('ant-alert-info');
-        xtraShow.classList.remove('ant-alert-success');
-        commonContainer.querySelector('#xtra-show button').addEventListener('click', () => {
-            commonContainer.classList.remove('trim-xtras');
-            try {
-                ym(96674199, 'reachGoal', 'dop_uslugi_open');
-            } catch (ex) {
-                console.warn(ex);
-            }
-        });
-    }
+
+    const xtras_headers = await waitForSelector(() => {
+        const togglers = document.querySelectorAll('.ant-collapse .ant-collapse-header');
+        return togglers.length ? [...togglers] : null;
+    });
+
+    try { ym(96674199, 'reachGoal', 'dop_uslugi_close') } catch (ex) { console.warn(ex) }
+
+    xtras_headers.forEach(xtra_header => {
+        xtra_header.click();
+        const txt = xtra_header.textContent.trim();
+        let ym_goal;
+        if (txt.indexOf('Услуги в полете') === 0) {
+            ym_goal = 'dop_uslugi_flight';
+        } else if (txt.indexOf('Дополнительные услуги') === 0) {
+            ym_goal = 'dop_uslugi_open';
+        }
+        const clickHandler = () => {
+            try { ym(96674199, 'reachGoal', ym_goal) } catch (ex) { console.warn(ex) }
+            xtra_header.removeEventListener('click', clickHandler);
+        };
+        xtra_header.addEventListener('click', clickHandler);
+    });
+
 })();
 
