@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Insider mods powered by parceljs",
     "scripts": {
+        "mindbox-ingration-view-category": "parcel build --no-source-maps --dist-dir @mindbox/INTEGRATION/dist @mindbox/INTEGRATION/src/view-category.js",
         "warn-if-no-transfer-sunmar": "parcel build --no-source-maps --dist-dir @mindbox/warn-if-no-transfer/sunmar/dist @mindbox/warn-if-no-transfer/sunmar/src/mindbox.js",
         "warn-if-no-transfer-coral": "parcel build --no-source-maps --dist-dir @mindbox/warn-if-no-transfer/coral/dist @mindbox/warn-if-no-transfer/coral/src/mindbox.js",
         "xtra-services-collapse": "parcel build --no-source-maps --dist-dir @mindbox/xtra-services/coral/dist @mindbox/xtra-services/coral/src/mindbox.js",
