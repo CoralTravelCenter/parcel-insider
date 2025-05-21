@@ -1,11 +1,11 @@
-import { myCookie, params2query, queryParam } from "./usefuls";
+import { globallyDefined, myCookie, params2query, queryParam } from "./usefuls";
 
 const api_host = {
     'www.coral.ru': 'b2capi.coral.ru',
     'b2cpilotui.coral.ru': 'b2cpilotapi.coral.ru'
 }[location.hostname];
 
-(async function () {
+globallyDefined('mindbox').then(async () => {
     const { qp, p } = queryParam();
     const isPackageTour = p == 1;
     const decrypt_endpoint = isPackageTour ? 'PackageTourHotelProduct' : 'OnlyHotelProduct';
@@ -44,5 +44,4 @@ const api_host = {
     } catch (ex) {
         console.warn('*** Failed to invoke operation Website.ViewCategory: %o', ex);
     }
-
-})();
+});

@@ -46,7 +46,7 @@ export async function globallyDefined(globalSymbol) {
             if (typeof window[globalSymbol] !== 'undefined') {
                 resolve(window[globalSymbol]);
             } else {
-                setTimeout(arguments.callee, 250);
+                setTimeout(arguments.callee, 500);
             }
         })();
     });
