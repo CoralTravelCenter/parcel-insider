@@ -40,6 +40,18 @@ export async function asap(cb) {
     });
 }
 
+export async function globallyDefined(globalSymbol) {
+    return new Promise(resolve => {
+        (function () {
+            if (typeof window[globalSymbol] !== 'undefined') {
+                resolve(window[globalSymbol]);
+            } else {
+                setTimeout(arguments.callee, 250);
+            }
+        })();
+    });
+}
+
 export function myCookie(name, source = document.cookie) {
     const cookies_list = source.split(/;\s+/);
     const cookies = {};
